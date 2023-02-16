@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 RUN apt-get update && \
-    apt-get install -y wget curl vim make
+    apt-get install -y wget curl vim make git
 RUN apt install -y software-properties-common && \
     add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
