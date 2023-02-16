@@ -31,4 +31,11 @@ This is imaprative because ``/home`` directory is not mounted on compute nodes. 
     #SBATCH --hint=nomultithread
 
     srun -n ${SLURM_NTASKS} --hint=nomultithread /bin/hostname
+
+The above jobscript can now be submitted using the ``sbatch`` command.
+
+.. code-block:: bash
     
+    sbatch jobscript.slurm
+
+If you get an error in regarding account specifcation, please  `email helpdesk <help@hpc.kaust.edu.sa>`_ with the your username and error and the jobscript.
