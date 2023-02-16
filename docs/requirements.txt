@@ -3,3 +3,4 @@ renku-sphinx-theme
 furo 
 sphinx-press-theme 
 piccolo-theme
+pygments
