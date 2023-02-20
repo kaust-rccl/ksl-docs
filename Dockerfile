@@ -8,4 +8,6 @@ RUN apt install -y software-properties-common && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2 && \
     apt-get install -y python3.9-distutils && wget  https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py
-RUN pip install sphinx renku-sphinx-theme furo sphinx-press-theme piccolo-theme
+COPY docs/requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
+WORKDIR /workdir

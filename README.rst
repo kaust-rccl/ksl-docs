@@ -1,5 +1,5 @@
-Lumache
-=======
+KSL User Documentation
+======================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers that
-creates recipes mixing random ingredients.
+This is a repository for developing and deploying User documentation for KSL users to use KSL systems. 
+It contains documentation on both hardware and software provided on KSL systems and associated best practices to use it.

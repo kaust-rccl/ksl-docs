@@ -1,21 +1,25 @@
-Welcome to Support documentation for KSL platforms!
-===================================================
+========================================================
+KAUST Supercomputing Core Labs 
+========================================================
+Support Documentation
+**********************
 
-**KAUST Supercomput Core Lab** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
+Welcome to the page tree of **KAUST Supercomputing Core Lab** (KSL) support documentation. 
+Here you will find all the inforamtion you need to use our HPC and Supercomputing resources.
 
 .. note::
 
    This project is under active development.
 
-Contents
---------
-
 .. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+   quickstart
    systems/index
+   job_schd/index
+
 
 
 
