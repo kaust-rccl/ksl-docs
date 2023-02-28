@@ -19,10 +19,5 @@ Also add details about the scheduler policy, job arrays,
    :maxdepth: 1
    :hidden:
 
-   shaheen2_schd
-   shaheen3_schd
-   neser_schd
-   ibex_schd
-
-
-
+   commands
+   policy/index

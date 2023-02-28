@@ -13,4 +13,22 @@ Slurm utilities
 Here we describe all the commands in order of there priority based on the common use
 
 sinfo
-^^^^^^ 
+^^^^^^
+
+
+squeue
+^^^^^^
+
+sbatch
+^^^^^^
+
+salloc
+^^^^^^
+
+srun
+^^^^^
+
+scancel
+^^^^^^^
+
+
