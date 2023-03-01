@@ -3,9 +3,8 @@
     :description: SLURM commands
     :keywords: SLURM,job scheduling
     
-==============
-SLURM
-==============
+Common commands
+=========================
 
 
 Slurm utilities
@@ -31,4 +30,7 @@ srun
 scancel
 ^^^^^^^
 
+
+scontrol
+^^^^^^^^
 

@@ -10,14 +10,22 @@ Job Scheduling Policies
 - Limits, allowance, and any other policies related to scheduling
 - System specific policies will go in the corresponding page
 
-.. toctree::
-   :titlesonly:
-   :maxdepth: 1
+Below are system specific information about the SLURM policies.
+Shaheen 2
+---------
 
-   shaheen2_schd
-   shaheen3_schd
-   neser_schd
-   ibex_schd
+
+
+Shaheen 3
+---------
+
+
+Ibex
+----
+
+Neser
+-----
+
 
 
 
