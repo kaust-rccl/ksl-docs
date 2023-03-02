@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
-    :description: Basic SLURM documentation
-    :keywords: SLURM,sinfo,squeue,sacct,scancel,sbatch,srun
+    :description: Job schedulers on KSL systems
+    :keywords: SLURM,kubernetes
     
 
 ==============================
@@ -19,10 +19,5 @@ Also add details about the scheduler policy, job arrays,
    :maxdepth: 1
    :hidden:
 
-   shaheen2_schd
-   shaheen3_schd
-   neser_schd
-   ibex_schd
-
-
-
+   slurm/index
+   k8s/index

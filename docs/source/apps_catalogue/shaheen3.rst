@@ -4,7 +4,7 @@
     :keywords: Shaheen3
 
 =============================
-Shaheen 3 Software Catalogue 
+Shaheen 3
 =============================
 
 Compilers
@@ -15,6 +15,11 @@ Optimized Librarires
 
 Computational Chemistry
 ------------------------
+- NAMD
+- Gromacs
+- VASP
+- LAMMPS
+
 
 Bioscience
 ----------

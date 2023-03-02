@@ -4,7 +4,7 @@
     :keywords: Ibex
 
 =============================
-Ibex Software Catalogue 
+Ibex
 =============================
 
 Compilers

@@ -4,7 +4,7 @@
     :keywords: Neser
 
 =============================
-Neser Software Catalogue 
+Neser 
 =============================
 
 Compilers

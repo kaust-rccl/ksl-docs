@@ -18,3 +18,4 @@ This is a driectory to document domain specific user guides and best practices.
 
     data_science/index
     cfd_platform/index
+    weather_climate/index

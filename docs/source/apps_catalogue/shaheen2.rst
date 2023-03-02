@@ -4,7 +4,7 @@
     :keywords: Shaheen2
 
 =============================
-Shaheen 2 Software Catalogue 
+Shaheen 2 
 =============================
 
 Compilers
