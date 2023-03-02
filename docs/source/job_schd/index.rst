@@ -20,5 +20,4 @@ Also add details about the scheduler policy, job arrays,
    :hidden:
 
    slurm/index
-   policy/index
    k8s/index
