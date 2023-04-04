@@ -12,7 +12,7 @@ Pre-requisites
   .. code-block:: bash
 
     git config --global user.name=Mohsin Ahmed Shaikh 
-    
+
     git config --global user.email=moshinshaikh786@gmail.com
 
   - The email should be the one your GitHub account is registered with.
@@ -23,4 +23,5 @@ Create environment to developing documentation
 './runner.sh -c'
 - Once done type `exit` to get out of the container
 - To upstream your changes to dev branch on GitHub
-`./runner.sh -u`
+.. code-block:: bash
+    ./runner.sh -u "Some message reflecting the changes"
