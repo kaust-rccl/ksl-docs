@@ -9,7 +9,8 @@ Pre-requisites
 - Docker should be installed on your host machine
 - Git should be installed on your host machine
   - If you haven't already, set your credential configuration for Git, e.g.
-  .. code-block:: bash
+ 
+.. code-block:: bash
 
     git config --global user.name=Mohsin Ahmed Shaikh 
 
@@ -23,5 +24,6 @@ Create environment to developing documentation
 './runner.sh -c'
 - Once done type `exit` to get out of the container
 - To upstream your changes to dev branch on GitHub
+
 .. code-block:: bash
     ./runner.sh -u "Some message reflecting the changes"
