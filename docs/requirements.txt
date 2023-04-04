@@ -4,3 +4,4 @@ furo
 sphinx-press-theme 
 piccolo-theme
 pygments
+sphinxcontrib-googleanalytics
