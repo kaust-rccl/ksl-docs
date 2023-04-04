@@ -42,4 +42,4 @@ For this you should be in the container (i.e. the devel envrionment)
 
   make html
 
-Once the compilation is successful, you can view the ``docs/build/html/index.html`` in a web broweser
+Once the compilation is successful, you can view the ``docs/build/html/index.html`` in a web browser
