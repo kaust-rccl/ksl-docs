@@ -21,9 +21,14 @@ Pre-requisites
 Create environment to developing documentation
 ----------------------------------------------
 - Run the following command to create a container and start editing
-'./runner.sh -c'
+
+.. code-block:: bash
+  
+  ./runner.sh -c
+
 - Once done type `exit` to get out of the container
 - To upstream your changes to dev branch on GitHub
 
 .. code-block:: bash
-    ./runner.sh -u "Some message reflecting the changes"
+  
+  ./runner.sh -u "Some message reflecting the changes"
