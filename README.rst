@@ -16,7 +16,7 @@ Pre-requisites
 
     git config --global user.email=moshinshaikh786@gmail.com
 
-  - The email should be the one your GitHub account is registered with.
+The email should be the one your GitHub account is registered with.
 
 Create environment to developing documentation
 ----------------------------------------------
