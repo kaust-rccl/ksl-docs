@@ -32,3 +32,14 @@ Create environment to developing documentation
 .. code-block:: bash
   
   ./runner.sh -u "Some message reflecting the changes"
+
+Testing your changes
+---------------------
+Once you have done the changes and would like to preview before them before contributing to the dev branch, you will need to compile the code tree:
+For this you should be in the container (i.e. the devel envrionment)
+
+.. code-block:: bash
+
+  make html
+
+Once the compilation is successful, you can view the ``docs/build/html/index.html`` in a webbroweser
