@@ -27,7 +27,7 @@ while getopts "cuh" options; do
      ;;
     u )
      echo "commiting and pushing codebase to GitHub in dev branch. Once done, please create a pull request on GitHub to upstream your changes to main branch"     
-     git add ksl-docs/docs/source/*
+     git add docs/source/*
      git commit -m $MESSAGE
      git push -u origin dev
      ;;
