@@ -17,6 +17,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
+    'sphinxcontrib.googleanalytics',
 ]
 
 intersphinx_mapping = {
@@ -43,3 +44,5 @@ highlight_language = 'bash'
 highlight_options = {'stripall': True}
 
 
+googleanalytics_id = 'G-4YML7KSJ4F'
+googleanalytics_enabled=True
