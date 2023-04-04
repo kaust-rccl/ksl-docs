@@ -10,7 +10,7 @@ Pre-requisites
 - Git should be installed on your host machine
   - If you haven't already, set your credential configuration for Git, e.g.
   .. code-block:: bash
-    git config --global user.name=Mohsin Ahmed Shaikh
+    git config --global user.name=Mohsin Ahmed Shaikh 
     git config --global user.email=moshinshaikh786@gmail.com
 
   - The email should be the one your GitHub account is registered with.
