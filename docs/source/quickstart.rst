@@ -38,4 +38,16 @@ The above jobscript can now be submitted using the ``sbatch`` command.
     
     sbatch jobscript.slurm
 
+KSL has written a convinient utility called :ref:`Jobscript Generator <jobscript_generator>`. 
+Use this template to create a jobscript and copy-paste it in a file in your SSH terminal on Shaheen, Ibex or Neser login nodes.
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+   jobscriptGenerator
+
 If you get an error in regarding account specifcation, please  `email helpdesk <help@hpc.kaust.edu.sa>`_ with the your username and error and the jobscript.
+
+
