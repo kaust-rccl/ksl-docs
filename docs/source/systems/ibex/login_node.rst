@@ -39,7 +39,11 @@ Ibex clusters consist of 3 different login nodes:
  
   * Use your native terminal
 
+         .. image:: MacOS.png
+
+* Use your native terminal   
+
 * For Windows
  
   * You need PuTTY or MobaXTerm or GitBash
-  * Follow instructions on how to login windows `login windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ 
+  * Follow instructions on how to `login windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ 
