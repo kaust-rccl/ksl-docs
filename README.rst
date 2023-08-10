@@ -42,4 +42,9 @@ For this you should be in the container (i.e. the devel envrionment)
 
   make html
 
-Once the compilation is successful, you can view the ``docs/build/html/index.html`` in a web browser
+Once the compilation is successful, you can view the ``docs/build/html/index.html`` in a web browser.
+
+
+Creating Pull Request from dev to main branch
+---------------------------------------------
+Once you have pushed your changes to dev branch using ``./runner.sh -u`` "commit message", you can go to GitHub and create a Pull Request. This will be reviewed and if everything is in order, will be merged by the admin to main branch for reflecting the changes.
