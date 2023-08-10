@@ -5,7 +5,7 @@
     
 
 ==============================
-Polciy
+Policy
 ==============================
 - Limits, allowance, and any other policies related to scheduling
 - System specific policies will go in the corresponding page
@@ -19,7 +19,6 @@ Filesystem
 
 Shaheen 3
 ---------
-
 
 Ibex
 ----
