@@ -48,3 +48,6 @@ Once the compilation is successful, you can view the ``docs/build/html/index.htm
 Creating Pull Request from dev to main branch
 ---------------------------------------------
 Once you have pushed your changes to dev branch using ``./runner.sh -u`` "commit message", you can go to GitHub and create a Pull Request. This will be reviewed and if everything is in order, will be merged by the admin to main branch for reflecting the changes.
+
+.. image:: https://img.youtube.com/vi/pi0zkbbvXYo/hqdefault.jpg
+      :target: https://www.youtube.com/watch?v=pi0zkbbvXYo
