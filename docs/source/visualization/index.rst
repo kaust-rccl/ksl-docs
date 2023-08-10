@@ -11,3 +11,7 @@ Visualization
 - Remote visualization
 - Remote desktops
 - Offline rendering on KSL systems
+
+.. note::
+
+    Page under construction
