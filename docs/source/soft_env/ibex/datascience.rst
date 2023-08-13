@@ -10,7 +10,7 @@ We encourage all Ibex users, but particularly those whose work will focus on dat
 1. If you are a new user who just wants to get started with data science on Ibex using Python, then you should start with the machine_learning module. 
 The machine_learning module is designed to help new Ibex data science users get up in running quickly without having to install any software or manage their own Conda environments. 
 This module has a large collection of recent versions of the most commonly used Python data science packages including Pandas, PyTorch, Scikit-Learn, TensorFlow, RAPIDS, and Jax that are already built to make use of GPUs; the module also includes the core scientific Python libraries such as Dask, NumPy, SciPy, and Xarray. 
-For a complete listing of the packages included in the module please see the module’s GitHub repository https://github.com/kaust-rccl/ibex-machine-learning-modules/tree/machine-learning-2021.09. 
+For a complete listing of the packages included in the module please see the module’s GitHub repository vi https://github.com/kaust-rccl/ibex-machine-learning-modules/tree/machine-learning-2021.09. 
 If you need a package (or a version of a package) that is not already included in the machine_learning module, then you should install Miniconda in your home directories and use Conda to create and manage your own software stack.
 
 2. If you are an advanced user who has production use cases, then you may wish use the dl meta module which is based on the Intel Python distribution (also available via Conda) and includes deep learning libraries that have been compiled to target our hardware. 
