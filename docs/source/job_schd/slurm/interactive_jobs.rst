@@ -5,9 +5,11 @@
 
 Interactive jobs with SLURM
 ============================
-
-- Jupyter
-- Rstudio
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+    Jupyter
+    Rstudio
 - VSCode
 - Paraview, Visit
 - X11 forwarding for GUIs

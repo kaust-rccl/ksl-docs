@@ -5,17 +5,13 @@
 
 Jobscript Templates
 ========================================================
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
 
-- OpenMP
-  - multithreading in Bioinformatics apps
-- MPI
-  - Single and multiple nodes
-  - Domain specific (CFD, Chemistry)
-- Hybrid
-  - MPI + X
-- GPU jobs
-- Large memory jobs
-- IO tiering in jobscirpts
-- Any QoS jobs, e.g. long wall time
-- Datamover/copy jobs
-- 
+   openmp.rst
+   mpi.rst
+   gpujobs.rst
+   
+   
+   
