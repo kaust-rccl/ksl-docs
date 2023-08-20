@@ -5,7 +5,9 @@
 
 Complex workflows with SLURM
 ========================================================
-- Jobarrays
-- Dependencies
-- Job packing
-- Job chaining (e.g. from Neser to Shaheen3 to Neser)
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   jobarray.rst
+   dependencies.rst
