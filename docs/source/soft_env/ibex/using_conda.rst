@@ -170,4 +170,3 @@ Additional Resources
 ---------------------
 
 - Conda Documentation: https://docs.conda.io/
-- HPC Cluster User Guide: [Your HPC Cluster Documentation Link]
