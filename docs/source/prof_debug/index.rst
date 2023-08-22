@@ -8,3 +8,12 @@ Profiling and Debugging tools
 ==============================
 
 Here we list profiling and debugging tools, how to launch and use them on different KSL systems and apply suggested optimizations.
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+   profiling/index
+   debugging/index
