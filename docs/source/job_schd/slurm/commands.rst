@@ -100,28 +100,27 @@ For example
 Specifying resources
 --------------------
 
-sbatch
-^^^^^^
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   sbatch.rst
+   salloc.rst
+   srun.rst
 
-salloc
-^^^^^^
-
-srun
-^^^^^
 
 Monitoring and managing jobs
 -----------------------------
-
-scancel
-^^^^^^^
-
-
-scontrol
-^^^^^^^^
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   scancel.rst
+   scontrol.rst
 
 Reporting usage 
 ----------------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   saact.rst
 
-sacct
-^^^^^^
 
