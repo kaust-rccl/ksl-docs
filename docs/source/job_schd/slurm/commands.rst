@@ -103,6 +103,7 @@ Specifying resources
 .. toctree::
    :titlesonly:
    :maxdepth: 1
+
    sbatch.rst
    salloc.rst
    srun.rst
@@ -113,6 +114,7 @@ Monitoring and managing jobs
 .. toctree::
    :titlesonly:
    :maxdepth: 1
+
    scancel.rst
    scontrol.rst
 
@@ -121,6 +123,7 @@ Reporting usage
 .. toctree::
    :titlesonly:
    :maxdepth: 1
+   
    saact.rst
 
 
