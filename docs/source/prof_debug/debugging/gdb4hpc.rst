@@ -8,6 +8,9 @@
 gdb4hpc
 *******
 
+gdb4hpc is used to debug parallel applications with multiple MPI ranks.
+
+The debugger can be run as follows:
 
 .. code-block:: bash
 
