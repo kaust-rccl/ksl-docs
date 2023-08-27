@@ -91,6 +91,7 @@ Once the job starts, the SLURM output file created in the directory you submitte
 check the following output in  SLURM output will look something like this:
 
 .. code-block:: bash 
+   
      To access the server, open this file in a browser:
         file:///home/barradd/.local/share/jupyter/runtime/jpserver-44653-open.html
      Or copy and paste one of these URLs:
