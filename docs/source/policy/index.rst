@@ -11,8 +11,14 @@ Policy
 - System specific policies will go in the corresponding page
 
 Below are system specific information about the SLURM policies.
-Shaheen 2
----------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+
+   shaheen_2
+
 
 Filesystem
 ^^^^^^^^^^^^^^^

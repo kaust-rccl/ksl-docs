@@ -3,12 +3,13 @@ WekaIO FS
 
 
 What is Weka IO?
-----------------
+^^^^^^^^^^^^^^^^
 
 Weka IO is a next-generation file system that combines the performance of flash-based storage with the scalability of object storage. Designed to handle data-intensive workloads, Weka IO is an excellent choice for HPC clusters. It offers advanced data management capabilities and optimization for read and write-intensive tasks.
 
 Key Features
-------------
+^^^^^^^^^^^^
+
 - **Flash Native:** Weka IO fully leverages flash-based storage for exceptional data access and manipulation performance.
 
 - **Parallelism:** Harness the power of parallel computing for accelerated data processing, making it ideal for multi-node HPC clusters.
@@ -18,7 +19,7 @@ Key Features
 - **Data Protection:** Built-in data protection mechanisms like erasure coding and snapshots safeguard your data against failures.
 
 Benefits of Using Weka IO in HPC Clusters
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Performance Enhancement
 =======================
@@ -38,7 +39,7 @@ Data protection mechanisms minimize data loss risk, ensuring the integrity and a
 
 
 Using Weka IO within HPC Cluster Environment
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Data Management
 ===============
@@ -56,7 +57,7 @@ Collaboration and Sharing
 Enable seamless collaboration among HPC cluster users by sharing Weka IO-stored data, enhancing teamwork and productivity.
 
 Best Practices
---------------
+^^^^^^^^^^^^^^
 
 Optimizing Performance
 ======================
