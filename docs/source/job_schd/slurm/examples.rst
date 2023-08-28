@@ -12,6 +12,7 @@ Jobscript Templates
    openmp.rst
    mpi.rst
    gpujobs.rst
+   largememory.rst
    
    
    
