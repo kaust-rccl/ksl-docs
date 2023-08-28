@@ -13,7 +13,7 @@ CrayPAT offers thorough data on how well an application performs. It can be used
 Sampling experiment
 ===================
 
-* Load the modules
+* Load the modules.
 
 .. code-block:: bash
 
@@ -21,11 +21,26 @@ Sampling experiment
  module load perftools-lite
  module rm darshan
 
-* Build and launch the application. **Please add the partition and account in the batch script if necessary.**
+* Build the application as usual.
+
+* Copy the following commands in to a file named `job.slurm`. **Please add the partition and account in the batch script if necessary.**
 
 .. code-block:: bash
 
- make clean; make
+ #!/bin/bash
+
+ #SBATCH -t 30
+ #SBATCH -N 1
+
+ # Change the name of the perftools experiment file/directory
+ export PAT_RT_EXPDIR_NAME=expfile.${CRAYPAT_LITE}.${SLURM_JOBID}
+
+ time srun -n 8 /path/to/myexecutable.exe > my_output.${CRAYPAT_LITE}.${SLURM_JOBID} 2>&1
+
+* Launch the application.
+
+.. code-block:: bash
+
  sbatch job.slurm
 
 * Inspect the program output `my_output.lite-samples.*`.
