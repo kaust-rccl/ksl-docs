@@ -96,6 +96,15 @@ For example
     JOBID       USER ACCOUNT           NAME  ST REASON    START_TIME                TIME  TIME_LEFT NODES
     32803927   shaima0d     k01     task.slurm   R None      2023-08-01T14:56:20       1:55    1:58:05     5
 
+Querying system resources
+--------------------------
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+    
+   sinfo.rst
+   ginfo.rst
 
 Specifying resources
 --------------------
@@ -111,19 +120,22 @@ Specifying resources
 
 Monitoring and managing jobs
 -----------------------------
+
 .. toctree::
    :titlesonly:
    :maxdepth: 1
 
    scancel.rst
    scontrol.rst
+   squeue.rst
 
 Reporting usage 
 ----------------
+
 .. toctree::
    :titlesonly:
    :maxdepth: 1
    
-   saact.rst
+   sacct.rst
 
 
