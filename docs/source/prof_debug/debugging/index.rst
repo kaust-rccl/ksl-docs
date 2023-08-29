@@ -8,9 +8,10 @@
 Debugging
 #########
 
+The following tools are available for debugging:
+
 .. toctree::
    :titlesonly:
    :maxdepth: 1
-   :hidden:
 
    gdb4hpc
