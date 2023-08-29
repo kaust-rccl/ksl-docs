@@ -21,3 +21,5 @@ Also add details about the scheduler policy, job arrays,
 
    slurm/index
    k8s/index
+
+.. _job_scheduling:

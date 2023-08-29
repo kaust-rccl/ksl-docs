@@ -18,6 +18,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.googleanalytics',
+    
 ]
 
 intersphinx_mapping = {
