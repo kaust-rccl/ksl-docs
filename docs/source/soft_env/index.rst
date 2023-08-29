@@ -7,14 +7,13 @@
 Software Environment
 =======================
 
-Here we discuss, module system, Programming environment, Optimized thrid party libraries and compiler suites, availaibility of profilers and debugers. 
+Module system, programming environment, optimized third party libraries and compiler toolchains are explained for the following systems:
 
 
 .. toctree::
    :titlesonly:
    :maxdepth: 1
-   :hidden:
-   
+
    shaheen2/index
    shaheen3/index
    neser/index
