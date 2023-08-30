@@ -52,7 +52,7 @@ Compiler Toolchains
 *******************
 
 Cray, AMD, and GCC compiler toolchains are provided through modules.
-The module `PrgEnv-<compiler>` is used to activates the respective toolchain.
+The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
 Regardless of the underlying compiler, the user must use the following compiler wrappers:
 
 +--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
@@ -102,8 +102,18 @@ Cray Programming Environment and Compiler Wrappers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cray provides ``PrgEnv-<compiler>`` modules (e.g., ``PrgEnv-cray``) to load the compiler toolchains.
-One can also switch between compilers as follows:
+
+.. code-block:: bash
+
+ module load PrgEnv-gnu
+
+The ``PrgEnv-cray`` module is loaded by default. The following command can be used to switch between compilers toolchains:
 
 .. code-block:: bash
 
  module switch PrgEnv-cray PrgEnv-gnu
+
+MPI
+^^^
+
+Cray MPICH is provided by default. It is also linked when the compiler wrappers ``cc``, ``CC``, and ``ftn`` are used.
