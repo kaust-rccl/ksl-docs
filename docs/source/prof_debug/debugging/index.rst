@@ -15,3 +15,4 @@ The following tools are available for debugging:
    :maxdepth: 1
 
    gdb4hpc
+   valgrind4hpc
