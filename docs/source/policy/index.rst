@@ -18,6 +18,7 @@ Below are system specific information about the SLURM policies.
 
 
    shaheen_2
+   ibex
 
 
 Filesystem
