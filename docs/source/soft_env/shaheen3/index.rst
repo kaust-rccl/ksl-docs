@@ -105,12 +105,7 @@ Cray Programming Environment and Compiler Wrappers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Cray provides ``PrgEnv-<compiler>`` modules (e.g., ``PrgEnv-cray``) to load the compiler toolchains.
-
-.. code-block:: bash
-
- module load PrgEnv-gnu
-
-The ``PrgEnv-cray`` module is loaded by default. The following command can be used to switch between compilers toolchains:
+The ``PrgEnv-cray`` module is loaded by default. The following command can be used to switch between compiler toolchains:
 
 .. code-block:: bash
 
