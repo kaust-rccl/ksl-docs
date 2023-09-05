@@ -4,7 +4,7 @@ Running Jobs with Singularity
 Running Applications Interactively Inside Singularity Containers
 ----------------------------------------------------------------
 
-Singularity allows you to interactively run applications within containers. This is useful for debugging, testing, and exploring your containerized environment. To run an application interactively, use the following command::
+Singularity allows you to interactively run applications within containers. This is useful for debugging, testing, and exploring your containerized environment. To run an application interactively, use the following command:
 
 .. code-block:: bash
 
@@ -17,7 +17,7 @@ Executing Containerized Batch Jobs in an HPC Environment
 
 In an HPC environment, you often need to run applications as batch jobs. Singularity seamlessly integrates with popular batch schedulers like Slurm and PBS, enabling you to run containerized jobs without hassle.
 
-To run a containerized batch job, use the ``singularity exec`` command followed by the image and the command to be executed::
+To run a containerized batch job, use the ``singularity exec`` command followed by the image and the command to be executed:
 
 .. code-block:: bash
 
@@ -26,7 +26,7 @@ To run a containerized batch job, use the ``singularity exec`` command followed 
 Mapping Filesystems, Directories, and Data into Containers
 ----------------------------------------------------------
 
-Singularity allows you to map host filesystems, directories, and data into the container environment. This enables applications inside the container to access external data seamlessly. Use the ``--bind`` or ``-B`` option to specify the paths to be mapped::
+Singularity allows you to map host filesystems, directories, and data into the container environment. This enables applications inside the container to access external data seamlessly. Use the ``--bind`` or ``-B`` option to specify the paths to be mapped:
 
 .. code-block:: bash
 
@@ -35,7 +35,7 @@ Singularity allows you to map host filesystems, directories, and data into the c
 Handling Input and Output Files Between Host and Container
 ----------------------------------------------------------
 
-When running batch jobs, data exchange between the host and the container is essential. Use the ``--pwd`` option to set the current working directory inside the container to the directory where the batch job script resides. This ensures that input and output files are accessed correctly::
+When running batch jobs, data exchange between the host and the container is essential. Use the ``--pwd`` option to set the current working directory inside the container to the directory where the batch job script resides. This ensures that input and output files are accessed correctly:
 
 .. code-block:: bash
 

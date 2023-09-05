@@ -1,8 +1,8 @@
 Best Practices for Singularity in HPC
 =====================================
 
-Optimizing Container Performance for HPC Workloads
---------------------------------------------------
+Optimizing Container Performance
+--------------------------------
 
 To maximize the benefits of Singularity in HPC, consider these optimization strategies:
 
@@ -10,7 +10,14 @@ To maximize the benefits of Singularity in HPC, consider these optimization stra
 
 - **Optimize Libraries**: Use system libraries whenever possible instead of including them in the container.
 
-- **Compile for the Target System**: Compile applications inside the container using flags that optimize for the target HPC system's architecture.
+- **Compile for the Target System**: Libc version shouldn't be too old inside the container compared to host kernel
+
+  On Ibex, Kernel release is:
+
+.. code-block:: bash
+
+    uname -r
+    3.10.0-1062.12.1.el7.x86_64
 
 Ensuring Security and Isolation Within Singularity Containers
 -------------------------------------------------------------
@@ -23,8 +30,12 @@ Security is paramount in HPC environments. To ensure secure container usage:
 
 - **Sandboxing**: Utilize Singularity's ability to enforce isolation by limiting container access to specific directories.
 
-Efficient Management of Container Images on HPC Clusters
---------------------------------------------------------
+- **Singularity is Read Only by default**: Except for the directories mounted by default on Shaheen/Ibex /tmp, /home, /project (on Shaheen), /scratch
+
+  Make it writable as sandbox if needed.
+
+Efficient Management of Container Images
+----------------------------------------
 
 Effectively managing container images on HPC clusters is crucial for maintaining a well-organized environment:
 
@@ -34,24 +45,26 @@ Effectively managing container images on HPC clusters is crucial for maintaining
 
 - **Image Cleanup**: Regularly clean up unused or outdated container images to free up storage space.
 
-Scaling Containers in Large-Scale Parallel and Distributed Computing
---------------------------------------------------------------------
+  For large images, pull may fail due to insufficient space in /tmp
+  Run singularity pull command in $HOME which is NFS
+  export SINGULARITY_TMPDIR=$HOME/some/path
+
+- **cache management**: By default Docker image blobs are cached in ~/.singularity/cache
+  
+  It can fill pretty quickly you pull different images frequently.
+  To clean cache run: 
+
+.. code-block:: bash
+
+    singularity cache clean
+
+Scaling Containers
+------------------
 
 For large-scale computing environments, consider the following practices:
 
 - **Parallelism**: Design containerized applications to leverage parallel processing for optimal resource utilization.
 
 - **Distributed Filesystems**: Utilize distributed filesystems for data sharing and synchronization across nodes.
-
-Addressing Challenges and Limitations of Singularity in HPC
------------------------------------------------------------
-
-While Singularity offers many advantages, it's essential to be aware of its limitations and challenges:
-
-- **Non-Persistent State**: Containers are ephemeral by design, which can affect long-running applications that require persistent states.
-
-- **MPI Support**: While Singularity supports MPI, configuration and integration can sometimes be challenging.
-
-- **Limited Kernel Compatibility**: Singularity containers require compatibility with the host kernel.
 
 By following these best practices, you can unlock the full potential of Singularity in HPC environments, optimize performance, enhance security, and tackle challenges effectively.
