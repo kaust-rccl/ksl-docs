@@ -4,7 +4,7 @@ CPU/GPU and Parallel Libraries
 Introduction
 ------------
 
-In this guide, we'll explore the world of libraries designed to harness the computational power of CPUs and GPUs, as well as parallel libraries that facilitate efficient parallelization of tasks. High-Performance Computing (HPC) clusters provide a wide range of specialized libraries that enable developers to accelerate their applications, leverage hardware capabilities, and achieve optimal performance.
+Ibex provides a wide range of specialized libraries that enable developers to accelerate their applications, leverage hardware capabilities, and achieve optimal performance.
 
 CPU/GPU Libraries
 -----------------
@@ -52,19 +52,23 @@ For example, to load the CUDA library, use:
 Parallel Programming with Libraries
 -----------------------------------
 
-Once you have the required libraries loaded, you can parallelize your code using the appropriate APIs and directives provided by the libraries. For example, you can use OpenMP directives to parallelize loops or use MPI to distribute tasks across multiple nodes.
+Once you have the required libraries loaded, you can parallelize your code using the appropriate APIs and directives provided by the libraries.
 
-Utilizing CPU/GPU libraries and parallel libraries is essential for achieving maximum performance and efficiency in HPC applications. By leveraging these libraries, you can harness the computational power of CPUs and GPUs, as well as achieve effective parallelization to take full advantage of the resources available on the cluster.
+For example, you can use OpenMP directives to parallelize loops or use MPI to distribute tasks across multiple nodes.
+
+Utilizing CPU/GPU libraries and parallel libraries is essential for achieving maximum performance and efficiency in HPC applications.
+
+By leveraging these libraries, you can harness the computational power of CPUs and GPUs, as well as achieve effective parallelization to take full advantage of the resources available on the cluster.
 
 Additional Resources
 ---------------------
 
-- BLAS Library Documentation: http://www.netlib.org/blas/
-- cuBLAS Library Documentation: https://docs.nvidia.com/cuda/cublas/index.html
-- FFTW Library Documentation: https://www.fftw.org/#documentation
-- cuFFT Library Documentation: https://docs.nvidia.com/cuda/cufft/index.html
-- LAPACK Library Documentation: http://www.netlib.org/lapack/
-- OpenMP Documentation: https://www.openmp.org/resources/
-- MPI Documentation: https://www.mpi-forum.org/docs/
-- CUDA Documentation: https://docs.nvidia.com/cuda/
-- OpenACC Documentation: https://www.openacc.org/resources/
+- `BLAS Library Documentation <http://www.netlib.org/blas/>`_
+- `cuBLAS Library Documentation <https://docs.nvidia.com/cuda/cublas/index.html>`_
+- `FFTW Library Documentation <https://www.fftw.org/#documentation>`_
+- `cuFFT Library Documentation <https://docs.nvidia.com/cuda/cufft/index.html>`_
+- `LAPACK Library Documentation <http://www.netlib.org/lapack/>`_
+- `OpenMP Documentation <https://www.openmp.org/resources/>`_
+- `MPI Documentation <https://www.mpi-forum.org/docs/>`_
+- `CUDA Documentation <https://docs.nvidia.com/cuda/>`_
+- `OpenACC Documentation <https://www.openacc.org/resources/>`_

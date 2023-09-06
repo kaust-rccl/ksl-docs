@@ -32,5 +32,5 @@ When selecting a containerization platform for your workloads, consider factors 
 Additional Resources
 ---------------------
 
-- Singularity Documentation: https://sylabs.io/docs/
-- Podman Documentation: https://podman.io/documentation/
+- `Singularity Documentation <https://sylabs.io/docs/>`_ 
+- `Podman Documentation <https://podman.io/docs/>`_

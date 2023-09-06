@@ -22,7 +22,9 @@ Customizing environment variables and runtime configurations within a container 
 Utilizing Singularity's Build Context for Customization
 -------------------------------------------------------
 
-Singularity provides a build context that allows you to customize the creation of containers. You can define specific instructions in a script file (e.g., a Bash script) and run this script during container creation using the ``singularity build`` command. This method streamlines the process of adding software, configuring settings, and modifying environment variables.
+Singularity provides a build context that allows you to customize the creation of containers. You can define specific instructions in a script file (e.g., a Bash script) and run this script during container creation using the ``singularity build`` command.
+
+This method streamlines the process of adding software, configuring settings, and modifying environment variables.
 
 Strategies for Optimizing Container Performance and Efficiency
 --------------------------------------------------------------
@@ -38,6 +40,8 @@ Optimizing container performance involves minimizing unnecessary overhead while 
 Handling System and Application Updates Within Containers
 ---------------------------------------------------------
 
-Keeping containers up-to-date with system and application updates is crucial for security and functionality. Regularly update packages and dependencies inside the container using package managers like ``apt-get`` or ``yum``. However, ensure that updates are tested and do not break existing functionality.
+Keeping containers up-to-date with system and application updates is crucial for security and functionality.
+
+Regularly update packages and dependencies inside the container using package managers like ``apt-get`` or ``yum``. However, ensure that updates are tested and do not break existing functionality.
 
 By effectively customizing Singularity containers, you can tailor environments to your exact requirements, optimize performance, and keep your containers up-to-date and secure.
