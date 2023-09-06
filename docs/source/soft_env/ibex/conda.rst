@@ -4,14 +4,18 @@ Conda
 Introduction
 ------------
 
-Welcome to this guide on using Conda in a High-Performance Computing (HPC) environment. Conda is a versatile package and environment manager that can greatly simplify the management of software dependencies, making it an excellent choice for scientific computing and data analysis tasks on HPC systems.
+Conda is a versatile package and environment manager that can greatly simplify the management of software dependencies, making it an excellent choice for scientific computing and data analysis tasks on HPC systems.
 
-In this guide, you will learn how to set up and utilize Conda to manage your software environment, install packages, and create isolated environments within the unique context of an HPC cluster.
+You will learn how to set up and utilize Conda to manage your software environment, install packages, and create isolated environments within the unique context of an HPC cluster.
 
 Understanding HPC Environments
 -------------------------------
 
-Before we dive into using Conda, it's important to understand the nature of High-Performance Computing environments. HPC clusters consist of multiple interconnected compute nodes that work together to process complex tasks efficiently. These clusters often have unique software and hardware configurations that can pose challenges when it comes to software management.
+Before we dive into using Conda, it's important to understand the nature of High-Performance Computing environments.
+
+HPC clusters consist of multiple interconnected compute nodes that work together to process complex tasks efficiently.
+
+These clusters often have unique software and hardware configurations that can pose challenges when it comes to software management.
 
 Conda's Flexibility and Advantages
 -----------------------------------

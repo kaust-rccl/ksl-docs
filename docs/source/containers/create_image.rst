@@ -1,6 +1,55 @@
 Creating Singularity Containers
 ===============================
 
+Accesing Singularity
+--------------------
+
+Singularity is installed on Shaheen and Ibex.
+
+.. code-block:: bash
+
+    module load singularity
+
+Singularity CLI
+---------------
+
+.. code-block:: bash
+
+    singularity --help
+    Options:
+    -d, --debug print debugging information (highest verbosity)
+    -h, --help help for singularity
+    --nocolor print without color output (default False)
+    -q, --quiet suppress normal output
+    -s, --silent only print errors
+    -v, --verbose print additional information
+    --version version for singularity
+    Available Commands:
+    build Build a Singularity image
+    cache Manage the local cache
+    capability Manage Linux capabilities for users and groups
+    config Manage various singularity configuration (root user only)
+    delete Deletes requested image from the library
+    exec Run a command within a container
+    help Help about any command
+    inspect Show metadata for an image
+    instance Manage containers running as services
+    key Manage OpenPGP keys
+    oci Manage OCI containers
+    plugin Manage Singularity plugins
+    pull Pull an image from a URI
+    push Upload image to the provided URI
+    remote Manage singularity remote endpoints
+    run Run the user-defined default command within a container
+    run-help Show the user-defined help for an image
+    search Search a Container Library for images
+    shell Run a shell within a container
+    sif siftool is a program for Singularity Image Format (SIF) file manipulation
+    sign Attach a cryptographic signature to an image
+    test Run the user-defined tests within a container
+    verify Verify cryptographic signatures attached to an image
+    version Show the version for Singularity
+
 Basics of Creating Singularity Containers using Definition Files
 ----------------------------------------------------------------
 

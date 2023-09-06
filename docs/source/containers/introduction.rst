@@ -4,12 +4,16 @@ Using Containers in Modern Software Development
 Introduction
 ------------
 
-In the fast-evolving landscape of modern software development, the concept of containers has emerged as a pivotal solution to streamline deployment, enhance scalability, and foster collaboration among development teams. This guide aims to provide you with a comprehensive understanding of containers, their motivations, benefits, and how they fit into the broader context of software development.
+In the fast-evolving landscape of modern software development, the concept of containers has emerged as a pivotal solution to streamline deployment, enhance scalability, and foster collaboration among development teams.
 
 Containers: A New Paradigm
 --------------------------
 
-Traditionally, software deployment involved a series of challenges, from managing varying development environments to ensuring consistent performance across different stages of the development lifecycle. Containers revolutionize this paradigm by encapsulating applications and their dependencies, abstracting away the underlying infrastructure, and offering a consistent environment from development to production.
+Traditionally, software deployment involved a series of challenges, from managing varying development environments to ensuring consistent performance across different stages of the development lifecycle. 
+
+Containers revolutionize this paradigm by encapsulating applications and their dependencies, abstracting away the underlying infrastructure, and offering a consistent environment from development to production.
+
+Effectively, it's a packaging format, with all required files as a single file, and some manifest(metadata) about its creation, content and execution instrcutions.
 
 Motivation for Containerization
 -------------------------------
