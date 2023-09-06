@@ -118,9 +118,9 @@ If package is available in the machine_learning module, you should use the machi
 
 If the package is not available in the machine_learning module, then you should do the following.
 
-- First, install Miniconda in your home directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven’t already done so). 
+- First, install Miniconda in your user directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven’t already done so). 
 
-- Once you have Miniconda installed in your home directory, check if the package is available on the conda-forge Conda channel. 
+- Once you have Miniconda installed in your user directory, check if the package is available on the conda-forge Conda channel. 
 
 - If the package is available via conda-forge , then you should install the package from conda-forge.
 
