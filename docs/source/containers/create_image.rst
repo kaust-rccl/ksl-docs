@@ -17,7 +17,7 @@ Here's a basic example of a Singularity definition file:
         apt-get update
         apt-get install -y python3
 
-This definition file instructs Singularity to use a base Ubuntu image, update its package list, and install Python 3 inside the container.
+This definition file (singularity_file.def) instructs Singularity to use a base Ubuntu image, update its package list, and install Python 3 inside the container.
 
 Installing Software and Dependencies Inside a Singularity Container
 -------------------------------------------------------------------
@@ -28,6 +28,20 @@ Defining Environment Variables and Configuring the Runtime Environment
 ----------------------------------------------------------------------
 
 You can define environment variables within the container to customize its behavior. For example, you can set paths, specify default options, or configure application-specific settings. These environment variables are isolated within the container and do not affect the host system.
+
+Build the container
+-------------------
+
+.. code-block:: bash
+
+    singularity build --fakeroot singularity_file.def singularity_image.sif
+
+The resulting singularity_file.sif can be run using commands like singularity run, singularity shell.
+
+Ports are published by default, mapped on same ports as host.
+
+While building images with --fakeroot on Ibex, Always allocate a compute node on, (won't work on login nodes).
+export XDG_RUNTIME_DIR=$HOME/somewhere, to allow temporary space for Singularity to write intermediate blobs/images.
 
 Building Containers from Scratch or Using Existing Base Images
 --------------------------------------------------------------

@@ -80,11 +80,3 @@ Pulling an Image from NGC with Singularity
    .. code-block:: bash
 
       singularity exec --nv pytorch_22.08-py3.sif python3 my_gpu_script.py
-
-
-Using Docker Hub Images with podman
------------------------------------
-
-
-Using NVIDIA NGC Images with podman
------------------------------------
