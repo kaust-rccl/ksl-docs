@@ -16,7 +16,7 @@ The machine_learning module is designed to help new Ibex data science users get 
 
 This module has a large collection of recent versions of the most commonly used Python data science packages including Pandas, PyTorch, Scikit-Learn, TensorFlow, RAPIDS, and Jax that are already built to make use of GPUs; the module also includes the core scientific Python libraries such as Dask, NumPy, SciPy, and Xarray.
 
-For a complete listing of the packages included in the module please see the module’s `GitHub repository <https://github.com/kaust-rccl/ibex-machine-learning-modules/tree/machine-learning-2021.09>`_.
+For a complete listing of the packages included in the module please see the module's `GitHub repository <https://github.com/kaust-rccl/ibex-machine-learning-modules/tree/machine-learning-2021.09>`_.
 
 If you need a package (or a version of a package) that is not already included in the machine_learning module, then you should install Miniconda in your user directory and use Conda to create and manage your own software stack.
 
@@ -107,7 +107,7 @@ If the package is not available in the machine_learning modules, then you should
 
 The vast majority of user required software is available on the conda-forge channel (and/or the bioconda channel for bioinformatics and genomics applications). 
 
-You will need to install Miniconda in your Ibex user directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven’t already done so).
+You will need to install Miniconda in your Ibex user directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven't already done so).
 
 How do I install my favorite data science package on Ibex using Pip?
 --------------------------------------------------------------------
@@ -118,7 +118,7 @@ If package is available in the machine_learning module, you should use the machi
 
 If the package is not available in the machine_learning module, then you should do the following.
 
-- First, install Miniconda in your user directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven’t already done so). 
+- First, install Miniconda in your user directory by following instruction on `GitHub <https://github.com/kaust-rccl/ibex-miniconda-install>`_ (if they haven't already done so). 
 
 - Once you have Miniconda installed in your user directory, check if the package is available on the conda-forge Conda channel. 
 
