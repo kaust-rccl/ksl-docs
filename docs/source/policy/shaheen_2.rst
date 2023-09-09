@@ -49,18 +49,21 @@ In this example, the file is striped across 8 OSTs with a stripe size of 1 MB. T
 
 
 |
+
 .. code-block:: default
     :caption: Example - Creating a new file with a stripe count of 10
 
     $ lfs setstripe -c 10 file2
 
 |
+
 .. code-block:: default
     :caption: Example - Setting the default stripe count of a directory to 4
 
     $ lfs setstripe -c 4 dir1
 
 |
+
 .. code-block:: default
     :caption: Example - Creating a new file with a stripe size of 4MB (stripe size value must be a multiple of 64KB)
 
@@ -169,7 +172,9 @@ ______
     
     #SBATCH --partition=72hours
     #SBATCH --qos=72hours
+
 |
+
 
 **debug**: There are 16 nodes available in this queue with a maximum wall clock of 30 minutes and a maximum job size of 4 nodes. 
 

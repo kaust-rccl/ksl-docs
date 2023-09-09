@@ -20,6 +20,8 @@ Containers
    best_practices
    runtime_examples
    data_management
+   conda_container
+   krccl_containers
 
 
 

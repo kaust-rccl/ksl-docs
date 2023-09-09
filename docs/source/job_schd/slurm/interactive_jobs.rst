@@ -12,6 +12,3 @@ Interactive jobs with SLURM
    jupyter.rst
    rstudio.rst
    vscode.rst
-   paraview.rst
-   visit.rst
-   vncserver.rst

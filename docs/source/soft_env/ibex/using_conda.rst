@@ -8,7 +8,15 @@ To begin using Conda on an HPC cluster, you'll need to follow these general step
 
 1. Install Miniconda or Anaconda: Start by installing Miniconda or Anaconda on the HPC cluster if it is not already available. These distributions of Conda provide a user-friendly installer and the `conda` command-line tool.
 
-2. Configure Conda Channels: HPC clusters may have specific software channels or repositories. You can configure Conda to prioritize these channels when searching for packages.
+.. note:: 
+    We provide scripts to install the latest Miniconda on `GitHub. <https://github.com/kaust-rccl/ibex-miniconda-install>`_
+
+2. Configure Conda Channels: use popular conda channels like conda-forge, bioconda, pytorch, nvidia to easily find most of needed software and libraries.
+
+.. code-block:: bash
+
+    #To configure a conda channel use:    
+    conda config --add channels new_channel
 
 3. Create Conda Environments: Use Conda to create isolated environments for your projects. This helps ensure that your software and dependencies do not interfere with the HPC cluster's system-wide packages.
 
@@ -17,13 +25,16 @@ To begin using Conda on an HPC cluster, you'll need to follow these general step
 Creating Conda Environments
 ---------------------------
 
-In this section, we will walk you through the process of creating Conda environments tailored to your projects within an HPC environment. By creating isolated environments, you can ensure that your software dependencies do not interfere with other users or system-wide packages.
+By creating isolated environments, you can ensure that your software dependencies do not interfere with other users or system-wide packages.
 
 Creating a Basic Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When creating an environemnt on Ibex, User should allocate a compute / GPU node (Depending on whether the packages need cuda and GPUs) instead of using the login node.
+
 Users can allocate these nodes interactively using srun command or through a job script launched with sbatch command.
+
+(Please don't create conda environments in login nodes)
 
 Example:
 
@@ -72,8 +83,6 @@ To deactivate the environment and return to the base environment, use:
 
 Installing and Managing Packages
 --------------------------------
-
-In this section, we will explore how to install and manage packages within your Conda environments on the HPC cluster.
 
 Installing Packages
 ~~~~~~~~~~~~~~~~~~~~
@@ -126,10 +135,8 @@ To remove a package, use:
 
     conda remove numpy
 
-Best Practices for Conda on HPC
--------------------------------
-
-In this section, we'll provide some best practices for effectively using Conda in an HPC environment.
+Best Practices for Conda on Ibex
+--------------------------------
 
 Minimize System-Wide Modifications
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,8 +151,11 @@ Use environment files (e.g., `environment.yml`) to document and share the exact 
 How do I activate my Conda environment in my Slurm job scripts on Ibex?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 You need to run their Slurm jobs inside a Bash login shell in order to make use of the conda activate command. 
-To do this you need only add the --login flag to the first line of your Slurm job script. 
+
+To do this you need only add the "--login" flag to the first line of your Slurm job script. 
+
 Your Slurm job script should look as follows. 
+
 You should also add a module purge command just before activating the environment to make sure that all modules are removed from you Bash environment prior to Conda environment being activated.
 
 .. code-block:: bash
@@ -169,4 +179,4 @@ You should also add a module purge command just before activating the environmen
 Additional Resources
 ---------------------
 
-- Conda Documentation: https://docs.conda.io/
+- `Conda Documentation <https://docs.conda.io/>`_

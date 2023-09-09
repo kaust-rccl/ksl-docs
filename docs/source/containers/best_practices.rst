@@ -10,14 +10,17 @@ To maximize the benefits of Singularity in HPC, consider these optimization stra
 
 - **Optimize Libraries**: Use system libraries whenever possible instead of including them in the container.
 
-- **Compile for the Target System**: Libc version shouldn't be too old inside the container compared to host kernel
+- **Compile for the Target System**: Libc version shouldn't be too old inside the container compared to host kernel.
 
-  On Ibex, Kernel release is:
+.. note::
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    uname -r
-    3.10.0-1062.12.1.el7.x86_64
+      #On Ibex, Kernel release is:
+      3.10.0-1160.76.1.el7.x86_64
+
+      #You can check the kernel version by running:
+      uname -r
 
 Ensuring Security and Isolation Within Singularity Containers
 -------------------------------------------------------------
@@ -52,11 +55,16 @@ Effectively managing container images on HPC clusters is crucial for maintaining
 - **cache management**: By default Docker image blobs are cached in ~/.singularity/cache
   
   It can fill pretty quickly you pull different images frequently.
-  To clean cache run: 
+  
+.. note::
 
-.. code-block:: bash
+  .. code-block:: bash
 
-    singularity cache clean
+      #To check status of cache run:
+      singularity cache list
+
+      #To clean cache run:
+      singularity cache clean
 
 Scaling Containers
 ------------------

@@ -4,18 +4,24 @@ Compiler suites
 Introduction
 ------------
 
-In this guide, we'll delve into the world of compiler suites available on High-Performance Computing (HPC) clusters. Compiler suites are collections of compilers and tools that enable you to compile, optimize, and build software applications. Each compiler suite brings its own set of features, optimizations, and compatibility considerations. Understanding and utilizing different compiler suites can significantly impact the performance and efficiency of your code on the cluster.
+Compiler suites are collections of compilers and tools that enable you to compile, optimize, and build software applications. 
+
+Each compiler suite brings its own set of features, optimizations, and compatibility considerations.
+
+Understanding and utilizing different compiler suites can significantly impact the performance and efficiency of your code on the cluster.
 
 Available Compiler Suites
 -------------------------
 
-HPC clusters often provide multiple compiler suites, each catering to different programming languages and optimization goals. Some common compiler suites you might encounter include:
+Ibex provides multiple compiler suites, each catering to different programming languages and optimization goals.
+
+Some common compiler suites you might encounter include:
 
 - GCC (GNU Compiler Collection): A popular open-source compiler suite that supports multiple programming languages, including C, C++, and Fortran.
 
 - Intel Compiler Suite: Developed by Intel, this suite offers advanced optimizations and features tailored for Intel processors.
 
-- PGI (Portland Group): A suite optimized for high-performance computing and parallel programming, offering Fortran, C, and C++ compilers.
+- PGI : A suite optimized for high-performance computing and parallel programming, offering Fortran, C, and C++ compilers.
 
 - NVIDIA HPC SDK: Designed for GPU-accelerated computing, this suite provides compilers and libraries for CUDA programming.
 
@@ -68,9 +74,9 @@ You can fine-tune compilation options using flags. For instance:
 This compiles "my_program.c" with high optimization (`-O3`) and architecture-specific settings (`-march=native`).
 
 Additional Resources
----------------------
+--------------------
 
-- GCC Compiler Documentation: https://gcc.gnu.org/onlinedocs/
-- Intel Compiler Documentation: https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top.html
-- PGI Compiler Documentation: https://www.pgroup.com/resources/docs.htm
-- NVIDIA HPC SDK Documentation: https://docs.nvidia.com/hpc-sdk/
+- `GCC Compiler Documentation <https://gcc.gnu.org/onlinedocs/>`_
+- `Intel Compiler Documentation <https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top.html>`_
+- `PGI Compiler Documentation <https://docs.nvidia.com/hpc-sdk/pgi-compilers/>`_
+- `NVIDIA HPC SDK Documentation <https://docs.nvidia.com/hpc-sdk/archive/>`_

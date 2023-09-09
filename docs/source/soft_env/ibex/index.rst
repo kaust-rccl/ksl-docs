@@ -10,6 +10,7 @@ Details of Ibex, Its module system and available compiler suites, libraries and 
    module_system
    compilers
    libraries
+   ml_module
    conda
    using_conda
    datascience

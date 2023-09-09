@@ -20,4 +20,6 @@ This blog post will show how to use each tool to profile a deep learning workloa
 
    using-nvprof
    nsight-systems
+   debugging/index
+   profiling/index
    
