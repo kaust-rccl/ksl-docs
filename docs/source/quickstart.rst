@@ -41,7 +41,7 @@ Submitting your first Jobscripts
 All KSL systems use SLURM for scheduling jobs for batch processing.
 
 Shaheen 3 example jobscripts
----------------------------
+------------------------------
 On Shaheen 3 the example jobscripts below need to be submitted from ``/scratch/$USER`` directory.
 This is imaprative because ``/home`` directory is not mounted on compute nodes. Also ``/project`` directory is read-only on compute node.
 
