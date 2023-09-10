@@ -18,7 +18,6 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.googleanalytics',
-    
 ]
 
 intersphinx_mapping = {
@@ -31,14 +30,26 @@ templates_path = ['_templates']
 
 # -- Options for HTML output
 
-html_theme = 'piccolo_theme'
+html_theme = 'pydata_sphinx_theme'
 html_logo = './static/KAUST_logo.png'
+html_favicon = './static/KAUST_logo.png'
 html_theme_options = {
-    "source_url": 'https://github.com/mshaikh786/ksl-docs/',
-    "source_icon": "github",
-    "banner_text": 'Checkout, <a href="https://mynewsletter.com/"> Tip of the Week</a>!',
-    "show_theme_credit": False
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/mshaikh786/ksl-docs/",
+            "icon": "fa-brands fa-github",
+        },
+
+    ],
+    "announcement": 'Checkout, <a href="https://mynewsletter.com/"> Tip of the Week</a>!',
+    "footer_start": False,
+    "footer_end": False,
+    "show_toc_level": 2
     
+}
+html_sidebars = {
+    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
 # -- Options for EPUB output
 epub_show_urls = 'footnote'

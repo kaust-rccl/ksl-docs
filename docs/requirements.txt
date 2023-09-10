@@ -5,3 +5,4 @@ sphinx-press-theme
 piccolo-theme
 pygments
 sphinxcontrib-googleanalytics
+pydata-sphinx-theme
