@@ -17,21 +17,9 @@ Below are system specific information about the SLURM policies.
    :maxdepth: 1
 
 
-   shaheen_2
+   shaheen_3
    ibex
 
-
-Filesystem
-^^^^^^^^^^^^^^^
-
-Shaheen 3
----------
-
-Ibex
-----
-
-Neser
------
 
 
 

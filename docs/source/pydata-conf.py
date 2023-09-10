@@ -49,7 +49,7 @@ html_theme_options = {
     
 }
 html_sidebars = {
-    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
+    "**": ["search-field.html", "sidebar-nav-bs.html"]
 }
 # -- Options for EPUB output
 epub_show_urls = 'footnote'

@@ -1,16 +1,23 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Available systems at KSL
+    :keywords: Shaheen3, Ibex, post-processing, hardware, filesystems, operating system
+    
+.. _available_systems:
+
 ==================
 Available Systems
 ==================
 This is the landing page for description of KSL systems. This page describes an abstract HPC cluster and its expected components. Lays out the glossary and definitions.
+
+
 
 .. toctree::
    :titlesonly:
    :maxdepth: 1
    :hidden:
    
-   shaheen2/index
    shaheen3/index
-   neser/index
    ibex/index
 
 

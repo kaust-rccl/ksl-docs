@@ -101,7 +101,7 @@ Now that we have a Singularity image for our application that was built with con
     module load singularity
     singularity run ./genomad.def genomad -h
 
-.. code-block:: bash
+.. sourcecode:: 
 
     WARNING: underlay of /etc/localtime required more than 50 (88) bind mounts
                                                                                                                                                                             

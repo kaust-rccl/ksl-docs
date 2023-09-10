@@ -5,11 +5,15 @@ Support Documentation
 **********************
 
 Welcome to the page tree of **KAUST Supercomputing Core Lab** (KSL) support documentation. 
-Here you will find all the inforamtion you need to use our HPC and Supercomputing resources.
+The information provided here will enable the reader to discover the computational resources KSL provides and how to best user them.
 
-.. note::
+For new users, it is recomended to take some time and explore the sections starting from :ref:`available_systems` and work your way to at least through to :ref:`job_scheduling` . 
 
-   This project is under active development.
+For users eager to get onto KSL systems and run jobs, there is a :ref:`quickstart` guide which shows how to run access the systems and submit a very basic job. 
+
+.. note:: 
+   
+   As a pre-requisite you must have already applied for your account credentials to access the KSL suprecomting resources. Please refer to a detailed guide on how to `get an account for KSL systems <https://www.hpc.kaust.edu.sa/content/chapter-2-getting-account>`_.  
 
 .. toctree::
    :titlesonly:
@@ -17,6 +21,7 @@ Here you will find all the inforamtion you need to use our HPC and Supercomputin
    :hidden:
 
    quickstart
+   jobscriptGenerator
    systems/index
    policy/index
    job_schd/index
@@ -30,9 +35,3 @@ Here you will find all the inforamtion you need to use our HPC and Supercomputin
    science_platforms/index
    tech_blogs/index
    contact_us
-
-
-
-
-
-
