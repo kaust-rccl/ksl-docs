@@ -23,7 +23,7 @@ This is the landing page for description of KSL systems. This page describes an 
 
 An abstract supercomputer
 -------------------------
-.. image:: ../static/abstract_supercomputer.png
+.. image:: ../static/abstract_supercomputer.jpeg
    :alt: An abstract supercomputer -- high level representation
 
 - an illustration of a supercomputer
