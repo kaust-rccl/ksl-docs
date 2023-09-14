@@ -49,8 +49,10 @@ html_theme_options = {
     
 }
 html_sidebars = {
-    "**": ["search-field.html", "sidebar-nav-bs.html"]
+    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
+html_show_sourcelink = False
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 # configuration for the ``highlight_language``
