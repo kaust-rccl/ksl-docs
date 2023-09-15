@@ -87,7 +87,7 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 .. code-block:: bash
     
-    sbatch gpu_jobscript.slurm
+    sbatch gpu_shaheen3.slurm
 
 
 Ibex example jobscripts
