@@ -65,7 +65,7 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 .. code-block:: bash
     
-    sbatch jobscript.slurm
+    sbatch cpu_shaheen3.slurm
 
 To submit a GPU job on Shaheen 3's Grace Hopper compute nodes, the following jobscript can be used:
 
