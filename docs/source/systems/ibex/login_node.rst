@@ -1,5 +1,7 @@
-login node
-----------
+.. _ibex_login_nodes:
+
+Login nodes
+-----------
 The login nodes provide an external interface to the Ibex computing cluster. They are for preparing submission scripts for the batch queue, submitting and monitoring jobs in the batch queue, analyzing results, and moving data. It is NOT appropriate for running computational jobs or compiling software. To do this use one of the compute nodes. If necessary, you can request an interactive session by following the guide in job scheduling. 
 .. ref:`job scheduling <job_scheduling>`
 
