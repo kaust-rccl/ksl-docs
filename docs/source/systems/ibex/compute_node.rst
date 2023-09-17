@@ -1,44 +1,121 @@
 Compute Nodes
--------------
-The IBEX cluster contains different architectures of CPUs like Intel Cascade Lakes, Skylakes, AMD Rome.
+==============
 
-.. code-block:: bash
-    :caption: These different CPUs are accessed (for your source code compilation and job submission) using the following login node:
+Compute nodes are the HPC optimized servers where the job scheduler schedules the jobs and runs it on users' behalf.  
+Ibex cluster is composed of the compute nodes of various microarchitectures of CPUs and GPUs e.g. Intel Cascade Lakes, Skylakes, AMD Rome, NVIDIA RTX2089ti, V100, A100 etc.
+The allocatable resource include CPU cores or GPUs, CPU memory, local fast storage on a node and duration or wall time.
 
-     ilogin.ibex.kaust.edu.sa
+The heterogenity of compute nodes allow users to submit various types of applications and workflows. At times, Ibex becomes a defacto choice for workflows those are not suitable to run on other KSL systems. 
+Users should submit CPU jobs from `ilogin` and GPU jobs from `glogin` login nodes. Described below are the microarchitecture features of various generations of CPUs and GPUs in Ibex cluster.
 
-The IBEX cluster CPU compute nodes are summarized in Table 1. These various CPUs are accessed by the SLURM scheduling using the constraint "#SBATCH --constraint=intel" or by directly specifying the CPU type as shown below .
+Intel Skylake
+--------------
+Ibex cluster has 106 compute nodes of with Intel Skylake processors. These are oldest generation of Intel CPUs in the cluster at the moment. 
 
-For example, “--constraint=cpu_intel_gold_6148” is for Skylake CPUs or just "--constraint=skylake”.
+These nodes have two Intel Skylake processors, one in each socket. Each processes has 20 physical cores, i.e. 40 cores in total on the node. 
+The total memory available for use is approximately 350GB/s.  
 
-    **Table 1. Ibex CPU Resources**
+.. image:: ../static/skylake.svg
 
-+----------------+-------------+---------+---------+---------+---------+----------------------+
-|   CPU Family   |  CPU        |  NODES  |  CORES  |  CLOCK  |  FLOPS  |        MEMORY        |
-+================+=============+=========+=========+=========+=========+======================+
-|   Skylake      | skylake     |  106    |   40    |   2.60  |   32    | 384 GB/usable 350 GB |
-+----------------+-------------+---------+---------+---------+---------+----------------------+
-|   Cascade Lake | cascadelake |  106    |   40    |   2.50  |   32    | 384 GB/usable 350 GB |
-+----------------+-------------+---------+---------+---------+---------+----------------------+
-|   Rome         | amd         |  108    |   128   |   2.00  |   32    | 512 GB/usable 475 GB |
-+----------------+-------------+---------+---------+---------+---------+----------------------+
+Line separator
+
+
+.. image:: ../static/cascadelake.svg
+
+Line separator
+
+.. image:: ../static/amd_rome.svg
+
+
+The table below summarizes the CPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`job templates <ibex_job_template>` section for Ibex. 
+
+.. _ibex_cpu_compute_nodes:
+.. list-table:: **CPU Compute nodes in Ibex cluster**
+   :widths: 40 20 15 15 15 15 20 30 20
+   :header-rows: 1
+
+   * - CPU Family
+     - CPU
+     - Nodes
+     - Cores/node
+     - Clock (GHz)
+     - FLOPS
+     - Memory
+     - SLURM constraints
+     - local storage
+   * - Intel Skylake
+     - skylake
+     - 106
+     - 40
+     - 2.60
+     - 32
+     - 350GB
+     - intel, skylake
+     - 744GB
+   * - Intel Cascade Lake
+     - cascadelake
+     - 106
+     - 40
+     - 2.50
+     - 32
+     - 350GB
+     - intel, cascadelake
+     - 744GB
+   * - AMD Rome
+     - Rome
+     - 108
+     - 128
+     - 2.00
+     - 32
+     - 475GB  
+     - amd, rome
+     - 744GB
+
+Some nodes have larger memory for workloads which require loading big data in memory, e.g. some bioinformatic workloads, or data processing/wrangling creating input data for Machine Learning and Deep Learning training jobs.   
+
+.. _ibex_largemem_compute_nodes:
+
+.. list-table:: **Large memory Compute nodes in Ibex cluster**
+   :widths: 40 20 15 15 15 15 20 30 20
+   :header-rows: 1
+
+   * - CPU Family
+     - CPU
+     - Nodes
+     - Cores/node
+     - Clock (GHz)
+     - FLOPS
+     - Memory
+     - SLURM constraints
+     - local SSD
+   * - Intel Cascade Lake
+     - cascadelake
+     - 18
+     - 48
+     - 4.20
+     - 32
+     - 3TB  
+     - intel, largemem, cascadelake
+     - 6TB
+   * - Intel Skylake
+     - skylake
+     - 4
+     - 32
+     - 3.70
+     - 32
+     - 3TB  
+     - intel, largemem, skylake  
+     - 10TB
+
+
+For submitting a job to a particular compute node, a set of constraints must be used to help SLURM pick the correct one. Users can either add them to your jobscript as a SLURM directive or pass it as command line argument to `sbatch` command.
 
 .. code-block:: bash
     :caption: When submitting a job, the user is able to select the desired resources with precise constraints. For example,
 
-    sbatch --constraint=intel my_job.sh 
+    sbatch --constraint="intel&cascadelake" jobscript.slurm
 
-.. code-block:: bash
-    :caption: runs the job on Intel nodes only.
-
-    sbatch --constaint=cascadelake my_job.sh 
-
-.. code-block:: bash
-    :caption: runs the job on Cascade Lake nodes only.
-
-    sbatch --constraint=intel&local_1T my_job.sh 
-
-runs the jobs only on Intel node, having at least a local disk of 1 TB along.
+The above specifies to SLURM that the job should run on an Intel Cascade Lake node. 
 
 **GPUs**
 ========
