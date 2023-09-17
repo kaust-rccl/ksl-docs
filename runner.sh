@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -z ${2} ]; then
+if [ -z "${2}" ]; then
        MESSAGE="Update by $(git config --get user.name)"
 else
        MESSAGE=${2}
@@ -27,6 +27,7 @@ while getopts "cuh" options; do
      ;;
     u )
      echo "commiting and pushing codebase to GitHub in dev branch. Once done, please create a pull request on GitHub to upstream your changes to main branch"     
+     git checkout dev
      git add docs/source/*
      git commit -m "${MESSAGE}"
      git push -u origin dev

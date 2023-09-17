@@ -41,7 +41,7 @@ Submitting your first Jobscripts
 All KSL systems use SLURM for scheduling jobs for batch processing.
 
 Shaheen 3 example jobscripts
----------------------------
+------------------------------
 On Shaheen 3 the example jobscripts below need to be submitted from ``/scratch/$USER`` directory.
 This is imaprative because ``/home`` directory is not mounted on compute nodes. Also ``/project`` directory is read-only on compute node.
 
@@ -65,7 +65,7 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 .. code-block:: bash
     
-    sbatch jobscript.slurm
+    sbatch cpu_shaheen3.slurm
 
 To submit a GPU job on Shaheen 3's Grace Hopper compute nodes, the following jobscript can be used:
 
@@ -87,7 +87,7 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 .. code-block:: bash
     
-    sbatch gpu_jobscript.slurm
+    sbatch gpu_shaheen3.slurm
 
 
 Ibex example jobscripts

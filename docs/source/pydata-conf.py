@@ -18,6 +18,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.googleanalytics',
+    'sphinxcontrib.email'
 ]
 
 intersphinx_mapping = {
@@ -37,7 +38,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/mshaikh786/ksl-docs/",
+            "url": "https://github.com/kaust-rccl/ksl-docs/",
             "icon": "fa-brands fa-github",
         },
 
@@ -49,8 +50,10 @@ html_theme_options = {
     
 }
 html_sidebars = {
-    "**": ["search-field.html", "sidebar-nav-bs.html"]
+    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
+html_show_sourcelink = False
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 # configuration for the ``highlight_language``
