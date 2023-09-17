@@ -1,3 +1,11 @@
+.. sectionauthor:: Rana Selim <rana.selim@kaust.edu.sa>
+.. meta::
+    :description: SLURM Documentation
+    :keywords: SLURM
+
+.. _vscode:
+
+=========
 VScode 
 =========
 

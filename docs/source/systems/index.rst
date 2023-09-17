@@ -13,6 +13,9 @@ These platforms differ in the resources they offer, the usecases they enable, th
 
 To get the most out of their allocations, users are highly encouraged to read the technical documentation and attend relevant user trainings.
 
+.. note::
+   Resources on KSL systems are free of charge for research purpose, unless otherwise stipulated. Please consult the :email:`KSL support staff <help@hpc.kaust.edu.sa` for more information and clarification in this regard. 
+
 This section of support documentation elaborates the technical details of the KSL HPC platforms. 
 Here, users can expect detailed techincal information about the architecture of each KSL systems. Please navigate to the specific system for these details. But before diving in the specifics, let's understand what a supercomputer is composed of on a high level.
 
