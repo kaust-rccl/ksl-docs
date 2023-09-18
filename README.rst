@@ -25,6 +25,7 @@ Create environment to developing documentation
 .. code-block:: bash
   
   ./runner.sh -c
+  cd docs
 
 - Once done type `exit` to get out of the container
 - To upstream your changes to dev branch on GitHub
