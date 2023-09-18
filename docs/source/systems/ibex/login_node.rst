@@ -62,7 +62,7 @@ Mac OSx
 
 MacOS usually has a `terminal` application pre-installed. Please type Terminal in spotlight search tool to find it. 
 
-         .. image:: MacOS.png
+         .. image:: ../static/MacOS.png
    
 Open the `terminal`, copy and paste the :ref:`command <ibex_login_ssh>` for the appropriate login node you wish to access.  
   
