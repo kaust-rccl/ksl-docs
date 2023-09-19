@@ -3,7 +3,7 @@ Compute Nodes
 ==============
 
 Compute nodes are the HPC optimized servers where the job scheduler schedules the jobs and runs it on users' behalf.  
-Ibex cluster is composed of the compute nodes of various microarchitectures of CPUs and GPUs e.g. Intel Cascade Lakes, Skylakes, AMD Rome, NVIDIA RTX2089ti, V100, A100 etc.
+Ibex cluster is composed of the compute nodes of various microarchitectures of CPUs and GPUs e.g. Intel Cascade Lake, Skylake, AMD Rome, NVIDIA RTX2089ti, V100, A100 etc.
 The allocatable resource include CPU cores or GPUs, CPU memory, local fast storage on a node and duration or wall time.
 
 The heterogeneity of compute nodes allow users to submit various types of applications and workflows. At times, Ibex becomes a defacto choice for workflows those are not suitable to run on other KSL systems. 
@@ -27,14 +27,15 @@ The total memory available for use is approximately 350GB/s and has 6 memory cha
   
   Illustration of an Intel Skylake compute node of Ibex cluster
 
-This node has two Non Uniform Memory Access (NUMA) nodes. This implies that `core 0` can access data resident on a memory device/DIMM closed to Package L#1, but will have a latency hit.
-The L3 or *Last Level Cache* is coherent across all the nodes which implies that if a `core` changes a memory location in L3, it will be visible to all cores. 
-This does not apply to L1 and L2 caches which are local to each core.  
+This node has two Non Uniform Memory Access (NUMA) nodes. This implies that `core 0` can access data resident on a memory device/DIMM closed to Package L#1, but will have a latency hit. Deep dive to understand more about :ref:`NUMA architecture <numa_tech_article>` and its implications on applications running on such node. 
+
+The L3 or *Last Level Cache* is coherent across all the nodes which implies that if a `core` changes a memory location in L3, it will be visible to all cores. This does not apply to L1 and L2 caches which are local to each core. More discussion :ref:`here on Memory hierarchy on CPUs <memory_hierarchy_cpu_tech_article>`.
+ 
 The motherboard on this node have PCIe version 3.0 which has a maximum overall throughput of 32GB/s.
 
 From a performance point of view, this node is capable of achieving, **### GFLOPS** of `High Performance Linpack (HPL) <https://www.top500.org/project/linpack/>`_ and a peak memory bandwidth of **### GB/s** measured using `STREAM Triad <https://www.cs.virginia.edu/stream/ref.html>`_ benchmark.
 
-These processors can run programs compiled for `x86_64` instruction set. Intel Skylake processor supports `Advance Vector Extension -- AXV2` instructions for vectorization. SIMD (Single Instruction Multiple Data) Vectorization is an operand which takes multiple bytes and runs a single instruction on it. This is a hardware unit which can be targeted by either allowing the compilers to identify candidate data structures for SIMD vectorization or a programmer can explicitly expresses them in their program.
+These processors can run programs compiled for `x86_64` instruction set. Intel Skylake processor supports `Advance Vector Extension -- AXV2` instructions for vectorization. Some scientific applications can benefit from this feature and can see significant performance gains. Please refer to :ref:`Understanding SIMD Vectorization <vectorization_cpu_tech_article>` for more information about this topic. 
 
 
 Intel Cascade Lake
@@ -176,9 +177,11 @@ The above specifies to SLURM that the job should run on an Intel Cascade Lake no
 GPU Compute Nodes
 ===================
 
-GPU nodes in Ibex cluster are of different type. At present all GPUs in Ibex cluster of manufactured by NVIDIA. 
+There are GPU nodes in Ibex cluster with GPUs of different microarchitecture.
+Note that all the GPUs on a single node are always of the same microarchitecture, there is no heterogeneity there. 
 
-The details about the available GPU microarchitectures is provided below.
+At present all GPUs in Ibex cluster of NVIDIA. 
+
 
 Pascal P6000
 -------------------

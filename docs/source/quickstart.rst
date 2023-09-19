@@ -4,7 +4,7 @@
 Quick Start Guide
 ==================
 
-If you are familiar with HPC clusters and need a quick reference on the specifics of how to intereact with KSL computational resources, you will find the relevant inforamtion here in a consicse form. For details, please explore the other sections of the documentation starting from :ref:`available_systems`.
+If you are familiar with HPC clusters and need a quick reference on the specifics of how to interact with KSL computational resources, you will find the relevant information here in a concise form. For details, please explore the other sections of the documentation starting from :ref:`available_systems`.
 
 .. _quickstart_login:
 
@@ -43,7 +43,7 @@ All KSL systems use SLURM for scheduling jobs for batch processing.
 Shaheen 3 example jobscripts
 ------------------------------
 On Shaheen 3 the example jobscripts below need to be submitted from ``/scratch/$USER`` directory.
-This is imaprative because ``/home`` directory is not mounted on compute nodes. Also ``/project`` directory is read-only on compute node.
+This is imperative because ``/home`` directory is not mounted on compute nodes. Also ``/project`` directory is read-only on compute node.
 
 .. note:: 
     Compute nodes on Shaheen 3 are allocated in exclusive mode. To better understand accounting on Shaheen 3, please refer to :ref:`accounting_shaheen3` section.
@@ -138,10 +138,10 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 
 
-KSL has written a convinient utility called :ref:`Jobscript Generator <jobscript_generator>`. 
-Use this template to create a jobscript and copy-paste it in a file in your SSH terminal on Shaheen, Ibex or Neser login nodes.
+KSL has written a convenient utility called :ref:`Jobscript Generator <jobscript_generator>`. 
+Use this template to create a jobscript and copy-paste it in a file in your SSH terminal on Shaheen 3 or Ibex login nodes.
 
 
-If you get an error in regarding account specifcation, please  `email helpdesk <help@hpc.kaust.edu.sa>`_ with the your username and error and the jobscript.
+If you get an error in regarding account specification, please  :email:`helpdesk <help@hpc.kaust.edu.sa>` with the your username and error and the jobscript.
 
 
