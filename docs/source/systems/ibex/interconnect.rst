@@ -1,8 +1,16 @@
-Interconnect
-------------
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: High Speed Network on Ibex
+    :keywords: CPUs, GPUs, Shaheen 3, Ibex, Compute nodes
+    
+.. _ibex_interconnect:
 
-**InfiniBand**
 ==============
+Interconnect
+==============
+
+InfiniBand
+-----------
 
 InfiniBand (abbreviated IB) is an alternative to Ethernet and Fibre Channel. IB provides high bandwidth and low latency. IB can transfer data directly to and from a storage device on one machine to userspace on another machine, bypassing and avoiding the overhead of a system call. IB adapters can handle the networking protocols, unlike Ethernet networking protocols which are ran on the CPU. This allows the OS's and CPU's to remain free while the high bandwidth transfers take place, which can be a real problem with 10Gb+ Ethernet.
 

@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Compute nodes on Ibex
+    :keywords: CPUs, GPUs, Shaheen 3, Ibex, Compute nodes
+    
+.. _ibex_compute_nodes:
+
 ==============
 Compute Nodes
 ==============
@@ -12,79 +19,14 @@ Users should submit CPU jobs from `ilogin` and GPU jobs from `glogin` login node
 
 CPU Compute nodes
 ==================
-Described below are the CPU microarchitectures available in Ibex cluster.
 
-Intel Skylake
---------------
-Ibex cluster has 106 compute nodes of with Intel Skylake processors. These are the oldest generation of Intel CPUs in the cluster at the moment. 
-These nodes have two Intel Skylake processors, one in each socket, represented as *Package* in the :ref:`ibex_skylake`. 
-Each processes has 20 physical cores, i.e. 40 cores in total on the node. 
-The total memory available for use is approximately 350GB/s and has 6 memory channels per socket.
+Ibex has multiple CPU architectures available in different compute nodes. A single compute node, however, is always homogeneous in the CPU architecture. These CPU compute nodes different in the processor architecture, the memory capacity and other features such as availability of local disk or large memory capacity. 
 
-.. _ibex_skylake:
-.. figure:: ../static/skylake.svg
-  :alt: Illustration of an Intel Skylake compute node of Ibex cluster
-  
-  Illustration of an Intel Skylake compute node of Ibex cluster
+If you wish to understand more about the available processors types and their features, please see :ref:`cpu_arch_tech_article` .
 
-This node has two Non Uniform Memory Access (NUMA) nodes. This implies that `core 0` can access data resident on a memory device/DIMM closed to Package L#1, but will have a latency hit. Deep dive to understand more about :ref:`NUMA architecture <numa_tech_article>` and its implications on applications running on such node. 
+All CPU nodes are connected to the :ref:`HDR 200 Infiniband <ibex_interconnect>` high speed network with a theoretical peak of 200 gigabits per second. Also, each compute node has access to the shared parallel filesystem and home filesystem. More technical information please refer to :ref:`ibex_filesystems` section.
 
-The L3 or *Last Level Cache* is coherent across all the nodes which implies that if a `core` changes a memory location in L3, it will be visible to all cores. This does not apply to L1 and L2 caches which are local to each core. More discussion :ref:`here on Memory hierarchy on CPUs <memory_hierarchy_cpu_tech_article>`.
- 
-The motherboard on this node have PCIe version 3.0 which has a maximum overall throughput of 32GB/s.
-
-From a performance point of view, this node is capable of achieving, **### GFLOPS** of `High Performance Linpack (HPL) <https://www.top500.org/project/linpack/>`_ and a peak memory bandwidth of **### GB/s** measured using `STREAM Triad <https://www.cs.virginia.edu/stream/ref.html>`_ benchmark.
-
-These processors can run programs compiled for `x86_64` instruction set. Intel Skylake processor supports `Advance Vector Extension -- AXV2` instructions for vectorization. Some scientific applications can benefit from this feature and can see significant performance gains. Please refer to :ref:`Understanding SIMD Vectorization <vectorization_cpu_tech_article>` for more information about this topic. 
-
-
-Intel Cascade Lake
-------------------
-Ibex cluster has 106 compute nodes of with Intel Cascade Lake processors. These are the more modern generation compared to Skylake CPUs.  
-Each node of this type has two Intel Cascade Lake processors, one in each socket, represented as *Package* in the :ref:`ibex_cascadelake`. 
-Each processes has 20 physical cores, i.e. 40 cores in total on the node. 
-The total memory available for use is approximately 350GB/s and has 6 memory channels per socket.  
-
-.. _ibex_cascadelake:
-.. figure:: ../static/cascadelake.svg
-  :alt: Illustration of an Intel Cascade Lake compute node of Ibex cluster
-  
-  Illustration of an Intel Cascade Lake compute node of Ibex cluster
-
-As in the case of Skylake these nodes have 2 NUMA nodes. Here too, the L3 cache is coherent among all cores. 
-
-The motherboard on this node have PCIe version 3.0 which has a maximum overall throughput of 32GB/s.
-
-There nodes are capable of achieving **### GFLOPS** of `High Performance Linpack (HPL) <https://www.top500.org/project/linpack/>`_ and a peak memory bandwidth of **### GB/s** measured using `STREAM Triad <https://www.cs.virginia.edu/stream/ref.html>`_ benchmark.
-
-Intel Cascade Lake supports AVX2 and some AVX512 instruction sets. Additionally, Cascade Lake processors introduced a specialized instruction set called **Vectorized Neural Network Instructions (VNNI)** which accelerates neural network inference on CPUs. Developers can leverage these features by relying on using Intel MKL-DNN, Intel optimized PyTorch or Tensorflow installations. 
-
-AMD Rome 
----------
-Ibex cluster has 108 nodes with dual socket AMD Rome processors. 
-The microarchitecture of AMD Rome is different than the Intel processors mentioned above. This has performance implications which the users might want to consider when choosing to run applications on these processors. 
-
-.. _ibex_amd_rome_ccd:
-.. figure:: ../static/AMD-rome-ccd.png
-  :alt: CCD design of AMD Rome processors 
-
-  CCD design of AMD Rome processors
-
-AMD Rome processor is composed of a compute unit called *Core CompleX (CCX)*. A single CCX is composed of 4 cores. 2 CCX units create a building block called a *Core Complex Die (CCD)*. This CCD block (i.e. 8 cores) has its own L1 to L3 cache hierarchy. Each CCD has a 32MB large L3 cache. 8 CCDs make up a full processor, with 64 cores and aggregate L3 cache of 256MB. 
-
-Additionally, each CCD has a specialized communication unit called *Infinity fabric* which provides means to access memory. There are a total of 8 memory channels (1 per CCD). For superior memory access performance, these nodes on Ibex have been booted with 8 NUMA nodes (4 NUMA per processor). 
-
-.. figure:: ../static/amd_rome.svg
-  :alt: Illustration of an AMD Rome compute node on Ibex cluster
-
-  Illustration of an AMD Rome compute node on Ibex cluster
-
-The AMD Rome compute nodes have a total of 128 cores, as it is dual socket (2 x processors) and 475GB of usable memory. The motherboard on this node have PCIe version 4.0 which has a maximum overall throughput of 64GB/s.
-
-Summary of CPU compute nodes 
------------------------------
-
-The table below summarizes the CPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`job templates <ibex_job_template>` section for Ibex. 
+The table below summarizes the CPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_job_templates` section for Ibex. 
 
 .. _ibex_cpu_compute_nodes:
 .. list-table:: **CPU Compute nodes in Ibex cluster**
@@ -180,118 +122,145 @@ GPU Compute Nodes
 There are GPU nodes in Ibex cluster with GPUs of different microarchitecture.
 Note that all the GPUs on a single node are always of the same microarchitecture, there is no heterogeneity there. 
 
-At present all GPUs in Ibex cluster of NVIDIA. 
+At present all GPUs in Ibex cluster are by NVIDIA. All compute nodes with GPUs have multiple GPUs, minimum of 4 and maximum of 8. 
 
+If you are new to using GPUs or would like to refresh your understanding about how a GPU works, then :ref:`gpu_basics_tech_article` is a good article to start with. It is a common place to compare the performance and software capabilities of available GPUs and match them with the bounds of your application to the appropriate one for your jobs. If you have questions about which GPU to use, please :email:`contact KSL support staff <help@hpc.kaust.edu.sa>` for guideline. 
 
-Pascal P6000
--------------------
+All GPU nodes on Ibex cluster are connected to the :ref:`HDR 200 Infiniband <ibex_interconnect>` high speed network with a theoretical peak of 200 gigabits per second. Some have more Network Interface Cards (NICs) than the others. Some GPU nodes Also, each compute node has access to the shared parallel filesystem and home filesystem. More technical information please refer to :ref:`ibex_filesystems` section.
 
-Pascal P100 
--------------------
+The table below summarizes the GPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_job_templates` section.
 
-Pascal GTX 1080 Ti 
-------------------- 
+.. _ibex_gpu_1_compute_nodes:
+.. list-table:: **GPU Compute nodes in Ibex cluster**
+   :widths: 15 15 15 10 10 10 10 15 10 10 10  
+   :header-rows: 1
 
-
-Turning RTX 2080 Ti 
---------------------
-
-Volta V100
------------
-
-Ampere A100 
-------------
-
-
-Summary of GPU compute nodes 
------------------------------
-
-
-
-
-The IBEX cluster has **62** GPU compute nodes (**392 GPU cards**)  and it's summarized in **Table 1**. These various GPUs are accessed by the SLURM scheduling using the constraints "**- -gres=gpu:GPUTYPE:x**", where x is for number of GPUs.
-
-For example, "--gres=gpu:gtx1080ti:4" allocates 4 GTX GPUs.
-
- **Table 2. List of GPU architectures in IBEX Cluster**
- 
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| Sl. | GPU          | Available | Available      | GPU        | Usable   | Constraint               |
-| No  | Architecture | GPU cards | number of      | Memory     | Node     | for (SLURM)              |
-|     |              | per node  | nodes          | (per card) | Memory   | scheduling               |
-+=====+==============+===========+================+============+==========+==========================+
-| 1   | Turning:     | 8         | 4              | 12GB       | 350GB    | "--gres=gpu:rtx2080ti:1" |
-|     | rtx2080ti    |           |                |            |          |                          |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| 2   | Pascal:      | 4 or 8    | 12             | 12GB       | 230GB or | "--gres=gpu:gtx1080ti:1" |
-|     | gtx1080ti    |           | (4*8 and 8*4)  |            | 350GB    |                          |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| 3   | Pascal:      | 4         | 5              | 16GB       | 230GB    | "--gres=gpu:p100:1"      |
-|     | p100         |           |                |            |          |                          |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| 4   | Pascal:      | 2         | 2              | 22GB       | 230GB    | "--gres=gpu:p6000:1"     |
-|     | p6000        |           |                |            |          |                          |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| 5   | Volta:       | 4 or 8    | 37 (1*2 and    | 32GB       | 340GB or | "--gres=gpu:v100:1"      |
-|     | v100         |           | 6*4 and 30*8)  |            | 712GB    |                          |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
-| 6   | Ampere:      | 4 or 8    | 52             | 80GB       | 500GB or | "--gres=gpu:a100:1"      |
-|     | a100         |           | (44*4 and 8*8) |            | 1TB      | "--reservation=A100"     |
-+-----+--------------+-----------+----------------+------------+----------+--------------------------+
+   * - Model
+     - GPU Arch
+     - Host CPU
+     - Nodes
+     - GPUs/ node
+     - Cores/ node
+     - GPU Mem
+     - GPU Mem type
+     - CPU Mem
+     - GPU Clock (GHz)
+     - CPU Clock (GHz)
+   * - P6000
+     - Pascal
+     - Intel Haswell
+     - 3
+     - 2
+     - 36(34)
+     - 24GB
+     - GDDR5X
+     - 256GB
+     - 1.5
+     - 2.3
+   * - P100
+     - Pascal
+     - Intel Haswell
+     - 5
+     - 4
+     - 36(34)
+     - 16GB
+     - HBM2
+     - 256GB
+     - 1.19
+     - 2.3
+   * - GTX-1080Ti
+     - Pascal
+     - Intel Skylake
+     - 12
+     - 8
+     - 32(30)
+     - 11GB
+     - GDDR5X
+     - 256GB
+     - 1.48
+     - 2.6
+   * - RTX-2080Ti
+     - Turing
+     - Intel Skylake
+     - 3
+     - 8
+     - 32(30)
+     - 11GB
+     - GDDR6
+     - 383G
+     - 1.35
+     - 2.6
+   * - V100
+     - Volta
+     - Intel Skylake
+     - 7
+     - 4
+     - 32(30)
+     - 32GB
+     - HBM2
+     - 383G
+     - 1.29
+     - 2.6
+   * - V100
+     - Volta
+     - Intel Cascade Lake
+     - 30
+     - 8
+     - 48(46)
+     - 32GB
+     - HBM2
+     - 383G
+     - 1.29
+     - 2.6
+   * - A100
+     - Ampere
+     - AMD Milan
+     - 46
+     - 4
+     - 64(62)
+     - 80GB
+     - HBM2
+     - 512G
+     - 1.16
+     - 1.99
+   * - A100
+     - Ampere
+     - AMD Milan
+     - 8
+     - 8
+     - 128(126)
+     - 80GB
+     - HBM2
+     - 1T
+     - 1.16
+     - 1.5
 
 .. note::
+  **Allocatable cores per node on GPU compute nodes** are less than the total available in hardware. Ibex cluster uses two cores per node to run high performance shared parallel filesystem called WekaIO. On compute nodes with V100 and A100 GPUs, these are pinned cores whereas on others, they are float (i.e. weka process will take precedence on cores 1 and 2). SLURM scheduler can allocate a maximum number of cpu cores per node as listed in parenthesis in column 6 **Cores/node** in the table above.   
 
-   The allocation of CPU memory can be done with `--mem=###G` constraint in SLURM job scripts. The amount of memory depends on the job characterization. A good starting place would be at least as much as the GPU memory they will use. For example: 2 x v100 GPUs would allocate at least `--mem=64G` for the CPUs.
 
-  
-.. note::
+Some additional details about the compute nodes with GPUs is necessary to know when choose them to run your jobs. The following table describes the maximum possible CUDA capability the GPU will work on, the interconnect between GPUs on the same node, and between CPUs and GPUs. Also listed is the whether the node is capable of GPU Direct RDMA, which by-passes the need of CPUs when communicating with a GPU of a different compute node in Ibex cluster. In addition to the parallel filesystem, some compute nodes have storage available which is local to the compute node.  
 
-   The glogin node has a single **NVIDIA Quadro K6000** (CC=3.5) GPU for compilation of the source code.
+.. _ibex_gpu_2_compute_nodes:
+.. list-table:: **CUDA capability, networking and filesystem information about GPU compute nodes in Ibex cluster**
+   :widths: 20 20 20 15 15 15 20 30 30
+   :header-rows: 1
 
-* The usable node memory represents the available memory for job execution.
-
-More on Slurm Constraints
---------------------------
-
-"**ref_32T**" and "**gpu_ai**" are used to differentiate the newer generation of the V100 GPU nodes from the old ones.
-The new nodes have 32TB of NVMes as local storage. And some ML reference DBs have been copied to those NVMes to enhance jobs performance instead of using the shared BeeGFS scratch.
-
-Slurm Partition
---------------------------
-
-Continuous efforts has been made for fair share allocation of resources on Ibex, the following partitions has been implemented seamlessly to our users.
-
-**gpu_wide** for jobs with 4+ gpus per node
-
-**gpu_wide24** wide jobs with time limit less than 24 hours
-
-**gpu4** for short GPU jobs (less than 4 hours)
-
-.. note::
-
-   Users can't specify those partitions in their scripts. This is done automatically by SLURM.
-
-Large Memory
---------------------------
-
-The IBEX cluster has a total of 18 Skylake and Cascadelake large memory nodes 2.93 TB each. However, part of the memory is used by operating system and remaining memory is usable for the job execution. The summary of large memory nodes are listed in the below table:   
-   
-        **Table 3. Ibex Large Memory Nodes**
-
-+---------------------+----------------+-----------------+---------------------------------+
-| System architecture | Cores per node | Number of nodes | Recommended max memory per node |
-+=====================+================+=================+=================================+
-| Intel Skylake       | 32             | 4               | 2.93 TB                         |
-+---------------------+----------------+-----------------+---------------------------------+
-| Intel Cascadelake   | 48             | 14              | 2.93 TB                         |
-+---------------------+----------------+-----------------+---------------------------------+ 
-
-* The usable node memory represents the available memory for job execution.
-
-The jobs with the larger memory requirement can be submitted using  `--mem=###G` constraint in SLURM job scripts. For jobs to run on a large memory node they must request at least **370,000MB** of memory. For any job that requests less than **370,000MB** it'll be classified as a normal compute job and will run on a normal compute node.
-
-For further info or send us a query using the :ref:`Contact Us<Contact_Us>` page.
-
-Alternatively, send an email to ibex@hpc.kaust.edu.sa.
-
-For more information on how to apply constraints, check the page Setting up job constraints , and the :ref:`Ibex Jobscript Generator <jobscript_generator>`
+   * - GPU Arch
+     - Host CPU
+     - CUDA Cap
+     - GPU-GPU
+     - CPU-GPU
+     - NICs
+     - GDRDMA
+     - local storage
+     - SLURM constraints
+   * - P6000
+     - Intel Skylake
+     - 6.0
+     - PCIe
+     - PCIe
+     - 1
+     - IB
+     - 500G
+     - p6000

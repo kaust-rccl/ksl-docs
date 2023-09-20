@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Shared parallel filesystems on Ibex
+    :keywords: WekaIO, home, parallel filesystem, Ibex
+    
+.. _ibex_filesystems:
+
+==============
 Filesystems
------------
+==============
 
 Ibex mounts shared scratch and /home filesystems on which each user has corresponding account-specific directories. Each file system is available from all Ibex login nodes and compute nodes. Additionally, Ibex compute nodes mount local /scratch filesystems.
 

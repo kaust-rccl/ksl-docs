@@ -14,13 +14,15 @@ Computer Architecture
 .. toctree::
     :titlesonly:
     :maxdepth: 2
-   
-    comp_arch/numa_intro
+    
+    comp_arch/cpu_arch
     comp_arch/memory_hierarchy_cpu
+    comp_arch/numa_intro
     comp_arch/simd_vectorization
     comp_arch/cpu_affinity
     comp_arch/gpu_basics
     comp_arch/lustre_intro
+    comp_arch/gds
    
 
 Programming Models
