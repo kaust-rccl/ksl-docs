@@ -8,6 +8,8 @@
 ==============
 Interconnect
 ==============
+Write some notes on the network topology, its characteristics, e.g. how many layers of switches (# of ports) and link bandwidth for root layer and downstream layers in a fat tree topology Ibex has. Also write if it is non-blocking and what is the benefit or expectation when multiple workloads are running. Also make a note about the limitations and how this topology is not helpful for codes running at large scale, e.g. thousands of compute nodes.
+
 
 InfiniBand
 -----------
