@@ -55,7 +55,7 @@ Command Line Tools for Transferring Data
 There are several ways to move data into and out of the storage resources. The following table lists the different commands and methods, how well each can be expected to perform and what type of transfer problem they are appropriate for.
 
 
-.. image:: ../static/storage.PNG
+.. image:: ../static/storage.png
   :width: 10000
   :alt: Alternative text
 

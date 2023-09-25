@@ -37,6 +37,7 @@ Therefore, from the top, a GPU workload:
 #. Useful data is moved back to the CPU memory for further processing
 
 .. _nvlink:
+
 Multi-GPU connectivity
 -----------------------
 Multi-GPU compute nodes is a common place on HPC systems and in cloud instances. NVIDIA connects these very capable GPUs using a proprietary interconnect call *NVLINK*. What this means that a GPU can communicate to another GPU on the same compute node without involving the CPU or its memory. This avoid unnecessary data transfer between CPUs and GPUs therefore eliminating the need of using slow PCIe route. Using NVIDIA Collective Communication Library (NCCL), applications can move data from one GPU's memory to another at a high bandwidth and low latency. This is especially significant when operations as *allreduce* happen very frequently, as in deep learning use case.   
@@ -79,6 +80,7 @@ Different generations of NVIDIA GPUs have evolved to better bandwidth using NVLi
      - 
 
 .. _gpurdma:
+
 GPUDirect RDMA for multi-node communication
 ********************************************
 There exist use cases where GPU on a single node are not enough for computing large amounts of data. In such cases, scaling to a larger number of GPUs is highly desireable. This is a common requirement on HPC clusters and Supercomputers. NVIDIA's NVLink is capable of bypassing the CPU and its memory to communicate directly via the Network Interface Cards to a a GPU on neighboring compute node. The two compute nodes are generally connected via high speed interconnect e.g. Infiniband or HPE Cray's Slingshot. Though the bandwidth is less than what is possible on NVLink between GPUs on the same node, GPUDirect RDMA circumvents the communication overhead that would otherwise would have been caused by going out via CPU over PCIe to the other compute node.  
