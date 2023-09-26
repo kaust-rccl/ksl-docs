@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: WekaIO FS technical brief
+    :keywords: WekaIO, Ibex
+    
+.. _ibex_wekaio:
+
 WekaIO FS
 ---------
 

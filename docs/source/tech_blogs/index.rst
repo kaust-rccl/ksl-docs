@@ -23,7 +23,7 @@ Computer Architecture
     comp_arch/gpu_basics
     comp_arch/lustre_intro
     comp_arch/gds
-   
+    comp_arch/wekaIO_FS   
 
 Programming Models
 --------------------

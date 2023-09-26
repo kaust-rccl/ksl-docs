@@ -17,13 +17,10 @@ These performance characteristics of a HSN is governed by two important determin
 
 On this page we discuss **Infiniband** interconnect which is used to connect Ibex compute nodes. 
 
-
-*Write some notes on the network topology, its characteristics, e.g. how many layers of switches (# of ports) and link bandwidth for root layer and downstream layers in a fat tree topology Ibex has. Also write if it is non-blocking and what is the benefit or expectation when multiple workloads are running. Also make a note about the limitations and how this topology is not helpful for codes running at large scale, e.g. thousands of compute nodes.*
-
 Infiniband
 ====================
 
-InfiniBand (IB) is an alternative to Ethernet and Fibre Channel. IB provides high bandwidth and low latency. IB can transfer data directly to and from a storage device on one machine to userspace on another machine, bypassing and avoiding the overhead of a system call. IB adapters can handle the networking protocols, unlike Ethernet networking protocols which are ran on the CPU. This allows the OS's and CPU's to remain free while the high bandwidth transfers take place, which can be a real problem with 10Gb+ Ethernet.
+InfiniBand (IB) is an alternative to Ethernet and Fibre Channel. IB provides high bandwidth and low latency. IB can transfer data directly to and from a storage device on one machine to userspace on another machine, bypassing and avoiding the overhead of a system call. IB adapters can handle the networking protocols, unlike Ethernet networking protocols which are ran on the CPU. This allows the OS's and CPU's to remain free while the high bandwidth transfers take place, which can be a real problem with 10+ Gbps Ethernet.
 
 The hardware is manufactured by Mellanox, now part of NVIDIA. IB is the most popular interconnect used on HPC clusters and Supercomputers in data centers around the world. 
 
@@ -33,12 +30,11 @@ Infiniband topology on Ibex
 Network topology is the way the network switches and client/compute nodes are connected. 
 On Ibex, InfiniBand is connected in *leaf-spine fat-tree topology*. What it means is that the compute nodes are connected to some of the ports of a core or director switch. The rest of the ports of the director switch are then connected to bunch of switches called spine. These spine switches provide an alternative route to the connected compute nodes when the direct or shortest route is busy with a preceding communication task. This makes the topology *non-blocking* with a tread-off that the communication between two compute nodes will finish in more *hops* then a minimum of 1.   
 
-Ibex cluster has fully non-blocking leaf-spine fat-tree topology. The maximum hops for a message sent from one compute node to another can be up to 4 hops. All the links connecting either the compute node or the spine end-point have a speed of 200 Gigabits per second (Gbps). Additionally, the same interconnect also connects the nodes providing parallel shared storage to the compute nodes.  
-
+Ibex cluster has fully non-blocking leaf-spine fat-tree topology. The maximum hops for a message sent from one compute node to another can be up to 4 hops. All the links connecting either the compute node a leaf or a leaf to spine have speed of 200 Gigabits per second (Gbps). Additionally, the same interconnect also connects to the servers providing parallel shared storage to the compute nodes.  
 
 Network Interface Cards (NICs) on compute nodes
 ------------------------------------------------
-A network interface card (NIC) is a PICe device on a compute node which enables connection to a network. In the case of Ibex, compute nodes have at-least two NICs installed. One is dedicated for operational use and provide an 10G Ethernet. On some compute nodes, this NIC also connect the scientific instruments such as Cryo-electron Microscope or Bio-sequencers which are only Ethernet compatible. They are also used for fetch data from internet.
+A network interface card (NIC) is a PICe device on a compute node which enables connection to a network. In the case of Ibex, compute nodes have at-least two NICs installed. One is dedicated for operational use and provide an 1Gbps Ethernet. On some compute nodes, this NIC also connect the scientific instruments such as Cryo-electron Microscope or Bio-sequencers which are only Ethernet compatible. They are also used for fetch data from internet. The login node support 10 Gbps Ethernet connection so it is like that users experience better speeds when uploading/downloading data to/from internet.   
 
 The other, more relevant to user workloads is Mellanox ConnectX-6 NIC which provides network interface to Infiniband. The two are shown in :ref:`ibex_interfaces` as `eth0` and `ib0` respectively. 
 
@@ -109,32 +105,33 @@ All CPU compute nodes have 1 IB NIC per compute node. Each uses 1 port and is ca
 .. _ibex_bibw_cpu:
 
 .. code-block:: bash
-    :caption: OSU MPI Bi-Directional Bandwidth Test v5.9 built with OpenMPI 4.1.4
+    :caption: Bi-Directional bandwidth test on two CPU nodes.
 
-	# Size      Bandwidth (MB/s)
-	1                       8.13
-	2                      16.58
-	4                      36.25
-	8                      72.05
-	16                    126.62
-	32                    281.43
-	64                    396.70
-	128                   823.24
-	256                   443.37
-	512                  1632.23
-	1024                 2836.09
-	2048                 5190.78
-	4096                11716.57
-	8192                16666.63
-	16384               17619.34
-	32768               19521.23
-	65536               21326.86
-	131072              22326.00
-	262144              22623.73
-	524288              23035.37
-	1048576             23299.12
-	2097152             23052.11
-	4194304             22919.91
+    # OSU MPI Bi-Directional Bandwidth Test v5.9 
+    # Size      Bandwidth (MB/s)
+    1                       8.13
+    2                      16.58
+    4                      36.25
+    8                      72.05
+    16                    126.62
+    32                    281.43
+    64                    396.70
+    128                   823.24
+    256                   443.37
+    512                  1632.23
+    1024                 2836.09
+    2048                 5190.78
+    4096                11716.57
+    8192                16666.63
+    16384               17619.34
+    32768               19521.23
+    65536               21326.86
+    131072              22326.00
+    262144              22623.73
+    524288              23035.37
+    1048576             23299.12
+    2097152             23052.11
+    4194304             22919.91
 
 
 GPU compute nodes
@@ -145,32 +142,33 @@ GPU compute nodes with Pascal and Turing and some with Volta microarchitectures 
 .. _ibex_bibw_gpu:
 
 .. code-block:: bash
-    :caption: OSU MPI Bi-Directional Bandwidth Test v5.9 built with OpenMPI 4.1.4
+   :caption: Bi-Directional bandwidth test on A100 nodes with 4 GPUs each. The communication is done by host CPU on each node transfer data from and to host memory (`osu_bibw H H`)
 
-	# Size      Bandwidth (MB/s)
-	1                       3.26
-	2                       6.45
-	4                      13.14
-	8                      27.63
-	16                     55.44
-	32                    113.24
-	64                    201.39
-	128                   405.00
-	256                   313.70
-	512                  1165.63
-	1024                 2104.35
-	2048                 3899.82
-	4096                 7758.76
-	8192                13313.28
-	16384               14082.09
-	32768               19259.60
-	65536               21716.22
-	131072              23042.86
-	262144              23698.48
-	524288              23866.17
-	1048576             23689.87
-	2097152             23270.84
-	4194304             23991.56
+    # OSU MPI Bi-Directional Bandwidth Test v5.9
+    # Size      Bandwidth (MB/s)
+    1                       4.60
+    2                       9.94
+    4                      20.17
+    8                      40.17
+    16                     79.81
+    32                    160.39
+    64                    281.73
+    128                   493.03
+    256                   347.76
+    512                  1583.32
+    1024                 3012.60
+    2048                 4960.67
+    4096                 8298.98
+    8192                13801.75
+    16384               19141.83
+    32768               33930.22
+    65536               40711.79
+    131072              44967.68
+    262144              47469.52
+    524288              49026.45
+    1048576             49931.84
+    2097152             50480.99
+    4194304             51215.00
 
 The table below shows number of NICs and peak theoretical bandwidth of different GPU compute nodes on Ibex.
 
@@ -210,3 +208,30 @@ The table below shows number of NICs and peak theoretical bandwidth of different
      - 4
      - 200/25
      - 800/100
+
+
+GPU Direct RDMA (GDRDMA)
+************************
+
+Infiniband enables a communication feature much sought after when running *chatty* application which communicate frequently and collectively. Deep Learning training job is one such example. When training a deep learning model on multiple GPUs on multiple nodes, *reduction* of weights (all-reduce) in distributed data parallel model is common before going to the next iteration. This allows synchronizing copies of the model on every participating GPU. More details can be found in the section on :ref:`gpurdma`.
+
+With IB supporting GDRMDA, GPU to GPU communication over IB can bypass the CPU host on both the participating compute nodes. This reduces latency of the collective operation significantly. The benchmark shown below, called `nccl-test` demonstrates that average bidirectional bandwidth achieved when multiple GPUs are involved in allreduce operation. 
+
+.. code-block:: bash
+   :caption: Bi-Directional bandwidth benchmark using nccl-test for testing GPU-GPU communication via GDRDMA on 2 nodes of A100 with 4 GPUs each. 
+
+                                                                out-of-place                      in-place          
+        size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+         (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    4294967296  1073741824      float   sum      -1    173736   24.72   43.26      0   173530   24.75   43.31      0
+  
+    Out of bounds values : 0 OK
+    Avg bus bandwidth    : 43.2879 
+
+The test above is close to theoretical peak of 50GB/s on large message size of 4GB.  
+
+NVLINK
+=======
+Multiple GPUs on the same compute node can communicate and move data from one GPU's memory to the other using an intra-node interconnect called NVLINK. For deeper dive into what NVLINK is please refer to the section :ref:`nvlink`.
+
+The output below demonstrates the bidirectional bandwidth achievable when communicating between GPUs on NVLINK. 

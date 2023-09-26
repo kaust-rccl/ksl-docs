@@ -1,5 +1,8 @@
 Ibex
 ----
+
+.. _policies_storage:
+
 For new users:
 ^^^^^^^^^^^^^^
 
