@@ -18,11 +18,12 @@ while getopts "cuh" options; do
     c )
      echo " Creating the docker container for development"
      git pull origin dev
+     git checkout dev
      if [ "$(docker ps -aq -f 'name=ksl-docs')" != "" ]; then 
        docker start $(docker ps -aq -f 'name=ksl-docs')
        docker exec -ti ksl-docs bash
      else
-       docker run --name ksl-docs -ti -v ${PWD}/docs:/workdir -w /workdir krccl/ksl-docs:latest
+       docker run --name ksl-docs -ti -v ${PWD}:/workdir -w /workdir krccl/ksl-docs:latest
      fi 
      ;;
     u )

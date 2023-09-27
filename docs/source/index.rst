@@ -29,7 +29,7 @@ For users eager to get onto KSL systems and run jobs, there is a :ref:`quickstar
    apps_catalogue/index
    prof_debug/index
    containers/index
-   data_transfer/index
+   data_management/index
    visualization/index
    training/index
    science_platforms/index

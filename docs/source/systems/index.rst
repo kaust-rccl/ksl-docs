@@ -9,12 +9,15 @@
 Available Systems
 ==================
 KAUST Supercomputing Lab operates multiple High performance computing platforms for its users. 
-These platforms differ in the resources they offer, the usecases they enable, the policies users need to adhere to, and the peak performance they are capable of.
+These platforms differ in the resources they offer, the use cases they enable, the policies users need to adhere to, and the peak performance they are capable of.
 
 To get the most out of their allocations, users are highly encouraged to read the technical documentation and attend relevant user trainings.
 
+.. note::
+   Resources on KSL systems are free of charge for research purpose, unless otherwise stipulated. Please consult the :email:`KSL support staff <help@hpc.kaust.edu.sa` for more information and clarification in this regard. 
+
 This section of support documentation elaborates the technical details of the KSL HPC platforms. 
-Here, users can expect detailed techincal information about the architecture of each KSL systems. Please navigate to the specific system for these details. But before diving in the specifics, let's understand what a supercomputer is composed of on a high level.
+Here, users can expect detailed technical information about the architecture of each KSL systems. Please navigate to the specific system for these details. But before diving in the specifics, let's understand what a supercomputer is composed of on a high level.
 
 .. toctree::
    :titlesonly:
@@ -46,10 +49,10 @@ These are generally shared among users, and, as a responsible citizen, a user is
 Reading and writing (a task called file I/O) into files is a common step in the runtime life of any application/workload. On a workstation/laptop, a process generally reads and writes serially into a single mount point on a filesystem. This implies that other processes wanting to do file I/O will need to wait until the preceding process finishes.     
  
 A **parallel filesystem**, as opposed to a serial filesystem, distributes large data on multiple storage targets (disk drives for simplicity). Being an integral part of an HPC cluster, parallel filesystems are accessible from both login and compute nodes. The storage targets collectively make the total storage capacity of a parallel filesystem. With this approach, a filesystem can scale to several Petabytes (PB). Among other file I/O formats, these filesystems support the POSIX standard of file I/O, which implies that general-purpose applications/workloads can read and write data without exceptions.
-The advantage of having the data distributed over a pool of *disks* is that multiple I/O clients (applications reading and writing data) can experience a similar speed of I/O operation. Additionally, having a parallel filesystem enables applications to exploit their parallel architecture and read/write files using parallel file I/O standards such as MPIIO, HDF5, NetCDF, ADIOS, etc., to achieve higher bandwidth (large amounts of I/O in one go) at low latency (at microseconds scale to perform a single I/O operation). 
+The advantage of having the data distributed over a pool of *disks* is that multiple I/O clients (applications reading and writing data) can experience a similar speed of I/O operation. Additionally, having a parallel filesystem enables applications to exploit their parallel architecture and read/write files using parallel file I/O standards such as MPI-IO, HDF5, NetCDF, ADIOS, etc., to achieve higher bandwidth (large amounts of I/O in one go) at low latency (at microseconds scale to perform a single I/O operation). 
 
 .. note::
-   Some parallel filesystems provide longer residence time for users' data and are also backed up. The others allow a shorter lifetime and are considered a *scratch* space for workloads. Please consult the :ref:`policies` section for repective KSL platform for more details.
+   Some parallel filesystems provide longer residence time for users' data and are also backed up. The others allow a shorter lifetime and are considered a *scratch* space for workloads. Please consult the :ref:`policies` section for respective KSL platform for more details.
 
 High-speed network (HSN), which connects the compute nodes to each other and to the parallel filesystem, enables data movement at a very high speed. There are various topologies in which the compute nodes are connected to each other via HSN and are detrimental to the scalability of an HPC cluster. 
 

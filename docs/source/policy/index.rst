@@ -17,8 +17,7 @@ Below are system specific information about the SLURM policies.
    :titlesonly:
    :maxdepth: 1
 
-
-   shaheen_3
+   shaheen3
    ibex
 
 

@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Policies on Ibex
+    :keywords: Policies, policy, Shaheen 3
+
+
+==========
 Shaheen 3
 ==========
 
@@ -5,13 +12,13 @@ Scratch Filesystem
 ------------------
  
 
-The ``/scratch`` filesystem is a `Luster <https://www.lustre.org/>`_ v2.12 parallel filesystem with 17.6 PB of total available disk space. Underpinning the filesystem is a Cray Sonexion 2000 Storage System consisting of 12 cabinets containing a total of 5988 x 4 TB SAS disk drives. The cabinets are interconnected by an FDR InfiniBand Fabric with Fine Grained Routing, where optimal pathways are used to transport data betweeen compute nodes and OSSes (see below).
+The ``/scratch`` filesystem is a `Luster <https://www.lustre.org/>`_ v2.12 parallel filesystem with 17.6 PB of total available disk space. Underpinning the filesystem is a Cray Sonexion 2000 Storage System consisting of 12 cabinets containing a total of 5988 x 4 TB SAS disk drives. The cabinets are interconnected by an FDR InfiniBand Fabric with Fine Grained Routing, where optimal pathways are used to transport data between compute nodes and OSSes (see below).
 
 There are 73 LNET router nodes providing connectivity from the compute nodes to the storage over an InfiniBand Fabric, with a performance capability of over 500 GB/sec.
 
 Each cabinet can contain up to 6 Scalable Storage Units (SSU); Shaheen II has a total of 72 SSUs. Each SSU contains 82 disks configured as two GridRAID [41(8+2)+2] arrays. GridRAID is Sonexion's implementation of a Parity Declustered RAID. An SSU also contains 2 embedded SBB form factor servers, configured as Lustre Object Storage Servers (OSS). The OSSes are configured with FDR InfiniBand for communicating with the LNET routers. An Object Storage Target (OST) is an ext4 filesystem that is managed by an OSS. These OST ext4 filesystems are effectively aggregated to form the Lustre filesystem. In the case of Shaheen II, there is a one-to-one relationship between OSSes and OSTs. As there are 2 OSS/OSTs for each SSU, this means that there are 144 OSTs in total (use the command ``lfs osts`` to list the OSTs).
 
- .. image:: Lustre_layout.png
+ .. image:: static/lustre_layout.png
 
 Lustre Stripe Count
 ********************
