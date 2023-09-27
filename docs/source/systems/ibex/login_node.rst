@@ -1,7 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Login nodes on Ibex
+    :keywords: Ibex, login, Windows, MacOS
+
 .. _ibex_login_nodes:
 
+============
 Login nodes
------------
+============
 
 To access the Ibex Cluster , you need to have kaust credentials (username & password), same as you use for you KAUST email and KAUST portal.
 If you do not have kaust credentials yet or an external collaborator please contact the :email:`IT Help Desk <ithelpdesk@kaust.edu.sa>` to request for an account. 
@@ -54,11 +60,11 @@ Ibex clusters consist of 3 different login nodes:
      - 350GB 
    
 Login to Ibex from workstation/laptop
---------------------------------------
+======================================
 You need an application call `ssh client` installed on your local machine in order to follow the steps to login any KSL system. 
 
 Mac OSx
-********
+---------
 
 MacOS usually has a `terminal` application pre-installed. Please type Terminal in spotlight search tool to find it. 
 
@@ -67,7 +73,7 @@ MacOS usually has a `terminal` application pre-installed. Please type Terminal i
 Open the `terminal`, copy and paste the :ref:`command <ibex_login_ssh>` for the appropriate login node you wish to access.  
   
 Windows
-******* 
+---------
 
 To get a `ssh client` application on a Windows machine, you can opt from one of the following methods:
 

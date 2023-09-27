@@ -1,14 +1,20 @@
-Compressing Data 
-================
+.. sectionauthor:: Rafael E. Griman Canto <rafael.grimancanto@kaust.edu.sa>
+.. meta::
+    :description: Data compression
+    :keywords: compress, tar, untar, zip
+    
+.. _data_compression:
 
-**Compressing Data**
+=================
+Compressing Data 
+=================
 
 File compression is very useful since it allows you to reduce the amount of space on disk you are using. It is also very useful when you have to transfer files since you transfer a smaller file.
 
 There is, nevertheless a drawback which is: compression uses a lot of CPU. So please do not compress files from the login nodes, run a SLURM script to do that (there's an example at the end of the page).
 
-**Some Advice**
----------------
+Words of wisdom
+================
 
 * not all files are compressible or have the same level of compression:
   
@@ -17,11 +23,11 @@ There is, nevertheless a drawback which is: compression uses a lot of CPU. So pl
   * other binary files (executables, certain scientific data files, ...) will achieve different compression levels so YMMV
 
 * try to use a parallel compressor since it will lower compression times (more on that later on)
-* SLURM is your friend, write a batch job to compress files on a compute node. You don't need very high resources so a 64 GB node will be enough
+* SLURM is your friend, write a batch job to compress files on a compute node. You don't need many resources so a 64 GB node will be enough
   
-  * defining less than 64 GB will guarantee your compression script will run quickly and not wait for ever in the queue
-  * define #SBATCH --mem=50G in your batch script
-  * there's a simple example at the end of the page
+  * on Ibex cluster, defining less than 64 GB will guarantee your compression script will run quickly and not wait for ever in the queue
+  * on Ibex cluster, define ``#SBATCH --mem=50G`` in your batch script
+  * check the :ref:`simple example <compression_example>` script to run a compression job
 
 * BIG NOs
 
@@ -52,8 +58,8 @@ There is, nevertheless a drawback which is: compression uses a lot of CPU. So pl
  
   * DO NOT monitor the SLURM queue constantly, this is a bad habit and DOES NOT improve performance: your job will take just as long whether you look at it or not
 
-**What is a small file**
-------------------------
+What is a small file
+=====================
 
 This depends on what you want to do with it. A few examples:
 
@@ -63,35 +69,37 @@ This depends on what you want to do with it. A few examples:
 * if you are going to ftp/sftp/scp/rsync somewhere outside of the Campus, you can compress it when it goes over 100 MB
 * if you are going to archive it (tar), compress it when it's over 1 GB
 
-**I have files smaller than 1 MB, what should I do?**
-
-Your best option here is creating a `tarball <https://en.wikipedia.org/wiki/Tar_(computing)>`_ (some examples below). This allows you to create a file in which you collect other smaller files.
+Managing small files (< 1MB)
+--------------------------------------------------
+If you have files smaller than ``1 MB``, what shall a user do?
+The best option here is creating a :ref:`tarball <compression_tarball>` . This allows you to create a file in which you collect other smaller files.
 
 This is useful when you want to:
 
- * archive data you are not currently using (old data)
- * transfer a lot of small files
- * compress a lot of small files
+* archive data you are not currently using (old data)
+* transfer a lot of small files
+* compress a lot of small files
 
 
-**Creating a tarball**
-
-DO NOT create tarballs bigger than a couple of hundred GB, it makes working with them unmanageable:
+* DO NOT create tarballs bigger than a couple of hundred GB, it makes working with them unmanageable:
 
  * slow transfers
  * if the file gets corrupted you lose a lot of data
  * creation of the tarball with many files takes a very long time
  * compression of the tarball takes a very long time
  * the same for decompression and extraction
- * if you have many small files (100,000 4 KB files = 390 MB):
+ * if you have many small files (100000 4 KB files = 390 MB):
     
     * DO NOT create a single tarball with all the files
     * it's best to create tarballs of up to 5,000 files
 
-Creating the tarball
---------------------
+.. _compression_tarball:
 
-In order to create a tarball you need to use the tar command. This command has a lot of options so we will go over the most used/useful ones here. Remember, adding more options DOES NOT mean a "better" tarball and couls suppose longer creation times.
+Creating the tarball
+=====================
+
+In order to create a tarball you need to use the ``tar`` command. This command has a lot of options so we will go over the most used/useful ones here. 
+Remember, adding more options DOES NOT mean a "better" tarball and may take longer creation times.
 
 **DO NOT use compression options** (j or z) because this will be SLOW. Compress the tarball AFTER you have created using parallel compression tools (see below).
 
@@ -114,11 +122,11 @@ In order to create a tarball you need to use the tar command. This command has a
 
     tar -cvfp data.tar data --exclude='data/temp_files' 
 
-This last command creates the data.tar tarball but excludes the temp_files subdirectory
+This last command creates the ``data.tar`` tarball but excludes the temp_files subdirectory
 
 
 Extracting the contents of a tarball
-------------------------------------
+-------------------------------------
 
 Depending on the number of files in the tarball, this can take more or less time.
 
@@ -137,7 +145,7 @@ Depending on the number of files in the tarball, this can take more or less time
 |
 
 Listing the contents of a tarball
----------------------------------
+----------------------------------
 
 .. code-block:: bash
     :caption: Depending on the number of files in the tarball, this can take more or less time:
@@ -145,10 +153,12 @@ Listing the contents of a tarball
     tar xvf data.tar -C /destination/directory/
 
 Parallel Compression
----------------------
+=====================
+
 Traditional compression tools use only 1 core so the compression is slow. Newer compression tools let you use all the cores in a node to compress files so you speed up compression times.
 
-**Parallel Compression Tools**
+Parallel Compression Tools
+---------------------------
 
 We currently have 4 parallel compression tools installed on the compute nodes:
 
@@ -157,9 +167,10 @@ We currently have 4 parallel compression tools installed on the compute nodes:
  * `lbzip2 <http://lbzip2.org/>`_: creates compressed files compatible with bzip2
  * `zstd <https://github.com/facebook/zstd/blob/dev/README.md>`_: new compression tool which is parallelized
 
-These tools have different compression ratios, CPU and memory usage and compression times. If you want a no-brainer, go with pigz: you will be able to decompress on any OS anywhere in the World ;)
-
+These tools have different compression ratios, CPU and memory usage and compression times. If you want a no-brainer, go with pigz: you will be able to decompress on any OS anywhere in the World 
 There are other traditional compression tools installed on the compute nodes such as: gzip and lrzip but we recommend the parallel compression tools.
+
+.. _compression_example:
 
 SLURM job script to run parallel compression
 --------------------------------------------

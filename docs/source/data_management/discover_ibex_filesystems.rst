@@ -1,8 +1,16 @@
-Storage Tour
-============
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Shared parallel filesystems on Ibex
+    :keywords: WekaIO, home, parallel filesystem, Ibex
+    
+.. _ibex_filesystems_tour:
 
-**$HOME**
+========================================
+Discovering filesystems on Ibex cluster
+========================================
 
+Home filesystem
+================
 
 .. code-block:: default
     :caption: Upon login the current working directory (cwd) of the session is the $HOME directory. The full path is /home/$USER where $USER == your KAUST Portal Username. Have a look at what is in the $HOME directory with the ls command, ssh to a login host and try it:
@@ -73,12 +81,12 @@ Some other useful file and directory related commands are:
    * ln - create a soft or hard link to a file or directory.
 
 
-Try man cmdname for each command to get a full description of what it does.
+Try man ``cmdname`` for each command to get a full description of what it does.
 
 A full explanation of Unix/Linux file and directory permissions is beyond the scope of this tutorial. For more detail see `Wikipedia: File System Permissions <https://en.wikipedia.org/wiki/File-system_permissions>`_  
 
-Local Node Scratch Directories
-------------------------------
+Local Node storage
+===============================
 
 .. code-block:: bash
     :caption: Each compute node will have mounted a directory at /local/scratch. This space can be used for smaller temp files. The amount of space per node varies, so it's important to check available space before using it. Let's grab a command from later in the tutorial, submit an interactive job request and have a look at a nodes local scratch space:

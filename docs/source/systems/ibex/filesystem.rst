@@ -10,7 +10,7 @@ Filesystems
 ==============
 
 As an integral subsystem of a HPC cluster, Ibex cluster provides shared storage as parallel filesystems (PFS) which were architected for specific purposes. These filesystems are mounted on each login and compute node of the cluster and the data created on these mountpoints is accessible for any compute resource. 
-For each users, there are directories created on these filesystems which act as entrypoint for every user to store data. Users must keep in mind that this is a shared resource for files related to their computational work and is not a general purpose storage. Please refer to :ref:`policies_storage` for a commentary about what is permitted and what is not on these filesystems. 
+For each users, there are directories created on these filesystems which act as entrypoint for every user to store data. Users must keep in mind that this is a shared resource for files related to their computational work and is not a general purpose storage. Please refer to :ref:`policies_ibex_storage` for a commentary about what is permitted and what is not on these filesystems. 
 
 The following filesystems mounted on Ibex cluster are:
 
@@ -26,7 +26,13 @@ Home filesystem
 .. warning:: 
     Please refrain from installing your `conda` package manager, related cache, and environments in `/home/$USER` directory. Please use the `/ibex/user/$USER` filesystem for purpose.  
 
-`/home` is a Network File System which is mounted or all login and compute nodes. `/home` filesystem is backed up therefore keeping your precious files like configuration and installation scripts in `/home/$USER` directory is a encouraged.
+Upon login the current working directory of the session is the `$HOME` directory.
+Home directories will be mounted automatically upon the first access to Ibex. Since each mount makes use of the compute node resources, automounting allows removal of unused mounts to free up those resources when the filesystems are no longer needed. This is particularly useful on compute nodes which over the course of time will mount many filesystems owned by many users and groups.
+
+.. note:: 
+    Due to the automounting of filesystems, you might not see one of your directories immediately. Your directories might take a second or two to show up because the automounting has not finished yet.
+
+The physical system on which the `/home` directories are stored is a NetApp Cluster On Tap storage system and is mount on login and compute nodes as Network File System (NFS) mount point. `/home` filesystem is backed up therefore keeping your precious files like configuration and installation scripts in `/home/$USER` directory is a encouraged.
 
 Users can check their quota on `/home` using the following command:
 
@@ -41,6 +47,8 @@ Users can check their quota on `/home` using the following command:
                    178G    180G    200G            853k   4295m   4295m  
 
 In the case above, the maximum quota for capacity on `/home` filesystem is 200GB. 
+
+Home directories are shared across all KSL systems so all your data stored on `/home` will be accessible from least the login nodes of any KSL system.
 
 .. _ibex_user_hpc_fs:
 
