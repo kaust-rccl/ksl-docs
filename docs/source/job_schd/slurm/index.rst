@@ -30,7 +30,8 @@ Documented below are commands, example scripts and workflow patterns, users must
    :maxdepth: 1
 
    commands
-   examples
+   basic_jobscript
+   jobscript_examples
    complex_workflows
    interactive_jobs
    
