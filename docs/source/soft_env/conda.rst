@@ -1,5 +1,13 @@
-Conda
-=====
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Self service environment
+    :keywords: conda
+
+.. _conda_intro:
+
+====================================
+Environments maintained by users
+====================================
 
 Introduction
 ------------
@@ -26,3 +34,9 @@ Conda's ability to create isolated environments and manage software dependencies
 - Install and switch between different versions of software packages without affecting other users or projects on the HPC cluster.
 - Share and reproduce your software environment, enabling collaborators to quickly set up the same environment on their own machines.
 - Leverage Conda's extensive package repository to access a wide range of pre-built scientific and data analysis tools.
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   using_conda

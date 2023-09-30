@@ -31,7 +31,8 @@ Documented below are commands, example scripts and workflow patterns, users must
 
    commands
    basic_jobscript
-   jobscript_examples
+   shaheen3_jobscript_examples
+   ibex_jobscript_examples
    complex_workflows
    interactive_jobs
    
