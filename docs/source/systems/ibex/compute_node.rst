@@ -26,7 +26,7 @@ If you wish to understand more about the available processors types and their fe
 
 All CPU nodes are connected to the :ref:`HDR 100 Infiniband <ibex_interconnect>` high speed network with a theoretical peak of 100 gigabits per second (or 12.5GB/s). Also, each compute node has access to the shared parallel filesystem and home filesystem. More technical information please refer to :ref:`ibex_filesystems` section.
 
-The table below summarizes the CPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_job_templates` section for Ibex. 
+The table below summarizes the CPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_cpu_jobs` section for Ibex. 
 
 .. _ibex_cpu_compute_nodes:
 .. list-table:: **CPU Compute nodes in Ibex cluster**
@@ -130,7 +130,7 @@ All GPU nodes on Ibex cluster are connected to the :ref:`HDR Infiniband <ibex_in
 
 Also, each compute node has access to the shared parallel filesystem and home filesystem. More technical information please refer to :ref:`ibex_filesystems` section.
 
-The table below summarizes the GPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_job_templates` section.
+The table below summarizes the GPU nodes available in Ibex cluster. The values in constraint column suggests how to specific a type of compute node in your SLURM jobs. For more details on how to do this, please see :ref:`ibex_gpu_jobs` section.
 
 .. _ibex_gpu_1_compute_nodes:
 .. list-table:: **GPU Compute nodes in Ibex cluster**
