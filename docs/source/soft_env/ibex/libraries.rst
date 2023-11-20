@@ -52,13 +52,41 @@ For example, to load the CUDA library, use:
 Parallel Programming with Libraries
 -----------------------------------
 
-Once you have the required libraries loaded, you can parallelize your code using the appropriate APIs and directives provided by the libraries.
+On Ibex there various version of **OpenMPI**, **MPICH**, and **CUDA** are installed for users to compile with. 
 
-For example, you can use OpenMP directives to parallelize loops or use MPI to distribute tasks across multiple nodes.
+Loading the modules for these libraries updates the environments so that build tools such as ``cmake`` or ``autoconf`` can discover their existence.
+If the discovery failes, preset environment variables can be used to point to the installation paths of these libraries. For example, for an MPI code to compiled:
 
-Utilizing CPU/GPU libraries and parallel libraries is essential for achieving maximum performance and efficiency in HPC applications.
+.. code-block:: bash
 
-By leveraging these libraries, you can harness the computational power of CPUs and GPUs, as well as achieve effective parallelization to take full advantage of the resources available on the cluster.
+    module load openmpi
+    module load gcc
+
+    mpicc -c my_app.c -I${OPENMPI_HOME}/include 
+    mpicc -o my_app my_app.o -L${OPENMPI_HOME}/lib -lmpi
+
+The above code compiles and links the ``openmpi`` library and make availabe the compiler headers needed by the soure code during the process. 
+Once compiled, the executable ``my_app`` can be launched in a SLURM batch script either with ``mpirun`` or ``srun``, the later is recomended.
+
+For source codes requiring **CUDA Toolkit** for compiling NVIDIA GPU enabled binaries, load the ``cuda`` module and use the ``nvcc`` compiler to build the device code.
+It is recomended to allocate a GPU node and compile your source either as interactive session or in batch jobscript. 
+
+.. code-block:: bash
+
+    srun --gpus=1 --time==0:10:0 --pty bash
+    module load cuda
+    module load gcc
+
+    nvcc -c device_code.cu -I${CUDATOOLKIT_HOME}/include
+    gcc -o my_gpu_app device_code.o -L${CUDATOOLKIT_HOME}/lib -lcudart -lcublas 
+
+.. note::
+    
+    NOTE TO ME: Add the gencode to show multiarchitecture build
+
+
+
+
 
 Additional Resources
 ---------------------
