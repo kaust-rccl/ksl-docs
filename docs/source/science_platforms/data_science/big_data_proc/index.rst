@@ -9,7 +9,9 @@ Big data processing on KSL platform
 
 
 .. toctree::
+    :titlesonly:
+    :maxdepth: 1
 
-    dask
+    dask/index
     nvidia_rapids
     mpi4py
