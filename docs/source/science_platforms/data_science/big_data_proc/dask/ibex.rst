@@ -43,6 +43,7 @@ While in you base environment create a new conda environment:
 Once ready, you can install via pip installer:
 
 .. code-block::
+
     pip install --no-cache-dir dask[complete] dask-mpi dask-jobqueue dask-ml jupyter notebook jupyter_server jupyter_tensorboard ipyparallel
 
 This will bring the whole kitchen sinks. It includes dask-core, dask-distributed, dask-mpi launcher, and dask-jobqueue for high throughput task farm, amongst other things.
@@ -52,6 +53,7 @@ Using pip to install
 If you don’t use conda package management and depend on the system installed python modules, you can install via pip.
 
 .. code-block::
+    
     module load python
 
     export INSTALL_DIR=/ibex/scratch/shaima0d/dask
@@ -70,7 +72,7 @@ This should allow you to find both dask python modules and ``dask-mpi`` etc.
 
 .. code-block::
 
-    -bash-4.2$ python
+    $ python
     Python 3.7.0 (default, Oct 29 2019, 12:43:29) 
     [GCC 6.4.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
@@ -90,63 +92,64 @@ In the above you can see that even though we are using python from Ibex modulefi
 For dask-mpi which depends on mpi4py we recommend installing it with openmpi/4.0.3 modulefile loaded in the environment from Ibex. It has all the middleware integration e.g. Mellanox drivers and UCX. The following step applies to both conda and non-conda build. If using conda environment, we assume you already have loaded the right environment:
 
 
+.. code-block::
 
-module load openmpi/4.0.3
-env MPICC=$(which mpicc) mpi4py==3.0.1
+    module load openmpi/4.0.3
+    env MPICC=$(which mpicc) mpi4py==3.0.1
  
 
  
 
 Running Dask on Ibex
+=====================
+
 Dask can be run in a jupyter notebook. The following is an example of how to start a dask-distributed cluster and connect to it from a notebook.
 
 
+.. code-block::
 
-#!/bin/bash -l
-#SBATCH --ntasks=3
-#SBATCH --tasks-per-node=1
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=20G
-#SBATCH --time=01:00:00
-#SBATCH --account=ibex-cs
+    #!/bin/bash -l
+    #SBATCH --ntasks=3
+    #SBATCH --tasks-per-node=1
+    #SBATCH --cpus-per-task=4
+    #SBATCH --mem=20G
+    #SBATCH --time=01:00:00
 
-module load dl
-module load gcc/11.1.0
-module load dask
-module list
+    module load dask
+    module list
 
-mkdir workers${SLURM_JOBID}
+    mkdir workers${SLURM_JOBID}
 
 
-# get tunneling info
-export XDG_RUNTIME_DIR=""
-node=$(hostname -I  | cut -d ' ' -f 2)
-user=$(whoami)
-submit_host=${SLURM_SUBMIT_HOST}
-sched_port=10021
-jupyter_port=10022
-dask_dashboard=10023
+    # get tunneling info
+    export XDG_RUNTIME_DIR=""
+    node=$(hostname -I  | cut -d ' ' -f 2)
+    user=$(whoami)
+    submit_host=${SLURM_SUBMIT_HOST}
+    sched_port=10021
+    jupyter_port=10022
+    dask_dashboard=10023
 
-srun -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} dask-mpi --worker-class distributed.Worker --local-directory=workers${SLURM_JOBID} --interface=ib0 --nthreads=${SLURM_CPUS_PER_TASK} --scheduler-port=${sched_port} \
-    --scheduler-file=scheduler_${SLURM_JOBID}.json --dashboard-address=${node}:${dask_dashboard} &
+    srun -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} dask-mpi --worker-class distributed.Worker --local-directory=workers${SLURM_JOBID} --interface=ib0 --nthreads=${SLURM_CPUS_PER_TASK} --scheduler-port=${sched_port} \
+        --scheduler-file=scheduler_${SLURM_JOBID}.json --dashboard-address=${node}:${dask_dashboard} &
 
-sleep 20
-
-
-echo $node pinned to port $port
-# print tunneling instructions jupyter-log
-echo -e "
-To connect to the compute node ${node} on IBEX running your jupyter notebook server,
-you need to run following two commands in a terminal
-
-1. Command to create ssh tunnel from you workstation/laptop to cs-login:
-ssh -L ${jupyter_port}:${node}:${jupyter_port} -L ${dask_dashboard}:${node}:${dask_dashboard} ${user}@${submit_host}.ibex.kaust.edu.sa
+    sleep 20
 
 
-Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop
+    echo $node pinned to port $port
+    # print tunneling instructions jupyter-log
+    echo -e "
+    To connect to the compute node ${node} on IBEX running your jupyter notebook server,
+    you need to run following two commands in a terminal
 
-use localhost:${dask_dashboard} to view dask dashboard
-"
+    1. Command to create ssh tunnel from you workstation/laptop to cs-login:
+    ssh -L ${jupyter_port}:${node}:${jupyter_port} -L ${dask_dashboard}:${node}:${dask_dashboard} ${user}@${submit_host}.ibex.kaust.edu.sa
 
-jupyter lab  --no-browser --port=${jupyter_port} --ip=${node}
-For the rest of the example please refer to Using Dask on Shaheen example details.
+
+    Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop
+
+    use localhost:${dask_dashboard} to view dask dashboard
+    "
+
+    jupyter lab  --no-browser --port=${jupyter_port} --ip=${node}
+    For the rest of the example please refer to Using Dask on Shaheen example details.
