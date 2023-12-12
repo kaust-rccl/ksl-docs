@@ -53,6 +53,12 @@ For example, to load the GCC compiler suite, use:
 
     module load gcc
 
+A compiler can have multiple versions installed on the system. To query which version are availble e.g. cuda version installed on Ibex:
+
+.. code-block:: bash
+
+    moudle avail cuda
+
 Utilizing Optimizations
 -----------------------
 
@@ -65,13 +71,18 @@ Compiler suites offer a range of optimizations to enhance code performance. Thes
 Compile-time Flags
 ------------------
 
-You can fine-tune compilation options using flags. For instance:
+Users can fine-tune compilation options using flags. For instance:
 
 .. code-block:: bash
 
     gcc -O3 -march=native -o my_program my_program.c
 
-This compiles "my_program.c" with high optimization (`-O3`) and architecture-specific settings (`-march=native`).
+This compiles "my_program.c" with high optimization (``-O3``) and architecture-specific settings (``-march=native``). 
+
+``-march=native`` pools together a set of complier flags which targets the host architucture.
+It is advised that users compile such optimizations on the target comput node either in an interactive job or a batch job. 
+
+A detailed list of compiler options can be explored in manpages of the said compilers e.g. for gcc, ``man gcc`` with the desired module version loaded. 
 
 Additional Resources
 --------------------

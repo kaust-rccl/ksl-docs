@@ -4,7 +4,7 @@
     :keywords: pytorch, lightning, machine learning, deep learning, dask, rapids
 
 ==============================
-Data Science platform
+Data Science platforms
 ==============================
 
 - This is a directory tree for documenting all about developing data science workflows on KSL platforms
@@ -21,3 +21,13 @@ Data Science platform
 - Deep Learning on AMD Genoa CPUs -- for those workloads which don't qualify for GPUs or are developing models and modest sized datasets
 
 
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    quickstart
+    ml_module_ibex
+    jobscript_templates/index
+    dist_mldl/index
+    big_data_proc/index
+    tools/index
