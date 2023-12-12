@@ -8,8 +8,21 @@
 Shaheen 3
 ==========
 
-Scratch Filesystem
-------------------
+SLURM Polciy
+============
+
+General compute nodes
+---------------------
+Partition, wallclock
+Warning about large jobs ( maintenance) to avoid draining in production.
+
+
+PPN nodes
+---------
+
+
+Scratch Filesystem Policy
+=========================
  
 
 The ``/scratch`` filesystem is a `Luster <https://www.lustre.org/>`_ v2.12 parallel filesystem with 17.6 PB of total available disk space. Underpinning the filesystem is a Cray Sonexion 2000 Storage System consisting of 12 cabinets containing a total of 5988 x 4 TB SAS disk drives. The cabinets are interconnected by an FDR InfiniBand Fabric with Fine Grained Routing, where optimal pathways are used to transport data between compute nodes and OSSes (see below).
