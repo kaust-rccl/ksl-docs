@@ -1,13 +1,16 @@
-.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. sectionauthor:: Rooh Khurram <Rooh.Khurram@kaust.edu.sa>
 .. meta::
-    :description: Data science platform
-    :keywords: ansys, openfoam, meshing,FEM, fenics
+    :description: CFD Platform
+    :keywords: ansys, openfoam, converge, meshing, postprocessing
 
 ======================================
 Computational Fluid Dynamics platform
 ======================================
 
-- Quickstart guide releated specifically to assest related to CFD install on KSL systems
-- Curated example and tutorials along with jobscripts
-- step by step guide on visualization on neser and parallel visualization
+I will design the main page here describing CFD services and linking the raining pages to the training catalogue
   
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    Quick_Start
