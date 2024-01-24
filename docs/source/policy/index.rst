@@ -11,7 +11,7 @@ Policy
 - Limits, allowance, and any other policies related to scheduling
 - System specific policies will go in the corresponding page
 
-Below are system specific information about the SLURM policies.
+Available policies:
 
 .. toctree::
    :titlesonly:

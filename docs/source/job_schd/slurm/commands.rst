@@ -7,8 +7,8 @@
 Common commands
 ================
 
-Slurm provides different commands are utilities to interact with a cluster. 
-We start with listing some basic commands every user of KSL computational platforms should be aware of. 
+Slurm offers various commands and utilites for interacting with a cluster.
+The following sections list the fundamental commands that every user on KSL computational platforms should be familiar with. 
 
 Slurm utilities
 ===============
@@ -29,7 +29,7 @@ sinfo
 By default, sinfo lists the partitions that are available. A partition is a set of compute nodes (computers dedicated to ... computing,) grouped logically. Typical examples include partitions dedicated to batch processing, debugging, post processing, or visualization.
 
 .. code-block:: bash
-    :caption: an example output of ``sinfo`` on Shaheen 2
+    :caption: an example output of ``sinfo`` on Shaheen 3
 
     xyz123@cdl4> sinfo
 
@@ -57,7 +57,7 @@ squeue
 The default output of this command is a list of all the jobs submitted by users, their state, and either forecasted start time or elapsed time for pending and running jobs respectively.
 
 .. code-block:: bash
-    :caption: an example output of ``squeue`` on Shaheen 2
+    :caption: an example output of ``squeue`` on Shaheen 3
     
     cdl4:~> squeue
     JOBID       USER     ACCOUNT           NAME  ST REASON    START_TIME                TIME  TIME_LEFT NODES

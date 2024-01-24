@@ -21,8 +21,6 @@ Some common compiler suites you might encounter include:
 
 - Intel Compiler Suite: Developed by Intel, this suite offers advanced optimizations and features tailored for Intel processors.
 
-- PGI : A suite optimized for high-performance computing and parallel programming, offering Fortran, C, and C++ compilers.
-
 - NVIDIA HPC SDK: Designed for GPU-accelerated computing, this suite provides compilers and libraries for CUDA programming.
 
 Selecting a Compiler Suite
@@ -89,5 +87,4 @@ Additional Resources
 
 - `GCC Compiler Documentation <https://gcc.gnu.org/onlinedocs/>`_
 - `Intel Compiler Documentation <https://software.intel.com/content/www/us/en/develop/documentation/fortran-compiler-oneapi-dev-guide-and-reference/top.html>`_
-- `PGI Compiler Documentation <https://docs.nvidia.com/hpc-sdk/pgi-compilers/>`_
 - `NVIDIA HPC SDK Documentation <https://docs.nvidia.com/hpc-sdk/archive/>`_

@@ -10,7 +10,7 @@ Data Science platforms
 - This is a directory tree for documenting all about developing data science workflows on KSL platforms
 - a bespoke quickstart guide to work with datasceince workloads
 - We will list the information about the meta modules and their contents. 
-- We will list about the details on how to install software as self-service model using pacake managers like conda, spack, containers etc.
+- We will list the details on how to install software as self-service model using pacake managers like conda, spack, containers etc.
 - Cray's Machine Learning development enviroment will also be discussed here
 - Hyperparameter libraries will be disucssed here
 - Example jobscript related to distributed frameworks

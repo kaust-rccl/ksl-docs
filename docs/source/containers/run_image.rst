@@ -54,6 +54,7 @@ Integrating Singularity into HPC job scripts and workflows enhances reproducibil
     #SBATCH -N 1
     #SBATCH --time=00:30:00
 
+    module load singularity
 
     singularity exec my_container.sif python my_script.py
 
