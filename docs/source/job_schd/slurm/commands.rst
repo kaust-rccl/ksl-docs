@@ -8,7 +8,7 @@ Common commands
 ================
 
 Slurm offers various commands and utilites for interacting with a cluster.
-The following sections list the fundamental commands that every user on KSL computational platforms should be familiar with. 
+The following sections list fundamental commands every user of KSL computational platforms should be familiar with. 
 
 Slurm utilities
 ===============
