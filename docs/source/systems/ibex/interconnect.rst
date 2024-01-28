@@ -234,4 +234,5 @@ NVLINK
 =======
 Multiple GPUs on the same compute node can communicate and move data from one GPU's memory to the other using an intra-node interconnect called NVLINK. For deeper dive into what NVLINK is please refer to the section :ref:`nvlink`.
 
-The output below demonstrates the bidirectional bandwidth achievable when communicating between GPUs on NVLINK. 
+..
+  _The output below demonstrates the bidirectional bandwidth achievable when communicating between GPUs on NVLINK.
