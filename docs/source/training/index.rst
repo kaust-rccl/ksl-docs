@@ -23,7 +23,6 @@ User Training Catalogue
    :titlesonly:
    
    ibex_user_training
-   ibex_clinic
    ibex_user_resources
    shaheen_user_training
 
