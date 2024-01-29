@@ -4,22 +4,11 @@
     :keywords: pytorch, lightning, machine learning, deep learning, dask, rapids
 
 ==============================
-Data Science platforms
+Data Science platform
 ==============================
 
-- This is a directory tree for documenting all about developing data science workflows on KSL platforms
-- a bespoke quickstart guide to work with datasceince workloads
-- We will list the information about the meta modules and their contents. 
-- We will list the details on how to install software as self-service model using package managers like conda, spack, containers etc.
-- Cray's Machine Learning development enviroment will also be discussed here
-- Hyperparameter libraries will be disucssed here
-- Example jobscript related to distributed frameworks
-- A high level introduction to NGC container registry 
-- parallel data processing tools and techniques will be discussed, e.g. dask and rapids on CPUs and GPUs
-- Accelerating machine learning using multithreaded ScikitLearn 
-    - porting ML from CPUs to GPUs
-- Deep Learning on AMD Genoa CPUs -- for those workloads which don't qualify for GPUs or are developing models and modest sized datasets
-
+The HPC systems at KSL are capable resources for hosting data science workload from prototyping to production. The scope of use for these computational resources is mainly research and development. Data Science Platform is a single source of knowledge which a KSL user with Data science uses case can refer to and get started quickly.
+ 
 
 .. toctree::
     :titlesonly:

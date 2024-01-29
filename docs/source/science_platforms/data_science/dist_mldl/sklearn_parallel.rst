@@ -6,3 +6,6 @@
 =====================================================
 Accelerating Machine Learning with Scikit Learn
 =====================================================
+
+.. note::
+    Page under construction

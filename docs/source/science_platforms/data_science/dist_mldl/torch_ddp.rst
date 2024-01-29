@@ -9,8 +9,11 @@ PyTorch Distributed Data Parallel (DDP)
 
 Launching a distributed PyTorch training in a slurm jobscript require a few additional steps than using vanilla ``torchrun`` command line.
 
-PyTorch DDP on Shaheen 3 CPUs and GPUs
-=======================================
+..
+    PyTorch DDP on Shaheen 3 CPUs and GPUs
+    =======================================
+
+
 
 PyTorch DDP on Ibex GPUs
 ==========================
