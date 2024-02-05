@@ -1,5 +1,13 @@
-Using conda on Ibex 
-===================
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>, Moamen Mohamed <moamen.mohamed@kaust.edu.sa>
+.. meta::
+    :description: Conda Ibex
+    :keywords: Ibex, conda
+
+.. _conda_ibex_:
+
+========================
+Using ``conda`` on Ibex 
+========================
 
 Getting Started
 ---------------

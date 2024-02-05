@@ -1,6 +1,7 @@
 ========================================================
 KAUST Supercomputing Core Labs 
 ========================================================
+
 Support Documentation
 **********************
 
@@ -20,18 +21,11 @@ For users eager to get onto KSL systems and run jobs, there is a :ref:`quickstar
    :maxdepth: 1
    :hidden:
 
-   quickstart
-   jobscriptGenerator
+   quickstart/index
    systems/index
-   policy/index
-   job_schd/index
    soft_env/index
-   apps_catalogue/index
-   prof_debug/index
-   containers/index
+   policy/index
    data_management/index
-   visualization/index
    training/index
-   science_platforms/index
    tech_blogs/index
    contact_us
