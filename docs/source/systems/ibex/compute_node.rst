@@ -10,7 +10,7 @@ Compute Nodes
 ==============
 
 Compute nodes are the HPC optimized servers where the job scheduler schedules the jobs and runs it on users' behalf.  
-Ibex cluster is composed of the compute nodes of various microarchitectures of CPUs and GPUs e.g. Intel Cascade Lake, Skylake, AMD Rome, NVIDIA RTX2089ti, V100, A100 etc.
+Ibex cluster is composed of the compute nodes of various microarchitectures of CPUs and GPUs e.g. Intel Cascade Lake, Skylake, AMD Rome, NVIDIA RTX2080ti, V100, A100 etc.
 The allocatable resource include CPU cores or GPUs, CPU memory, local fast storage on a node and duration or wall time.
 
 The heterogeneity of compute nodes allow users to submit various types of applications and workflows. At times, Ibex becomes a defacto choice for workflows those are not suitable to run on other KSL systems. 

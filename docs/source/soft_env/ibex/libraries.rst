@@ -80,9 +80,20 @@ It is recomended to allocate a GPU node and compile your source either as intera
     nvcc -c device_code.cu -I${CUDATOOLKIT_HOME}/include
     gcc -o my_gpu_app device_code.o -L${CUDATOOLKIT_HOME}/lib -lcudart -lcublas 
 
-.. note::
+
+When building your CUDA code on login node and the intent is the it runs on multiple NVIDIA GPU microarchitectures, the following ``nvcc`` flags will help:
+
+.. code-block:: bash
     
-    NOTE TO ME: Add the gencode to show multiarchitecture build
+    module load cuda
+    
+    nvcc -c device_code.cu -I${CUDATOOLKIT_HOME}/include \
+    -gencode=arch=compute_80,code=sm_80 \
+    -gencode=arch=compute_75,code=compute_75 \
+    -gencode=arch=compute_70,code=compute_70 \
+    -gencode=arch=compute_61,code=compute_61  
+
+     gcc -o my_gpu_app device_code.o -L${CUDATOOLKIT_HOME}/lib -lcudart -lcublas 
 
 
 

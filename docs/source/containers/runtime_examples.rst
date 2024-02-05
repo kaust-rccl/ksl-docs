@@ -12,7 +12,7 @@ Gromacs (CPU) - Jobscript (Ibex)
     #SBATCH --tasks-per-node=32
     #SBATCH --time=4:00:00
     #----------------------------------------------------------#
-    module load singularity openmpi/4.0.3
+    module load singularity openmpi
     export OMPI_MCA_btl=openib
     export OMPI_MCA_btl_openib_allow_ib=1
     export SINGUALRITYENV_GROMACS_USE=""
@@ -37,7 +37,7 @@ Gromacs (Multi CPU) - Jobscript (Ibex)
     #SBATCH --tasks-per-node=16
     #SBATCH --time=4:00:00
     #----------------------------------------------------------#
-    module load singularity openmpi/4.0.3
+    module load singularity openmpi
     export OMPI_MCA_btl=openib
     export OMPI_MCA_btl_openib_allow_ib=1
     export SINGUALRITYENV_GROMACS_USE=""
@@ -62,7 +62,7 @@ Gromacs (CPU) - Jobscript (Shaheen)
     #SBATCH --time=4:00:00
     #----------------------------------------------------------#
     module swap PrgEnv-cray PrgEnv-gnu
-    module load openmpi/4.0.3
+    module load openmpi
     module load singularity
     #----------------------------------------------------------#
     export LD_LIBRARY_PATH=$CRAY_LD_LIBRARY_PATH:$LD_LIBRARY_PATH
@@ -92,7 +92,7 @@ Gromacs (Multi CPU) - Jobscript (Shaheen)
     #SBATCH --time=4:00:00
     #----------------------------------------------------------#
     module swap PrgEnv-cray PrgEnv-gnu
-    module load openmpi/4.0.3
+    module load openmpi
     module load singularity
     #----------------------------------------------------------#
     export LD_LIBRARY_PATH=$CRAY_LD_LIBRARY_PATH:$LD_LIBRARY_PATH
@@ -122,7 +122,7 @@ DL training on Ibex GPUs - Jobscript Single GPU
     #SBATCH --cpus-per-task=6
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
     export IMAGE=horovod_gpu_0192.sif
     echo "PyTorch with Horovod”
@@ -142,7 +142,7 @@ DL training on Ibex GPUs - Jobscript Multi-GPU on same node
     #SBATCH --cpus-per-task=6
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
     export IMAGE=horovod_gpu_0192.sif
     echo "PyTorch with Horovod"
@@ -162,7 +162,7 @@ DL training on Ibex GPUs - Jobscript Multi-GPUs on multi node
     #SBATCH --cpus-per-task=6
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
     export IMAGE=horovod_gpu_0192.sif
     echo "PyTorch with Horovod"
@@ -205,7 +205,7 @@ You may possibly want to run a single GPU job for debugging:
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
 
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
 
     export IMAGE=/ibex/scratch/shaima0d/scratch/singularity_mpi_testing/images/horovod_gpu_0192.sif
@@ -230,7 +230,7 @@ Single node Multi GPU
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
 
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
 
     export IMAGE=/ibex/scratch/shaima0d/scratch/singularity_mpi_testing/images/horovod_gpu_0192.sif
@@ -255,7 +255,7 @@ Multi-node Multi-gpu
     #SBATCH --mem=64G
     #SBATCH --time=00:30:00
 
-    module load openmpi/4.0.3-cuda10.1
+    module load openmpi
     module load singularity
 
     export IMAGE=/ibex/scratch/shaima0d/scratch/singularity_mpi_testing/images/horovod_gpu_0192.sif

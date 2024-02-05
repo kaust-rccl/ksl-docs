@@ -23,7 +23,7 @@ Starting with Rstudio
 
      # load singularity module
 
-     module load singularity/3.6
+     module load singularity
 
      # Pull singularity image
      singularity pull docker://ranaselim8/rstudio-server:4.0.5

@@ -53,7 +53,7 @@ Ibex compute node
     module purge
 
     # You can use the machine learning module 
-    module load machine_learning/2022.11
+    module load machine_learning/2024.01
     # or you can activate the conda environment directly by uncommenting the following lines
     #export ENV_PREFIX=$PWD/env
     #conda activate $ENV_PREFIX
@@ -83,7 +83,7 @@ Ibex compute node
     # launch jupyter server
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}.ibex.kaust.edu.sa
     
-    This is the launch-jupyter-server.srun script: 
+    
 
 
 Once the job starts, the SLURM output file created in the directory you submitted the job from will have the instructions on how to reverse connect. 
@@ -93,14 +93,14 @@ check the following output in  SLURM output will look something like this:
 .. code-block:: bash 
    
      To access the server, open this file in a browser:
-        file:///home/barradd/.local/share/jupyter/runtime/jpserver-44653-open.html
+        file:///home/username/.local/share/jupyter/runtime/jpserver-44653-open.html
      Or copy and paste one of these URLs:
         http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
      or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
 
 * Open a new terminal on your local machine and copy and paste the ssh tunnel command from the ``%x-%j-slurm.err``
 
-``ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 your-username@glogin.ibex.kaust.edu.sa``
+``ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 username@glogin.ibex.kaust.edu.sa``
 
 * This has created an SSH tunnel between the compute node your Jupyter server is launched on Ibex and your local machine on IP address localhost and port 57162. 
 

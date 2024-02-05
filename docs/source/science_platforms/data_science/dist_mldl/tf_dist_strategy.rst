@@ -4,5 +4,8 @@
     :keywords: tensorflow
 
 =====================================================
-Distributed DL with Tensorflow 2.x
+Distributed Deep Learning with Tensorflow 2.x
 =====================================================
+
+.. note::
+    Page under construction

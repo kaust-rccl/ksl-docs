@@ -1,7 +1,7 @@
 Containerization Platforms at KSL Clusters
 ==========================================
 
-KSL provides various containerization platforms across different clusters to help users manage and deploy their applications efficiently. Below is an overview of the containerization platforms available on the Ibex, Shaheen2, and Neser clusters.
+KSL provides various containerization platforms across different clusters to help users manage and deploy their applications efficiently. Below is an overview of the containerization platforms available on the Ibex, shaheen3, and Neser clusters.
 
 Ibex Cluster
 ------------
@@ -10,12 +10,12 @@ The Ibex cluster offers the following containerization platform:
 
 - **Singularity**: Singularity is available on Ibex, allowing you to create, manage, and run containers for your applications. It is suitable for a wide range of HPC workloads and provides excellent compatibility with HPC environments.
 
-Shaheen2 Cluster
+Shaheen3 Cluster
 -----------------
 
-The Shaheen2 cluster provides the following containerization platform:
+The shaheen3 cluster provides the following containerization platform:
 
-- **Singularity**: Similar to the Ibex cluster, Shaheen2 supports Singularity as a containerization platform. Singularity enables you to encapsulate your applications and execute them with near-native performance.
+- **Singularity**: Similar to the Ibex cluster, shaheen3 supports Singularity as a containerization platform. Singularity enables you to encapsulate your applications and execute them with near-native performance.
 
 Neser Cluster
 --------------

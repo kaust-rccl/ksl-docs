@@ -36,7 +36,7 @@ For example:
  
  ``sbatch --dependency=type:job_id,job_id,job_id ...`` 
 
-2. When the job requires to run if any one of the job ids compltes successfully using a ? separator
+2. When the job requires to run if any one of the job ids completes successfully using a ? separator
  
  ``sbatch --dependency=type:job_id?job_id?job_id ...``
 

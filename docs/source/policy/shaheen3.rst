@@ -8,8 +8,21 @@
 Shaheen 3
 ==========
 
-Scratch Filesystem
-------------------
+SLURM Polciy
+============
+
+General compute nodes
+---------------------
+Partition, wallclock
+Warning about large jobs (maintenance) to avoid draining in production.
+
+
+PPN nodes
+---------
+
+
+Scratch Filesystem Policy
+=========================
  
 
 The ``/scratch`` filesystem is a `Luster <https://www.lustre.org/>`_ v2.12 parallel filesystem with 17.6 PB of total available disk space. Underpinning the filesystem is a Cray Sonexion 2000 Storage System consisting of 12 cabinets containing a total of 5988 x 4 TB SAS disk drives. The cabinets are interconnected by an FDR InfiniBand Fabric with Fine Grained Routing, where optimal pathways are used to transport data between compute nodes and OSSes (see below).
@@ -21,7 +34,7 @@ Each cabinet can contain up to 6 Scalable Storage Units (SSU); Shaheen II has a 
  .. image:: static/lustre_layout.png
 
 Lustre Stripe Count
-********************
+--------------------
 Striping a file across multiple OSTs can significantly improve performance, because the I/O bandwidth will be spread over the OSTs (round robin method). The ``/scratch`` filesystem default stripe size is set at 1MB and, following analysis of typical Shaheen file sizes, the default stripe count is set to 1, i.e. individual files will reside on one OST only, by default. The stripe count however can be increased by users to any number up to the maximum number of OSTs available (144 for Shaheen II). This can be done at the directory or file level. When the size of the file is greater than the stripe size (1MB), the file will be broken down into 1MB chunks and spread across the specified (stripe count) number of OSTs.
 
 .. code-block:: default
@@ -82,7 +95,7 @@ In this example, the file is striped across 8 OSTs with a stripe size of 1 MB. T
     * setup a directory with the desired configuration and cp (not mv) the file into the directory
 
 General Considerations
-+++++++++++++++++++++++
+************************
 
 Large files benefit from higher stripe counts. By striping a large file over many OSTs, you increase bandwidth for accessing the file and can benefit from having many processes operating on a single file concurrently. Conversely, a very large file that is only striped across one or two OSTs can degrade the performance of the entire Lustre system by filling up OSTs unnecessarily. A good practice is to have dedicated directories with high stripe counts for writing very large files into.
 
@@ -92,7 +105,7 @@ More detailed information about efficient use of Lustre and stripes can be found
 
 
 Filesystem Layout
-*****************
+------------------
 
 The ``/scratch`` directory should only be used for temporary data utilised by running jobs, as it is subject to a rigorous purge policy described below. Any files that you need to keep for longer-term use should reside in the ``/project directory``.
 

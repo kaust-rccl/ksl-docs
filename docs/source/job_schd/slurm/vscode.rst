@@ -60,14 +60,14 @@ This will start the server within your GPU enabled interactive job. The output w
 
 .. code-block:: bash 
 
-    [2022-04-18T12:47:40.598Z] trace child:103311 got message {"message":{"type":"handshake","args":{"bind-addr":"127.0.0.1:10121","auth":"password","password":"7days7nights","config":"/home/shaima0d/.config/code-server/config.yaml","verbose":true,"extensions-dir":"/home/shaima0d/miniconda3/envs/code-server/share/code-server/extensions","user-data-dir":"/home/shaima0d/.local/share/code-server","log":"trace","host":"127.0.0.1","port":10121,"proxy-domain":[],"_":[],"usingEnvPassword":false,"usingEnvHashedPassword":false}}}
+    [2022-04-18T12:47:40.598Z] trace child:103311 got message {"message":{"type":"handshake","args":{"bind-addr":"127.0.0.1:10121","auth":"password","password":"7days7nights","config":"/home/username/.config/code-server/config.yaml","verbose":true,"extensions-dir":"/home/username/miniconda3/envs/code-server/share/code-server/extensions","user-data-dir":"/home/username/.local/share/code-server","log":"trace","host":"127.0.0.1","port":10121,"proxy-domain":[],"_":[],"usingEnvPassword":false,"usingEnvHashedPassword":false}}}
     [2022-04-18T12:47:40.602Z] info  code-server 4.2.0 693b1fac04524bb0e0cfbb93afc85702263329bb
     [2022-04-18T12:47:40.602Z] info  Using user-data-dir ~/.local/share/code-server
     [2022-04-18T12:47:40.602Z] trace Using extensions-dir ~/miniconda3/envs/code-server/share/code-server/extensions
     [2022-04-18T12:47:40.628Z] info  Using config file ~/.config/code-server/config.yaml
     [2022-04-18T12:47:40.628Z] info  HTTP server listening on http://10.109.57.127:10121/ 
     [2022-04-18T12:47:40.628Z] info    - Authentication is enabled
-    [2022-04-18T12:47:40.628Z] info      - Using password from ~/.config/code-server/config.yaml
+    [2022-04-18T12:47:40.628Z] info    - Using password from ~/.config/code-server/config.yaml
     [2022-04-18T12:47:40.628Z] info    - Not serving HTTPS 
 
 Batch job
@@ -111,9 +111,9 @@ Port forwarding is required to bind to the listening port of the remote host (Ib
 
 
 
-``ssh -L localhost:10121:dgpu501-22:10121 shaima0d@glogin.ibex.kaust.edu.sa``
+``ssh -L localhost:10121:dgpu501-22:10121 username@glogin.ibex.kaust.edu.sa``
 
-In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use you username instead of shaima0d  and the jump server/node is glogin login node.
+In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use you username instead of username  and the jump server/node is glogin login node.
 
 In case you have submitted a batch job, please see the slurm output and copy the ssh command from there and paste it in a new terminal
 

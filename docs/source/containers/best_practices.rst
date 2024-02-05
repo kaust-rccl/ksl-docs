@@ -16,9 +16,6 @@ To maximize the benefits of Singularity in HPC, consider these optimization stra
 
   .. code-block:: bash
 
-      #On Ibex, Kernel release is:
-      3.10.0-1160.76.1.el7.x86_64
-
       #You can check the kernel version by running:
       uname -r
 
