@@ -13,10 +13,11 @@ It is an expectation from the users of KSL computational resources to manage the
 
 .. toctree:: 
     :titlesonly:
-    :maxdepth: 2
+    :maxdepth: 1
 
+    discover_ibex_filesystems
     mountpoint_management
     compressing_data
     data_transfer_utils
-    discover_ibex_filesystems
+
     

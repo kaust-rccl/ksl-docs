@@ -1,12 +1,18 @@
+.. sectionauthor:: Kadir Akbudak <kadir.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Applications catalogue on KSL systems
+    :keywords: Install software, Shaheen, Ibex
+
+
 ==========
 Shaheen 3 
 ==========
 
 Users can benefit from many software packages and scientific libraries available as modules. Users can also compile their source code using various compiler toolchains in the Cray Programming Environment.
 
-*******************
+
 Environment Modules
-*******************
+=====================
 
 Before requesting the installation of new packages or
 libraries, please check if the desired package is already
@@ -47,13 +53,34 @@ installed on the system.
    :maxdepth: 1
    :titlesonly:
 
-*******************
+
 Compiler Toolchains
-*******************
+====================
 
 Cray, AMD, and GCC compiler toolchains are provided through modules.
 The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
 Regardless of the underlying compiler, the user must use the compiler wrappers ``cc``, ``CC``, and ``ftn`` depending on the programming language as seen in the table below:
+
+.. _shaheen3_prgenv:
+
+.. list-table:: **Programming environment on Shaheen 3**
+   :widths: 30 30 30 30 20 30
+   :header-rows: 1
+
+  * - Compiler vendor
+    - Programming environment
+    - Module
+    - Language
+    - Compiler wrapper
+    - Compiler
+  * - Cray ``craycc``
+    - ``PrgEnv-cray``
+    - ``cce``
+    - C
+    - ``cc``
+    - ``craycc``
+
+
 
 +--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
 | Vendor | Programming Environment | Compiler Module | Language | Compiler Wrapper  | Compiler                        |
@@ -102,7 +129,8 @@ The whole compiler invocation can be seen via the following command:
  cc --cray-print-opts=all
 
 Cray Programming Environment and Compiler Wrappers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===================================================
+
 
 Cray provides ``PrgEnv-<compiler>`` modules (e.g., ``PrgEnv-cray``) to load the compiler toolchains.
 The ``PrgEnv-cray`` module is loaded by default. The following command can be used to switch between compiler toolchains:
@@ -122,6 +150,6 @@ The following example shows how to change the compiler for ``PrgEnv-cray``:
  $ module switch cce cce/15.0.1
 
 MPI
-^^^
+----
 
 Cray MPICH is provided by default. It is also linked when the compiler wrappers ``cc``, ``CC``, and ``ftn`` are used.
