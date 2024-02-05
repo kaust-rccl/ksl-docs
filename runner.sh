@@ -20,11 +20,11 @@ while getopts "cuh" options; do
      git pull origin dev
      git checkout dev
      if [ "$(docker ps -aq -f 'name=ksl-docs')" != "" ]; then 
-       docker start $(docker ps -aq -f 'name=ksl-docs')
-       docker exec -ti ksl-docs bash
-     else
-       docker run --name ksl-docs -ti -v ${PWD}:/workdir -w /workdir/docs krccl/ksl-docs:latest
+        docker stop ksl-docs
+        docker rm ksl-docs
      fi 
+     docker pull krccl/ksl-docs:latest
+     docker run  --rm -ti --name ksl-docs -v ${PWD}:/workdir -w /workdir/docs krccl/ksl-docs:latest
      ;;
     u )
      echo "commiting and pushing codebase to GitHub in dev branch. Once done, please create a pull request on GitHub to upstream your changes to main branch"     
