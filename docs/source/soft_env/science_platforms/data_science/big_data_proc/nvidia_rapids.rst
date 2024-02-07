@@ -3,6 +3,8 @@
     :description: Rapids
     :keywords: rapids, cuDF, cuML, cuFile
 
+.. _nv_rapids:
+
 ==========================================
 NVIDIA RAPIDS
 ==========================================

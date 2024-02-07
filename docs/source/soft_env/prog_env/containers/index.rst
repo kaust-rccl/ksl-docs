@@ -1,7 +1,9 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
-    :description: Container platforms on KSL systems
+    :description: Using Containers on KSL systems
     :keywords: singularity, podman
+
+.. _container_platforms_guide:
 
 ==============================
 Containers

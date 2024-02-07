@@ -1,7 +1,7 @@
 .. sectionauthor:: Rana Selim <rana.selim@kaust.edu.sa>
 .. meta::
-    :description: SLURM Documentation
-    :keywords: SLURM
+    :description: Code-Server guide
+    :keywords: codeserver, vscode
 
 .. _vscode:
 

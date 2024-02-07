@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Libraries on Ibex
+    :keywords: Ibex, libraries, blas, fftw, lapack, cufft
+
+.. _libs_on_ibex:
+
+===============================
 CPU/GPU and Parallel Libraries
 ===============================
 

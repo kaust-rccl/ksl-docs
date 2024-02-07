@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Shaheen3 system
+    :keywords: Shaheen3, login, compute, node, filesystem, interconnect
+    
+.. _shaheen3_arch:
+
 ==========
 Shaheen 3
 ==========

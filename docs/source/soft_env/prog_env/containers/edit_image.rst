@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Edit singularity images
+    :keywords: container, singularity, edit
+
+.. _edit_singularity_containers:
+
+==================================
 Customizing Singularity Containers
 ==================================
 

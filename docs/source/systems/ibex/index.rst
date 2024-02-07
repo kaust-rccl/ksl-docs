@@ -1,3 +1,8 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Ibex system
+    :keywords: Ibex,login, compute, node, filesystem, interconnect
+    
 .. _ibex_arch:
 
 ==========

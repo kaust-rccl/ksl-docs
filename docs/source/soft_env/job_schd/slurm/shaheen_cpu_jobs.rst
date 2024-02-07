@@ -8,6 +8,10 @@
 CPU jobs
 =========
 
+.. note::
+
+    Page under construction
+
 Serial jobs
 ------------
 

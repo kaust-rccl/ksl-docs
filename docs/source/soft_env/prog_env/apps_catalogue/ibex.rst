@@ -3,6 +3,8 @@
     :description: Applications catalogue on Ibex
     :keywords: Ibex
 
+.. _Ibex_apps:
+
 =============================
 Ibex
 =============================

@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: SLURM commands
+    :keywords: SLURM, dependency, job
+
+.. _slurm_dependecies:
+
+================
 Job Dependency
-----------------
+================
  
 During the workflow development, some of the jobs should be scheduled based on various job dependency conditions like after successful, after termination/failure, after the event etc. upon the previous jobs. The SLURM scheduler uses sbatch command to submit the jobs and it's track the job dependency feature using --dependency (or -d) section. Therefore, the current job dependencies are used to defer the start of a job until the specified dependencies have been satisfied. The general syntax for the job dependency condition is:  
 

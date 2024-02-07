@@ -3,6 +3,7 @@
     :description: gdb4hpc
     :keywords: debugging,gdb4hpc
 
+.. _gdb4hpc:
 
 *******
 gdb4hpc

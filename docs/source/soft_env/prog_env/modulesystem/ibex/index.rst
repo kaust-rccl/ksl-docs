@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Ibex software environment
+    :keywords: Ibex, software
+
+.. _sw_env_ibex:
+
 ==========
 Ibex
 ==========

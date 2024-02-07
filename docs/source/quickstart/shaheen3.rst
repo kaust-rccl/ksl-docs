@@ -1,3 +1,8 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Shaheen3 quickstart guide
+    :keywords: shaheen3, quickstart
+
 .. _quickstart_shaheen3:
 
 ============================

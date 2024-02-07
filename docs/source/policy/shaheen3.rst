@@ -3,6 +3,7 @@
     :description: Policies on Ibex
     :keywords: Policies, policy, Shaheen 3
 
+.. _shaheen3_policies:
 
 ==========
 Shaheen 3

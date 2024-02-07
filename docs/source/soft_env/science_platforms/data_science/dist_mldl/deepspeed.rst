@@ -3,6 +3,8 @@
     :description: MS DeepSpeed
     :keywords: deepspeed
 
+.. _deepspeed:
+
 ================================================
 Microsoft DeepSpeed
 ================================================

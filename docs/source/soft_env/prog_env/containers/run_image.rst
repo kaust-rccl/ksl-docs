@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Interacting with containers
+    :keywords: container, singularity, interactive
+
+.. _running_singularity_image:
+
+=============================
 Running Jobs with Singularity
 =============================
 

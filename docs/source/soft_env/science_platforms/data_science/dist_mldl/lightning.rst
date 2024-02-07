@@ -3,6 +3,8 @@
     :description: Pytorch Lightning
     :keywords: lightning
 
+.. _lightning:
+
 ================================================
 Pytorch Lightning
 ================================================

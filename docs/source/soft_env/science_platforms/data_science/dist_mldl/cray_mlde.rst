@@ -3,6 +3,8 @@
     :description: Cray MLDE
     :keywords: MLDE
 
+.. _cray:
+
 ================================================
 Cray Machine Learning Development Environment
 ================================================

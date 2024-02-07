@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Using coonda with containers
+    :keywords: container, conda
+
+.. _using_conda_containers:
+
+======================================
 Using conda from singularity container
 ======================================
 

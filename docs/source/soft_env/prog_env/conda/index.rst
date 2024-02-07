@@ -5,8 +5,6 @@
 
 .. _conda_intro:
 
-This is a new line
-
 ====================================
 Conda package manager
 ====================================

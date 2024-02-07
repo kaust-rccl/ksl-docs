@@ -1,3 +1,8 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Ibex login quickstart
+    :keywords: ibex, login
+
 .. _quickstart_ibex_login:
 
 ==========================
@@ -20,7 +25,7 @@ Logging into Ibex
 
     ssh -X username@glogin.ibex.kaust.edu.sa
 
-.. _quickstart_jobscript:
+.. _quickstart_ibex_jobscript:
 
 Submitting your first Jobscripts
 ================================

@@ -3,6 +3,8 @@
     :description: Big data processing
     :keywords: Dask, pyspark, mpi4py
 
+.. _bigdata:
+
 ==========================================
 Big data processing on KSL platform
 ==========================================

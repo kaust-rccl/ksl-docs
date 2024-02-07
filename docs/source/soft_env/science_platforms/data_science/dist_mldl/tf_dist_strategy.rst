@@ -3,6 +3,8 @@
     :description: Tensoflow distributed
     :keywords: tensorflow
 
+.. _tf_dist:
+
 =====================================================
 Distributed Deep Learning with Tensorflow 2.x
 =====================================================

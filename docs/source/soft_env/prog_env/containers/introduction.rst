@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Intro to containers
+    :keywords: container, singularity
+
+.. _intro_to_containers:
+
+===============================================
 Using Containers in Modern Software Development
 ===============================================
 

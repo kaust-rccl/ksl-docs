@@ -1,3 +1,9 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Data transfer guide
+    :keywords: ksl, data, transfer, scp, sftp, rsync, lftp
+
+.. _data_transfer:
 
 ==========================
 Data transfer utilities

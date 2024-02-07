@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: using nvprof
+    :keywords: nvprof
+
+.. _nvprof:
+
+=============
 Using nvprof
-------------
+=============
 nvprof is a popular profiling tool that can profile GPU workloads on NVIDIA GPUs. It is bundled with the CUDA toolkit and can be used from the command line or in a jobscript. When used in a jobscript, an output file with the ``.nvvp`` extension is created at the end of the profile. This file can then be opened in NVIDIA's Visual Profiler ``nvvp``.
 
 The following is an example jobscript to generate the profile. The training script trains ``resnet50`` from scratch using `tiny imagenet <https://tiny-imagenet.herokuapp.com/>`_ (200 classes) for 1st epoch. 

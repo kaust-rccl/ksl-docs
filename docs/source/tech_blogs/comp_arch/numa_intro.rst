@@ -9,3 +9,8 @@
 Non Uniform Memory Access (NUMA) on multiple sockets in a compute node
 =======================================================================
 
+
+.. note::
+
+    Page under construction
+

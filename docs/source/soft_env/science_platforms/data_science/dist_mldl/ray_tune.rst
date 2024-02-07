@@ -3,6 +3,8 @@
     :description: HPO with Ray Tune
     :keywords: ray tune
 
+.. _ray_tune:
+
 =====================================================
 Ray Tune for Hyperparameter Optimization experiments
 =====================================================

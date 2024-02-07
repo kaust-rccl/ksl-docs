@@ -3,6 +3,8 @@
     :description: Applications catalogue on Shaheen 2
     :keywords: Shaheen
 
+.. _shaheen2_apps:
+
 =============================
 Shaheen 2
 =============================

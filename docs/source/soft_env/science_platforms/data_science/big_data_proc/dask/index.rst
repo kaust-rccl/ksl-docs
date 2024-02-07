@@ -3,6 +3,8 @@
     :description: Dask
     :keywords: dask, dask_mpi, dask_array, xarray
 
+.. _dask:
+
 ==========================================
 Dask
 ==========================================

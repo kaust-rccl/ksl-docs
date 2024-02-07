@@ -3,6 +3,8 @@
     :description: Profiling ML/DL on on CPU and GPUs
     :keywords: profiling, performance
 
+.. _prof_tuning:
+
 ==========================================
 Profiling and performance tuning 
 ==========================================

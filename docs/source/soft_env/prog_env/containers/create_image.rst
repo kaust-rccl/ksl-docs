@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Creating singularity container
+    :keywords: container, singularity, create
+
+.. _create_singularity_images:
+
+===============================
 Creating Singularity Containers
 ===============================
 

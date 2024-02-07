@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Utilizing remote filesystems
+    :keywords: remote, filesystem, smb
+
+.. _remote_filesystems:
+
 =============================================
 Mounting remote filesystems on workstations
 =============================================

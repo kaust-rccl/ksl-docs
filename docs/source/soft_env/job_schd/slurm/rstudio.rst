@@ -1,3 +1,12 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: using Rstudio
+    :keywords: Rstudio
+
+.. _rstudio:
+
+
+=============
 R Studio
 =============
 

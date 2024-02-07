@@ -3,9 +3,15 @@
     :description: Applications catalogue on Shaheen3
     :keywords: Shaheen3
 
+.. _shaheen3_apps_catalogue:
+
 =============================
 Shaheen 3
 =============================
+
+.. note::
+
+    Page under construction
 
 Compilers
 ----------

@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Machine learning module on Ibex
+    :keywords: Ibex, ml, machine, conda, pip, environment
+
+.. _ml_on_ibex:
+
+============================
 Ibex Machine Learning Module
 ============================
 

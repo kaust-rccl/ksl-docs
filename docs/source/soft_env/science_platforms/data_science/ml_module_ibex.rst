@@ -3,6 +3,8 @@
     :description: Machine Learning module
     :keywords: pytorch, lightning, machine learning, deep learning, dask, rapids
 
+.. _ibex_ml_module:
+
 =================================
 Machine Learning module on Ibex
 =================================

@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Launching jupyter
+    :keywords: jupyter
+
+.. _using_jupyter:
+
+====================
 Jupyter Notebooks
 ====================
 

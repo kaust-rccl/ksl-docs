@@ -1,3 +1,8 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Quickstart Guides
+    :keywords: Ibex, Shaheen3, guide, quickstart
+
 .. _quickstart:
 
 =========================
