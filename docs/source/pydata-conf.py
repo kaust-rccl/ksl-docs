@@ -28,6 +28,8 @@ intersphinx_mapping = {
 intersphinx_disabled_domains = ['std']
 
 templates_path = ['_templates']
+html_static_path = ['static']
+
 
 # -- Options for HTML output
 
@@ -52,6 +54,15 @@ html_theme_options = {
 html_sidebars = {
     "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
 }
+
+html_context = {
+    'css_files': [
+        '_static/css/custom.css',
+    ],
+}
+
+
+
 html_show_sourcelink = False
 
 # -- Options for EPUB output
@@ -61,5 +72,5 @@ highlight_language = 'bash'
 highlight_options = {'stripall': True}
 
 
-googleanalytics_id = 'G-4YML7KSJ4F'
+googleanalytics_id = 'G-H11YYZJX1B'
 googleanalytics_enabled=True

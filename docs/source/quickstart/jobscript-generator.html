@@ -1,0 +1,364 @@
+<div class="row">
+    <div class="col-lg-12">
+<table border=0  bgcolor="#FFFFF">
+    <tr>
+  <td>
+<tr>
+  <td><div id="appname-group" class="form-group">
+    <label class="control-label">Application Executable</label>
+    </td><td><input id="appname-text" class="form-control" value="Myapp" type="text">
+  </div></td>
+  <td rowspan=40 valign=top >
+    <div class="col-md-6" id="panel-controls">
+      <div id="output-group" class="form-group">
+    <textarea class="form-control" rows="28" cols=80 id="script-output"  readonly="true">Your Shaheen II SLURM script will be displayed here.</textarea>
+      </div>
+    </div>
+
+  </td>  
+    
+</tr>
+<tr><td><div id="jobname-group" class="form-group">
+    <label class="control-label">Job Name</label>
+    </td><td><input id="jobname-text" class="form-control" value="MyJob" type="text">
+</div></td></tr>
+<tr><td><div id="email-group" class="form-group">
+    <label class="control-label">Email Address to get notified</label>
+    </td><td width=200px><input id="email-text" class="form-control" type="email" value="@kaust.edu.sa">
+</div></td></tr>
+<tr><td><div id="project-group" class="form-group">
+    <label class="control-label">Project</label>
+    </td><td><input id="project-text" class="form-control" type="text" value='k????'>
+</div></td></tr>
+<tr><td colspan=2><span><div id="time-group" class="form-group">
+    <label class="control-label">Wallclock Time (duration of job)</label></td></tr>
+    <tr><td colspan=2 >
+                       <table> <tr><td>
+                           <div class="col-md-4">
+              <input id="wc-hours-text" size=3 class="form-control" width=3 min="0" value="0" type="number">
+              <span class="help-block">hours</span>  
+                              </div>
+                             </td></tr><tr><td>
+                              <div class="col-md-4">
+        <input id="wc-minutes-text"  size=3  class="form-control" width=3 min="0" max="59" value="30" type="number">
+        <span class="help-block">minutes</span>
+                              </div>
+                             </td></tr><tr><td>
+       <div class="col-md-4">
+        <input id="wc-seconds-text"  size=3 class="form-control" width=3 min="0" max="59" value="0" type="number">
+        <span class="help-block">seconds</span>
+    </div>
+                     </td></tr></table>
+                   </td></tr>
+</div>
+<tr><td><div id="partitions-group" class="form-group">
+    <label class="control-label">Partition</label> </td><td>
+    <select id="partition-select" class="form-control jobform">
+        <option selected="selected" value="workq">workq</option>
+        <option value="debug">debug</option>
+        <option value="72hours">72hours</option>
+    </select>
+</div></td></tr>
+<tr><td><div id="nodes-group" class="form-group">
+    <label class="control-label">Total number of (MPI) processes  </label></td><td>
+    <input id="ntasks-text" class="form-control" min="1" value="32" type="number">
+                    <label id="warning-text1" style="color: red"></label>
+</div></td></tr>
+<tr><td><div id="nodes-group" class="form-group">
+      <label class="control-label">number of processes per node </label></td><td>
+    <input id="ntasks_per_node-text" class="form-control" min="1" value="32" type="number">
+                <label id="warning-text2" style="color: red"></label>
+</div></td></tr>
+<tr><td><div id="nodes-group" class="form-group">
+      <label class="control-label">(OpenMP) threads per process </label></td><td>
+    <input id="threads-text" class="form-control" min="1" value="1" type="number">
+                <label id="warning-text3" style="color: red"></label>
+</div></td></tr>
+<tr><td colspan=3>        
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+            </td></tr>
+            <tr> <td colspan=4>
+    <input id="generate-button" value="Generate Script" class="btn btn-submit btn-primary btn-block" onclick="javascript: generateScript();" type="submit">
+         </td> </tr> </table>
+        
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+
+$=jQuery.noConflict();
+
+var machine;
+var maxnnodes;
+var maxnsockets;
+var maxncores;
+var maxncoreseff;
+var maxnht;
+var maxnhteff;
+var active;
+var nranks_broadcast=100;
+var whole_time = 0;
+
+//machine specific stuff
+var machinespecs = {
+        'shaheen': {'maxnnodes': 5576, 'maxnsockets': 2, 'maxncores': 24, 'maxnht': 2, 'nranks_bc': 50000 },
+        'cori-hsw': {'maxnnodes': 1630, 'maxnsockets': 2, 'maxncores': 32, 'maxnht': 2, 'nranks_bc': 50000 },    
+        'cori-knl': {'maxnnodes': 9300, 'maxnsockets': 1, 'maxncores': 68, 'maxnht': 4, 'nranks_bc': 20000 }
+        };
+
+
+function checkActive(){
+active=$('#mode-nav li.active')[0].id.split("-")[0];
+}
+
+
+function documentCallback(){
+
+checkActive();
+updateMachinePars();
+
+//adjust the number of available hyperthreads based on machine
+$('#machine-select').change(function(){
+checkActive();
+updateMachinePars();
+});
+
+$('.nav-tab-button').click(function(){
+checkActive();
+//swap results because
+if(active=='basic') active='advanced';
+else active='basic';
+});
+}    
+
+function parseTime(){
+var h=Number($('#wc-hours-text').val());
+var m=Number($('#wc-minutes-text').val());
+var s=Number($('#wc-seconds-text').val());
+
+//some pretty formatting:
+hours=h.toString();
+minutes=m.toString();
+seconds=s.toString();
+if(h<10) hours='0'+hours;
+if(m<10) minutes='0'+minutes;
+if(s<10) seconds='0'+seconds;
+
+whole_time  = (h*60+m)*60+s;
+
+return hours+':'+minutes+':'+seconds;
+}
+
+
+function updateMachinePars(){
+
+//create handle
+$machineselect=$('#machine-select');
+$hyperthreadsselect=$('#hyperthreads-select-advanced');
+
+machine = "shaheen"
+//machine=$machineselect.val();
+var specs=machinespecs[machine];
+
+//remove hyperthread content:
+$hyperthreadsselect.find('option').remove();
+
+//repopulate ht content
+maxnht=specs['maxnht'];
+for(var i=1; i<=maxnht; i++){
+$hyperthreadsselect.append($('<option/>', { value: i, text: i.toString()}));
+}
+
+//get the other maximal counts
+maxnnodes=specs['maxnnodes'];
+maxncores=specs['maxncores'];
+maxnsockets=specs['maxnsockets'];
+
+//remove nodeconfig menu
+$('#memconfig-group').remove();
+$('#sncconfig-group').remove();
+
+
+}
+
+function generateScriptHead(jobname,email,project,time,partition,nnodes,sncconf,memconf){
+var mytext='#!/bin/bash\n';
+mytext+='#SBATCH -N '+nnodes.toString()+'\n';
+
+mytext+='#SBATCH --partition='+partition+'\n';
+
+if (partition=='72hours') {
+mytext += '#SBATCH --qos=72hours\n';
+}
+
+if(jobname!=''){
+mytext+='#SBATCH -J '+jobname+'\n'
+}
+if(email!='@kaust.edu.sa'){
+mytext+='#SBATCH --mail-user='+email+'\n'
+mytext+='#SBATCH --mail-type=ALL\n'
+}
+if(project!='k????'){
+mytext+='#SBATCH -A '+project+'\n'
+}
+
+if (time!='') {
+if ((partition=='debug') && (whole_time>1800))  {
+alert('Debug partition is limited to 30 min...\n Forcing this time in the script...');
+mytext+='#SBATCH -t 0:30:00 \n'
+} else {
+mytext+='#SBATCH -t '+time+'\n'
+}
+}
+
+mytext+='\n';
+
+return mytext;
+}
+
+
+function generateScript(){
+//common stuff
+//var machine=$('#machine-select').val();
+var machine="shaheen";
+var appname=$('#appname-text').val();
+var jobname=$('#jobname-text').val();
+var email=$('#email-text').val();
+var project=$('#project-text').val();
+var time=parseTime();
+var partition=$('#partition-select').val();
+var nnodes=Number($('#nodes-text').val());
+var ntasks=Number($('#ntasks-text').val());
+var ntasks_per_node=Number($('#ntasks_per_node-text').val());
+var ntasks_per_node=Number($('#ntasks_per_node-text').val());
+var cpus_per_task=Number($('#threads-text').val());
+//alert('ntasks:'+ntasks+'\nntasksn_per_node:'+ntasks_per_node);
+
+
+//specific stuff
+var nprocs=Number($('#process-text-basic').val());
+var nthreads=Number($('#threads-text-basic').val());
+var sncconf=$('#sncconfig-select').val();
+var memconf=$('#memconfig-select').val();
+nnodes = Math.ceil(ntasks/ntasks_per_node);
+if(validateIntegers(ntasks,ntasks_per_node,cpus_per_task)==0){
+if(validateFormBasic(nnodes,nprocs,nthreads,sncconf,memconf)==0){
+var headstring=generateScriptHead(jobname,email,project,time,partition,nnodes,sncconf,memconf);
+if(nnodes*nprocs>=machinespecs[machine]['nranks_bc']){
+var arr=generateBroadcastScript(appname);
+appname=arr[0];
+headstring+=arr[1];
+}
+outputScriptBasic(headstring,appname,nnodes,ntasks,ntasks_per_node,cpus_per_task,nprocs,nthreads,sncconf,memconf);
+}
+}
+
+}
+
+function validateIntegers(nTasks,nTasksNodes,nThreads) {
+var flag=0;
+document.getElementById("warning-text1").innerHTML="";
+document.getElementById("warning-text2").innerHTML="";
+document.getElementById("warning-text3").innerHTML="";
+if(!(Number.isInteger(nTasks))){
+document.getElementById("warning-text1").innerHTML="Please enter an integer!";
+flag=1;
+}
+if(!(Number.isInteger(nTasksNodes))){
+document.getElementById("warning-text2").innerHTML="Please enter an integer!";
+flag=1;
+}
+if(!(Number.isInteger(nThreads))){
+document.getElementById("warning-text3").innerHTML="Please enter an integer!";
+flag=1;
+}
+return flag;
+}
+
+function validateFormBasic(nnodes,nprocs,nthreads,sncconf,memconf){
+//check for errors
+var errorcount=0;
+
+//check for number of nodes:
+//init
+$('.nodes-error-message').remove();
+var $elem=$('#nodes-group');
+$elem[0].setAttribute('class', 'form-group');
+//tests
+if( (nnodes>maxnnodes) || (nnodes<1) ){
+$elem[0].setAttribute('class', 'form-group has-error');
+if(nnodes<1) errormessage='you have to specify at least one node.';
+else errormessage='there are only '+maxnnodes.toString()+' available on '+machine;
+$elem.append('<div class="nodes-error-message"><span class="help-block">Error: '+errormessage+'</span></div>');
+errorcount++;
+}
+
+//compute effective cores based on numbers of processes:
+var factor=1;
+var nht;
+//if( (machine=='cori-knl') && (sncconfig=='snc2') ) factor=2;
+if(nprocs>(maxncores*maxnht)){
+maxncoreseff=0;
+nht=0;
+}
+else{
+maxncoreseff=Math.max(Math.floor(maxncores/(factor*nprocs)),1);
+nht=Math.floor(nthreads/maxncoreseff);
+}
+
+//check for processes per node:
+//init
+$('.procs-info-message').remove();
+$('.procs-error-message').remove();
+
+return errorcount;
+}
+
+
+function outputScriptBasic(mytext,appname,nnodes,ntasks,ntasks_per_node,cpus_per_task,nprocs,nthreads,sncconf,memconf){
+
+//number of threads
+mytext+='#OpenMP settings:\n'
+mytext+='export OMP_NUM_THREADS='+(cpus_per_task).toString()+'\n';
+// //places
+// mytext+='export OMP_PLACES=threads\n';
+// //proc bind
+// mytext+='export OMP_PROC_BIND=spread\n';
+mytext+='\n\n';
+//srun string
+mytext+='#run the application:\n'
+mytext+='srun --hint=nomultithread --ntasks='+(ntasks).toString()
+      + ' --ntasks-per-node='+(ntasks_per_node).toString()
+      + ' --ntasks-per-socket='+(Math.round(ntasks_per_node/2)).toString()
+      + ' --cpus-per-task='+(cpus_per_task).toString()
+          + ' --ntasks-per-core=1 --mem-bind=v,local';
+//cpu binding:
+//if(machine!='shaheen'){
+if(nprocs<=maxncores) mytext+=' --cpu-bind=cores';
+else mytext+=' --cpu-bind=threads';
+//}
+//haswell-specific MPI layouting
+//if(machine=='cori-hsw') mytext+=' -m block:cyclic';
+//membind
+if( (machine=='cori-knl') && (memconf=='flat') ){
+if(sncconf=="quad") mytext+=' numactl -p 1';
+else mytext+=' numactl -m 2,3';
+}
+//application
+mytext+=' '+appname+'\n';
+
+$('#script-output').text(mytext);
+}
+
+myCheckAuth();
+function checkAuthCallback() {
+documentCallback();      }
+</script>

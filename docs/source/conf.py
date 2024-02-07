@@ -37,22 +37,23 @@ html_theme = 'pydata_sphinx_theme'
 html_logo = './static/KAUST_logo.png'
 html_favicon = './static/KAUST_logo.png'
 html_theme_options = {
-    "icon_links": [
-        {
-            "name": "GitHub",
-            "url": "https://github.com/kaust-rccl/ksl-docs/",
-            "icon": "fa-brands fa-github",
-        },
+#    "icon_links": [
+#        {
+#            "name": "GitHub",
+#            "url": "https://github.com/kaust-rccl/ksl-docs/",
+#            "icon": "fa-brands fa-github",
+#        },
 
-    ],
-    "announcement": 'Checkout, <a href="https://mynewsletter.com/"> Tip of the Week</a>!',
+#    ],
+
+    "announcement": 'Checkout, <a href="https://docs.hpc.kaust.edu.sa/faqs"> Frequently Asked Questions</a>!',
     "footer_start": False,
     "footer_end": False,
-    "show_toc_level": 2
+    "show_toc_level": 2,
     
 }
 html_sidebars = {
-    "**": ["search-field.html", "sidebar-nav-bs.html", "sidebar-ethical-ads.html"]
+    "**": ["search-field.html", "sidebar-nav-bs.html", ]
 }
 
 html_context = {
@@ -72,5 +73,5 @@ highlight_language = 'bash'
 highlight_options = {'stripall': True}
 
 
-googleanalytics_id = 'G-4YML7KSJ4F'
+googleanalytics_id = 'G-H11YYZJX1B'
 googleanalytics_enabled=True

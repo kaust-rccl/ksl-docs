@@ -1,13 +1,13 @@
-.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>, Moamen Mohamed <moamen.mohamed@kaust.edu.sa>
 .. meta::
-    :description: Conda walkthrough
+    :description: Conda Ibex
     :keywords: Ibex, conda
 
-.. _ibex_conda_guide:
+.. _conda_ibex_:
 
-===================
-Using conda on Ibex 
-===================
+========================
+Using ``conda`` on Ibex 
+========================
 
 Getting Started
 ---------------
