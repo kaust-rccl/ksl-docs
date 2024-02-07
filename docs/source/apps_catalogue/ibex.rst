@@ -1,9 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>, Moamen Mohamed <moamen.mohamed@kaust.edu.sa>
 .. meta::
     :description: Applications catalogue on Ibex
-    :keywords: Ibex, application
-
-.. _ibex_apps_catalogue:
+    :keywords: Ibex
 
 =============================
 Ibex

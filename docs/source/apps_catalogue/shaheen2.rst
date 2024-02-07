@@ -1,9 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>, Moamen Mohamed <moamen.mohamed@kaust.edu.sa>
 .. meta::
-    :description: Applications catalogue on Shaheen2
+    :description: Applications catalogue on Shaheen 2
     :keywords: Shaheen
-
-.. _shaheen2_apps_catalogue:
 
 =============================
 Shaheen 2
