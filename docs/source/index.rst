@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Main page
+    :keywords: 
+
+.. _main_index:
+
 ========================================================
 KAUST Supercomputing Core Labs 
 ========================================================

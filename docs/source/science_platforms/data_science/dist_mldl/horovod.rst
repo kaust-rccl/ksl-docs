@@ -3,6 +3,8 @@
     :description: Horovod
     :keywords: Horovod
 
+.. _horovod:
+
 ================================================
 Horovod for Distributed Data Parallel training
 ================================================

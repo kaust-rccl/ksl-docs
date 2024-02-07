@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Singularity registries
+    :keywords: container, singularity, registry
+
+.. _singularity_image_regestries:
+
+=======================================
 Using Image Registries with Singularity
 =======================================
 

@@ -3,6 +3,7 @@
     :description: Debugging
     :keywords: debugging
 
+.. _debugging_tools:
 
 #########
 Debugging

@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Nsight systems
+    :keywords: debugging, profiling, cuda, nsight
+
+.. _nsight_systems:
+
 ==============
 Nsight-systems
 ==============

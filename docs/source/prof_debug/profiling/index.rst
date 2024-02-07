@@ -3,6 +3,7 @@
     :description: Profiling
     :keywords: profiling
 
+.. _profiling_tools:
 
 #########
 Profiling

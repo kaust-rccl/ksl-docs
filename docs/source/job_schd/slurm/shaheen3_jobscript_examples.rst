@@ -3,6 +3,7 @@
     :description: Example jobscripts
     :keywords: SLURM, MPI, OpenMP, GPU
 
+.. _shaheen3_job_examples:
 
 ========================================================
 Shaheen 3 example jobscripts

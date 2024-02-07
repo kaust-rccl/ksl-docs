@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Running Jupyter Notebooks
+    :keywords: Jupyter, Ibex
+
+.. _ibex_jupyter:
+
+=================
 Jupyter Notebooks
-====================
+=================
 
 Here We explain how to launch Jupyter Notebooks on compute node on Ibex as a server and run the Jupyter client in the local browser on your laptop/workstation.
 

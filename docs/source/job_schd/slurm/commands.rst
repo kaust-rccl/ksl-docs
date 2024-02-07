@@ -3,6 +3,8 @@
     :description: SLURM commands
     :keywords: SLURM,job scheduling
 
+.. _slurm_common_commands:
+
 ================
 Common commands
 ================

@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Slurm job dependencies
+    :keywords: slurm, dependencies
+
+.. _slurm_dependecies:
+
 Job Dependency
 ----------------
  

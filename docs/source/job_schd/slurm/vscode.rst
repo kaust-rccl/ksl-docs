@@ -3,7 +3,7 @@
     :description: SLURM Documentation
     :keywords: SLURM
 
-.. _vscode:
+.. _ibex_vscode:
 
 =========
 VScode 

@@ -3,6 +3,7 @@
     :description: Example jobscripts
     :keywords: SLURM, MPI, OpenMP, GPU
 
+.. _ibex_job_examples:
 
 ========================================================
 Ibex example jobscripts

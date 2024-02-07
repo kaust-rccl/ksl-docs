@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Slurm job arrays
+    :keywords: slurm, array
+
+.. _ibex_slurm_jobarray:
+
+==========
 Job Arrays 
---------------------
+==========
 Submitting Arrays
 Array jobs are much like single job submissions with a few exceptions:
 

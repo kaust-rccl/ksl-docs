@@ -3,6 +3,8 @@
     :description: Data science platform
     :keywords: pytorch, lightning, machine learning, deep learning, dask, rapids
 
+.. _ds_platforms:
+
 ==============================
 Data Science platform
 ==============================

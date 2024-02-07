@@ -3,6 +3,8 @@
     :description: Scikit Learn parallel
     :keywords: sklearn, ml, svm, knn, random forest, grid search
 
+.. _sklearn_parallel:
+
 =====================================================
 Accelerating Machine Learning with Scikit Learn
 =====================================================

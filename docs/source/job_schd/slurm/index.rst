@@ -3,6 +3,7 @@
     :description: SLURM Documentation
     :keywords: SLURM
     
+.. _ibex_slurm:
 
 ==============================
 SLURM

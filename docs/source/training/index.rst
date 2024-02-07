@@ -3,6 +3,8 @@
     :description: Training Catalogue
     :keywords: Training, Shaheen, Ibex, Neser
 
+.. _user_training:
+
 ========================
 User Training Catalogue
 ========================

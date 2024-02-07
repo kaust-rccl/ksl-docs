@@ -3,9 +3,15 @@
     :description: Applications catalogue on Neser
     :keywords: Neser
 
+.. _nesser_apps_catalogue:
+
 =============================
 Neser 
 =============================
+
+.. note::
+
+    Page under construction
 
 Compilers
 ----------

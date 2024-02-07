@@ -1,3 +1,8 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: KSL platforms quickstart guide
+    :keywords: shaheen3, Ibex, Neser, quickstart
+
 .. _quickstart:
 
 ==================

@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Training Resources
+    :keywords: training, resource, guide, Matlab, slurm
+
+.. _ibex_user_resources:
+
 ============================================================
 Ibex User Resources
 ============================================================

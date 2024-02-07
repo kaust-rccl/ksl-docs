@@ -3,6 +3,8 @@
     :description: Complex workflows with SLURM
     :keywords: SLURM, dependencies, jobarrays, 
 
+.. _slurm_complex_workflows:
+
 Complex workflows with SLURM
 ========================================================
 .. toctree::

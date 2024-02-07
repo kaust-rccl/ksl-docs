@@ -3,6 +3,8 @@
     :description: Deep Learning with Matlab
     :keywords: matlab, gpus, deep learning
 
+.. _matlab_dl:
+
 ================================================
 MATLAB Deep Learning Toolbox
 ================================================

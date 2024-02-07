@@ -1,6 +1,6 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
-    :description: High Speed Network on KSL platforms
+    :description: High Speed Network on KSL platforms 
     :keywords: CPUs, GPUs, Shaheen 3, Ibex, Compute nodes
     
 

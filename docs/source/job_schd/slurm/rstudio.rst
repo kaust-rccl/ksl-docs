@@ -1,5 +1,13 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Launching Rstudio
+    :keywords: rstudio
+
+.. _ibex_rstudio:
+
+========
 R Studio
-=============
+========
 
 RStudio Server is a client/server version of RStudio that runs on a remote server and is accessed via the client’s web browser
 

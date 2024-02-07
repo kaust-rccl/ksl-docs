@@ -3,6 +3,8 @@
     :description: Profiling and Debugging tools available on KSL systems
     :keywords: Profiling, Debugging, CrayPAT, DDT, map, perf-report, MICRO-prof, nsight
 
+.. _prof_debug_tools:
+
 ==============================
 Profiling and Debugging tools
 ==============================

@@ -5,8 +5,9 @@
     
 .. _ibex_wekaio:
 
+===========
 WekaIO FS
----------
+===========
 
 
 What is Weka IO?

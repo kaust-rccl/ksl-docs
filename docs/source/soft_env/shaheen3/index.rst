@@ -1,3 +1,10 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Shaheen 3 software environment
+    :keywords: shaheen3, software
+
+.. _shaheen3_sw_env:
+
 ==========
 Shaheen 3 
 ==========
@@ -55,27 +62,62 @@ Cray, AMD, and GCC compiler toolchains are provided through modules.
 The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
 Regardless of the underlying compiler, the user must use the compiler wrappers ``cc``, ``CC``, and ``ftn`` depending on the programming language as seen in the table below:
 
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| Vendor | Programming Environment | Compiler Module | Language | Compiler Wrapper  | Compiler                        |
-+========+=========================+=================+==========+===================+=================================+
-| Cray   | ``PrgEnv-cray``         | ``cce``         | C        | ``cc``            | ``craycc``                      |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``craycxx`` or ``crayCC``       |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``crayftn``                     |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| GCC    | ``PrgEnv-gnu``          | ``gcc``         | C        | ``cc``            | ``gcc``                         |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``g++``                         |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``gfortran``                    |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| AMD    | ``PrgEnv-amd``          | ``amd``         | C        | ``cc``            | ``amdclang``                    |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``amdclang++``                  |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``amdflang``                    |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 15 30 20 10 10 30
+
+   * - Vendor
+     - Programming Environment
+     - Compiler Module
+     - Language
+     - Compiler Wrapper
+     - Compiler
+   * - Cray
+     - ``PrgEnv-cray``
+     - ``cce``
+     - 
+       - C
+       - C++
+       - Fortran
+     - 
+       - ``cc``
+       - ``CC``
+       - ``ftn``
+     - 
+       - ``craycc``
+       - ``craycxx`` or ``crayCC``
+       - ``crayftn``
+   * - GCC
+     - ``PrgEnv-gnu``
+     - ``gcc``
+     - 
+       - C
+       - C++
+       - Fortran
+     - 
+       - ``cc``
+       - ``CC``
+       - ``ftn``
+     -   
+       - ``gcc``
+       - ``g++``
+       - ``gfortran``
+   * - AMD
+     - ``PrgEnv-amd``
+     - ``amd``
+     - 
+       - C
+       - C++
+       - Fortran
+     - 
+       - ``cc``  
+       - ``CC``
+       - ``ftn``
+     -  
+       - ``amdclang``
+       - ``amdclang++``
+       - ``amdflang``
+
 
 As seen above, the compiler wrappers do not change according to different compilers.
 However, one can directly call the underlying compiler under some circumstances.

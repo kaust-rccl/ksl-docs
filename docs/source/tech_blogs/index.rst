@@ -3,6 +3,8 @@
     :description: Collection of technical articles and blogs written by KSL Computational Scientists
     :keywords: Shaheen 3, Ibex 
 
+.. _KSL_tech_blogs:
+
 =============================
 Technical Articles and Blogs
 =============================

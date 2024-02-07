@@ -3,6 +3,8 @@
     :description: Applications catalogue on KSL systems
     :keywords: Install software, Shaheen, Ibex, Neser
 
+.. _app_catalogues:
+
 =======================
 Applications catalogue
 =======================

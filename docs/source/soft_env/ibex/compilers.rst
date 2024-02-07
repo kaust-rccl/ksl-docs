@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Compilers availble on Ibex
+    :keywords: Ibex, compilers, gcc, nvcc, intel
+
+.. _compilers_on_ibex:
+
+===============
 Compiler suites
 ===============
 

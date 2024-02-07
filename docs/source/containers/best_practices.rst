@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Containers best practices on Ibex
+    :keywords: container, optimization
+
+.. _singularity_best_practices:
+
+=====================================
 Best Practices for Singularity in HPC
 =====================================
 

@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Data management with singularity
+    :keywords: container, singularity, data, manage
+
+.. _singularity_data_mapping:
+
+==========================================
 Using Bind Mounts and ACLs in Singularity
 ==========================================
 

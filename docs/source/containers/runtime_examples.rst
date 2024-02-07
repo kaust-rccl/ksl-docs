@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Container examples
+    :keywords: container, singularity, example, jobscirpt
+
+.. _container_jobscript_examples:
+
+==========================
 Container runtime examples
 ==========================
 

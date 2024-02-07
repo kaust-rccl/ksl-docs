@@ -3,6 +3,7 @@
     :description: valgrind4hpc
     :keywords: debugging,valgrind4hpc,memory,leak
 
+.. _valgrind4hpc:
 
 ************
 valgrind4hpc

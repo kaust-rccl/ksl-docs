@@ -3,6 +3,8 @@
     :description: CFD Platform
     :keywords: ansys, openfoam, converge, meshing, postprocessing
 
+.. _cfd:
+
 ======================================
 Computational Fluid Dynamics platform
 ======================================

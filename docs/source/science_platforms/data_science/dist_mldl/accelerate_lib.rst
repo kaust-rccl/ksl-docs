@@ -3,6 +3,8 @@
     :description: Accelerate lib by Hugging Face
     :keywords: accelerate
 
+.. _accelerate:
+
 ==========================================
 Accelerate API by Hugginface
 ==========================================

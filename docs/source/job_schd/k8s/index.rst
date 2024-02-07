@@ -3,6 +3,7 @@
     :description: Kubernetes Documentation
     :keywords: Kubernetes, k8s, pods, services
     
+.. _k8s_guide:
 
 ==============================
 Kubernetes

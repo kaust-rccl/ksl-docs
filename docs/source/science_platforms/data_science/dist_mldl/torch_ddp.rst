@@ -3,6 +3,8 @@
     :description: PyTorch distributed
     :keywords: pytorch
 
+.. _torch_ddp:
+
 =====================================================
 PyTorch Distributed Data Parallel (DDP)
 =====================================================

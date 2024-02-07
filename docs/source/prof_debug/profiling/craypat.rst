@@ -3,6 +3,7 @@
     :description: Cray Performance Measurement and Analysis Tools (CrayPat)
     :keywords: craypat
 
+.. _craypat:
 
 #########################################################
 Cray Performance Measurement and Analysis Tools (CrayPat)

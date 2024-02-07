@@ -3,6 +3,8 @@
     :description: Distributed Deep Learning 
     :keywords: DDP, lightning, deepspeed, mlde
 
+.. _dist_ml:
+
 ===========================================================
 Distributed ML/DL on KSL systems
 ===========================================================

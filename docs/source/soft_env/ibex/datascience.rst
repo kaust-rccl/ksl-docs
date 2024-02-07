@@ -1,3 +1,11 @@
+.. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
+.. meta::
+    :description: Data science FAQs
+    :keywords: Ibex, faqs, data, conda, pip
+
+.. _ds_ibex:
+
+====================
 Data Science on Ibex
 ====================
 

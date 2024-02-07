@@ -3,6 +3,8 @@
     :description: Bioscience platform
     :keywords: blast, bam, sam,
 
+.. _bioscience:
+
 ======================================
 Bioscience platform
 ======================================
