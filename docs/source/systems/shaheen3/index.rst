@@ -3,7 +3,7 @@
     :description: Shaheen3 system
     :keywords: Shaheen3, login, compute, node, filesystem, interconnect
     
-.. _ibex_arch:
+.. _shaheen3_arch:
 
 ==========
 Shaheen 3

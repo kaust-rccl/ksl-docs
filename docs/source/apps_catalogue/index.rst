@@ -17,7 +17,6 @@ More thought is required to device an automated mechanism to scan the installed 
    :maxdepth: 1
    :hidden:
 
-   shaheen2
+   
    shaheen3
-   neser
    ibex

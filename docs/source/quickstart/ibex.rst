@@ -25,7 +25,7 @@ Logging into Ibex
 
     ssh -X username@glogin.ibex.kaust.edu.sa
 
-.. _quickstart_jobscript:
+.. _quickstart_ibex_jobscript:
 
 Submitting your first Jobscripts
 ================================
