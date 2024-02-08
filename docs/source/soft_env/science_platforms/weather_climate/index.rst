@@ -9,12 +9,11 @@
 Weather and Climate platform
 ==============================
 
-.. note::
+The following recipes are available for building weather and climate software on Shaheen 3:
 
-    Page under construction
+.. toctree::
+      :titlesonly:
+      :maxdepth: 1
 
-- This is a page tree where we can showcase the ways Weather and Climate scientists can use KSL systems easily
-- This gives us a motivation to define an opinionated software enviroment activated with mimimal commands
-- We also create content of example workflows related to e.g. weather data processing, and hyperlink to resources documented on other pages in this website.
-
+      wrf4.5.2
 
