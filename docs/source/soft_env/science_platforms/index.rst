@@ -20,3 +20,4 @@ This is a driectory to document domain specific user guides and best practices.
     cfd_platform/index
     weather_climate/index
     bioscience/index
+    chemistry/index
