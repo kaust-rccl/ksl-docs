@@ -8,7 +8,7 @@
 ======================================
 Bioscience platform
 ======================================
-
+- Naga updading here
 
 - Quickstart guide releated specifically to assest related to Bioscience install on KSL systems
 - Curated example and tutorials along with jobscripts
