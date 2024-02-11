@@ -5,9 +5,9 @@
 
 .. _conda_shaheen3:
 
-===============================
+======================================
 Installation of ``conda`` on Shaheen 3 
-===============================
+======================================
 
 The following steps demonstrate the installation of conda on Shaheen 3 Lustre:
 

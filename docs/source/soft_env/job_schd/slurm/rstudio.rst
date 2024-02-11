@@ -21,7 +21,11 @@ Starting with Rstudio
 
 .. code-block:: bash
     :caption: Example for RStudio SLURM job script
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> refs/remotes/origin/dev
     #!/bin/bash
     #SBATCH -N 1
     #SBATCH --time=01:00:00
@@ -31,11 +35,20 @@ Starting with Rstudio
     #SBATCH --error=rstudio-server.job%j.error
 
     # load singularity module
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/dev
     module load singularity
 
     # Pull singularity image
     singularity pull docker://ranaselim8/rstudio-server:4.0.5
     ###################################
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/remotes/origin/dev
     # Create temporary directory to be populated with directories to bind-mount in the container
     # where writable file systems are necessary. Adjust path as appropriate for your computing environment.
     workdir=$(python -c 'import tempfile; print(tempfile.mkdtemp())')
@@ -81,7 +94,11 @@ Starting with Rstudio
 
     and point your web browser to http://localhost:${PORT}
 
+<<<<<<< HEAD
     1. log in to RStudio Server using the following credentials:
+=======
+    2. log in to RStudio Server using the following credentials:
+>>>>>>> refs/remotes/origin/dev
 
     user: ${SINGULARITYENV_USER}
     password: ${SINGULARITYENV_PASSWORD}
@@ -96,6 +113,7 @@ Starting with Rstudio
 
     singularity exec --cleanenv rstudio-server_4.0.5.sif \
     rserver --www-port=${PORT} \
+<<<<<<< HEAD
         --auth-none=0 \
         --auth-pam-helper-path=pam-helper \
         --auth-stay-signed-in-days=30 \
@@ -104,6 +122,14 @@ Starting with Rstudio
     printf 'rserver exited' 1>&2  
 
     
+=======
+           --auth-none=0 \
+           --auth-pam-helper-path=pam-helper \
+           --auth-stay-signed-in-days=30 \
+           --auth-timeout-minutes=0 \
+           --rsession-path=/etc/rstudio/rsession.sh
+    printf 'rserver exited' 1>&2  
+>>>>>>> refs/remotes/origin/dev
 
  
 To submit the above jobscript to the scheduler:
