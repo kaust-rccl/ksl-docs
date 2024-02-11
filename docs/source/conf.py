@@ -18,7 +18,8 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'sphinxcontrib.googleanalytics',
-    'sphinxcontrib.email'
+    'sphinxcontrib.email',
+    'sphinx_copybutton'
 ]
 
 intersphinx_mapping = {
