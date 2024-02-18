@@ -93,6 +93,7 @@ Ibex
 Compute nodes on Ibex are heterogeneous and it is necessary to describe the request for resources in more granularity than in Shaheen III above.
 
 Below is an example jobscript to launch a jupyter server with GPU resources. 
+
 .. code-block:: bash 
     
     #!/bin/bash --login
