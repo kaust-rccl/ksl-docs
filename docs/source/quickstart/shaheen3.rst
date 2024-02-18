@@ -41,8 +41,10 @@ Then login to one of the 5 login nodes of Shaheen3:
 
 .. _quickstart_shaheen3_jobscript:
 
+==================================
 Submitting your first Jobscripts
-================================
+==================================
+
 All KSL systems use SLURM for scheduling jobs for batch processing.
 
 Shaheen 3 example jobscripts

@@ -34,7 +34,7 @@ Documented below are commands, example scripts and workflow patterns, users must
    shaheen3_jobscript_examples
    ibex_jobscript_examples
    complex_workflows
-   interactive_jobs
+   interactive_jobs/index
    
 
 
