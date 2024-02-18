@@ -24,6 +24,8 @@ SLURM provides utilites for:
 Querying system resource
 -------------------------
 
+.. _slurm_squeue:
+
 sinfo
 ******
 
@@ -144,6 +146,8 @@ sbatch
     > sbatch my-jobscript.slurm
     Submitted batch job 33204519
 
+.. _slurm_salloc: 
+
 salloc
 *******
 Users can allocate compute resources for a limited time to use interactively. This means the commands typed on the prompt will run instantly and control is given back at the end of the process. Most common usecase of requesting such allocations is debugging or testing commands to ultimately create scripts.
@@ -166,6 +170,8 @@ Users can allocate compute resources for a limited time to use interactively. Th
 
     xyz@gateway2:> exit
     xyz@cdl2:>
+
+.. _slurm_srun: 
 
 srun
 *****
