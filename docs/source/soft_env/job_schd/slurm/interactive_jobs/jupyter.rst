@@ -89,7 +89,9 @@ Below is an example jobscript to launch a jupyter server. The output of this job
 
 
 Ibex
------------------------
+-------------------
+ToDo: Didier is going to modify it
+
 Compute nodes on Ibex are heterogeneous and it is necessary to describe the request for resources in more granularity than in Shaheen III above.
 
 Below is an example jobscript to launch a jupyter server with GPU resources. 
