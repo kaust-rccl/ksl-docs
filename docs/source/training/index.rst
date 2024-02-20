@@ -6,7 +6,7 @@
 .. _user_training:
 
 ========================
-User Training Catalogue
+Training
 ========================
 
 **Objectives:** 

@@ -6,7 +6,7 @@
 .. _KSL_tech_blogs:
 
 =============================
-Technical Articles and Blogs
+Blogs
 =============================
 
 
