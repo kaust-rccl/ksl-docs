@@ -175,7 +175,7 @@ check the following output in  SLURM output will look something like this:
 
 - We can now do some computations. Since this Jupyter job asked for, let’s test the GPU. Note that all the required modules should have been loaded in your jobscript before submitting.
 
-Ibex 
+Ibex - launch jupyter-one-line
 --------------------------------------
 
 To run a specific command on a computing cluster using Slurm job management, follow these steps:
