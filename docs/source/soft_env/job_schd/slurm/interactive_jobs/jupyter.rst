@@ -89,14 +89,15 @@ Below is an example jobscript to launch a jupyter server. The output of this job
 
 
 Ibex
------------------------
+-------------------
+
 Compute nodes on Ibex are heterogeneous and it is necessary to describe the request for resources in more granularity than in Shaheen III above.
 
 Below is an example jobscript to launch a jupyter server with GPU resources. 
 
 .. code-block:: bash 
     
-    #!/bin/bash --login
+    #!/bin/bash
     #SBATCH --time=00:30:00
     #SBATCH --nodes=1
     #SBATCH --gpus-per-node=v100:1
@@ -108,14 +109,7 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
     #SBATCH --output=%x-%j-slurm.out
     #SBATCH --error=%x-%j-slurm.err 
  
-    # use srun to launch Jupyter server in order to reserve a port
 
-   
-     make srun launch-jupyter-server.srun
-
-.. code-block:: bash 
-    :caption: This is the launch-jupyter-server.srun script: 
-    
     # Load environment which has Jupyter installed. It can be one of the following:
     # - Machine Learning module installed on the system (module load machine_learning)
     # - your own conda environment on Ibex
@@ -148,9 +142,6 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
  
     Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop.
     " >&2 
- 
-    # Run Jupyter 
-    #jupyter notebook --no-browser --port=${port} --port-retries=0 --ip=${node}
 
     # launch jupyter server
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}.ibex.kaust.edu.sa
@@ -184,3 +175,58 @@ check the following output in  SLURM output will look something like this:
 
 - We can now do some computations. Since this Jupyter job asked for, let’s test the GPU. Note that all the required modules should have been loaded in your jobscript before submitting.
 
+Ibex - launch jupyter-one-line
+--------------------------------------
+
+To run a specific command on a computing cluster using Slurm job management, follow these steps:
+
+1. Open a terminal window.
+
+2. Use the following command to submit a job using the `srun` command and specify the desired resource allocation options:
+    
+.. code-block:: bash 
+        srun --gpus=1 --mem=32G --cpus-per-task=16 -C v100 --time=00:30:00 --resv-ports=1 --pty /bin/bash -l launch-jupyter-one-line.sh
+    
+
+Here's a breakdown of the options used:
+
+- `--gpus=1`: Request 1 GPU for the job.
+- `--mem=32G`: Request 32GB of memory.
+- `--cpus-per-task=16`: Request 16 CPU cores per task.
+- `-C v100`: Request a compute node with NVIDIA V100 GPUs.
+- `--time=00:30:00`: Request a maximum job runtime of 30 minutes.
+- `--resv-ports=1`: Reserve a port for the job.
+- `--pty`: Allocate a pseudo terminal for the job.
+- `/bin/bash -l launch-jupyter-one-line.sh`: Run the `launch-jupyter-one-line.sh` script in a Bash shell with the login environment.
+
+3. After executing the command, the job will be submitted to the cluster and will run according to the specified resource allocation and script instructions. The job will be assigned a job ID, which will be displayed in the terminal window. You can use this job ID to monitor the job's progress and check its status.
+
+4. Now on your terminal you will see the same kind of message from jupyter
+
+.. code-block:: bash 
+   
+     To access the server, open this file in a browser:
+        file:///home/username/.local/share/jupyter/runtime/jpserver-44653-open.html
+     Or copy and paste one of these URLs:
+        http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
+     or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
+
+5. Copy one of the line of that start with `gpuXXX-XX` into your browser. We can now do some computations
+
+
+This is the content of the `launch-jupyter-one-line.sh` file. 
+
+.. code-block:: bash
+
+    #!/bin/bash
+    # Activate the environment and execute the commands within a subshell
+    (
+        eval "$(conda shell.bash hook)"
+        # Load and run packages
+        module load machine_learning
+        # or activate the conda environment 
+        #export ENV_PREFIX=$PWD/env
+        #conda activate $ENV_PREFIX
+
+        jupyter lab --no-browser --ip="$(hostname)".ibex.kaust.edu.sa
+    )
