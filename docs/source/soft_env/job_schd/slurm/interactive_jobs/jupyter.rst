@@ -185,6 +185,7 @@ To run a specific command on a computing cluster using Slurm job management, fol
 2. Use the following command to submit a job using the `srun` command and specify the desired resource allocation options:
     
 .. code-block:: bash 
+    
         srun --gpus=1 --mem=32G --cpus-per-task=16 -C v100 --time=00:30:00 --resv-ports=1 --pty /bin/bash -l launch-jupyter-one-line.sh
     
 

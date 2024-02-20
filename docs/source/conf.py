@@ -51,10 +51,13 @@ html_theme_options = {
     "footer_start": False,
     "footer_end": False,
     "show_toc_level": 2,
+    "navbar_persistent": [],
+    "navbar_align": "content",
+    "header_links_before_dropdown" : 8
     
 }
 html_sidebars = {
-    "**": ["search-field.html", "sidebar-nav-bs.html", ]
+    "**": [ "sidebar-nav-bs.html", ]
 }
 
 html_context = {

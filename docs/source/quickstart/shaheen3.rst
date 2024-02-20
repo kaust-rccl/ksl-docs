@@ -41,7 +41,7 @@ Then login to one of the 5 login nodes of Shaheen3:
 
 .. _quickstart_shaheen3_jobscript:
 
-==================================
+
 Submitting your first Jobscripts
 ==================================
 
