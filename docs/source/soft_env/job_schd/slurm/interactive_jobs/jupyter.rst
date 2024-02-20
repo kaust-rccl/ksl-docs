@@ -175,8 +175,8 @@ check the following output in  SLURM output will look something like this:
 
 - We can now do some computations. Since this Jupyter job asked for, let’s test the GPU. Note that all the required modules should have been loaded in your jobscript before submitting.
 
-Ibex - launch jupyter with a oneliner
--------------------
+Ibex 
+--------------------------------------
 
 To run a specific command on a computing cluster using Slurm job management, follow these steps:
 
@@ -188,7 +188,7 @@ To run a specific command on a computing cluster using Slurm job management, fol
         srun --gpus=1 --mem=32G --cpus-per-task=16 -C v100 --time=00:30:00 --resv-ports=1 --pty /bin/bash -l launch-jupyter-one-line.sh
     
 
-    Here's a breakdown of the options used:
+Here's a breakdown of the options used:
 
 - `--gpus=1`: Request 1 GPU for the job.
 - `--mem=32G`: Request 32GB of memory.

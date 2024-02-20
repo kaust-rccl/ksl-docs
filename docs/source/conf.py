@@ -73,5 +73,5 @@ highlight_language = 'bash'
 highlight_options = {'stripall': True}
 
 
-googleanalytics_id = 'G-H11YYZJX1B'
+googleanalytics_id = 'G-HP79CXZV8M'
 googleanalytics_enabled=True
