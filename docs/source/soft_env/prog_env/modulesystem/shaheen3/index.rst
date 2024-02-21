@@ -4,9 +4,9 @@
     :keywords: Install software, Shaheen, Ibex
 
 
-==========
-Shaheen 3 
-==========
+=============
+Shaheen III 
+=============
 
 Users can benefit from many software packages and scientific libraries available as modules. Users can also compile their source code using various compiler toolchains in the Cray Programming Environment.
 
@@ -34,8 +34,8 @@ installed on the system.
 
 .. code-block:: bash
 
- module help xxxx
- module show xxxx
+ module help <package-name>
+ module show <package-name>
 
 * To display Cray Scientific Libraries:
 
@@ -47,7 +47,7 @@ installed on the system.
 
 .. code-block:: bash
 
- module load xxxxx
+ module load <package-name>
 
 .. toctree::
    :maxdepth: 1
@@ -63,46 +63,71 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
 
 .. _shaheen3_prgenv:
 
-.. list-table:: **Programming environment on Shaheen 3**
-   :widths: 30 30 30 30 20 30
+.. list-table:: **Programming environment on Shaheen III**
+   :widths: 30 30 30 30 30 30
    :header-rows: 1
 
-  * - Compiler vendor
-    - Programming environment
-    - Module
-    - Language
-    - Compiler wrapper
-    - Compiler
-  * - Cray ``craycc``
-    - ``PrgEnv-cray``
-    - ``cce``
-    - C
-    - ``cc``
-    - ``craycc``
+   * - Vendor
+     - Programming environment
+     - Module
+     - Language
+     - Compiler wrapper
+     - Compiler
+   * - Cray 
+     - ``PrgEnv-cray``
+     - ``cce``
+     - ``C``
+     - ``cc``
+     - ``craycc``
+   * -  
+     - 
+     - 
+     - ``C++``
+     - ``CC``
+     - ``crayCC``
+   * -  
+     - 
+     - 
+     - ``Fortran``
+     - ``ftn``
+     - ``crayftn``
+   * - GNU 
+     - ``PrgEnv-gnu``
+     - ``gcc``
+     - ``C``
+     - ``cc``
+     - ``gcc``
+   * -  
+     - 
+     - 
+     - ``C++``
+     - ``CC``
+     - ``g++``
+   * -  
+     - 
+     - 
+     - ``Fortran``
+     - ``ftn``
+     - ``gfortran``
+   * - AMD 
+     - ``PrgEnv-amd``
+     - ``amd``
+     - ``C``
+     - ``cc``
+     - ``amdclang``
+   * -  
+     - 
+     - 
+     - ``C++``
+     - ``CC``
+     - ``amdclang++``
+   * -  
+     - 
+     - 
+     - ``Fortran``
+     - ``ftn``
+     - ``amdflang``
 
-
-
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| Vendor | Programming Environment | Compiler Module | Language | Compiler Wrapper  | Compiler                        |
-+========+=========================+=================+==========+===================+=================================+
-| Cray   | ``PrgEnv-cray``         | ``cce``         | C        | ``cc``            | ``craycc``                      |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``craycxx`` or ``crayCC``       |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``crayftn``                     |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| GCC    | ``PrgEnv-gnu``          | ``gcc``         | C        | ``cc``            | ``gcc``                         |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``g++``                         |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``gfortran``                    |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
-| AMD    | ``PrgEnv-amd``          | ``amd``         | C        | ``cc``            | ``amdclang``                    |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | C++      | ``CC``            | ``amdclang++``                  |
-|        |                         |                 +----------+-------------------+---------------------------------+
-|        |                         |                 | Fortran  | ``ftn``           | ``amdflang``                    |
-+--------+-------------------------+-----------------+----------+-------------------+---------------------------------+
 
 As seen above, the compiler wrappers do not change according to different compilers.
 However, one can directly call the underlying compiler under some circumstances.

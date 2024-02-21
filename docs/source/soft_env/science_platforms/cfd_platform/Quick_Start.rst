@@ -9,7 +9,7 @@
 Quick Start Guide for CFD
 ===========================
 
-I will write a basic info for getting started for a new CFD user on Shaheen 3  
+I will write a basic info for getting started for a new CFD user on Shaheen III  
 
 .. note::
 

@@ -10,7 +10,7 @@ MATLAB Deep Learning Toolbox
 ================================================
 
 ..
-  Using Shaheen 3 CPUs 
+  Using Shaheen III CPUs 
   =====================
 
 Using Ibex GPUs 

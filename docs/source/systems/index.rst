@@ -6,7 +6,7 @@
 .. _available_systems:
 
 ====================
-Hardware ecosystem
+System Architecture
 ====================
 KAUST Supercomputing Lab operates multiple High performance computing platforms for its users. 
 These platforms differ in the resources they offer, the use cases they enable, the policies users need to adhere to, and the peak performance they are capable of.

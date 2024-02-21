@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
-    :description: Shaheen 3 CPU jobs examples
-    :keywords: Shaheen 3, MPI, OpenMP 
+    :description: Shaheen III CPU jobs examples
+    :keywords: Shaheen III, MPI, OpenMP 
 .. _shaheen_cpu_jobs:
 
 =========

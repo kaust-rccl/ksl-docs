@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
     :description: Collection of technical articles and blogs written by KSL Computational Scientists
-    :keywords: Shaheen 3, Ibex 
+    :keywords: Shaheen III, Ibex 
 
 .. _KSL_tech_blogs:
 

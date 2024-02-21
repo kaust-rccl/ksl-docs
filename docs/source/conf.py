@@ -51,7 +51,7 @@ html_theme_options = {
     "footer_start": False,
     "footer_end": False,
     "show_toc_level": 2,
-    "navbar_persistent": [],
+    "navbar_persistent": ["search-button"],
     "navbar_align": "content",
     "header_links_before_dropdown" : 8
     

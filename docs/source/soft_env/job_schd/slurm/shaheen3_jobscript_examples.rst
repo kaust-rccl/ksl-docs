@@ -5,9 +5,9 @@
 
 
 ========================================================
-Shaheen 3 example jobscripts
+Shaheen III example jobscripts
 ========================================================
-This section provides a collection of jobscripts used to launch workload on Shaheen 3. We always encourage users to contact :email:`Shaheen 3 support team<help@hpc.kaust.edu.sa>` for any cases not documented here.
+This section provides a collection of jobscripts used to launch workload on Shaheen III. We always encourage users to contact :email:`Shaheen III support team<help@hpc.kaust.edu.sa>` for any cases not documented here.
 
 
 .. toctree:: 

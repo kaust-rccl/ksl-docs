@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
     :description: Compute nodes on Ibex
-    :keywords: CPUs, GPUs, Shaheen 3, Ibex, Compute nodes
+    :keywords: CPUs, GPUs, Shaheen III, Ibex, Compute nodes
     
 .. _ibex_compute_nodes:
 
