@@ -16,7 +16,11 @@ SLURM Polciy
 ============
 SLURM on Shaheen III has multiple partitions. These partitions exist so that jobs can be routed to different types of computational resources, according to the required of the scheduled workloads.
 
-The table below show the job limits enforced on different partitions. Note that these are enforced on per-user basis:
+The table below show the job limits enforced on different partitions.
+
+.. note::
+  - The term **CPUs** refers to hyperthreads running on a physical core, i.e. 2 CPUs per physical core
+  - Note that these are enforced on per-user basis
 
 .. _shaheen_slurm_limits:
 .. list-table:: **SLURM job limits**
@@ -35,16 +39,43 @@ The table below show the job limits enforced on different partitions. Note that 
      - 196,608
      - 512
      - 24
-     - 1000
-     - 200
+     - ###
+     - ###
    * - shared
      - shared
-     - 4
-     - 4
-     - 24
+     - 64 (4/node)
      - 16
+     - 24
+     - ###
+     - ###
+   * - debug
+     - exclusive
+     - 1536
      - 4
-
+     - 0.5(default)/4(max)
+     - ###
+     - ###
+   * - dtn
+     - exclusive
+     - 192
+     - 4
+     - 1(default)/24(max)
+     - ###
+     - ###
+   * - ppn
+     - exclusive
+     - 3840
+     - 15
+     - 1(default)/24(max)
+     - ###
+     - ###
+   * - 72hours
+     - exclusive
+     - 49152
+     - 128
+     - 1(default)/72(max)
+     - ###
+     - ###
 
 
 Filesystem Policy
