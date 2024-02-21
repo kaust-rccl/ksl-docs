@@ -5,11 +5,11 @@
 
 .. _conda_shaheen3:
 
-======================================
-Installation of ``conda`` on Shaheen 3 
-======================================
+==========================================
+Installation of ``conda`` on Shaheen III 
+==========================================
 
-The following steps demonstrate the installation of conda on Shaheen 3 Lustre:
+The following steps demonstrate the installation of conda on Shaheen III Lustre:
 
 .. code-block:: bash
 
@@ -26,7 +26,7 @@ The conda can be activated using the following command:
    eval "$(/scratch/$USER/iops/miniconda3/bin/conda shell.bash hook)"
 
  
-The following steps demonstrate the installation of a conda envrionment on Shaheen 3 Lustre:
+The following steps demonstrate the installation of a conda envrionment on Shaheen III Lustre:
 
 .. code-block:: bash
 

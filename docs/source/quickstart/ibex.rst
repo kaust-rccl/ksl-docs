@@ -10,8 +10,8 @@ Ibex
 ==========================
 To login you need to ``ssh`` into the login node.
 A ``ssh`` client should be installed on your workstation/laptop. 
-For users with MacOS and Linux operating system, please open the ``Terminal`` application paste command below replacing your username for Shaheen 3.
-For Windows users, you will need a application with ``ssh`` client installed within it. Please follow instruction in `this video tutorial <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=20>`_ . When logging in to Shaheen 3, please replace the hostname with `shaheen.hpc.kaust.edu.sa` when following the steps prescribed in the tutorial.
+For users with MacOS and Linux operating system, please open the ``Terminal`` application paste command below replacing your username for Shaheen III.
+For Windows users, you will need a application with ``ssh`` client installed within it. Please follow instruction in `this video tutorial <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=20>`_ . When logging in to Shaheen III, please replace the hostname with `shaheen.hpc.kaust.edu.sa` when following the steps prescribed in the tutorial.
 
 Logging into Ibex
 ===================
@@ -79,7 +79,7 @@ The above jobscript can now be submitted using the ``sbatch`` command.
 
 
 KSL has written a convenient utility called :ref:`Jobscript Generator <jobscript_generator>`. 
-Use this template to create a jobscript and copy-paste it in a file in your SSH terminal on Shaheen 3 or Ibex login nodes.
+Use this template to create a jobscript and copy-paste it in a file in your SSH terminal on Shaheen III or Ibex login nodes.
 
 
 If you get an error in regarding account specification, please  :email:`helpdesk <ibex@hpc.kaust.edu.sa>` with the your username and error and the jobscript.

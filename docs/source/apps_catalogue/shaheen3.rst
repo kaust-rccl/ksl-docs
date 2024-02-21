@@ -6,7 +6,7 @@
 .. _shaheen3_apps_catalogue:
 
 =============================
-Shaheen 3
+Shaheen III
 =============================
 
 .. note::

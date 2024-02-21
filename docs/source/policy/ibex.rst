@@ -13,7 +13,7 @@ Access policies
 ================
 
 * A user must have KAUST credentials to access Ibex cluster
-* Access for external users (non-KAUST) is rigorously reviewed by RCAC. External users generally apply for access to Shaheen 3.
+* Access for external users (non-KAUST) is rigorously reviewed by RCAC. External users generally apply for access to Shaheen III.
 * To access Ibex cluster from outside KAUST, users will need a VPN connection. KAUST IT maintains a guide on `how to setup up a VPN <https://it.kaust.edu.sa/docs/default-source/services/network-connectivity/kaust-vpn/setup-kuast-vpn-and-duo.pdf?sfvrsn=8c0c88c7_4>`_ on your host machine
 
 Job Scheduling policies

@@ -46,6 +46,7 @@ Sessions
        - `Job Scheduling on IBEX <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/IBEX/Ibex_101/Feb2023/3.%20Job%20Scheduling%20on%20IBEX.pdf>`_
        - `Application Example <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/IBEX/Ibex_101/Feb2023/4.%20Application%20Examples_feb_2023.pdf>`_
        - `Best practices, documentation and support <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/IBEX/Ibex_101/Feb2023/5.%20Best_practices_Feb_8th_2022.pdf>`_
+       
        **BioScience workshop presentation**
 
        - `Computational Biology Best Practices <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/IBEX/Ibex_101/Feb2023/Bio_Science_Feb_2023.pdf>`_

@@ -24,7 +24,7 @@ SLURM provides utilites for:
 Querying system resource
 -------------------------
 
-.. _slurm_squeue:
+.. _slurm_queues:
 
 sinfo
 ******
@@ -33,7 +33,7 @@ sinfo
 By default, sinfo lists the partitions that are available. A partition is a set of compute nodes (computers dedicated to ... computing,) grouped logically. Typical examples include partitions dedicated to batch processing, debugging, post processing, or visualization.
 
 .. code-block:: bash
-    :caption: an example output of ``sinfo`` on Shaheen 3
+    :caption: an example output of ``sinfo`` on Shaheen III
 
     xyz123@cdl4> sinfo
 
@@ -61,7 +61,7 @@ squeue
 The default output of this command is a list of all the jobs submitted by users, their state, and either forecasted start time or elapsed time for pending and running jobs respectively.
 
 .. code-block:: bash
-    :caption: an example output of ``squeue`` on Shaheen 3
+    :caption: an example output of ``squeue`` on Shaheen III
     
     cdl4:~> squeue
     JOBID       USER     ACCOUNT           NAME  ST REASON    START_TIME                TIME  TIME_LEFT NODES
@@ -258,7 +258,7 @@ Description and use of squeue is same as :ref:`above <slurm_squeue>`.
 Reporting usage 
 ----------------
 
-On some KSL systems such as Shaheen 3, there is a charging mechanism which allows usage to be deducted from the allocatable core hours approved by RCAC committee for a project PI. There are some SLURM utilities which can help in revealing the usage stats of a job even after it has concluded.
+On some KSL systems such as Shaheen III, there is a charging mechanism which allows usage to be deducted from the allocatable core hours approved by RCAC committee for a project PI. There are some SLURM utilities which can help in revealing the usage stats of a job even after it has concluded.
 
 sacct
 **********
@@ -279,10 +279,10 @@ KSL in-house utilites
 
 For users to conveniently query some common metrics, KSL system administration have developed utilities.
 
-Query allocation balance on Shaheen 3
--------------------------------------
+Query allocation balance on Shaheen III
+--------------------------------------------
 
-Using a command called ``sb``, users can check the status of their allocation on Shaheen 3. In an example below, a user who is a member of project/group ``k01`` queries and gets a history of the allocation and its current balance.
+Using a command called ``sb``, users can check the status of their allocation on Shaheen III. In an example below, a user who is a member of project/group ``k01`` queries and gets a history of the allocation and its current balance.
 
 .. code-block:: bash
     :caption: usage pattern of command ``sb``
@@ -311,10 +311,10 @@ Using a command called ``sb``, users can check the status of their allocation on
     --------------------------
 
 
-Query storage quota Project Filesystem of Shaheen 3
-----------------------------------------------------
+Query storage quota Project Filesystem of Shaheen III
+--------------------------------------------------------
 
-Project filesystem provides persistent storage solution to Shaheen 3 users. The allocation on ``/project`` filesystem has quota for a project and members of that group share it. To query the status of a usage for a group the command ``kpq`` comes in handy.
+Project filesystem provides persistent storage solution to Shaheen III users. The allocation on ``/project`` filesystem has quota for a project and members of that group share it. To query the status of a usage for a group the command ``kpq`` comes in handy.
 
 .. code-block:: bash
     :caption: usage of command ``kpq``

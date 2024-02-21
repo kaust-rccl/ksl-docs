@@ -21,7 +21,7 @@ Using ``conda`` becomes justified when user is looking either or all of the attr
 - Share and reproduce your software environment, enabling collaborators to quickly set up the same environment on their own machines.
 - Leverage ``conda``'s extensive package repository to access a wide range of pre-built scientific and data analysis tools.
 
-As a downside, it is possible to experience regression in performance compared to source built software, tunned for the target compute infrastructure. In most cases running either at small scale or which requires throughput, this tradeoff is justified. However, one may leave a significant performance on table specially when running at large scale. KSL's advice is to benchmark your production codes properly before consuming large amount of core hours. Lack of such information can adversely affect the outcomes of future allocation applications, specially in case of Shaheen 3.
+As a downside, it is possible to experience regression in performance compared to source built software, tunned for the target compute infrastructure. In most cases running either at small scale or which requires throughput, this tradeoff is justified. However, one may leave a significant performance on table specially when running at large scale. KSL's advice is to benchmark your production codes properly before consuming large amount of core hours. Lack of such information can adversely affect the outcomes of future allocation applications, specially in case of Shaheen III.
 
 
 .. toctree::

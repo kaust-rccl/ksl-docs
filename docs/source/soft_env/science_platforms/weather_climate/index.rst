@@ -9,7 +9,7 @@
 Weather and Climate platform
 ==============================
 
-The following recipes are available for building weather and climate software on Shaheen 3:
+The following recipes are available for building weather and climate software on Shaheen III:
 
 .. toctree::
       :titlesonly:

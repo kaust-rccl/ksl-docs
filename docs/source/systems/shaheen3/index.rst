@@ -5,10 +5,10 @@
     
 .. _shaheen3_arch:
 
-==========
-Shaheen 3
-==========
-Details of Shaheen 3, history and its capability. High level details such as node count, number of users and projects, scheduling, filesystem can be mentioned here.
+=============
+Shaheen III
+=============
+Details of Shaheen III, history and its capability. High level details such as node count, number of users and projects, scheduling, filesystem can be mentioned here.
 Deep dive of each topic has their own page in the table of content tree. 
 
 .. toctree::

@@ -6,7 +6,7 @@
 .. _lsutre_best_practices_tech_article:
 
 ============================================================
-Best Practices for using Shaheen 3's Lustre filesystem
+Best Practices for using Shaheen III's Lustre filesystem
 ============================================================
 
 

@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
     :description: CPU architecture on KSL systems
-    :keywords: CPU, cache, Shaheen 3, Ibex, AMD, Intel, Skylake, Cascade Lake, Rome, Genoa
+    :keywords: CPU, cache, Shaheen III, Ibex, AMD, Intel, Skylake, Cascade Lake, Rome, Genoa
     
 .. _cpu_arch_tech_article:
 
@@ -10,8 +10,8 @@ Available CPU architecture on KSL systems
 ==========================================
 This page provides a gentle introduction to the modern CPU architecture optimized for HPC workloads. The CPUs are grouped by the KSL systems they are available on, and in which partitions. 
 
-CPUs on Shaheen 3
-==================
+CPUs on Shaheen III
+=====================
 
 AMD Genoa
 ----------
