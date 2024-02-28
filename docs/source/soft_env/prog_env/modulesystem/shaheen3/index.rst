@@ -110,8 +110,8 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - ``ftn``
      - ``gfortran``
    * - AMD 
-     - ``PrgEnv-amd``
-     - ``amd``
+     - ``PrgEnv-aocc``
+     - ``aocc``
      - ``C``
      - ``cc``
      - ``amdclang``

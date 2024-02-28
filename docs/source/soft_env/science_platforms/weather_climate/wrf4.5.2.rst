@@ -1,7 +1,8 @@
 =======
-WRF
+Installation of WRF 4.5.2 on Shaheen III
 =======
 
+The following steps demonstrate installation of WRF version 4.5.2 on Shaheen III:
 
 .. code-block:: bash
 
