@@ -3,7 +3,7 @@
 # -- Project information
 
 project = 'KAUST Supercomputing Lab Support Documentation'
-copyright = '2023, KSL'
+copyright = 'King Abdullah University of Science and Technology.'
 author = 'Mohsin Ahmed Shaikh'
 
 release = '0.1'
@@ -28,7 +28,7 @@ intersphinx_mapping = {
 }
 intersphinx_disabled_domains = ['std']
 
-templates_path = ['_templates']
+templates_path = ['templates']
 html_static_path = ['static']
 
 
@@ -48,12 +48,12 @@ html_theme_options = {
 #    ],
 
     "announcement": 'Checkout, <a href="https://docs.hpc.kaust.edu.sa/faqs"> Frequently Asked Questions</a>!',
-    "footer_start": False,
-    "footer_end": False,
     "show_toc_level": 2,
     "navbar_persistent": ["search-button"],
     "navbar_align": "content",
-    "header_links_before_dropdown" : 8
+    "header_links_before_dropdown" : 8,
+    "footer_start": ["../static/logo-kaust-and-kaust-core-labs.svg"],
+    "footer_end": ["copyright"],
     
 }
 html_sidebars = {
@@ -65,6 +65,7 @@ html_context = {
         '_static/css/ksl.css',
         '_static/css/copybutton.css'
     ],
+
 }
 
 html_show_sourcelink = False
