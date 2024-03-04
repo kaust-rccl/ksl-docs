@@ -35,7 +35,7 @@ html_static_path = ['static']
 # -- Options for HTML output
 
 html_theme = 'pydata_sphinx_theme'
-html_logo = './static/KAUST_logo.png'
+html_logo = './static/logo-kaust-supercomputing-laboratory.svg'
 html_favicon = './static/KAUST_logo.png'
 html_theme_options = {
 #    "icon_links": [
@@ -47,7 +47,7 @@ html_theme_options = {
 
 #    ],
 
-    "announcement": 'Checkout, <a href="https://docs.hpc.kaust.edu.sa/faqs"> Frequently Asked Questions</a>!',
+    "announcement": 'Checkout, <a href="https://hpc.kaust.edu.sa/faqs"> Frequently Asked Questions</a>!',
     "show_toc_level": 2,
     "navbar_persistent": ["search-button"],
     "navbar_align": "content",

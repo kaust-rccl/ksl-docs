@@ -9,38 +9,57 @@
 Contact Us
 ===========
 
-The KAUST Supercomputing Laboratory (KSL) currently runs a website (www.hpc.kaust.edu.sa) gathering all information about Ibex Cluster.
+There are multiple venues you can contact us for support and information. Before sending a support request, be sure to navigate and search the documentation for related information. 
 
-**Maintenance**
+The easiest and most efficient way is to email helpdesk:
+
+* Shaheen III `contact form <https://hpc.kaust.edu.sa/contact-us>`_
+* Shaheen III helpdesk    :email:`<help@hpc.kaust.edu.sa>`
+* Ibex cluster helpdesk   :email:`<ibex@hpc.kaust.edu.sa>`
+  
+Ibex cluster also supports users via a `Slack channel <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_. As a rule of thumb, if the issue is complex to describe, please send an email for requesting support. If the question is of general nature and can be stated in a line or two,  `Slack channel <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_ is most appropriate. 
+
+.. note:: 
+    The `Slack channel <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_ is only of question related to Ibex. Shaheen III support request must be sent via email to the :email:`helpdesk <help@hpc.kaust.edu.sa>`
+
+It is highly recommended that the following information be added to enable us to best respond to your questions:
+
+* Name of related KSL system (e.g. Shaheen III, Ibex )
+* Name of the SLURM queue or filesystem 
+* Provide details of the issue
+* Information about the software environment e.g. which programming environment, compiler, login node etc ..
+* Share the jobscript if possible
+* Instructions on how to reproduce the issue
+
+.. note::
+    The support team won't have access to your data. Please don't attached large files to emails. Please consult with the support team in the ticket how best to share the necessary data.  
+
+
+*Working hours for the KSL support staff are 8am to 5pm Sunday through Thursday, excluding public holidays*
+
+Maintenance
+============
 
 Disruptive maintenance will be avoided, whenever possible.  We aim to use a slot no more frequently than twice a month and will, when possible, give at least 7 days notice of the systems being taken out of service.
 
-**News**
+News
+======
 
-News about upcoming maintenance and other system events will be published in the "message of the day" displayed at login and on the general channel on `Slack <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_.
+News about upcoming maintenance and other system events will be published in the "message of the day" displayed at login and also sent via email to all user. 
 
-**Email**
+For Ibex, it is also announced on the general channel on `Slack <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_.
 
-All current and potential laboratory users are encouraged to contact us at ibex@hpc.kaust.edu.sa 
-All questions, comments, or requests are addressed from there. Our staff is traditionally quite responsive over email: be assured that your inquiry will be directed to the appropriate member of the laboratory staff. We can also be reached on `Slack <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_ .
 
-Please include the following information (if applicable):
 
-#.  Your name and contact details
-#.  The behaviour you are seeing, including any error messages. (Shell output is most useful.)
-#.  The behaviour you expect to see.
-#.  The resource on which you are experiencing your problem (e.g. Shaheen)
-#.  The programming environment you are using (e.g., compiler, libraries, applications)
 
-|
+IT Service Desk
+================
 
-**IT Service Desk**
+Questions related to VPN, your KAUST credentials, Datawaha or other IT related topics should be directed to KAUST IT. They can be reached on the following contact information:
 
-Phone: (in KAUST) 900 option 1
-
-Phone: (out of KAUST) +(966) 2 808 0900 option 1 
-
-Email: ithelpdesk@kaust.edu.sa
+* Phone: (in KAUST) 900 option 1
+* Phone: (out of KAUST) +(966) 2 808 0900 option 1 
+* Email: ithelpdesk@kaust.edu.sa
 
 
 
