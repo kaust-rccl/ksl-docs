@@ -54,3 +54,21 @@ The Conda environment ``myenv`` can be activated as follows:
 .. code-block:: bash
 
   conda activate /scratch/$USER/iops/envs/myenv
+
+The following SLURM script named ``job.slurm`` can be used as a template for using Conda-installed packages:
+
+.. code-block:: bash
+
+  #!/bin/bash
+  #SBATCH --time 5:0
+  eval "$(/scratch/$USER/iops/miniconda3/bin/conda shell.bash hook)"
+  conda activate /scratch/$USER/iops/envs/myenv
+  which conda
+  which python
+  conda list
+
+The above-mentioned SLURM script can be submitted as follows:
+
+.. code-block:: bash
+
+  sbatch job.slurm
