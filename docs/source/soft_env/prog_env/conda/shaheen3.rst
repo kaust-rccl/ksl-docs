@@ -6,7 +6,7 @@
 .. _conda_shaheen3:
 
 ==========================================
-Installation of Conda on Shaheen III 
+Using ``conda`` on Shaheen III 
 ==========================================
 
 The following steps demonstrate the installation of Conda on Shaheen III Lustre:
@@ -54,6 +54,12 @@ The Conda environment ``myenv`` can be activated as follows:
 .. code-block:: bash
 
   conda activate /scratch/$USER/iops/envs/myenv
+
+Please note that it is the user’s responsibility to cleanup temporary files after any package installation. This command can be used to clean the cache:
+
+.. code-block:: bash
+
+  conda clean --all
 
 The following SLURM script named ``job.slurm`` can be used as a template for using Conda-installed packages:
 
