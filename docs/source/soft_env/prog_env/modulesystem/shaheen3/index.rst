@@ -127,6 +127,24 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - ``Fortran``
      - ``ftn``
      - ``amdflang``
+   * - Intel 
+     - ``PrgEnv-intel``
+     - ``intel``
+     - ``C``
+     - ``cc``
+     - ``icx``
+   * -  
+     - 
+     - 
+     - ``C++``
+     - ``CC``
+     - ``icpx``
+   * -  
+     - 
+     - 
+     - ``Fortran``
+     - ``ftn``
+     - ``ifort``
 
 
 As seen above, the compiler wrappers do not change according to different compilers.
