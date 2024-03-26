@@ -10,32 +10,27 @@ gdb4hpc
 *******
 
 gdb4hpc is used to debug parallel applications with multiple MPI ranks.
+Please do not forget to add ``-g'' as a compile flag to get the source code line information.
 
 The debugger can be run as follows:
 
 .. code-block:: bash
 
-    $ salloc -N 2
-    $ module load cray-cti gdb4hpc
-    $ module unload xalt
+    $ module load gdb4hpc
+    $ export CTI_SLURM_OVERRIDE_MC=1
     $ gdb4hpc
-    gdb4hpc 4.13.5 - Cray Line Mode Parallel Debugger
-    ...
-
     dbg all> launch $a{8} --launcher-args="-N2" ./my_binary
     Starting application, please wait...
+    Launched application...
+    8/8 ranks connected... (timeout in 300 seconds)
+    8/8 ranks connected.
     Created network...
-    Creating MRNet communication network...
-    Waiting for debug servers to attach to MRNet communications network...
-    Timeout in 400 seconds. Please wait for the attach to complete.
-    Number of dbgsrvs connected: [0];  Timeout Counter: [1]
-    Finalizing setup...
+    Connected to application...
     Launch complete.
-    a{0..7}: Initial breakpoint, main at /lustre/scratch/my_code.c:10
-
+    a{0..7}: Initial breakpoint, main at /scratch/akbudak/iops/sw/hello.c:6
     dbg all> bt
-    a{0..7}: #0  main at /lustre/scratch/my_code:10
-
+    a{0..7}: #0  main at /scratch/akbudak/iops/sw/hello.c:6
+    
 .. toctree::
    :titlesonly:
    :maxdepth: 1
