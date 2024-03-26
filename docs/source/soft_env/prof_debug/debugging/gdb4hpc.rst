@@ -15,9 +15,8 @@ The debugger can be run as follows:
 
 .. code-block:: bash
 
-    $ salloc -N 2
-    $ module load cray-cti gdb4hpc
-    $ module unload xalt
+    $ module load gdb4hpc
+    $ export CTI_SLURM_OVERRIDE_MC=1
     $ gdb4hpc
     gdb4hpc 4.13.5 - Cray Line Mode Parallel Debugger
     ...
