@@ -10,6 +10,7 @@ gdb4hpc
 *******
 
 gdb4hpc is used to debug parallel applications with multiple MPI ranks.
+Please do not forget to add ``-g'' as a compile flag to get the source code line information.
 
 The debugger can be run as follows:
 
