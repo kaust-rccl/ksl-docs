@@ -15,9 +15,7 @@ The tool can be run as follows:
 
 .. code-block:: bash
 
-    $ salloc -N 2
-    $ module load cray-cti valgrind4hpc
-    $ module unload xalt
+    $ module load valgrind4hpc
     $ valgrind4hpc --valgrind-args="--vgdb=no" -n8 --launcher-args="-N2" --outputfile=vout.txt <binary>
 
 The output of valgrind4hpc will be stored in ``vout.txt``. Errors for ranks are shown for collectively or separately depending on which ranks cause those errors:
