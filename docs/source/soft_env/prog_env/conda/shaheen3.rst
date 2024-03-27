@@ -81,7 +81,7 @@ Installing complex environments
 
 One prerequisite for this is to have an ``environment.yaml`` file listing all the required software and preferred channels to search these packages. Below is an example environment file:
 
-.. code-block:: bash
+.. code-block:: yaml
 
     name: pytorch
     channels:

@@ -3,9 +3,9 @@
     :description: WRF compilation steps on Shaheen III
     :keywords: WRF, WRF-Chem
 
-=======
+====================================
 Compiling WRF 4.5.2 on Shaheen III
-=======
+====================================
 
 The following steps demonstrate compilation of WRF version 4.5.2 on Shaheen III:
 
