@@ -9,78 +9,121 @@
 Using ``conda`` on Shaheen III 
 ==========================================
 
-The following steps demonstrate the installation of Conda on Shaheen III Lustre:
+Users can opt to maintain their own software using ``conda`` pack manager on Shaheen III. 
+
+Installing package manager
+============================
+The following steps demonstrate the installation of Conda on Shaheen III Lustre. It is recommended that users install their Miniconda in high IOPS tier of Shaheen III filesystem. It is exempted from periodic purging and  is designed to keep up with large number of I/O operations d. 
+**The following is a one-off step** 
 
 .. code-block:: bash
 
-   mkdir -p $MY_SW
-   cd $MY_SW
-   mkdir miniconda3
-   cd miniconda3
-   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-   bash Miniconda3-latest-Linux-x86_64.sh -u
+   mkdir -p $MY_SW && cd $MY_SW
+   bash /sw/sources/miniconda/conda24.1.2-python3.12.1/Miniconda3-latest-Linux-x86_64.sh -b -s -p $MY_SW/miniconda3-amd64 -u
+   conda activate $MY_SW/miniconda3-amd64/bin/activate
+   conda install -y -c conda-forge mamba
+   conda deactivate
 
-After accpeting the license terms, enter ``/scratch/$USER/iops/sw/miniconda3/`` as installation directory of Conda:
+The commands above will install ``conda`` package manager's ``base`` environment in $MY_SW/miniconda3-amd64. 
 
-.. code-block:: bash
+.. important:: 
+  Any use of ``conda`` package from here on will require user to activate the base or target environment. The following command achieves this:
 
-  Do you accept the license terms? [yes|no]
-  >>> yes
+.. code-block::
   
-  Miniconda3 will now be installed into this location:
-  /home/akbudak/miniconda3
+  source $MY_SW/miniconda3-amd64/bin/activate
 
-    - Press ENTER to confirm the location
-    - Press CTRL-C to abort the installation
-    - Or specify a different location below
 
-  [/home/akbudak/miniconda3] >>> /scratch/$USER/iops/sw/miniconda3/
-
-The following environment variable ``CONDA_PKGS_DIRS`` directs the packages to be installed in a prescribed location other than the default which is ``$HOME/.cache``:
+Optional step
+--------------
+Installing elaborate conda environments can be time consuming. To accelerate the installation process, ``mamba`` package manager can be used. It is a reimplementation of the conda package manager in C++. Simply install ``mamba`` in miniconda3's base environment.
 
 .. code-block:: bash
+  
+  conda install -y -c conda-forge mamba
+  
 
-   export CONDA_PKGS_DIRS=/scratch/$USER/conda_cache
+Creating new environments
+===========================
 
 Conda can be activated using the following command:
 
 .. code-block:: bash
 
-   eval "$(/scratch/$USER/iops/sw/miniconda3/bin/conda shell.bash hook)"
-
+  source $MY_SW/miniconda3-amd64/bin/activate
  
-The following step demonstrates the installation of a Conda envrionment named ``myenv`` on Shaheen III Lustre:
+The following example demonstrates the installation of a Conda envrionment named ``myenv`` on Shaheen III using user's own miniconda installation.
+The intent is to install Python 3.9 in the environment ``myenv``.
 
 .. code-block:: bash
 
-   conda  create --prefix /scratch/$USER/iops/sw/envs/myenv 
+   mamba  create --prefix /scratch/$USER/iops/sw/envs/myenv -c conda-forge python=3.9
 
 The Conda environment ``myenv`` can be activated as follows:
 
 .. code-block:: bash
 
-  conda activate /scratch/$USER/iops/sw/envs/myenv
+  conda activate $MY_SW/envs/myenv
 
-Please note that it is the user’s responsibility to cleanup temporary files after any package installation. This command can be used to clean the cache:
+.. important::
+
+   ``conda`` package cache on Shaheen III is redirected to ``$MY_SW/cache``. 
+   **Clearing this cache directory is the responsibility of user** to avoid failures when creating new environments due to lack of space in ``$SCRATCH_IOPS`` directory.
 
 .. code-block:: bash
 
   conda clean --all
 
-The following SLURM script named ``job.slurm`` can be used as a template for using Conda-installed packages:
+Installing complex environments
+=================================
+
+``conda`` environments can sometimes come with a lot of dependencies. This causes them to take long time to install. It is recommended to create such environments as a SLURM batch job instead of running interactively.
+
+One prerequisite for this is to have an ``environment.yaml`` file listing all the required software and preferred channels to search these packages. Below is an example environment file:
+
+.. code-block:: bash
+
+    name: pytorch
+    channels:
+    - pytorch
+    - conda-forge
+    dependencies:
+    - python=3.9
+    - pytorch==2.2.0 
+    - torchvision==0.17.0 
+    - torchaudio==2.2.0 
+    - cpuonly 
+    - jupyterlab 
+    - notebook 
+    - ipykernel 
+    - nb_conda_kernels 
+    - nodejs
+    - tensorboard
+    - tensorboardx
+    - pip
+    - pip: 
+        - ipython
+        - ipywidgets
+        - ipyparallel
+        - matplotlib
+        - bokeh==2.4.3
+        - jupyterlab_nvdashboard
+        - pytorch-lightning
+
+The example jobscript will look something as below:
 
 .. code-block:: bash
 
   #!/bin/bash
-  #SBATCH --time 5:0
-  eval "$(/scratch/$USER/iops/sw/miniconda3/bin/conda shell.bash hook)"
-  conda activate /scratch/$USER/iops/sw/envs/myenv
-  which conda
-  which python
-  conda list
+  #SBATCH --time 01:0:0
+  #SBATCH --partition=ppn
 
-The above-mentioned SLURM script can be submitted as follows:
+  source $MY_SW/miniconda3-amd64/bin/activate
 
-.. code-block:: bash
+  mamba env create -f environment.yaml -p $MY_SW/envs/pytorch
+
+And can be submitted to SLURM with the following command.
+
+ .. code-block:: bash
 
   sbatch job.slurm
