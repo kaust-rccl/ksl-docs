@@ -74,6 +74,8 @@ The Conda environment ``myenv`` can be activated as follows:
 
   conda clean --all
 
+.. _conda_package_install_batch:
+
 Installing complex environments
 =================================
 
@@ -127,3 +129,27 @@ And can be submitted to SLURM with the following command.
  .. code-block:: bash
 
   sbatch job.slurm
+
+
+Running jobs with ``conda`` environments
+=========================================
+
+Applications installed as ``conda`` packages can be run as batch workloads on SLURM. To do this, the jobscripts needs to activate the right environment and then launch the application. Here is an examples jobscript which queries the version and installation location of Pytorch installed the in :ref: `previous section <conda_package_install_batch>`
+
+.. code-block:: bash
+
+  #!/bin/bash
+  #SBATCH -t 00:10:00
+  #SBATCH -p workq
+
+  source $MY_SW/miniconda3-amd64/bin/activate $MY_SW/envs/pytorch
+
+  python -c 'import torch; print("Pytorch Version:",torch.__version__)'
+  python -c 'import torch; print("Pytorch location:",torch.__file__)'
+
+Expected output is:
+
+.. code-block:: bash
+  
+  Pytorch Version: 2.2.0
+  Pytorch location: </path/to/env>/lib/python3.9/site-packages/torch/__init__.py
