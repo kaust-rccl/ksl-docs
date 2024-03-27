@@ -32,7 +32,6 @@ These job may require the whole memory available on these compute nodes.
     #SBATCH --hint=nomultithread
     #SBATCH --account=k#####
     #SBATCH --time=01:00:00
-    #SBATCH --mem=376G
 
     scontrol show job ${SLURM_JOBID}
 

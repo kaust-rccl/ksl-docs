@@ -15,5 +15,6 @@ The following recipes are available for building weather and climate software on
       :titlesonly:
       :maxdepth: 1
 
+      wrf3.9.1.1
       wrf4.5.2
 
