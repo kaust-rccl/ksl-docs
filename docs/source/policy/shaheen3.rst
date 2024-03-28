@@ -12,7 +12,7 @@ Shaheen III
 Shaheen III has a total of 4608 compute nodes, 4 login nodes, 4 datamover nodes and 15 pre-post processing nodes. SLURM scheduler is used to schedule different kinds of workloads as jobs submitted by users. Additionally, Shaheen III's large storage is also shared between compute nodes and is capable of serving multiple users simultaneously. Policies help streamline the user experience by enforcing quotas and limits on a user or project level. Users must understand these policies before planning their simulation campaigns.  
 
 
-SLURM Polciy
+SLURM Policy
 ============
 SLURM on Shaheen III has multiple partitions. These partitions exist so that jobs can be routed to different types of computational resources, according to the required of the scheduled workloads.
 
@@ -27,7 +27,7 @@ The table below show the job limits enforced on different partitions.
    :widths: 30 30 20 20 20 20 20 
    :header-rows: 1
 
-   * - Paritition
+   * - Partition
      - Tenancy
      - Max CPUs/job
      - Max Nodes/job
@@ -87,7 +87,7 @@ All filesystems on Shaheen III are shared among users. Policies help enable cons
 
 ``scratch`` is a high performance filesystem on Shaheen III meant for temporary use during the lifetime of the job. For persistent storage, users must move their **unused** data to ``project`` filesystem.
 
-``scratch`` has three tiers; please see documentaion on :ref:`shaheen3_filesystem` for more details. There are two quotas enforced on ``scratch``, capacity and inodes. The table below lists quotas on three tiers:
+``scratch`` has three tiers; please see documentation on :ref:`shaheen3_filesystem` for more details. There are two quotas enforced on ``scratch``, capacity and inodes. The table below lists quotas on three tiers:
 
 .. _shaheen_scratch_quotas:
 
