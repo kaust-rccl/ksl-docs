@@ -38,7 +38,9 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
     export CODE_SERVER_CONFIG=${SCRATCH_IOPS}/config
     export XDG_CONFIG_HOME=${SCRATCH}/.cache
     export EXTENSIONS_DIR=${SCRATCH_IOPS}/.code/extensions
-    mkdir -p ${EXTENSIONS_DIR}
+    export CODE_DATADIR=${SCRATCH_IOPS}/.code/data
+    mkdir -p ${EXTENSIONS_DIR} ${CODE_DATADIR}
+
     node=$(/bin/hostname -s)
     port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     user=$(whoami)
@@ -57,8 +59,14 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
     echo "ssh  -L ${port}:${node}:${port} ${user}@${submit_host}.hpc.kaust.edu.sa"
 
 
-    code-server --auth=password --user-data-dir=${PWD}/data --extensions-dir=${EXTENSIONS_DIR} --verbose
+    code-server --auth=password --user-data-dir=${CODE_DATADIR} --extensions-dir=${EXTENSIONS_DIR} --verbose
 
+
+Once the job starts, please open the SLURM output file ``slurm-#####.out`` and copy the ``ssh -L ...`` command, paste it in a new ssh terminal. This is to create a ssh tunnel so that your local browser can connect to the remote code-server using http protocol.
+
+As a last step, type ``localhost:<port_number>`` where the port number is given in the slurm out and can also be noted from the ssh tunnel command.
+
+Upon successful connection, your browser shall show code-server's User Interface, which is very similar to Microsoft Visual Code. 
 
 Running code-server on Ibex
 ============================
