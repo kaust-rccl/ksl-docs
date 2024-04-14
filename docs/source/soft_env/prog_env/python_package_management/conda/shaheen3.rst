@@ -20,7 +20,7 @@ The following steps demonstrate the installation of Conda on Shaheen III Lustre.
 
    mkdir -p $MY_SW && cd $MY_SW
    bash /sw/sources/miniconda/conda24.1.2-python3.12.1/Miniconda3-latest-Linux-x86_64.sh -b -s -p $MY_SW/miniconda3-amd64 -u
-   conda activate $MY_SW/miniconda3-amd64/bin/activate
+   source $MY_SW/miniconda3-amd64/bin/activate
    conda install -y -c conda-forge mamba
    conda deactivate
 
