@@ -48,10 +48,10 @@ Below is an example jobscript to launch a jupyter server. The output of this job
     module load python
 
     
-    export JUPYTER_CONFIG_DIR=/scratch/shaima0d/iops/.jupyter
-    export JUPYTER_DATA_DIR=/scratch/shaima0d/iops/.local/share/jupyter
-    export JUPYTER_RUNTIME_DIR=/scratch/shaima0d/iops/.local/share/jupyter/runtime
-    export IPYTHONDIR=/scratch/shaima0d/iops/.ipython
+    export JUPYTER_CONFIG_DIR=${SCRATCH_IOPS}/.jupyter
+    export JUPYTER_DATA_DIR=${SCRATCH_IOPS}/.local/share/jupyter
+    export JUPYTER_RUNTIME_DIR=${SCRATCH_IOPS}/.local/share/jupyter/runtime
+    export IPYTHONDIR=${SCRATCH_IOPS}/.ipython
 
     ############################################################
     ## Load the conda base and activate the conda environment ##
