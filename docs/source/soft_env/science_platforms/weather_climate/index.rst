@@ -17,4 +17,5 @@ The following recipes are available for building weather and climate software on
 
       wrf3.9.1.1
       wrf4.5.2
+      wrf4.5.2-intel
 
