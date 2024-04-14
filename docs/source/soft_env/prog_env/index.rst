@@ -28,7 +28,7 @@ This section introduces the software envrionments available on KSL systems.
    :maxdepth: 1
 
    modulesystem/index
-   conda/index
+   python_package_management/index
    containers/index
    apps_catalogue/index
    
