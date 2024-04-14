@@ -37,7 +37,8 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
 
     export CODE_SERVER_CONFIG=${SCRATCH_IOPS}/config
     export XDG_CONFIG_HOME=${SCRATCH}/.cache
-
+    export EXTENSIONS_DIR=${SCRATCH_IOPS}/.code/extensions
+    mkdir -p ${EXTENSIONS_DIR}
     node=$(/bin/hostname -s)
     port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     user=$(whoami)
@@ -56,7 +57,7 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
     echo "ssh  -L ${port}:${node}:${port} ${user}@${submit_host}.hpc.kaust.edu.sa"
 
 
-    code-server --auth=password --user-data-dir=${PWD}/data --extensions-dir=${SCRATCH_IOPS}/code-server/extensions --verbose
+    code-server --auth=password --user-data-dir=${PWD}/data --extensions-dir=${EXTENSIONS_DIR} --verbose
 
 
 Running code-server on Ibex
