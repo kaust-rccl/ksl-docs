@@ -62,11 +62,33 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
     code-server --auth=password --user-data-dir=${CODE_DATADIR} --extensions-dir=${EXTENSIONS_DIR} --verbose
 
 
-Once the job starts, please open the SLURM output file ``slurm-#####.out`` and copy the ``ssh -L ...`` command, paste it in a new ssh terminal. This is to create a ssh tunnel so that your local browser can connect to the remote code-server using http protocol.
+Once the job starts, please open the SLURM output file ``slurm-#####.out``. A sample output is shown below:
 
-As a last step, type ``localhost:<port_number>`` where the port number is given in the slurm out and can also be noted from the ssh tunnel command.
+.. code-block:: bash
+    
+    > cat slurm-242941.out
 
-Upon successful connection, your browser shall show code-server's User Interface, which is very similar to Microsoft Visual Code. 
+    Copy the following line in a new terminal one after another to create a secure SSH tunnel between your computer and Shaheen compute node.
+    ssh  -L 58629:dtn1:58629 <username>@login1.hpc.kaust.edu.sa
+    [2024-04-14T15:56:34.142Z] debug parent:360 spawned child process 378
+    [2024-04-14T15:56:36.025Z] debug child:378 initiating handshake
+    [2024-04-14T15:56:36.030Z] debug parent:360 got message {"message":{"type":"handshake"}}
+    .....
+    [2024-04-14T15:56:36.063Z] info  Using config file /scratch/<username>/iops/config
+    [2024-04-14T15:56:36.063Z] info  HTTP server listening on http://10.148.18.60:58629/
+    [2024-04-14T15:56:36.063Z] info    - Authentication is enabled
+    [2024-04-14T15:56:36.064Z] info      - Using password from /scratch/<username>/iops/config
+    [2024-04-14T15:56:36.064Z] info    - Not serving HTTPS
+    [2024-04-14T15:56:36.064Z] info  Session server listening on /scratch/<username>/iops/.code/data/code-server-ipc.sock
+
+
+Copy the ``ssh -L ...`` command, paste it in a new ssh terminal. This is to create a ssh tunnel so that your local browser can connect to the remote code-server using http protocol.
+
+As a last step, type ``localhost:<port>`` where the port number is given in the slurm out and can also be noted from the ssh tunnel command.
+
+Upon successful connection, your browser shall show code-server's User Interface, which is very similar to Microsoft Visual Code.
+The UI will first ask for a password for authentication. This can be found in the file ``${SCRATCH_IOPS}/config``. The password is case sensitive. If unchanged, the future session will reuse the cached password, until you choose to change it in the jobscript.
+
 
 Running code-server on Ibex
 ============================
