@@ -8,25 +8,66 @@
 =========
 VScode 
 =========
+code-server is an opensource alternative to running VS code on a remote machine. The server instantiates on a remote host and the client can run in a browser. It is recomended to create a conda environment for codeserver installation. 
+
+
+
+Running code-server on Shaheen III
+===================================
+It is recommended to create a conda environment with code-server installed as a package:
+
+.. code-block:: bash
+
+    source ${MY_SW}/miniconda3-amd64/bin/activate
+    mamba create -c conda-forge -p ${MY_SW}/envs/code-server code-server 
+
+
+Start a remote instance of code-server on compute node of Shaheen III and connect to it. This is best done as a SLURM job and connect to it via your browser. 
+
+
+.. code-block:: bash
+
+    #!/bin/bash
+    #SBATCH --cpus-per-task=192
+    #SBATCH --time=00:10:00
+    #SBATCH --partition=ppn
+
+    source ${MY_SW}/miniconda3-amd64/bin/activate ${MY_SW}/envs/code-server
+
+
+    export CODE_SERVER_CONFIG=${SCRATCH_IOPS}/config
+    export XDG_CONFIG_HOME=${SCRATCH}/.cache
+
+    node=$(/bin/hostname -s)
+    port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+    user=$(whoami)
+    submit_host=${SLURM_SUBMIT_HOST}
+
+    if [ -f "${CODE_SERVER_CONFIG}" ] ; then
+    rm ${CODE_SERVER_CONFIG}
+    fi
+
+    echo "bind-addr: ${node}:${port}" >> ${CODE_SERVER_CONFIG}
+    echo "auth: password" >> ${CODE_SERVER_CONFIG}
+    echo "password: 10DowningStreet" >> ${CODE_SERVER_CONFIG}
+    echo "cert: false" >> ${CODE_SERVER_CONFIG}
+
+    echo "Copy the following line in a new terminal one after another to create a secure SSH tunnel between your computer and Shaheen compute node."
+    echo "ssh  -L ${port}:${node}:${port} ${user}@${submit_host}.hpc.kaust.edu.sa"
+
+
+    code-server --auth=password --user-data-dir=${PWD}/data --extensions-dir=${SCRATCH_IOPS}/code-server/extensions --verbose
+
 
 Running code-server on Ibex
------------------------------
+============================
 
-code-server is an opensource alternative to running VS code on a remote machine. 
-The server instantiates on a remote host and the client can run in a browser. The following has been tested on Ibex’s GPUs node and client in Google Chrome on local workstation. 
+The following has been tested on Ibex’s GPUs node and client in Google Chrome on local workstation. 
 
 Please login to ``username@vscode.ibex.kaust.edu.sa`` for the steps below. This is to isolate the processes invoked by VSCode.
 
 It applies to those who are only interested to use Ibex’s filesystem in your local VS Code installation.
 
-Step 1
-^^^^^^^
-Install code-server in your conda environment:
-
-``conda install -c conda-forge code-server``
-
-Step 2
-^^^^^^^
 You can run code-server remote server either interactively or in a batch job. Batch jobs are preferred
 
 Interactive allocate a node with e.g. GPU on Ibex (assuming you are on ``vscode.ibex.kaust.edu.sa`` node):
