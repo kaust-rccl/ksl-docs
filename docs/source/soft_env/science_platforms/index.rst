@@ -9,12 +9,12 @@
 Science Platforms 
 =============================
 
-This is a driectory to document domain specific user guides and best practices.
+The domain-specific user guides and best practices on a supercomputing ecosystem are provided for the following science platforms.
 
 .. toctree::
     :maxdepth: 1
     :titlesonly:
-    :hidden:
+
 
     data_science/index
     cfd_platform/index
