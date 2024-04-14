@@ -38,7 +38,7 @@ Start a remote instance of code-server on compute node of Shaheen III and connec
     export CODE_SERVER_CONFIG=${SCRATCH_IOPS}/config
     export XDG_CONFIG_HOME=${SCRATCH}/.cache
     export EXTENSIONS_DIR=${SCRATCH_IOPS}/.code/extensions
-    mkdir -p EXTENSIONS_DIR
+    mkdir -p ${EXTENSIONS_DIR}
     node=$(/bin/hostname -s)
     port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     user=$(whoami)
