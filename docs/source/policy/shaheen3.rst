@@ -23,7 +23,7 @@ The table below show the job limits enforced on different partitions.
   - Note that these are enforced on per-user basis
   - The usage is accounted on the basis of physical core, i.e. for each 2 CPUs allocated for an hour, 1 core hour is billed.
   - On workq, which is an exclusive allocation of node, full 192 core hours are charged, irrespective of the number of CPUs used. 
-  - For access to 72hour partition, the users must request with a justification.
+  - For access to 72hour partition, the users must send an email request with a justification.
 
 .. _shaheen_slurm_limits:
 .. list-table:: **SLURM job limits**
