@@ -21,6 +21,9 @@ The table below show the job limits enforced on different partitions.
 .. note::
   - The term **CPUs** refers to hyperthreads running on a physical core, i.e. 2 CPUs per physical core
   - Note that these are enforced on per-user basis
+  - The usage is accounted on the basis of physical core, i.e. for each 2 CPUs allocated for an hour, 1 core hour is billed.
+  - On workq, which is an exclusive allocation of node, full 192 core hours are charged, irrespective of the number of CPUs used. 
+  - For access to 72hour partition, the users must request with a justification.
 
 .. _shaheen_slurm_limits:
 .. list-table:: **SLURM job limits**
@@ -36,28 +39,28 @@ The table below show the job limits enforced on different partitions.
      - Max jobs running
    * - workq
      - exclusive
-     - 196,608
-     - 512
+     - 786,432
+     - 2048
      - 24
-     - ###
-     - ###
+     - 1000
+     - 200
    * - shared
      - shared
      - 64 (4/node)
      - 16
      - 24
      - ###
-     - ###
+     - 16
    * - debug
      - exclusive
      - 1536
      - 4
      - 0.5(default)/4(max)
-     - ###
-     - ###
+     - 1
+     - 1
    * - dtn
      - exclusive
-     - 192
+     - 1024
      - 4
      - 1(default)/24(max)
      - ###
@@ -74,8 +77,8 @@ The table below show the job limits enforced on different partitions.
      - 49152
      - 128
      - 1(default)/72(max)
-     - ###
-     - ###
+     - 32
+     - 16
 
 
 Filesystem Policy
