@@ -193,6 +193,7 @@ Modify the following jobscript according to your parameters:
 Port forwarding is required to bind to the listening port of the remote host (Ibex GPU node). For this, open a new terminal window and start an SSH tunnel to achieve the above:
 
 .. code-block:: bash
+    
     ssh -L localhost:<port>:dgpu501-22:<port> <username>@glogin.ibex.kaust.edu.sa
 
 In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use the port your code-server is listening on, and  your <username>  in the above syntax to reverse connect to the remote machine.
@@ -202,6 +203,7 @@ In case you have submitted a batch job, please check the slurm output and copy t
 
 Once the SSH tunnel is established, you can open the URL that code-server is listening on in the browser to access VS code/code-server
 .. code-block:: bash
+    
     http://localhost:<port>/
 
 Fill the password set in your config file and your session is ready to use. 
