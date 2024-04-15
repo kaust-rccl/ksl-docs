@@ -20,7 +20,8 @@ It is recommended to create a conda environment with code-server installed as a 
 
     source ${MY_SW}/miniconda3-amd64/bin/activate
     mamba create -c conda-forge -p ${MY_SW}/envs/code-server code-server 
-
+    conda activate ${MY_SW}/envs/code-server
+    mamba install -c conda-forge -y python=3.9
 
 Start a remote instance of code-server on compute node of Shaheen III and connect to it. This is best done as a SLURM job and connect to it via your browser. 
 
@@ -89,17 +90,29 @@ As a last step, type ``localhost:<port>`` where the port number is given in the 
 Upon successful connection, your browser shall show code-server's User Interface, which is very similar to Microsoft Visual Code.
 The UI will first ask for a password for authentication. This can be found in the file ``${SCRATCH_IOPS}/config``. The password is case sensitive. If unchanged, the future session will reuse the cached password, until you choose to change it in the jobscript.
 
+.. important:: 
+    It is mandatory to ``scancel`` the job to terminate the remote server. Merely closing your browser won't close the compute node allocated to your job and will be charged until the wall time reaches, and job terminates. 
+
 
 Running code-server on Ibex
 ============================
 
 The following has been tested on Ibex’s GPUs node and client in Google Chrome on local workstation. 
 
-Please login to ``username@vscode.ibex.kaust.edu.sa`` for the steps below. This is to isolate the processes invoked by VSCode.
+Please login to ``<username>@vscode.ibex.kaust.edu.sa`` for the steps below. This will take you to a login node dedicate for VSCode users.
 
-It applies to those who are only interested to use Ibex’s filesystem in your local VS Code installation.
+This login node is useful if you only want to access the Ibex filesystem and connect it to your local VSCode installation via Remote SSH extension.
 
-You can run code-server remote server either interactively or in a batch job. Batch jobs are preferred
+If you want to run compute while developing in an VSCode, ``code-server``, an opensource alternative to MS VSCode is recommended.
+
+code-server can be installed as a conda environment. 
+
+.. code-block:: bash
+
+    source /ibex/user/${USER}/miniconda3/bin/activate
+    mamba create -c conda-forge -p code-server 
+    conda activate code-server
+    mamba install -c conda-forge -y python=3.9
 
 Interactive allocate a node with e.g. GPU on Ibex (assuming you are on ``vscode.ibex.kaust.edu.sa`` node):
 
@@ -153,13 +166,13 @@ Modify the following jobscript according to your parameters:
     #SBATCH --time=00:10:00
     #SBATCH --gpus=1
 
-    source $HOME/miniconda3/bin/activate ./codeserver
+    source /ibex/user/${USER}/miniconda3/bin/activate code-server
 
 
     export CODE_SERVER_CONFIG=~/.config/code-server/config.yaml
     export XDG_CONFIG_HOME=$HOME/tmpdir
     node=$(/bin/hostname)
-    port=10121
+    port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     user=$(whoami) 
     submit_host=${SLURM_SUBMIT_HOST} 
 
@@ -177,24 +190,19 @@ Modify the following jobscript according to your parameters:
 
     code-server --auth=password --verbose
 
-Step 3
-^^^^^^^
 Port forwarding is required to bind to the listening port of the remote host (Ibex GPU node). For this, open a new terminal window and start an SSH tunnel to achieve the above:
 
+.. code-block:: bash
+    ssh -L localhost:<port>:dgpu501-22:<port> <username>@glogin.ibex.kaust.edu.sa
+
+In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use the port your code-server is listening on, and  your <username>  in the above syntax to reverse connect to the remote machine.
+
+In case you have submitted a batch job, please check the slurm output and copy the ssh command from there and paste it in a new terminal
 
 
-``ssh -L localhost:10121:dgpu501-22:10121 username@glogin.ibex.kaust.edu.sa``
-
-In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use you username instead of username  and the jump server/node is glogin login node.
-
-In case you have submitted a batch job, please see the slurm output and copy the ssh command from there and paste it in a new terminal
-
-
-Step 4
-^^^^^^^^
 Once the SSH tunnel is established, you can open the URL that code-server is listening on in the browser to access VS code/code-server
+.. code-block:: bash
+    http://localhost:<port>/
 
-``http://localhost:10121/``
-
-Fill the password and your session is ready to use. 
+Fill the password set in your config file and your session is ready to use. 
 When finished, please exit the job on Ibex.
