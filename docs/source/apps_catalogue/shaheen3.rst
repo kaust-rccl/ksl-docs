@@ -10,12 +10,20 @@ Shaheen III
 Compilers
 ---------
 
-
+==============  ======  =========  ==========
+System Build    App     Version    Compiler
+==============  ======  =========  ==========
+ex109genoa      python  3.10.13    sles15sp4
+==============  ======  =========  ==========
 
 Optimized Librarires
 --------------------
 
-
+==============  =====  =========  ==========
+System Build    App    Version    Compiler
+==============  =====  =========  ==========
+ex109genoa      mkl    2024.0.0   sles15sp4
+==============  =====  =========  ==========
 
 Computational Chemistry
 -----------------------
@@ -211,11 +219,16 @@ Computational Fluid Dynamics
 Data Science
 ------------
 
-==============  ======  =========  ==========
-System Build    App       Version  Compiler
-==============  ======  =========  ==========
-ex109genoa      zendnn        4.1  gcc12.2.0
-==============  ======  =========  ==========
+==============  ==========  =========  ==========
+System Build    App         Version    Compiler
+==============  ==========  =========  ==========
+ex109genoa      pytorch     2.2.1      gcc12.2.0
+ex109genoa      deepspeed   0.14.0     gcc12.2.0
+ex109genoa      pytorch     1.13       gcc12.2.0
+ex109genoa      tensorflow  2.12       gcc12.2.0
+ex109genoa      horovod     0.28.1     gcc12.2.0
+ex109genoa      zendnn      4.1        gcc12.2.0
+==============  ==========  =========  ==========
 
 Others
 ------
