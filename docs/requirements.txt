@@ -8,3 +8,5 @@ sphinxcontrib-googleanalytics
 sphinxcontrib-email
 pydata-sphinx-theme
 sphinx-copybutton
+myst-parser
+sphinx-collections

@@ -19,7 +19,10 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinxcontrib.googleanalytics',
     'sphinxcontrib.email',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinxcontrib.collections',
+    'myst_parser'
+
 ]
 
 intersphinx_mapping = {
@@ -79,3 +82,11 @@ highlight_options = {'stripall': True}
 
 googleanalytics_id = 'G-3QTH4PWE3F'
 googleanalytics_enabled=True
+
+collections = {
+   'visualization_vignettes': {
+      'driver': 'git',
+      'source': 'https://gitlab.kitware.com/jameskress/KAUST_Visualization_Vignettes.git'
+   }
+}
+
