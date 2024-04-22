@@ -18,6 +18,28 @@ In short, the compute node has 8 NUMA nodes in total, i.e. 4 on each socket.
 The jobscripts below examplify how the MPI and OpenMP processes are mapped by default and can that behavior be modified.
 
 
+.. important::
+    Not all filesystems are available for access on all compute nodes. Additionally, internet access is available on a subset of compute nodes. Following is the list of notable differences:
+
+     * On compute nodes in ``workq``, ``shared`` and ``72hours`` partition
+
+       - ``scratch`` is accessible with read/write permission
+       - ``project`` is accessible with read/write permission
+       - ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory    
+       - No internet access is available on these compute nodes
+  
+     * On compute nodes in ``ppn`` partition
+  
+       -  Both ``scratch`` and ``project`` are accessible with read/write permission
+       -  ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory
+       -  Compute nodes can access internet
+  
+     * On compute nodes in ``dtn`` partition 
+    
+       - ``scratch``, ``project`` and ``home`` are all accessible with read/write permission
+       - Compute nodes can access internet
+
+
 Serial jobs
 ============
 A serial job is characterized as when the application is capable of running on 1 thread. Although this is an overkill and your account will be charged at the full 192 core hours, it is sometimes justified to run on an exclusive node. 
@@ -193,8 +215,8 @@ Hybrid jobs with MPI and OpenMP
 Jobs that exhibit both shared memory and distributed memory parallelism are characterized as hyprid jobs. 
 Below is an example of how an MPI+OpenMP application could be launched on a compute nodes on Shaheen III.
 
-Single node
--------------
+Single node jobs
+-----------------
 The example jobscript below launches 8 MPI processes with 24 OpenMP threads on a single compute node of Shaheen III.
 
 .. code-block:: bash
@@ -215,7 +237,7 @@ The example jobscript below launches 8 MPI processes with 24 OpenMP threads on a
     srun --hint=nomultithread -n ${SLURM_NTASKS} -c ${OMP_NUM_THREADS} --cpu-bind=cores ./a.out
 
 
-Multinode Jobs
+Multinode jobs
 ---------------
 The example jobscript below demonstrates launching 32 MPI process such that 8 processes are launched on one compute node (i.e. 4 nodes needed).
 Each MPI process spawns 24 OpenMP threads. 
@@ -238,27 +260,74 @@ Each MPI process spawns 24 OpenMP threads.
     export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
     srun --hint=nomultithread -n ${SLURM_NTASKS} -c ${OMP_NUM_THREADS} --cpu-bind=cores ./a.out
 
-Depending on the domain decomposition charactersitics of your application, you may want to experiment with the distribution and try to place MPI processes linearly instead of the round-robin which is default.
+Depending on the domain decomposition characteristics of your application, you may want to experiment with the distribution and try to place MPI processes linearly instead of the round-robin which is default.
+
+Jobs on shared nodes
+=====================
+Shaheen III has added a new SLURM partition called ``shared``. Multiple jobs from one or more users can run on the same compute node which maximizes the utilization of node. The billing of such job is based on the requested cores instead of the full node, as in ``workq``. By default, 2 cpus and 1GB memory is allocated for a job.
+
+The main motivation of choosing to run a job in ``shared`` partition is if:
+* a job requires single core/thread jobs with minimal memory requirement
+* a jobarray is planned to run multiple thin components requiring few resources
+* prototyping a python workflow in a Jupyter Lab session
+* running distributed system with a server and multiple clients(workers), where workers are main workhorse. The server can be launched on ``shared`` partition and workers on ``workq`` partition
+
+Single node jobs
+-----------------
+.. code-block:: bash
 
 
-.. 72 hour wall time 
-.. ==============================
-.. Some compute nodes in the ``workq`` partition of Shaheen III can schedule jobs for longer than the default 24 hour wall time.
-.. The example jobscript below demonstrates submitting a job with a wall time of 72 hours.
+    #!/bin/bash
+    #SBATCH --partition=shared
+    #SBATCH --account=k#####
+    #SBATCH --time=01:00:00
 
-.. .. code-block:: bash
+    scontrol show job $SLURM_JOBID
+    srun ./a.out
 
-..     #!/bin/bash
-..     #SBATCH --partition=72hours
-..     #SBATCH --ntasks=192
-..     #SBATCH --cpus-per-task=1
-..     #SBATCH --hint=nomultithread
-..     #SBATCH --account=k#####
-..     #SBATCH --time=72:00:00
+A maximum of 4 cpus and full node memory on a node can requested. Below the job requests approximately half of a nodes memory:
 
-..     scontrol show job ${SLURM_JOBID}
+.. code-block:: bash
 
-..     # load your software environment here:
 
-..     export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
-..     srun --hint=nomultithread -n ${SLURM_NTASKS} -c ${OMP_NUM_THREADS} --cpu-bind=threads ./a.out
+    #!/bin/bash
+    #SBATCH --partition=shared
+    #SBATCH --account=k#####
+    #SBATCH --time=01:00:00
+    #SBATCH –c 4
+    #SBATCH --mem=150G
+    scontrol show job $SLURM_JOBID
+    srun ./a.out
+
+Mulitnode jobs
+-----------------
+The example jobscript below requests two jobs with 4 processes on on two nodes.
+
+.. code-block:: bash
+
+    #!/bin/bash
+    #SBATCH --partition=shared
+    #SBATCH --account=k#####
+    #SBATCH --time=01:00:00
+    #SBATCH --ntasks=4
+    #SBATCH --ntasks-per-node=2
+    
+    scontrol show job $SLURM_JOBID
+    srun ./a.out
+
+72 hours Jobs
+==============
+At times, 24 hours are not enough for a job to finish and there is no reasonable way to circumvent this limitation. In such cases, a subset of ``workq`` nodes overlap with a partition called ``72hours``. This partition allows a job to request wall time of upto 3 days or 72 hours or (``72:00:00``). Access to this SLURM partition is privileged and users must send an :email:`<help@hpc.kaust.edu.sa>`with a compelling justification which will be technically reviewed by one of KSL's computational scientists.
+
+.. code-block:: bash
+
+    #!/bin/bash
+    #SBATCH --partition=72hours
+    #SBATCH --ntasks=1
+    #SBATCH --cpus-per-task=192
+    #SBATCH --hint=nomultithread
+    #SBATCH --account=k#####
+    #SBATCH --time=01:00:00
+
+    scontrol show job $SLURM_JOBID
+    srun ./a.out
