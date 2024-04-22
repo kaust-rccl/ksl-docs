@@ -24,7 +24,7 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
      * On compute nodes in ``workq``, ``shared`` and ``72hours`` partition
 
        - ``scratch`` is accessible with read/write permission
-       - ``project`` is accessible with read/write permission
+       - ``project`` is accessible with **read only** permission. Jobs running on compute nodes of ``workq`` will not be able to write on project directory.
        - ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory    
        - No internet access is available on these compute nodes
   
@@ -39,7 +39,8 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
        - ``scratch``, ``project`` and ``home`` are all accessible with read/write permission
        - Compute nodes can access internet
 
-
+.. note::
+    Because compute nodes in ``workq`` partition don't have write permission on project directory and don't mount the home directory, the **users must submit their jobs from their scratch directory**.
 Serial jobs
 ============
 A serial job is characterized as when the application is capable of running on 1 thread. Although this is an overkill and your account will be charged at the full 192 core hours, it is sometimes justified to run on an exclusive node. 
@@ -264,7 +265,7 @@ Depending on the domain decomposition characteristics of your application, you m
 
 Jobs on shared nodes
 =====================
-Shaheen III has added a new SLURM partition called ``shared``. Multiple jobs from one or more users can run on the same compute node which maximizes the utilization of node. The billing of such job is based on the requested cores instead of the full node, as in ``workq``. By default, 2 cpus and 1GB memory is allocated for a job.
+Shaheen III has added a new SLURM partition called ``shared``. Multiple jobs from one or more users can run on the same compute node which maximizes the utilization of node. The billing of such job is based on the requested cores instead of the full node, as in ``workq``. By default, 2 cpus (1 core) and 1GB memory is allocated for a job.
 
 The main motivation of choosing to run a job in ``shared`` partition is if:
 * a job requires single core/thread jobs with minimal memory requirement
@@ -285,7 +286,7 @@ Single node jobs
     scontrol show job $SLURM_JOBID
     srun ./a.out
 
-A maximum of 4 cpus and full node memory on a node can requested. Below the job requests approximately half of a nodes memory:
+A maximum of 8 cpus (4 cores) and full node memory on a node can requested. Below the job requests approximately half of a nodes memory:
 
 .. code-block:: bash
 
@@ -294,7 +295,7 @@ A maximum of 4 cpus and full node memory on a node can requested. Below the job 
     #SBATCH --partition=shared
     #SBATCH --account=k#####
     #SBATCH --time=01:00:00
-    #SBATCH –c 4
+    #SBATCH –c 8
     #SBATCH --mem=150G
     scontrol show job $SLURM_JOBID
     srun ./a.out
