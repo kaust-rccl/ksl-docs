@@ -265,7 +265,7 @@ Depending on the domain decomposition characteristics of your application, you m
 
 Jobs on shared nodes
 =====================
-Shaheen III has added a new SLURM partition called ``shared``. Multiple jobs from one or more users can run on the same compute node which maximizes the utilization of node. The billing of such job is based on the requested cores instead of the full node, as in ``workq``. By default, 2 cpus and 1GB memory is allocated for a job.
+Shaheen III has added a new SLURM partition called ``shared``. Multiple jobs from one or more users can run on the same compute node which maximizes the utilization of node. The billing of such job is based on the requested cores instead of the full node, as in ``workq``. By default, 2 cpus (1 core) and 1GB memory is allocated for a job.
 
 The main motivation of choosing to run a job in ``shared`` partition is if:
 * a job requires single core/thread jobs with minimal memory requirement
@@ -286,7 +286,7 @@ Single node jobs
     scontrol show job $SLURM_JOBID
     srun ./a.out
 
-A maximum of 4 cpus and full node memory on a node can requested. Below the job requests approximately half of a nodes memory:
+A maximum of 8 cpus (4 cores) and full node memory on a node can requested. Below the job requests approximately half of a nodes memory:
 
 .. code-block:: bash
 
@@ -295,7 +295,7 @@ A maximum of 4 cpus and full node memory on a node can requested. Below the job 
     #SBATCH --partition=shared
     #SBATCH --account=k#####
     #SBATCH --time=01:00:00
-    #SBATCH –c 4
+    #SBATCH –c 8
     #SBATCH --mem=150G
     scontrol show job $SLURM_JOBID
     srun ./a.out

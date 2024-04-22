@@ -31,9 +31,9 @@ Below is an example jobscript which request **32 cores** of a CPU on a KSL syste
 
     #SBATCH --job-name=my-first-job
     #SBATCH --ntasks=32
-    #SBATCH --ntasks-per-node=1
+    #SBATCH --ntasks-per-node=32
     #SBATCH --partition=workq
-    #SBATCH --account=k1001
+    #SBATCH --account=<project_id>
     #SBATCH --time=01:00:00
 
     srun -n 32 ./helloworld
