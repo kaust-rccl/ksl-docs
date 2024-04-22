@@ -24,7 +24,7 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
      * On compute nodes in ``workq``, ``shared`` and ``72hours`` partition
 
        - ``scratch`` is accessible with read/write permission
-       - ``project`` is accessible with read/write permission
+       - ``project`` is accessible with **read only** permission. Jobs running on compute nodes of ``workq`` will not be able to write on project directory.
        - ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory    
        - No internet access is available on these compute nodes
   
@@ -39,7 +39,8 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
        - ``scratch``, ``project`` and ``home`` are all accessible with read/write permission
        - Compute nodes can access internet
 
-
+.. note::
+    Because compute nodes in ``workq`` partition don't have write permission on project directory and don't mount the home directory, the **users must submit their jobs from their scratch directory**.
 Serial jobs
 ============
 A serial job is characterized as when the application is capable of running on 1 thread. Although this is an overkill and your account will be charged at the full 192 core hours, it is sometimes justified to run on an exclusive node. 
