@@ -324,6 +324,7 @@ At times, 24 hours are not enough for a job to finish and there is no reasonable
 
     #!/bin/bash
     #SBATCH --partition=72hours
+    #SBATCH --qos=72hours
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=192
     #SBATCH --hint=nomultithread
