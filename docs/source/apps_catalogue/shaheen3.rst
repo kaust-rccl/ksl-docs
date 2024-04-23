@@ -32,6 +32,7 @@ Computational Chemistry
 System Build    App           Version          Compiler
 ==============  ============  ===============  ===========
 ex109genoa      yambo         5.0.4            intel19.0.5
+ex109genoa      espresso      7.3              intel19.0.5
 ex109genoa      yambo         5.2.1            intel19.0.5
 ex109genoa      z2pack        2.2.0            precompiled
 ex109genoa      wanniertools  2.7.0            intel19.0.5
