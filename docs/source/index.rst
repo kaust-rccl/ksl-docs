@@ -21,7 +21,7 @@ For users eager to get onto KSL systems and run jobs, there is a :ref:`quickstar
 
 .. note:: 
    
-   As a pre-requisite you must have already applied for your account credentials to access the KSL suprecomting resources. Please refer to a detailed guide on how to `get an account for KSL systems <https://www.hpc.kaust.edu.sa/content/chapter-2-getting-account>`_.  
+   As a pre-requisite you must have already applied for your account credentials to access the KSL suprecomting resources. Please refer to a detailed guide on how to `get an account for KSL systems <https://hpc.kaust.edu.sa/content/apply-access>`_.  
 
 .. raw:: html
    :file: static/html/quicklinks.html

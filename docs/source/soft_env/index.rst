@@ -16,8 +16,8 @@ Additionally, for the user requiring frequent change in software or legacy softw
 
 This page provides an entry point for exploring the software environment on provided different KSL systems, along with instructions on how to run different workloads, pre/postprocess, debug or profile their performance.
  
-:ref:`science_platforms` is a great entry point for guidelines specfic to science domains. 
-The topics included range from opiniated quickstart to expert advice on how to best run specific applications, workloads and usecases on different KSL platforms.
+:ref:`science_platforms` is a great entry point for guidelines specific to science domains. 
+The topics included range from opinionated quickstart to expert advice on how to best run specific applications, workloads and usecases on different KSL platforms.
   
 .. toctree::
    :titlesonly:
