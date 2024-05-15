@@ -166,13 +166,12 @@ The following example jobscirpt demonstrate how to scale to 16 V100 GPUs on 4 no
 
     srun -l ./wrapper.sh
 
-Whereas the ```wrapper.sh```, as shown below, is an executable script that launches the processes on each node. It is important to relocate the cache directory to somewhere in ```/ibex/user/$USER``` directory where Hugginface ```evaluate``` library will maintain the metrics files. The library manages file locking to avoid race conditions. We have found that having this directory in default location on HOME filesystem has caused issues and the ```/ibex/user/$USER``` directory resolves this due to lower latency to fullfil frequent metadata queries. 
+Whereas the ``wrapper.sh``, as shown below, is an executable script that launches the processes on each node. It is important to relocate the cache directory to somewhere in ``/ibex/user/$USER`` directory where Hugginface ``evaluate`` library will maintain the metrics files. The library manages file locking to avoid race conditions. We have found that having this directory in default location on HOME filesystem has caused issues and the ``/ibex/user/$USER`` directory resolves this due to lower latency to fullfil frequent metadata queries. 
 
 .. code-block:: bash
-    :caption: A wrapper script to make use of SLURM's output environment variable which are only set when ```srun``` command executes. In this case ```SLURM_NODEID``` is the variable of interest.
+    :caption: A wrapper script to make use of SLURM's output environment variable which are only set when ``srun`` command executes. In this case ``SLURM_NODEID`` is the variable of interest.
 
     #!/bin/bash
-
     export LAUNCHER="accelerate launch \
           --num_processes  ${SLURM_GPUS}  \
           --num_machines ${SLURM_NNODES} \
