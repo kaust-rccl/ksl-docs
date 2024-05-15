@@ -13,3 +13,4 @@ Profiling and performance tuning
 .. toctree:: 
 
     nv_nsight
+    nvdashboard
