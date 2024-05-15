@@ -50,6 +50,14 @@ Scientific Computing Libraries
     libraries/using_libsci
     libraries/numba_intro
 
+Useful workflows
+-------------------------------
+
+.. toctree:: 
+    :titlesonly:
+    :maxdepth: 2
+
+    workflows/dask_for_taskfarm
 
 Best Practices on KSL systems
 -------------------------------
