@@ -16,14 +16,12 @@ Dask on Ibex can be accessed in multiple ways. You can either use the system ins
 Dask from modulefile
 ---------------------
 
-On Ibex you can install dask in your own directory or opt to use the pre-installed module. 
-
 To use dask from the pre-installed module, you can do the following:
 
 .. code-block::
 
     module load dl
-    module load dask
+    module load python/3.9.16
 
 How to Install your own
 ------------------------
@@ -50,7 +48,7 @@ This will bring the whole kitchen sinks. It includes dask-core, dask-distributed
 
 Using pip to install
 ----------------------
-If you don’t use conda package management and depend on the system installed python modules, you can install via pip.
+If you don't use conda package management and depend on the system installed python modules, you can install via pip.
 
 .. code-block::
     
@@ -115,7 +113,8 @@ Dask can be run in a jupyter notebook. The following is an example of how to sta
     #SBATCH --mem=20G
     #SBATCH --time=01:00:00
 
-    module load dask
+    module load dl
+    module load python/3.9.16
     module list
 
     mkdir workers${SLURM_JOBID}
@@ -126,9 +125,9 @@ Dask can be run in a jupyter notebook. The following is an example of how to sta
     node=$(hostname -I  | cut -d ' ' -f 2)
     user=$(whoami)
     submit_host=${SLURM_SUBMIT_HOST}
-    sched_port=10021
-    jupyter_port=10022
-    dask_dashboard=10023
+    sched_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+    jupyter_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+    dask_dashboard=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 
     srun -n ${SLURM_NTASKS} -c ${SLURM_CPUS_PER_TASK} dask-mpi --worker-class distributed.Worker --local-directory=workers${SLURM_JOBID} --interface=ib0 --nthreads=${SLURM_CPUS_PER_TASK} --scheduler-port=${sched_port} \
         --scheduler-file=scheduler_${SLURM_JOBID}.json --dashboard-address=${node}:${dask_dashboard} &
@@ -152,4 +151,3 @@ Dask can be run in a jupyter notebook. The following is an example of how to sta
     "
 
     jupyter lab  --no-browser --port=${jupyter_port} --ip=${node}
-    For the rest of the example please refer to Using Dask on Shaheen example details.
