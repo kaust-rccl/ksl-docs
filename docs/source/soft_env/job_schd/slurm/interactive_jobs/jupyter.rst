@@ -25,20 +25,21 @@ Jupyter server Jobscript
 ==========================
 
 Though all KSL system run SLURM there are few subtle differences in how to launch Jupyter sessions on their compute nodes.
+Below are sample jobscripts for launching the JupyterLab server on Shaheen III and Ibex compute nodes. Once the job starts the steps to connecting to the running Jupyter Lab session is common for both KSL systems
 
-
-Shaheen III 
------------------------
+Job on Shaheen III 
+-------------------
 Below is an example jobscript to launch a jupyter server. The output of this job will have instruction to follow steps to connect to the running jupyter server session.
 
 .. code-block:: bash
+    :caption: A batch job to launch the Jupyter Lab server on a compute node of Shaheen III in ``shared`` partition. To get more compute resources on a node, please set the partition ``workq``
 
     #!/bin/bash
     #SBATCH --nodes=1
     #SBATCH --cpus-per-task=4
     #SBATCH --partition=shared
     #SBATCH --time=00:30:00 
-    #SBATCH --job-name=demo
+    #SBATCH --job-name=jupyter
 
     export LC_ALL=C.UTF-8
     export LANG=C.UTF-8
@@ -86,9 +87,30 @@ Below is an example jobscript to launch a jupyter server. The output of this job
     # Run Jupyter
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}
     
+Steps after job starts
+***********************
+
+* Open the ``slurm-#####.out`` file and copy the command to establish ``ssh`` tunnel. For example:
+
+.. code-block:: bash
+
+    ssh -L 12345:nid00121:12345 <username>@login2.hpc.kaust.edu.sa
+
+* Paste the copied command in a new terminal 
+
+* Now copy the URL from the end of the slurm output file. It starts with 
+
+.. code-block::
+    
+    http://127.0.0.1:<port-number>/<secret-token-auth>
+    
+Please copy the full URL, the hash at the end is the secret token and Jupyter Lab uses it to authenticate you as the owner of the session. 
+
+* Once you are finished with your work, please navigate to the file menu of Jupyter Lab and select "Shutdown" and this will terminate the Jupyter Lab server on the compute node and conclude the job. 
 
 
-Ibex
+
+Job on Ibex
 -------------------
 
 Compute nodes on Ibex are heterogeneous and it is necessary to describe the request for resources in more granularity than in Shaheen III above.
@@ -148,10 +170,11 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
     
     
 
+Steps to do after Job starts
+=============================
 
-Once the job starts, the SLURM output file created in the directory you submitted the job from will have the instructions on how to reverse connect. 
-
-check the following output in  SLURM output will look something like this:
+Once the job starts, the SLURM output file created in the directory you submitted the job from will have the instructions on how to connect. 
+Check the following output in  SLURM output will look something like this:
 
 .. code-block:: bash 
    
@@ -163,7 +186,9 @@ check the following output in  SLURM output will look something like this:
 
 - Open a new terminal on your local machine and copy and paste the ssh tunnel command from the ``%x-%j-slurm.err``
 
-``ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 username@glogin.ibex.kaust.edu.sa``
+.. code-block:: bash
+
+    ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 username@glogin.ibex.kaust.edu.sa
 
 - This has created an SSH tunnel between the compute node your Jupyter server is launched on Ibex and your local machine on IP address localhost and port 57162. 
 
