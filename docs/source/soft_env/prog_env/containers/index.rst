@@ -23,6 +23,7 @@ Containers
    runtime_examples
    data_management
    conda_container
+   podman_container
    krccl_containers
    quick_start_singularity_shaheen3
 
