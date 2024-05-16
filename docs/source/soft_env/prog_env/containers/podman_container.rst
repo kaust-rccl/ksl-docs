@@ -10,26 +10,30 @@ Overview
 ======================================
 
 This guide details the steps for running Podman on a High-Performance Computing (HPC) environment. It specifically demonstrates launching a Docker image configured for Data Science and Tensorflow with support for NVIDIA GPUs. The guide will focus on a command involving various parameters and options to tailor the container environment for HPC needs.
----------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 To connect to the IBEX HPC system, you need to use SSH (Secure Shell), a protocol that provides encrypted communication sessions over unsecured networks. Here's how you can connect:
 
 Open your Terminal and execute the SSH Command:
 .. code-block:: bash
+
     ssh your_userusername@glogin.ibex.kaust.edu.sa
 
 Once connected, you can request computational resources using SLURM commands. SLURM is a job scheduler that allocates resources, schedules, and manages jobs running on the HPC system.
 
 .. note::
+
     ``podman`` is not present on the login nodes. Is is necessary to allocate for resources to use it 
 
 Example SLURM Command for Resource Allocation
----------------------------------------
+------------------------------------------------------------------------------
 
 You can use the following command to start an interactive session with specific requirements:
 .. code-block:: bash
+
     srun --gpus-per-node=1 --time=01:10:00 --nodes=1 --mem=200G --constraint=v100 --resv-ports=1 --pty bash -l
 
 .. note::
+
     Explanation of the SLURM Command:
     - --gpus-per-node=1: Requests 1 GPUs per node.
     - --time=01:10:00: Sets the time limit for the session to 1 hour and 10 minutes.
@@ -42,6 +46,7 @@ You can use the following command to start an interactive session with specific 
 Once the resources are allocated you have to create two spaces to work with ``podman`` with the following command : 
 
 .. code-block:: bash
+
     mkdir -p /run/user/${UID}/bus /ibex/user/$USER/podman_images/
 
 Before running the container with the desired settings, it's often beneficial to pre-download the Docker image to ensure that all required files are ready and to avoid delays during initialization. This can be particularly important in an HPC environment where network speed or availability might vary.
@@ -50,9 +55,11 @@ Before running the container with the desired settings, it's often beneficial to
 To pull the Docker image ahead of time, use the podman pull command. This command fetches the container image from a registry and stores it locally, allowing for quicker startup times when the image is run. Here is how you can do it:
 
 .. code-block:: bash
+
     podman pull --root=/ibex/user/$USER/podman_images nginx
 
 .. note::
+
     Explanation of the Pull Command:
     - podman pull: This is the command used to fetch the image from the Docker registry.
     - --root=/ibex/user/$username/podman_images: Specifies the root directory where the container images are stored. This is particularly useful for keeping all related data in a specific project directory, which helps in organizing and managing project files efficiently.
@@ -65,11 +72,13 @@ As we are still working on the terminal provided by the resource allocation
 2. Verify the Image: After the download is complete, you can verify the presence of the image by listing the images in ``podman``:
 
 .. code-block:: bash
+
     podman images --root=/ibex/user/$USER/podman_images
 
 This will show all images stored in the specified directory, including the newly pulled nginx.
 
 .. note::
+
     Benefits of Pulling the Image Ahead of Time
     - Efficiency: Pulling the image beforehand can reduce the runtime preparation, as the image does not need to be downloaded during the podman run command execution.
     - Reliability: Having the image already downloaded can help avoid issues related to network connectivity or registry availability during the container start-up phase.
@@ -79,15 +88,17 @@ By following these steps and using the podman pull command, you ensure that your
 
 
 Example GPU enabled container and Jupyterlab
----------------------------------------
+------------------------------------------------------------------------------
 On this example we will download and run in the same command line a data science container that works with GPU.
 
-.. code-block:: bash 
+.. code-block:: bash
+
     podman --root=/ibex/user/$USER/podman_images pull abdelghafour1/tf_pip_gpu_vf:tf_gpu
 
 Before running the command, it's crucial to understand its components and what each part does:
 
 .. code-block:: bash
+
     podman run \
     -e NVIDIA_VISIBLE_DEVICES='' \
     --rm \
@@ -140,6 +151,7 @@ Example of podman with SLURM
 You can also run podman in the background using tthe follwoing code. Lets assume you already pulled the image in the previous example.
 
 .. code-block:: bash
+    
     #!/bin/bash
     #SBATCH --time=01:00:00
     #SBATCH --nodes=1
