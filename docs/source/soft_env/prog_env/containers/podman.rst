@@ -26,7 +26,7 @@ Once connected, you can request computational resources using SLURM commands. SL
     ``podman`` is not present on the login nodes. Is is necessary to allocate for resources to use it 
 
 Example SLURM Command for Resource Allocation
-------------------------------------------------------------------------------
+---------------------------------------------
 
 You can use the following command to start an interactive session with specific requirements:
 .. code-block:: bash
@@ -52,7 +52,9 @@ Once the resources are allocated you have to create two spaces to work with ``po
 
 Before running the container with the desired settings, it's often beneficial to pre-download the Docker image to ensure that all required files are ready and to avoid delays during initialization. This can be particularly important in an HPC environment where network speed or availability might vary.
 
-`Pulling the Docker Image Using Podman`
+Pulling the Docker Image Using Podman
+-------------------------------------
+
 To pull the Docker image ahead of time, use the podman pull command. This command fetches the container image from a registry and stores it locally, allowing for quicker startup times when the image is run. Here is how you can do it:
 
 .. code-block:: bash
