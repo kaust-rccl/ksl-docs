@@ -77,7 +77,7 @@ Interactive job
 The following jobscript first launches a distributed dask cluster using ```dask-mpi``` launcher and then starts a Jupyter lab server. The dask cluster has both dask scheduler and workers. After appropriately setting the ```ssh``` forward connection, the Jupyter lab can connect to the running dask scheduler to access the cluster and launch tasks. The instructions on these steps are printed in the slurm output file onces both servers have started.  
 Dask comes with a useful dashboard to monitor the activity of the tasks on workers. Using the assigned port as instructed in the slurm output file, typing ```localhost:<dashboard_port>``` address in the browser opens the Dask dashboard related to the job.
 
-.. code-block::
+.. code-block:: bash
 
     :caption: Jobscript to launch a Jupyterlab server and Dask scheduler in on jobscript. The resulting slurm output file prints the subsequent steps to establish to ```ssh``` tunnel to connect to the Jupyterlab and Dask dashboard.  
 
@@ -137,10 +137,12 @@ Dask comes with a useful dashboard to monitor the activity of the tasks on worke
     echo -e "
     To connect to the compute node ${node} on Shaheen III running your jupyter notebook server,
     you need to run following command in a new terminal on you workstation/laptop
-    1. Command to create ssh tunnel from you workstation/laptop to cdlX:
+ 
     ssh -L ${jupyter_port}:${node}:${jupyter_port} -L ${dashboard_port}:${node}:${dashboard_port} ${user}@${submit_host}.hpc.kaust.edu.sa
 
-    Copy the link provided below by jupyter-server and replace the nid0XXXX with localhost before pasting it in your browser on your workstation/laptop. Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to manually cancel this job running your jupyter server.
+    Copy the URL provided below by jupyter-server (one starting with http://127.0.0.1/) and paste it in your browser on your workstation/laptop. 
+    
+    Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to manually cancel this job running your jupyter server.
     "
 
     echo "Starting jupyter server in background with requested resources"
