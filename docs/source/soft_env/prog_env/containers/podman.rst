@@ -124,30 +124,36 @@ Before running the command, it's crucial to understand its components and what e
 .. note::
 
     Explanation of Parameters:
-    ``-e NVIDIA_VISIBLE_DEVICES=''``: Clears the default setting of visible NVIDIA devices. This is often used to control GPU visibility for the container.
+
+    - ``-e NVIDIA_VISIBLE_DEVICES=''``: Clears the default setting of visible NVIDIA devices. This is often used to control GPU visibility for the container.
     
     Container Removal:
-    ``--rm``: Automatically removes the container when it exits. This helps in not accumulating stopped containers.
+
+    - ``--rm``: Automatically removes the container when it exits. This helps in not accumulating stopped containers.
     
     Port Mapping:
-    ``-p 10000:8888``: Maps port 8888 inside the container to port 10000 on the host, used for Jupyter Lab access.
-    ``-p 8501:8501``: Maps port 8501 inside the container to port 8501 on the host, which could be used for other services like TensorBoard or Streamlit.
+
+    - ``-p 10000:8888``: Maps port 8888 inside the container to port 10000 on the host, used for Jupyter Lab access.
+    - ``-p 8501:8501``: Maps port 8501 inside the container to port 8501 on the host, which could be used for other services like TensorBoard or Streamlit.
     
     Volume and Storage:
-    ``-v ${PWD}:/app/mycode``: Mounts the current working directory on the host to /app/mycode inside the container. This allows for sharing code files between the host and container.
+
+    - ``-v ${PWD}:/app/mycode``: Mounts the current working directory on the host to /app/mycode inside the container. This allows for sharing code files between the host and container.
     
     GPU and Security:
-    ``--device=nvidia.com/gpu=all``: Allocates all available NVIDIA GPUs to the container.
-    ``--security-opt=label=disable``: Disables SELinux security labeling within the container, which is necessary in some HPC setups for accessing shared resources.
+
+    - ``--device=nvidia.com/gpu=all``: Allocates all available NVIDIA GPUs to the container.
+    - ``--security-opt=label=disable``: Disables SELinux security labeling within the container, which is necessary in some HPC setups for accessing shared resources.
     
     Root Directory:
-    ``--root=/ibex/user/$username/podman_images``: Specifies the root directory for storage of container data, allowing for persistent storage specific to the project.
+
+    - ``--root=/ibex/user/$username/podman_images``: Specifies the root directory for storage of container data, allowing for persistent storage specific to the project.
     
     Container Image and Command:
-    ``abdelghafour1/tf_pip_gpu_vf:latest``: Specifies the Docker container image to use.
-    
-    ``jupyter lab --ip=0.0.0.0 --allow-root``: Runs Jupyter Lab, accessible from any IP address and allows root access.
 
+    - ``abdelghafour1/tf_pip_gpu_vf:latest``: Specifies the Docker container image to use.
+    - ``jupyter lab --ip=0.0.0.0 --allow-root``: Runs Jupyter Lab, accessible from any IP address and allows root access.
+    
 
 While Execute the command above. This will start the container and Jupyter Lab.
 
