@@ -78,6 +78,7 @@ The following jobscript first launches a distributed dask cluster using ```dask-
 Dask comes with a useful dashboard to monitor the activity of the tasks on workers. Using the assigned port as instructed in the slurm output file, typing ```localhost:<dashboard_port>``` address in the browser opens the Dask dashboard related to the job.
 
 .. code-block::
+
     :caption: Jobscript to launch a Jupyterlab server and Dask scheduler in on jobscript. The resulting slurm output file prints the subsequent steps to establish to ```ssh``` tunnel to connect to the Jupyterlab and Dask dashboard.  
 
     #!/bin/bash -l 
@@ -152,6 +153,7 @@ Batch job
 For production and large scale runs, it is advisable to convert the notebook into a python script and run it as a batch job using SLURM. The jobscript below demonstrates how to launch a multicore and multinode job on Shaheen III compute nodes.
 
 .. code-block:: bash
+    
    :caption: 
 
    #!/bin/bash -l 

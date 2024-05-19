@@ -25,6 +25,8 @@ Containers
    conda_container
    krccl_containers
    quick_start_singularity_shaheen3
+   podman
+
 
 
 
