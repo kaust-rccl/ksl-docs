@@ -75,14 +75,16 @@ Below is an example jobscript to launch a jupyter server. The output of this job
     # print tunneling instructions jupyter-log
     echo -e "
     To connect to the compute node ${node} on Shaheen III running your jupyter notebook server,
-    you need to run following commnad in a new terminal on you workstation/laptop
-    1. Command to create ssh tunnel from you workstation/laptop to cdlX:
+    you need to run following command in a new terminal on you workstation/laptop
+ 
     ssh -L ${port}:${node}:${port} ${user}@${submit_host}.hpc.kaust.edu.sa
 
-    Copy the link provided below by jupyter-server and replace the nid0XXXX with localhost before pasting it in your browser on your workstation/laptop. Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to mannually cancel this job running your jupyter server.
+    Copy the URL provided below by jupyter-server (one starting with http://127.0.0.1/...) and paste it in your browser on your workstation/laptop. 
+    
+    Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to manually cancel this job running your jupyter server.
     "
 
-    echo "Starting jupyter server in background with requested resouce"
+    echo "Starting jupyter server in background with requested resources"
 
     # Run Jupyter
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}
@@ -100,7 +102,7 @@ Steps after job starts
 
 * Now copy the URL from the end of the slurm output file. It starts with 
 
-.. code-block::
+.. code-block:: bash
     
     http://127.0.0.1:<port-number>/<secret-token-auth>
     
