@@ -6,7 +6,7 @@
 .. _using_podman_containers:
 
 ======================================
-Overview
+Podman
 ======================================
 
 This guide details the steps for running Podman on a High-Performance Computing (HPC) environment. It specifically demonstrates launching a Docker image configured for Data Science and Tensorflow with support for NVIDIA GPUs. The guide will focus on a command involving various parameters and options to tailor the container environment for HPC needs.
@@ -23,12 +23,13 @@ Once connected, you can request computational resources using SLURM commands. SL
 
 .. note::
 
-    ``podman`` is not present on the login nodes. Is is necessary to allocate for resources to use it 
+    `podman` is not present on the login nodes. Is is necessary to allocate for resources to use it 
 
 Example SLURM Command for Resource Allocation
 ---------------------------------------------
 
 You can use the following command to start an interactive session with specific requirements:
+
 .. code-block:: bash
 
     srun --gpus-per-node=1 --time=01:10:00 --nodes=1 --mem=200G --constraint=v100 --resv-ports=1 --pty bash -l
@@ -36,13 +37,15 @@ You can use the following command to start an interactive session with specific 
 .. note::
 
     Explanation of the SLURM Command:
-    - --gpus-per-node=1: Requests 1 GPUs per node.
-    - --time=01:10:00: Sets the time limit for the session to 1 hour and 10 minutes.
-    - --nodes=1: Requests one node.
-    - --mem=200G: Requests 200 GB of memory.
-    - --constraint=v100: Specifies the type of GPU, in this case, Nvidia V100.
-    - --resv-ports=1: Requests reservation of one port, which can be useful for network communication needs.
-    - --pty bash -l: Starts an interactive bash login shell.
+
+    - ``--gpus-per-node=1``: Requests 1 GPUs per node.
+    - ``--time=01:10:00``: Sets the time limit for the session to 1 hour and 10 minutes.
+    - ``--nodes=1``: Requests one node.
+    - ``--mem=200G``: Requests 200 GB of memory.
+    - ``--constraint=v100``: Specifies the type of GPU, in this case, Nvidia V100.
+    - ``--resv-ports=1``: Requests reservation of one port, which can be useful for network communication needs.
+    - ``--pty bash -l``: Starts an interactive bash login shell.
+
 
 Once the resources are allocated you have to create two spaces to work with ``podman`` with the following command : 
 
@@ -64,9 +67,10 @@ To pull the Docker image ahead of time, use the podman pull command. This comman
 .. note::
 
     Explanation of the Pull Command:
-    - podman pull: This is the command used to fetch the image from the Docker registry.
-    - --root=/ibex/user/$username/podman_images: Specifies the root directory where the container images are stored. This is particularly useful for keeping all related data in a specific project directory, which helps in organizing and managing project files efficiently.
-    - nginx: This is the name of the container image. The tf_gputag refers to the version of this image.
+    
+    - ``podman pull``: This is the command used to fetch the image from the Docker registry.
+    - ``--root=/ibex/user/$username/podman_images``: Specifies the root directory where the container images are stored. This is particularly useful for keeping all related data in a specific project directory, which helps in organizing and managing project files efficiently.
+    - ``nginx``: This is the name of the container image. The tf_gputag refers to the version of this image.
 
 As we are still working on the terminal provided by the resource allocation
 
@@ -82,10 +86,12 @@ This will show all images stored in the specified directory, including the newly
 
 .. note::
 
-    Benefits of Pulling the Image Ahead of Time
+    `Benefits of Pulling the Image Ahead of Time`
+
     - Efficiency: Pulling the image beforehand can reduce the runtime preparation, as the image does not need to be downloaded during the podman run command execution.
     - Reliability: Having the image already downloaded can help avoid issues related to network connectivity or registry availability during the container start-up phase.
     - Management: Storing the images in a specific directory related to the project keeps the environment organized and makes it easier to manage different versions or types of images used for various projects.
+
 
 By following these steps and using the podman pull command, you ensure that your containerized applications on HPC start smoothly and reliably, leveraging pre-downloaded images stored in an organized manner.
 
@@ -118,36 +124,36 @@ Before running the command, it's crucial to understand its components and what e
 .. note::
 
     Explanation of Parameters:
-    -e NVIDIA_VISIBLE_DEVICES='': Clears the default setting of visible NVIDIA devices. This is often used to control GPU visibility for the container.
+    ``-e NVIDIA_VISIBLE_DEVICES=''``: Clears the default setting of visible NVIDIA devices. This is often used to control GPU visibility for the container.
     
     Container Removal:
-    --rm: Automatically removes the container when it exits. This helps in not accumulating stopped containers.
+    ``--rm``: Automatically removes the container when it exits. This helps in not accumulating stopped containers.
     
     Port Mapping:
-    -p 10000:8888: Maps port 8888 inside the container to port 10000 on the host, used for Jupyter Lab access.
-    -p 8501:8501: Maps port 8501 inside the container to port 8501 on the host, which could be used for other services like TensorBoard or Streamlit.
+    ``-p 10000:8888``: Maps port 8888 inside the container to port 10000 on the host, used for Jupyter Lab access.
+    ``-p 8501:8501``: Maps port 8501 inside the container to port 8501 on the host, which could be used for other services like TensorBoard or Streamlit.
     
     Volume and Storage:
-    -v ${PWD}:/app/mycode: Mounts the current working directory on the host to /app/mycode inside the container. This allows for sharing code files between the host and container.
+    ``-v ${PWD}:/app/mycode``: Mounts the current working directory on the host to /app/mycode inside the container. This allows for sharing code files between the host and container.
     
     GPU and Security:
-    --device=nvidia.com/gpu=all: Allocates all available NVIDIA GPUs to the container.
-    --security-opt=label=disable: Disables SELinux security labeling within the container, which is necessary in some HPC setups for accessing shared resources.
+    ``--device=nvidia.com/gpu=all``: Allocates all available NVIDIA GPUs to the container.
+    ``--security-opt=label=disable``: Disables SELinux security labeling within the container, which is necessary in some HPC setups for accessing shared resources.
     
     Root Directory:
-    --root=/ibex/user/$username/podman_images: Specifies the root directory for storage of container data, allowing for persistent storage specific to the project.
+    ``--root=/ibex/user/$username/podman_images``: Specifies the root directory for storage of container data, allowing for persistent storage specific to the project.
     
     Container Image and Command:
-    abdelghafour1/tf_pip_gpu_vf:latest: Specifies the Docker container image to use.
+    ``abdelghafour1/tf_pip_gpu_vf:latest``: Specifies the Docker container image to use.
     
-    jupyter lab --ip=0.0.0.0 --allow-root: Runs Jupyter Lab, accessible from any IP address and allows root access.
+    ``jupyter lab --ip=0.0.0.0 --allow-root``: Runs Jupyter Lab, accessible from any IP address and allows root access.
 
 
 While Execute the command above. This will start the container and Jupyter Lab.
 
 After running the command, Jupyter Lab will be accessible via a web browser at the URL shown in the output or at ``http://<your-ibex-hostname>.ibex.kaust.edu.sa:10000``.
 
-Remember to replace <your-i-hostname> with the actual hostname of the node where the container is running.
+Remember to replace ``<your-i-hostname>`` with the actual hostname of the node where the container is running.
 
 
 Example of podman with SLURM 
@@ -204,7 +210,7 @@ You can also run podman in the background using tthe follwoing code. Lets assume
     jupyter lab --ip=0.0.0.0 --allow-root 
 
 
-Then take a look for the %x-%j-slurm.err file , inside you have to to copy the line in the top of the file  http://${local_ip}:${port} , and then at the botton look for the token in order to get access to jupyter lab.
+Then take a look for the `%x-%j-slurm.err file` , inside you have to to copy the line in the top of the file  ``http://${local_ip}:${port}`` , and then at the botton look for the token in order to get access to jupyter lab.
 
 Conclusion
 ---------------------------------------
