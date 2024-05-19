@@ -1,7 +1,7 @@
 .. sectionauthor:: Didier Barradas Bautista <didier.barradasbautista@kaust.edu.sa>
 .. meta::
     :description: Using podman to work with containers
-    :keywords: container, podman
+    :keywords: container, ibex, podman
 
 .. _using_podman_containers:
 
@@ -10,13 +10,14 @@ Overview
 ======================================
 
 This guide details the steps for running Podman on a High-Performance Computing (HPC) environment. It specifically demonstrates launching a Docker image configured for Data Science and Tensorflow with support for NVIDIA GPUs. The guide will focus on a command involving various parameters and options to tailor the container environment for HPC needs.
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 To connect to the IBEX HPC system, you need to use SSH (Secure Shell), a protocol that provides encrypted communication sessions over unsecured networks. Here's how you can connect:
 
 Open your Terminal and execute the SSH Command:
+
 .. code-block:: bash
 
-    ssh your_userusername@glogin.ibex.kaust.edu.sa
+    ssh your_user_name@glogin.ibex.kaust.edu.sa
 
 Once connected, you can request computational resources using SLURM commands. SLURM is a job scheduler that allocates resources, schedules, and manages jobs running on the HPC system.
 
@@ -113,6 +114,7 @@ Before running the command, it's crucial to understand its components and what e
 
 
 .. note::
+
     Explanation of Parameters:
     -e NVIDIA_VISIBLE_DEVICES='': Clears the default setting of visible NVIDIA devices. This is often used to control GPU visibility for the container.
     
