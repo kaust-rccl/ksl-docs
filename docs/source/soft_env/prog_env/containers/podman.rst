@@ -23,7 +23,7 @@ Once connected, you can request computational resources using SLURM commands. SL
 
 .. note::
 
-    `podman` is not present on the login nodes. Is is necessary to allocate for resources to use it 
+    `podman` is not present on the login nodes. It is necessary to allocate for resources to use it 
 
 Example SLURM Command for Resource Allocation
 ---------------------------------------------
@@ -69,7 +69,7 @@ To pull the Docker image ahead of time, use the podman pull command. This comman
     Explanation of the Pull Command:
     
     - ``podman pull``: This is the command used to fetch the image from the Docker registry.
-    - ``--root=/ibex/user/$username/podman_images``: Specifies the root directory where the container images are stored. This is particularly useful for keeping all related data in a specific project directory, which helps in organizing and managing project files efficiently.
+    - ``--root=/ibex/user/$USER/podman_images``: Specifies the root directory where the container images are stored. This is particularly useful for keeping all related data in a specific project directory, which helps in organizing and managing project files efficiently.
     - ``nginx``: This is the name of the container image. The tf_gputag refers to the version of this image.
 
 As we are still working on the terminal provided by the resource allocation
@@ -117,7 +117,7 @@ Before running the command, it's crucial to understand its components and what e
     --device=nvidia.com/gpu=all \
     --security-opt=label=disable \
     --root=/ibex/user/$username/podman_images \
-    abdelghafour1/tf_pip_gpu_vf:latest \
+    abdelghafour1/tf_pip_gpu_vf:tf_gpu \
     jupyter lab --ip=0.0.0.0 --allow-root 
 
 
@@ -216,7 +216,7 @@ You can also run podman in the background using tthe follwoing code. Lets assume
     jupyter lab --ip=0.0.0.0 --allow-root 
 
 
-Then take a look for the `%x-%j-slurm.err file` , inside you have to to copy the line in the top of the file  ``http://${local_ip}:${port}`` , and then at the botton look for the token in order to get access to jupyter lab.
+Then take a look for the **`%x-%j-slurm.err file`** , inside you have to to copy the line in the top of the file  ``http://${local_ip}:${port}`` , and then at the botton look for the token in order to get access to jupyter lab.
 
 Conclusion
 ---------------------------------------

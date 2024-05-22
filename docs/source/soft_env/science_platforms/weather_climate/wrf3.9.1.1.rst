@@ -21,6 +21,7 @@ The following steps demonstrate compilation of WRF version 3.9.1.1 on Shaheen II
       module load cray-netcdf
       module load cray-parallel-netcdf
       module load craype-hugepages4M
+      module load flex
       export HDF5=$HDF5_DIR
       export PHDF5=$HDF5_DIR
       export NETCDF=$NETCDF_DIR
@@ -31,7 +32,7 @@ The following steps demonstrate compilation of WRF version 3.9.1.1 on Shaheen II
       export EM_CORE=1
       #export WRF_CHEM=1
       #export WRF_KPP=1
-      export FLEX_LIB_DIR=/usr/lib64
+      export FLEX_LIB_DIR=/sw/ex109genoa/flex/2.6.4/lib/
       export JASPERLIB=/usr/lib64
       export JASPERINC=/usr/include
       export YACC="yacc -d"
