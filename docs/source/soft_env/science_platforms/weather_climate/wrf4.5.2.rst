@@ -17,8 +17,10 @@ The following steps demonstrate compilation of WRF version 4.5.2 on Shaheen III:
     module load cray-netcdf
     module load cray-parallel-netcdf
     module load craype-hugepages4M
+    module load flex
     wget https://github.com/wrf-model/WRF/releases/download/v4.5.2/v4.5.2.tar.gz
     tar xvf v4.5.2.tar.gz
+    # tar xvf /sw/sources/wrf/4.5.2/v4.5.2.tar.gz
     cd WRFV4.5.2/
     export HDF5=$HDF5_DIR
     export PHDF5=$HDF5_DIR
@@ -28,7 +30,7 @@ The following steps demonstrate compilation of WRF version 4.5.2 on Shaheen III:
     export IBM_REDUCE_BUG_WORKAROUND=1
     export WRFIO_NCD_LARGE_FILE_SUPPORT=1
     export EM_CORE=1
-    export FLEX_LIB_DIR=/usr/lib64
+    export FLEX_LIB_DIR=/sw/ex109genoa/flex/2.6.4/lib/
     export JASPERLIB=/usr/lib64
     export JASPERINC=/usr/include
     export YACC="yacc -d"
