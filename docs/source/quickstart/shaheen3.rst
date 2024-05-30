@@ -23,17 +23,15 @@ For Windows users, you will need a application with ``ssh`` client installed wit
 Logging into Shaheen III
 ------------------------
 
-Shaheen III has a total of 5 login nodes. ``login1`` is reserved for system administration, and ``login2`` to ``login5`` are available for users to login to Shaheen III. 
+Shaheen III has a total of 5 login nodes. When logging into the machine using host `shaheen.hpc.kaust.edu.sa` the system will choose a login node to balance the node. All the login nodes are have same environment. Users, therefore, should always use `shaheen.hpc.kaust.edu.sa` host to login. 
 
-.. note::
-    In near future the hostname is going to change to more intuitive one as was the case with Shaheen II (``shaheen.hpc.kaust.edu.sa``). This is expected to happen after the Shaheen II is decommissioned. 
 
-The following is an example of logging in on Shaheen III through hostname ``login2``:
+The following is an example of logging in on Shaheen III:
 
 .. code-block:: bash
-    :caption: SSH command to login2 on Shaheen III
+    :caption: SSH command to login on Shaheen III
 
-    ssh -X username@login2.hpc.kaust.edu.sa
+    ssh -X <username>@shaheen.hpc.kaust.edu.sa
 
 
 .. _quickstart_shaheen3_jobscript:
