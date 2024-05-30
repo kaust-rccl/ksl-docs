@@ -10,7 +10,7 @@ gdb4hpc
 *******
 
 gdb4hpc is used to debug parallel applications with multiple MPI ranks.
-Please do not forget to add ``-g'' as a compile flag to get the source code line information.
+Please do not forget to add ``-g`` as a compile flag to get the source code line information.
 
 The debugger can be run as follows:
 
@@ -19,7 +19,7 @@ The debugger can be run as follows:
     $ module load gdb4hpc
     $ export CTI_SLURM_OVERRIDE_MC=1
     $ gdb4hpc
-    dbg all> launch $a{8} --launcher-args="-N2" ./my_binary
+    dbg all> launch $a{8} --launcher-args="-N2" ./my_binary --args="arg1 arg2 arg3"
     Starting application, please wait...
     Launched application...
     8/8 ranks connected... (timeout in 300 seconds)
@@ -30,6 +30,9 @@ The debugger can be run as follows:
     a{0..7}: Initial breakpoint, main at /scratch/akbudak/iops/sw/hello.c:6
     dbg all> bt
     a{0..7}: #0  main at /scratch/akbudak/iops/sw/hello.c:6
+
+
+Here, ``$a{8}`` means that 8 MPI tasks will launch. ``-N2`` means that these MPI tasks will run on two nodes.
     
 .. toctree::
    :titlesonly:

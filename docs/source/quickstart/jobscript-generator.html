@@ -11,7 +11,7 @@
   <td rowspan=40 valign=top >
     <div class="col-md-6" id="panel-controls">
       <div id="output-group" class="form-group">
-    <textarea class="form-control" rows="28" cols=80 id="script-output"  readonly="true">Your Shaheen II SLURM script will be displayed here.</textarea>
+    <textarea class="form-control" rows="28" cols=80 id="script-output"  readonly="true">Your Shaheen III SLURM script will be displayed here.</textarea>
       </div>
     </div>
 
@@ -24,11 +24,11 @@
 </div></td></tr>
 <tr><td><div id="email-group" class="form-group">
     <label class="control-label">Email Address to get notified</label>
-    </td><td width=200px><input id="email-text" class="form-control" type="email" value="@kaust.edu.sa">
+    </td><td width=200px><input id="email-text" class="form-control" type="email" value="<your-registered-email>">
 </div></td></tr>
 <tr><td><div id="project-group" class="form-group">
     <label class="control-label">Project</label>
-    </td><td><input id="project-text" class="form-control" type="text" value='k????'>
+    </td><td><input id="project-text" class="form-control" type="text" value='k?????'>
 </div></td></tr>
 <tr><td colspan=2><span><div id="time-group" class="form-group">
     <label class="control-label">Wallclock Time (duration of job)</label></td></tr>
@@ -56,17 +56,20 @@
     <select id="partition-select" class="form-control jobform">
         <option selected="selected" value="workq">workq</option>
         <option value="debug">debug</option>
+        <option value="ppn">ppn</option>
+        <option value="shared">shared</option>
+        <option value="dtn">dtn</option>
         <option value="72hours">72hours</option>
     </select>
 </div></td></tr>
 <tr><td><div id="nodes-group" class="form-group">
     <label class="control-label">Total number of (MPI) processes  </label></td><td>
-    <input id="ntasks-text" class="form-control" min="1" value="32" type="number">
+    <input id="ntasks-text" class="form-control" min="1" value="192" type="number">
                     <label id="warning-text1" style="color: red"></label>
 </div></td></tr>
 <tr><td><div id="nodes-group" class="form-group">
       <label class="control-label">number of processes per node </label></td><td>
-    <input id="ntasks_per_node-text" class="form-control" min="1" value="32" type="number">
+    <input id="ntasks_per_node-text" class="form-control" min="1" value="192" type="number">
                 <label id="warning-text2" style="color: red"></label>
 </div></td></tr>
 <tr><td><div id="nodes-group" class="form-group">
@@ -109,9 +112,7 @@ var whole_time = 0;
 
 //machine specific stuff
 var machinespecs = {
-        'shaheen': {'maxnnodes': 5576, 'maxnsockets': 2, 'maxncores': 24, 'maxnht': 2, 'nranks_bc': 50000 },
-        'cori-hsw': {'maxnnodes': 1630, 'maxnsockets': 2, 'maxncores': 32, 'maxnht': 2, 'nranks_bc': 50000 },    
-        'cori-knl': {'maxnnodes': 9300, 'maxnsockets': 1, 'maxncores': 68, 'maxnht': 4, 'nranks_bc': 20000 }
+        'shaheen': {'maxnnodes': 4608, 'maxnsockets': 2, 'maxncores': 192, 'maxnht': 2, 'nranks_bc': 50000 },
         };
 
 
