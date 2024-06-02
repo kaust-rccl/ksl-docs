@@ -171,6 +171,8 @@ Modify the following jobscript according to your parameters:
 
     export CODE_SERVER_CONFIG=~/.config/code-server/config.yaml
     export XDG_CONFIG_HOME=$HOME/tmpdir
+    export CODE_SERVER_EXTENSIONS=/ibex/user/$USER/code-server/extensions
+    mkdir -p $CODE_SERVER_EXTENSIONS
     node=$(/bin/hostname)
     port=$(python3 -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     user=$(whoami) 
@@ -188,7 +190,7 @@ Modify the following jobscript according to your parameters:
     echo "Copy the following line in a new terminal to create a secure SSH tunnel between your computer and Ibex compute node."
     echo "ssh -L localhost:${port}:${node}:${port} ${user}@${submit_host}.ibex.kaust.edu.sa"
 
-    code-server --auth=password --verbose
+    code-server --auth=password --verbose --extensions-dir=${CODE_SERVER_EXTENSIONS}
 
 Port forwarding is required to bind to the listening port of the remote host (Ibex GPU node). For this, open a new terminal window and start an SSH tunnel to achieve the above:
 
