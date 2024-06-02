@@ -190,7 +190,7 @@ Modify the following jobscript according to your parameters:
     echo "Copy the following line in a new terminal to create a secure SSH tunnel between your computer and Ibex compute node."
     echo "ssh -L localhost:${port}:${node}:${port} ${user}@${submit_host}.ibex.kaust.edu.sa"
 
-    code-server --auth password --verbose --extensions-dir=${CODE_SERVER_EXTENSIONS}
+    code-server --auth=password --verbose --extensions-dir=${CODE_SERVER_EXTENSIONS}
 
 Port forwarding is required to bind to the listening port of the remote host (Ibex GPU node). For this, open a new terminal window and start an SSH tunnel to achieve the above:
 
