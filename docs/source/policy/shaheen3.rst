@@ -6,7 +6,7 @@
 .. _shaheen3_policies:
 
 ===============
-Shaheen III
+Shaheen III 
 ===============
 
 Shaheen III has a total of 4608 compute nodes, 4 login nodes, 4 datamover nodes and 15 pre-post processing nodes. SLURM scheduler is used to schedule different kinds of workloads as jobs submitted by users. Additionally, Shaheen III's large storage is also shared between compute nodes and is capable of serving multiple users simultaneously. Policies help streamline the user experience by enforcing quotas and limits on a user or project level. Users must understand these policies before planning their simulation campaigns.  
@@ -150,11 +150,17 @@ For quota on IOPS tier on scratch:
 ``project`` filesystem is a persistent storage for users who are members of a project owned by their respective Principal Investigators (PI). A user can be member of multiple projects on Shaheen III. The ID assigned to each project is also used with SLURM to charging to the account when a job is submitted.
 Below are some important policies users must know of:
 
-- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. A list of users and their usage can be queried using the following command:
+- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. The usage of ``project`` filesystem can be queried by using the ``kpq`` utility (shorthand for KSL Project Quota)
 
-.. code-block::
+.. code-block:: bash
+  
+  kpq <project-id>
 
-    sb_user <project-id>
+To list the users belonging to a project the utility ``groupies`` can be used:
+
+.. code-block:: bash
+
+  groupies <project-id>
 
 - ``project`` is mounted as read-only on compute nodes of Shaheen III, except on data mover nodes in ``dtn`` partition of SLURM. Please create jobs for moving data between ``scratch`` and ``project`` to maximize the throughput. There are a number of utilities listed in :ref:`data_management` documentation. In short, try to use the data mover nodes for movement of data wherever possible.
 

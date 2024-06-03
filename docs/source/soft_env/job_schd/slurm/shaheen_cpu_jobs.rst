@@ -41,6 +41,49 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
 
 .. note::
     Because compute nodes in ``workq`` partition don't have write permission on project directory and don't mount the home directory, the **users must submit their jobs from their scratch directory**.
+
+
+Below is a concise view of the compute resources on a node belonging to each SLURM partition on Shaheen III.
+
+.. _shaheen_slurm_cpu_partitions:
+.. list-table:: **CPU only Compute nodes in SLURM parititions of Shaheen III**
+   :widths: 30 30 30 30 30
+   :header-rows: 1
+
+   * - Partition
+     - Total nodes 
+     - Cores/CPUs
+     - Max memory
+     - Max Walltime
+   * - ``workq``
+     - 4608
+     - 192/384
+     - 376GB
+     - 24:00:00
+   * - ``shared``
+     - 16
+     - 1/2
+     - 1GB
+     - 24:00:00
+   * - ``debug``
+     - 4608
+     - 192
+     - 376GB
+     - 00:30:00
+   * - ``72hours``
+     - 128
+     - 192
+     - 376GB
+     - 72:00:00
+   * - ``ppn``
+     - 15
+     - 128
+     - 376GB - 3TB
+     - 72:00:00
+
+.. note:: 
+    There are some limits on how much can each user or job request from each partition. Please refer to :ref:`shaheen3_policies` policies for more details.
+
 Serial jobs
 ============
 A serial job is characterized as when the application is capable of running on 1 thread. Although this is an overkill and your account will be charged at the full 192 core hours, it is sometimes justified to run on an exclusive node. 
