@@ -27,58 +27,65 @@ The table below show the job limits enforced on different partitions.
 
 .. _shaheen_slurm_limits:
 .. list-table:: **SLURM job limits**
-   :widths: 30 30 20 20 20 20 20 
+   :widths: 30 30 20 20 20 20 20 20 
    :header-rows: 1
 
    * - Partition
      - Tenancy
+     - Total nodes
      - Max CPUs/job
      - Max Nodes/job
      - Max Walltime/job (hrs)
-     - Max jobs submitted
-     - Max jobs running
+     - Max jobs per user submitted
+     - Max jobs per user running
    * - workq
      - exclusive
-     - 786,432
+     - 4608
+     - 786432
      - 2048
      - 24
      - 1000
      - 200
    * - shared
      - shared
+     - 16
      - 64 (4/node)
      - 16
      - 24
-     - ###
-     - 16
+     - --
+     - --
    * - debug
      - exclusive
-     - 1536
      - 4
+     - 384
+     - 1
      - 0.5(default)/4(max)
      - 1
      - 1
    * - dtn
      - exclusive
+     - 4
      - 1024
      - 4
      - 1(default)/24(max)
-     - ###
-     - ###
+     - --
+     - --
    * - ppn
      - exclusive
+     - 15
      - 3840
      - 15
      - 1(default)/24(max)
-     - ###
-     - ###
+     - --
+     - --
    * - 72hours
      - exclusive
-     - 49152
      - 128
+     - 6144
+     - 16
      - 1(default)/72(max)
      - 32
-     - 16
+     - 3
 
 
 Filesystem Policy
