@@ -25,4 +25,4 @@ Ibex MATLAB Guide
 
 The following guide provides examples and useful tips for running MATLAB on Ibex interactively or in batch mode.
 
-- `MATLAB Guide <https://drive.google.com/file/d/1WJJswEGPragvxUBrSqC29fuYpV6l9bxE/view?usp=drive_link>`_
+- `MATLAB Guide <https://drive.google.com/file/d/1T9SpGf8JYAWbrb6z0FV6d1TQrbdIDaq3/view?usp=sharing>`_
