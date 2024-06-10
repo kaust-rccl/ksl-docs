@@ -25,7 +25,7 @@ Sessions
      - Feb 8th, 2023
      - **Materials**
 
-       - `Slides <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/DataScienceOnBoarding/2023/DS_onboarding_corelabsFEB.pdf>`_
+       - `Slides <https://drive.google.com/file/d/1pVKf_D8D-nFvTj0e7FbpisHT9ea1wnaV/view?usp=drive_link>`_
        - `Recording <https://youtu.be/Pcdsz6uKh8g>`_
    * - Ibex 101
      - Feb 2nd, 2024
