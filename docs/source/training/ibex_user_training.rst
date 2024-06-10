@@ -22,7 +22,7 @@ Sessions
      - When
      - Registration/Slides
    * - Data Science on-boarding on KSL Platforms
-     - Feb 8th, 2023
+     - Dec 14th, 2024 
      - **Materials**
 
        - `Slides <https://drive.google.com/file/d/1pVKf_D8D-nFvTj0e7FbpisHT9ea1wnaV/view?usp=drive_link>`_
