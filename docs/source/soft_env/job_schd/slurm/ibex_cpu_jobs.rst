@@ -108,3 +108,11 @@ Normal compute nodes have memory up to approximately 360GB per node. Refer to th
 * Use ``--mem=####G`` to request nodes with large memory.
 
 * When you don't specify ``--mem``, the default memory allocation will be 2GB
+
+.. important::
+    The large memory nodes are few and at times mission critical for some users. Therefore when requesting for a large memory node please **make certain** that your workflows is able to use atleast 90% of what was request by your jobscript in slurm. 
+    To ensure that your job used the memory that was requested, please run the following command after the job finishes to see how much memory was used by your application on the average.
+
+    .. code-block:: bash
+
+        sacct -j <job-id> -o MaxRSSNode
