@@ -78,7 +78,6 @@ The following jobscript first launches a distributed dask cluster using ```dask-
 Dask comes with a useful dashboard to monitor the activity of the tasks on workers. Using the assigned port as instructed in the slurm output file, typing ```localhost:<dashboard_port>``` address in the browser opens the Dask dashboard related to the job.
 
 .. code-block:: bash
-
     :caption: Jobscript to launch a Jupyterlab server and Dask scheduler in on jobscript. The resulting slurm output file prints the subsequent steps to establish to ```ssh``` tunnel to connect to the Jupyterlab and Dask dashboard.  
 
     #!/bin/bash -l 
@@ -156,8 +155,6 @@ For production and large scale runs, it is advisable to convert the notebook int
 
 .. code-block:: bash
     
-   :caption: 
-
    #!/bin/bash -l 
    #SBATCH --time=01:0:0
    #SBATCH --ntasks=32
