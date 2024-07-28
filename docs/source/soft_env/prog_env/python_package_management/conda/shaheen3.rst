@@ -91,9 +91,9 @@ One prerequisite for this is to have an ``environment.yaml`` file listing all th
     - conda-forge
     dependencies:
     - python=3.9
-    - pytorch==2.2.0 
-    - torchvision==0.17.0 
-    - torchaudio==2.2.0 
+    - pytorch=2.2.0 
+    - torchvision=0.17.0 
+    - torchaudio=2.2.0 
     - cpuonly 
     - jupyterlab 
     - notebook 
