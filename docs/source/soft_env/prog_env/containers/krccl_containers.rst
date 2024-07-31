@@ -16,7 +16,8 @@ Linked below are templates for different containers of popular applications and 
    :maxdepth: 1
 
    mysql
-   mongodb
+   mongodb_shaheen
+   mongodb_ibex
    mpi
 
 More templates are available in the following GitHub repos.
