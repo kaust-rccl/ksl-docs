@@ -1,9 +1,9 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
-    :description: monogodb container example
-    :keywords: krccl, container, mongodb
+    :description: monogodb shaheen container example
+    :keywords: krccl, container, mongodb, Shaheen
 
-.. _mongodb_container_example:
+.. _mongodb_shaheen_container_example:
 
 ===================================
 MongoDB on compute nodes of Shaheen
@@ -83,7 +83,7 @@ Load the singularity module and ask for an interactive session with the :code:`s
     module load singularity
     srun --time=00:30:00 --nodes=1 --pty singularity exec -B $PWD/data:/data/db $PWD/container/mongo.sif mongosh --host 10.109.197.13
 
-After the resources are allocated yo will see the output like this below:
+After the resources are allocated you will see the output like this below:
 
 .. code-block:: bash
 
@@ -209,7 +209,7 @@ To create a binary dump of the database and/or a collection, one can run it as a
     #!/bin/bash
 
     #SBATCH --time=01:00:00
-    #SBATCH --nodes=
+    #SBATCH --nodes=1
 
     module load singularity
 
