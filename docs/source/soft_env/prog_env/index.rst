@@ -29,6 +29,7 @@ This section introduces the software envrionments available on KSL systems.
 
    modulesystem/index
    python_package_management/index
+   r_package_management/index
    containers/index
    ../../apps_catalogue/index
    
