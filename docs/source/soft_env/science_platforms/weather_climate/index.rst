@@ -19,3 +19,10 @@ The following recipes are available for building weather and climate software on
       wrf4.5.2
       wrf4.5.2-intel
 
+The list of software available on Shaheen III:
+
+.. toctree::
+      :titlesonly:
+      :maxdepth: 1
+
+      nco.rst
