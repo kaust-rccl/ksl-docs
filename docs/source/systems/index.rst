@@ -67,7 +67,7 @@ Choosing the right KSL system for your workload
 -----------------------------------------------
 There are several factors users must consider before choosing the right KSL platform for their HPC workload.
 
-* **Organizational Association:** Some KSL systems are open for access to external (non-KAUST) users, but others aren't. Please go through `how to get an account on KSL systems <https://www.hpc.kaust.edu.sa/content/chapter-2-getting-account>`_.
+* **Organizational Association:** Some KSL systems are open for access to external (non-KAUST) users, but others aren't. Please go through `how to get an account on KSL systems <https://hpc.kaust.edu.sa/content/apply-access>`_.
 * **Computational requirement:** Know if application is scalable and requires large number of CPUs and/or GPUs. In such case, *Shaheen* scale may be more appropriate to run your scientific workload
 * **Licensing requirement:** If your application requires license to use, please :email:`contact KSL support staff <help@hpc.kaust.edu.sa` to inquire about your eligibility. 
 * **Wall time requirement:** Wall time is the duration of a job you expect to run on a KSL system without interuption. Wall times have hard limits on different KSL systems. Please check :ref:`policies` section for details on specific KSL systems.
