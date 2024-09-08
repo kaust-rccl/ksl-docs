@@ -26,3 +26,4 @@ The list of software available on Shaheen III:
       :maxdepth: 1
 
       nco.rst
+      wgrib2.rst
