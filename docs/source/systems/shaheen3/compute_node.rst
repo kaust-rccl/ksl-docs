@@ -9,5 +9,4 @@
 Compute Nodes
 ==============
 
-.. note::
-    This page is under construction
+Shaheen III has 4608 compute nodes tightly connected with its low latency/high speed interconnect. Each compute node is a dual-socket AMD EPYC 9654 (Genoa family) with a total of 192 cores and 384GB of DDR5 memory. The compute nodes are on the private high speed network of Shaheen III with an injection bandwidth of 200Gbps. Jobs can be submitted to the compute nodes via the SLURM scheduler mostly in exclusive mode.
