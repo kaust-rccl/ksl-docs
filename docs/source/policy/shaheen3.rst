@@ -157,7 +157,7 @@ For quota on IOPS tier on scratch:
 ``project`` filesystem is a persistent storage for users who are members of a project owned by their respective Principal Investigators (PI). A user can be member of multiple projects on Shaheen III. The ID assigned to each project is also used with SLURM to charging to the account when a job is submitted.
 Below are some important policies users must know of:
 
-- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. The usage of ``project`` filesystem can be queried by using the ``kpq`` utility (shorthand for KSL Project Quota)
+- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. The usage of ``project`` filesystem can be queried by using the ``kpq`` utility (shorthand for KSL PI Quota)
 
 .. code-block:: bash
   
