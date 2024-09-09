@@ -66,8 +66,7 @@ This storage is available:
 * READ-ONLY on all Shaheen III compute nodes via the path ``/lustre2/project``
 
 
-In this case there is only 1 tier based on spinning disks (HDDs) since the target of this storage is NOT to run jobs but to store data long term. Any files created in /project directory will have a copy made to tape within 8 hours of creation by an automatic process utilizing HPE DMF.
-
+In this case there is only 1 tier based on spinning disks (HDDs) since the target of this storage is NOT to run jobs but to store data long term. 
 This storage is NOT purged automatically but does have strict quotas. The default quotas are:
 
 * 80 TB per PI, independent of the number of projects the PI might have.
