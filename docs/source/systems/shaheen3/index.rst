@@ -8,8 +8,7 @@
 =============
 Shaheen III
 =============
-Details of Shaheen III, history and its capability. High level details such as node count, number of users and projects, scheduling, filesystem can be mentioned here.
-Deep dive of each topic has their own page in the table of content tree. 
+Shaheen III is an HPE Cray EX system built with AMD based compute nodes, interconnected with Slingshot network and attached to a multi-tiered parallel filesystem for scratch and soon to the project filesystem currently mounted on Shaheen II. At the time of its installation, Shaheen III is the fastest supercomputer in the Middle East and ranked 20 in the world largest supercomputers `Top500 <https://www.top500.org/>`_ list with an HPL performance of over 35 PFlops/s.
 
 .. toctree::
    login_node
