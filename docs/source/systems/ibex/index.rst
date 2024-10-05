@@ -35,6 +35,7 @@ The topics listed below describe the architectural details of various components
    compute_node
    interconnect
    filesystem
+   faqs
    
    
 
