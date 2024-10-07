@@ -28,6 +28,19 @@ I am unable to access the clusters (Account Problems)
 
     In case of any issues with VPN access or configuration please contact KAUST IT department at ithelpdesk@kaust.edu.sa (VPN is outside of Ibex jurisdiction).
 
+Why are my resources limited and I can't use more than 1 gpu?
+=============================================================
+
+To use Ibex with standard resource limits, you must be associated with a PI.
+To do this, please log in to https://my.ibex.kaust.edu.sa/teams and nominate a PI. Once you do this, the nominated PI will receive an email notification to approve your request.
+You can check your association with a PI by using the following command:
+
+.. code-block:: bash
+    :caption: Command to check PI
+    
+    whoismypi
+
+
 Constraints and Features
 =========================
 
@@ -37,10 +50,11 @@ Below are some examples of how to request different resource configurations. The
 
 * To see a list of full node features:
 
-    .. code-block:: bash
-        :caption: Command to list all node features
+.. code-block:: bash
+    :caption: Command to list all node features
 
-        [hanksj@dbn-503-5-r:~]$ sinfo --partition=batch --format="%n %f"
+    [hanksj@dbn-503-5-r:~]$ sinfo --partition=batch --format="%n %f"
+
 
 * Specific CPU architecture:
     The Intel nodes perform much better for floating point operations while the AMD nodes are more efficient at integer operations. A common approach to optimizing your workload is to send integer or floating point work to the correct arch. Each node has a feature, either intel or amd, for it's arch. To select one:
