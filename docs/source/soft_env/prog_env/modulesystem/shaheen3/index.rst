@@ -1,11 +1,11 @@
-.. sectionauthor:: Kadir Akbudak <kadir.shaikh@kaust.edu.sa>
+.. sectionauthor:: Kadir Akbudak <kadir.akbudak@kaust.edu.sa>
 .. meta::
     :description: Applications catalogue on KSL systems
     :keywords: Install software, Shaheen, Ibex
 
 
 =============
-Shaheen III 
+Shaheen III
 =============
 
 Users can benefit from many software packages and scientific libraries available as modules. Users can also compile their source code using various compiler toolchains in the Cray Programming Environment.
@@ -73,81 +73,95 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - Language
      - Compiler wrapper
      - Compiler
-   * - Cray 
+   * - Cray
      - ``PrgEnv-cray``
      - ``cce``
      - ``C``
      - ``cc``
      - ``craycc``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``C++``
      - ``CC``
      - ``crayCC``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``Fortran``
      - ``ftn``
      - ``crayftn``
-   * - GNU 
+   * - GNU
      - ``PrgEnv-gnu``
      - ``gcc``
      - ``C``
      - ``cc``
      - ``gcc``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``C++``
      - ``CC``
      - ``g++``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``Fortran``
      - ``ftn``
      - ``gfortran``
-   * - AMD 
+   * - AMD
      - ``PrgEnv-aocc``
      - ``aocc``
      - ``C``
      - ``cc``
      - ``amdclang``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``C++``
      - ``CC``
      - ``amdclang++``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``Fortran``
      - ``ftn``
      - ``amdflang``
-   * - Intel 
+   * - Intel
      - ``PrgEnv-intel``
      - ``intel``
      - ``C``
      - ``cc``
      - ``icx``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``C++``
      - ``CC``
      - ``icpx``
-   * -  
-     - 
-     - 
+   * -
+     -
+     -
      - ``Fortran``
      - ``ftn``
      - ``ifort``
 
+PrgEnv-cray: Uses the Cray Compiling Environment (CCE) for compiling Fortran, C, and C++ code. It provides Cray-specific optimizations.
 
-As seen above, the compiler wrappers do not change according to different compilers.
+PrgEnv-gnu: Uses the standard GNU Compiler Collection (GCC) for compiling applications.
+
+PrgEnv-aocc: Uses the AMD Optimizing C/C++ Compiler (AOCC), which is designed to deliver specific optimizations for AMD processors, focusing on enhancing performance for compute-intensive workloads.
+ 
+PrgEnv-intel: Uses the standard Intel Compiler Collection for compiling applications.
+
+PrgEnv-gnu-amd: This environment is useful when you want to utilize GCC for Fortran code but need AMD's Clang C/C++ compiler for better optimization of C and C++ code. It is particularly helpful in situations where specific C/C++ code optimization is crucial.  
+
+PrgEnv-cray-amd: This is used when you prefer using the Cray Compiling Environment for its advanced optimization capabilities for Fortran code, but also want to leverage the AMD Clang compiler for C/C++ code. It is beneficial when working with mixed-language applications that need specific optimizations provided by both Cray and AMD. 
+
+For the latest programming environment modules, the default versions are available here: :ref:`2024-10-prgenv-modules`
+
+
+In the programming environment, the compiler wrappers do not change according to different compilers.
 However, one can directly call the underlying compiler under some circumstances.
 
 The documentation (e.g., flags) for the underlying compiler can be obtained via the following command:
@@ -188,9 +202,9 @@ The following example shows how to change the compiler for ``PrgEnv-cray``:
 .. code-block:: bash
 
  $ module av cce
- cce/12.0.3(default) cce/14.0.3          cce/15.0.1
+ cce/16.0.1          cce/17.0.0          cce/17.0.1          cce/18.0.0(default)
 
- $ module switch cce cce/15.0.1
+ $ module switch cce cce/17.0.1
 
 MPI
 ----
