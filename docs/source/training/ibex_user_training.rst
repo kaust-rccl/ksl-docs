@@ -30,3 +30,7 @@ Sessions
      - Feb 2nd, 2024
      - `Slides <https://drive.google.com/file/d/13tiL3HjCu16cJ3GP_gR37xrvZ4h7W7KH/view?usp=drive_link>`_
      - Recording
+   * - Ibex 101
+     - Oct 7th, 2024
+     - `Slides <https://drive.google.com/file/d/12Ffi_dUpxC6henXfRu_Vz9l5dGtk1C6r/view?usp=share_link>`_
+     - Recording
