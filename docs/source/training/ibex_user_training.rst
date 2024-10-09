@@ -27,10 +27,6 @@ Sessions
      - `Slides <https://drive.google.com/file/d/1pVKf_D8D-nFvTj0e7FbpisHT9ea1wnaV/view?usp=drive_link>`_
      - `Recording <https://youtu.be/Pcdsz6uKh8g>`_
    * - Ibex 101
-     - Feb 2nd, 2024
-     - `Slides <https://drive.google.com/file/d/13tiL3HjCu16cJ3GP_gR37xrvZ4h7W7KH/view?usp=drive_link>`_
-     - Recording
-   * - Ibex 101
      - Oct 7th, 2024
      - `Slides <https://drive.google.com/file/d/12Ffi_dUpxC6henXfRu_Vz9l5dGtk1C6r/view?usp=share_link>`_
      - Recording
