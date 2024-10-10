@@ -14,15 +14,10 @@ Recompile your applications!
 ============================
 
 
-The recent operating system (OS) update applied to Shaheen included changes to the modules with more recent versions of compilers and libraries. We recommend recompiling all your applications. All default libraries and software listed by the ``module avail`` command are compiled and linked with the latest CPE 24.07.
+The recent operating system (OS) update (October 2024) applied to Shaheen included changes to the modules with more recent versions of compilers and libraries. We recommend recompiling all your applications. All default libraries and software listed by the ``module avail`` command are compiled and linked with the latest CPE 24.07.
 
 Please note that the old CPE 23.09 and 23.12 are still available and will be deleted in the future.
 
-Two new PrgEnv's have been added:
-
-* PrgEnv-gnu-amd: This environment is useful when you want to utilize GCC for Fortran code but need AMD's Clang C/C++ compiler for better optimization of C and C++ code. It is particularly helpful in situations where specific C/C++ code optimization is crucial.
-
-* PrgEnv-cray-amd: This is used when you prefer using the Cray Compiling Environment for its advanced optimization capabilities for Fortran code, but also want to leverage the AMD Clang compiler for C/C++ code. It is beneficial when working with mixed-language applications that need specific optimizations provided by both Cray and AMD.
 
 ..
    cat test.txt |awk '{print "   * - "$1;print "     - **"$2"**"}'
@@ -113,3 +108,11 @@ Two new PrgEnv's have been added:
      - **cray-dsmml/0.3.0**
    * - cray-dyninst/12.3.0
      - **cray-dyninst/12.3.2**
+
+
+Two new PrgEnv's have been added:
+
+* PrgEnv-gnu-amd: This environment is useful when you want to utilize GCC for Fortran code but need AMD's Clang C/C++ compiler for better optimization of C and C++ code. It is particularly helpful in situations where specific C/C++ code optimization is crucial.
+
+* PrgEnv-cray-amd: This is used when you prefer using the Cray Compiling Environment for its advanced optimization capabilities for Fortran code, but also want to leverage the AMD Clang compiler for C/C++ code. It is beneficial when working with mixed-language applications that need specific optimizations provided by both Cray and AMD.
+

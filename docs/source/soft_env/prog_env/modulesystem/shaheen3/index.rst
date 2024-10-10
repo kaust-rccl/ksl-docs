@@ -59,7 +59,7 @@ Compiler Toolchains
 
 Cray, AMD, and GCC compiler toolchains are provided through modules.
 The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
-Regardless of the underlying compiler, the user must use the compiler wrappers ``cc``, ``CC``, and ``ftn`` depending on the programming language as seen in the table below:
+**Regardless of the underlying compiler, the user must use the compiler wrappers cc, CC, and ftn depending on the programming language as seen in the table below:**
 
 .. _shaheen3_prgenv:
 
@@ -72,7 +72,7 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - Module
      - Language
      - Compiler wrapper
-     - Compiler
+     - Base compiler
    * - Cray
      - ``PrgEnv-cray``
      - ``cce``
@@ -93,22 +93,22 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - ``crayftn``
    * - GNU
      - ``PrgEnv-gnu``
-     - ``gcc``
+     - ``gcc-native``
      - ``C``
      - ``cc``
-     - ``gcc``
+     - ``gcc-13``
    * -
      -
      -
      - ``C++``
      - ``CC``
-     - ``g++``
+     - ``g++-13``
    * -
      -
      -
      - ``Fortran``
      - ``ftn``
-     - ``gfortran``
+     - ``gfortran-13``
    * - AMD
      - ``PrgEnv-aocc``
      - ``aocc``
@@ -146,18 +146,6 @@ Regardless of the underlying compiler, the user must use the compiler wrappers `
      - ``ftn``
      - ``ifort``
 
-PrgEnv-cray: Uses the Cray Compiling Environment (CCE) for compiling Fortran, C, and C++ code. It provides Cray-specific optimizations.
-
-PrgEnv-gnu: Uses the standard GNU Compiler Collection (GCC) for compiling applications.
-
-PrgEnv-aocc: Uses the AMD Optimizing C/C++ Compiler (AOCC), which is designed to deliver specific optimizations for AMD processors, focusing on enhancing performance for compute-intensive workloads.
- 
-PrgEnv-intel: Uses the standard Intel Compiler Collection for compiling applications.
-
-PrgEnv-gnu-amd: This environment is useful when you want to utilize GCC for Fortran code but need AMD's Clang C/C++ compiler for better optimization of C and C++ code. It is particularly helpful in situations where specific C/C++ code optimization is crucial.  
-
-PrgEnv-cray-amd: This is used when you prefer using the Cray Compiling Environment for its advanced optimization capabilities for Fortran code, but also want to leverage the AMD Clang compiler for C/C++ code. It is beneficial when working with mixed-language applications that need specific optimizations provided by both Cray and AMD. 
-
 For the latest programming environment modules, the default versions are available here: :ref:`2024-10-prgenv-modules`
 
 
@@ -184,6 +172,19 @@ The whole compiler invocation can be seen via the following command:
 .. code-block:: bash
 
  cc --cray-print-opts=all
+
+
+* PrgEnv-cray: Uses the Cray Compiling Environment (CCE) for compiling Fortran, C, and C++ code. It provides Cray-specific optimizations.
+
+* PrgEnv-gnu: Uses the standard GNU Compiler Collection (GCC) for compiling applications.
+
+* PrgEnv-aocc: Uses the AMD Optimizing C/C++ Compiler (AOCC), which is designed to deliver specific optimizations for AMD processors, focusing on enhancing performance for compute-intensive workloads.
+
+* PrgEnv-intel: Uses the standard Intel Compiler Collection for compiling applications.
+
+* PrgEnv-gnu-amd: This environment is useful when you want to utilize GCC for Fortran code but need AMD's Clang C/C++ compiler for better optimization of C and C++ code. It is particularly helpful in situations where specific C/C++ code optimization is crucial.  
+
+* PrgEnv-cray-amd: This is used when you prefer using the Cray Compiling Environment for its advanced optimization capabilities for Fortran code, but also want to leverage the AMD Clang compiler for C/C++ code. It is beneficial when working with mixed-language applications that need specific optimizations provided by both Cray and AMD. 
 
 Cray Programming Environment and Compiler Wrappers
 ===================================================
