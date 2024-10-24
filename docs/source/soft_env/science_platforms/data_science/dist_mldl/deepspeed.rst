@@ -61,6 +61,7 @@ In case you don't have a ``conda`` package manager, please refer to :ref:`conda_
         #############################################
         # Torch distributed constants
         #############################################
+        import socket
         s=socket.socket()
         s.bind(("", 0))
         port = s.getsockname()[1]
