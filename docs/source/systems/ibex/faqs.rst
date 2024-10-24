@@ -32,7 +32,11 @@ Why are my resources limited and I can't use more than 1 gpu?
 =============================================================
 
 To use Ibex with standard resource limits, you must be associated with a PI.
-To do this, please log in to https://my.ibex.kaust.edu.sa/teams and nominate a PI. Once you do this, the nominated PI will receive an email notification to approve your request.
+
+To do this, please log in to https://my.ibex.kaust.edu.sa/teams and nominate a PI.
+
+Once you do this, the nominated PI will receive an email notification to approve your request.
+
 You can check your association with a PI by using the following command:
 
 .. code-block:: bash
@@ -100,11 +104,17 @@ Below are some examples of how to request different resource configurations. The
 How many types of nodes are available on the GPU cluster?
 ==========================================================
 * A100
+
 * V100
+
 * P100
+
 * P6000
+
 * GTX 1080 Ti
+
 * RTX 2080 Ti
+
 Why should I set --time= in all jobs?
 ======================================
 
@@ -153,11 +163,15 @@ Every file system (disk) on Ibex has its assigned limits, also known as disk quo
 
 If you run out of disk space on Ibex you might face the following errors:
 
-* "No space left on device",
-* "Disk quota exceeded",
-* Other similar errors.
+* "No space left on device"
+* "Disk quota exceeded"
+* Other similar errors
+
 The first step to check limits that apply to you, or resolve quota issues, is to identify which file system is in question. 
-This can be done by looking at the beginning of the full path to the affected directory. Simply cd to affected directory and use command pwd ("print working directory"):
+
+This can be done by looking at the beginning of the full path to the affected directory.
+
+Simply cd to affected directory and use command pwd ("print working directory"):
 
 .. code-block:: bash
     :caption: Commands to check working directory
@@ -178,7 +192,7 @@ Relevant command: ``quota -s``
 Example:
 
 .. code-block:: bash
-    :caption: Commands to check home quota
+    :caption: Command to check home quota
 
     $ quota -s
     Disk quotas for user username (uid 123456):
@@ -189,6 +203,20 @@ Example:
 Quotas for Personal Computational Space:
 -----------------------------------------
 
+Path starts with: ``/ibex/scratch/my_username/…``
+
+Relevant command: ``bquota``
+
+Example:
+
+.. code-block:: bash
+    :caption: Command to check scratch quota
+
+    $ bquota
+    Quota information for IBEX filesystems:
+    Scratch (/ibex/scratch):  Used: 0.00 GB  Limit: 25.00 GB
+
+
 Path starts with: ``/ibex/user/my_username/…``
 
 Relevant command: ``df -h /ibex/user/my_username``
@@ -196,7 +224,7 @@ Relevant command: ``df -h /ibex/user/my_username``
 Example:
 
 .. code-block:: bash
-    :caption: Commands to check user quota
+    :caption: Command to check user quota
 
     $ df -h /ibex/user/my_username
     Filesystem      Size  Used Avail Use% Mounted on
@@ -205,6 +233,26 @@ Example:
 Quotas for Project directories:
 --------------------------------
 
+.. note::
+    Two file systems are used for non-encrypted projects and one additional file system for encrypted projects (see below).
+
+Path starts with: ``/ibex/scratch/projects/…``
+
+Relevant command: ``bquota -g ibex-c1234``
+
+Example:
+
+.. code-block:: bash
+    :caption: Command to check project quota
+
+    $ bquota -g ibex-c2123
+    Quota information for IBEX filesystems:
+    Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB
+    Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
+
+.. note::
+    Make sure that all files in the project directory belong to the unix group associated with the given project. Eg. If your project is "c1234", then the group name would be "ibex-c1234". Avoid putting in the project directory files that belong to personal groups ("g-myusername"). In other cases quota error might be triggered against your Personal Computational Space.
+
 Path starts with: ``/ibex/project/…``
 
 Relevant command: ``df -h /ibex/project/c1234``
@@ -212,7 +260,7 @@ Relevant command: ``df -h /ibex/project/c1234``
 Example:
 
 .. code-block:: bash
-    :caption: Commands to check project quota
+    :caption: Command to check project quota
 
     $ df -h /ibex/project/c2247
     Filesystem      Size  Used Avail Use% Mounted on
