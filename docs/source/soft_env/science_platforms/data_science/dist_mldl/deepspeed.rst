@@ -137,7 +137,7 @@ The example python script ``cifar10_deepspeed.py`` can be cloned from the `GitHu
     do
         srun --cpu-bind=cores -n 1 -N 1 -c ${SLURM_CPUS_PER_TASK} -w ${nodes_array[i]} --gpus=${SLURM_GPUS_PER_NODE}  \
         python -m torch.distributed.launch --use_env --nproc_per_node=${SLURM_GPUS_PER_NODE} --nnodes=${SLURM_NNODES} --node_rank=${i} \ 
-        --master_addr=${master_ip} --master_port=${master_port}  cifar10_deepspeed.py --deepspeed $@ &> $RUNDIR/$SLURM_JOBID.txt
+        --master_addr=${master_ip} --master_port=${master_port}  cifar10_deepspeed.py --deepspeed $@ &> $RUNDIR/$SLURM_JOBID.txt &
     done
     wait
 
@@ -196,7 +196,7 @@ Below is an example of a DeepSpeed job using 4 GPUs on 2 nodes with 2 GPUs on ea
     do
         srun --cpu-bind=cores -n 1 -N 1 -c ${SLURM_CPUS_PER_TASK} -w ${nodes_array[i]} --gpus=${SLURM_GPUS_PER_NODE}  \
         python -m torch.distributed.launch --use_env --nproc_per_node=${SLURM_GPUS_PER_NODE} --nnodes=${SLURM_NNODES} --node_rank=${i} \ 
-        --master_addr=${master_ip} --master_port=${master_port}  cifar10_deepspeed.py --deepspeed $@ &> $RUNDIR/$SLURM_JOBID.txt
+        --master_addr=${master_ip} --master_port=${master_port}  cifar10_deepspeed.py --deepspeed $@ &> $RUNDIR/$SLURM_JOBID.txt &
     done
     wait
 
