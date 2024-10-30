@@ -126,42 +126,52 @@ All filesystems on Shaheen III are shared among users. Policies help enable cons
     - The inode quota, which is synonymous to number of files per user, is a global policy that governs the files in all tiers of ``scratch``. A user can create and maintain no more than 1 million files on ``scratch`` cumulatively.
     - All files expect those in IOPS tier are subject to **60 day** purge policy.  
 
-Users can check the usage of their quotas on scratch using the following commands:
+For checking personal filesystem quotas on both ``scratch`` and ``project``, KSL system administration maintains a convinient utility called ``kuq`` which is an ancronym of ``KSL User Quota``. It lists a users quota allocation and usage on all tiers of ``scratch`` and also shows the inodes or number of files with limits and used. An example use is shown below:
 
-For overall quota on scratch:
+.. code-block:: bash
+  
+  > kuq 
+  -------------------------------------------------------------------------------------------
+  Filesystem quota limits for user <username>
+  Tier             Filesystem    used   quota   limit   grace   files   quota   limit   grace
+  scratch            /scratch      4k      0k      0k       -       1       0 1000000       -
+  capacity           /scratch      4k      0k     10T       -       1       0       0       -
+  bandwidth          /scratch      4k      0k      1T       -       1       0       0       -
+  iops               /scratch      4k      0k     50G       -       1       0       0       -
+  project            /project      0k      0k      0k       -       0       0       0       -
+  -------------------------------------------------------------------------------------------
+
+.. note:: 
+  For reliable metrics related the project quota and its usage, please use :ref:`kpq` utility. 
+
+The same can be achieved by a user with the Lustre filesystem utility ``lfs`` on ``capacity``, ``bandwidth`` and ``iops`` tiers of ``scratch`` and on ``project`` respectively .  
 
 .. code-block:: bash
 
-    lfs quota -uh <username> /scratch
+    > lfs quota -uh ${USER} /scratch
+    > lfs quota -uh ${USER} --pool capacity /scratch
+    > lfs quota -uh ${USER} --pool iops /scratch
 
-For quota on capacity tier on scratch:
 
-.. code-block:: bash
-
-    lfs quota -uh <username> --pool capacity /scratch
-
-For quota on bandwidth tier on scratch:
-
-.. code-block:: bash
-
-    lfs quota -uh <username> --pool bandwidth /scratch
-
-For quota on IOPS tier on scratch:
-
-.. code-block:: bash
-
-    lfs quota -uh <username> --pool iops /scratch
 
 ``project`` filesystem
 -------------------------
 ``project`` filesystem is a persistent storage for users who are members of a project owned by their respective Principal Investigators (PI). A user can be member of multiple projects on Shaheen III. The ID assigned to each project is also used with SLURM to charging to the account when a job is submitted.
 Below are some important policies users must know of:
 
-- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. The usage of ``project`` filesystem can be queried by using the ``kpq`` utility (shorthand for KSL PI Quota)
+- A PI has a default allocation of 80TB on ``project`` filesystem. This is shared among the members of the project. The usage of ``project`` filesystem can be queried by using the ``kpq`` utility (shorthand for KSL PI Quota). An example output of ``kpq`` is shown below:
+
+.. _kpq:
 
 .. code-block:: bash
   
-  kpq <project-id>
+  > kpq <project-id>
+  ---------------------------------
+  PI quota for : <NAME of PI>
+  ---------------------------------
+  Filesystem  used   quota   limit   grace   files   quota   limit   grace
+  /project  71.24T      0k     80T       - 1992919       0       0       -
+  /scratch    936k      0k      0k       -      72       0       0       -
 
 To list the users belonging to a project the utility ``groupies`` can be used:
 
