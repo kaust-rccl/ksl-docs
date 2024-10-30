@@ -124,7 +124,7 @@ All filesystems on Shaheen III are shared among users. Policies help enable cons
 
 .. note:: 
     - The inode quota, which is synonymous to number of files per user, is a global policy that governs the files in all tiers of ``scratch``. A user can create and maintain no more than 1 million files on ``scratch`` cumulatively.
-    - All files expect those in IOPS tier are subject to **60 day** purge policy.  
+    - All files except those in IOPS tier are subject to **60 day** purge policy.  
 
 For checking personal filesystem quotas on both ``scratch`` and ``project``, KSL system administration maintains a convinient utility called ``kuq`` which is an ancronym of ``KSL User Quota``. It lists a users quota allocation and usage on all tiers of ``scratch`` and also shows the inodes or number of files with limits and used. An example use is shown below:
 
