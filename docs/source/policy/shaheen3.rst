@@ -124,9 +124,9 @@ All filesystems on Shaheen III are shared among users. Policies help enable cons
 
 .. note:: 
     - The inode quota, which is synonymous to number of files per user, is a global policy that governs the files in all tiers of ``scratch``. A user can create and maintain no more than 1 million files on ``scratch`` cumulatively.
-    - All files expect those in IOPS tier are subject to **60 day** purge policy.  
+    - All files except those in IOPS tier are subject to **60 day** purge policy.  
 
-For checking personal filesystem quotas on both ``scratch`` and ``project``, KSL system administration maintains a convinient utility called ``kuq`` which is an ancronym of ``KSL User Quota``. It lists a users quota allocation and usage on all tiers of ``scratch`` and also shows the inodes or number of files with limits and used. An example use is shown below:
+For checking personal filesystem quotas on both ``scratch`` and ``project``, KSL system administration maintains a convenient utility called ``kuq`` which is an acronym of ``KSL User Quota``. It lists a users quota allocation and usage on all tiers of ``scratch`` and also shows the inodes or number of files with limits and used. An example use is shown below:
 
 .. code-block:: bash
   
@@ -192,4 +192,4 @@ To list the users belonging to a project the utility ``groupies`` can be used:
 
     quota -s
 
-``home`` usually is default filesystem for temporary cache files e.g. when using conda package manager, or pulling images using singularity container platform. It is advisable to clear caches every now and then to free space.
+``home`` usually is default filesystem for temporary cache files e.g. when using ``conda`` package manager, or pulling images using singularity container platform. It is advisable to clear caches every now and then to free space.
