@@ -9,15 +9,7 @@
 Weather and Climate platform
 ==============================
 
-The following recipes are available for building weather and climate software on Shaheen III:
-
-.. toctree::
-      :titlesonly:
-      :maxdepth: 1
-
-      wrf3.9.1.1
-      wrf4.5.2
-      wrf4.5.2-intel
+The recipes for building weather and climate software on Shaheen III are available on this link: https://github.com/kaust-rccl/build-recipes/
 
 The list of software available on Shaheen III:
 
@@ -25,5 +17,6 @@ The list of software available on Shaheen III:
       :titlesonly:
       :maxdepth: 1
 
+      cdo.rst
       nco.rst
       wgrib2.rst
