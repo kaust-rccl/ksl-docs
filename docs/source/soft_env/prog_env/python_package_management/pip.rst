@@ -15,12 +15,14 @@ By default ``pip`` pulls the pre-compiled wheels from a public repository called
 On KSL systems, managed Python is installed as a Linux module and has ``pip`` already installed. Users can use this installer to installed packages of choice in their own software directory. 
 
 By default, ``pip`` installs packages in the root directory of the Python in ${PYTHON_HOME}/python``x.y``/site-packages (``x.y`` is major.minor version of python e.g. ``python3.10``).
-Since normal users are not the owner of the installed Python, simple ``pip install <package_name>`` command will not allow the package to be installed in the default location. For this, users must use an additional command line option to indicate the destination directory where the package must be installed. Depending on the KSL system, the recommended directories differ. Please refer to the relevant KSL system for instructions.  
+Since unprivileged users are not the owner of the installed Python, simple ``pip install <package_name>`` command will not allow the package to be installed in the default location. For this, users must use an additional command line option to indicate the destination directory where the package must be installed. Depending on the KSL system, the recommended directories differ. Please refer to the relevant KSL system for instructions.  
 
 
 ``pip`` installer on Shaheen III
 =================================
-On Shaheen III, the best place to install Python packages using ``pip`` installer is the directory ``$MY_SW`` which points to ``/scratch/${USER}/iops/sw``. The following shows an example of installing a python package called PyBLAS (a BLAS implementation in Python)
+On Shaheen III, the best place to install Python packages using ``pip`` installer is the directory ``$MY_SW`` which points to ``/scratch/${USER}/iops/sw``. It is important to note that installing python packages using ``pip`` with ``-u`` flag is **not recommended** on Shaheen III. The `u` flag sets the home directory as installation directory which is not mounted on Shaheen III compute nodes and your python workload will complain about not finding the packages when running as a job. 
+
+The following shows an example of installing a python package called PyBLAS (a BLAS implementation in Python)
 
 .. code-block:: bash
 
@@ -46,8 +48,7 @@ To use the Python packages from ${MY_SW}, you will need to first update the envi
     #SBATCH -c 8 
 
     module load python
-
-    export PYTHONPATH=${MY_SW}/python${PYTHON_MAJ_MIN_VER}/site-packages:$PYTHONPATH
+    module load mysw
 
     srun -n 1 -c 8 python myscript.py
 
@@ -85,8 +86,7 @@ Same as in Shaheen III, for Ibex, you will need to update the shell environment 
     #SBATCH -c 8 
 
     module load python
-
-    export PYTHONPATH=/ibex/user/${USER}/software/python${PYTHON_MAJ_MIN_VER}/site-packages:$PYTHONPATH
+    module load mysw
 
     srun -n 1 -c 8 python myscript.py
 
