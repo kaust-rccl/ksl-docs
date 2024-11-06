@@ -86,7 +86,6 @@ Same as in Shaheen III, for Ibex, you will need to update the shell environment 
     #SBATCH -c 8 
 
     module load python
-    module load mysw
 
     srun -n 1 -c 8 python myscript.py
 
