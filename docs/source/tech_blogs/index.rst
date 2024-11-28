@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
     :description: Collection of technical articles and blogs written by KSL Computational Scientists
-    :keywords: Shaheen III, Ibex 
+    :keywords: Shaheen III, Ibex
 
 .. _KSL_tech_blogs:
 
@@ -16,7 +16,7 @@ Computer Architecture
 .. toctree::
     :titlesonly:
     :maxdepth: 2
-    
+
     comp_arch/cpu_arch
     comp_arch/memory_hierarchy_cpu
     comp_arch/numa_intro
@@ -25,7 +25,8 @@ Computer Architecture
     comp_arch/gpu_basics
     comp_arch/lustre_intro
     comp_arch/gds
-    comp_arch/wekaIO_FS   
+    comp_arch/wekaIO_FS
+    comp_arch/aslr
 
 Programming Models
 --------------------
@@ -33,7 +34,7 @@ Programming Models
 .. toctree::
     :titlesonly:
     :maxdepth: 2
-    
+
     prog_models/mpi_intro
     prog_models/openmp_intro
     prog_models/openacc_intro
@@ -41,7 +42,7 @@ Programming Models
 Scientific Computing Libraries
 -------------------------------
 
-.. toctree:: 
+.. toctree::
     :titlesonly:
     :maxdepth: 2
 
@@ -53,7 +54,7 @@ Scientific Computing Libraries
 Useful workflows
 -------------------------------
 
-.. toctree:: 
+.. toctree::
     :titlesonly:
     :maxdepth: 2
 
@@ -62,7 +63,7 @@ Useful workflows
 Best Practices on KSL systems
 -------------------------------
 
-.. toctree:: 
+.. toctree::
     :titlesonly:
     :maxdepth: 2
 
