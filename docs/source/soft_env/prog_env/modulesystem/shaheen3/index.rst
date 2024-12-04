@@ -127,7 +127,7 @@ The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
      - ``Fortran``
      - ``ftn``
      - ``amdflang``
-   * - Intel
+   * - Intel*
      - ``PrgEnv-intel``
      - ``intel``
      - ``C``
@@ -145,6 +145,8 @@ The module ``PrgEnv-<compiler>`` is used to activate the respective toolchain.
      - ``Fortran``
      - ``ftn``
      - ``ifort``
+
+\* Intel C++ Compiler Classic (icc) does not exist in the ``intel/2024`` module. If your software build system contains direct calls to the removed compilers, please use the compiler wrappers mentioned above. Intel recommends that users transition to the LLVM-based Intel oneAPI DPC++/C++ Compiler (icx).
 
 For the latest programming environment modules, the default versions are available here: :ref:`2024-10-prgenv-modules`
 
