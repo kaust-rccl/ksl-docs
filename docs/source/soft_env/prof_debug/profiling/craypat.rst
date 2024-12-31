@@ -20,7 +20,6 @@ Sampling experiment
 
  module load perftools-base
  module load perftools-lite
- module rm darshan
 
 * Build the application as usual.
 
