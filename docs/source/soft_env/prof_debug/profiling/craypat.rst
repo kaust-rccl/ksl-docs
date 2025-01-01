@@ -20,7 +20,6 @@ Sampling experiment
 
  module load perftools-base
  module load perftools-lite
- module rm darshan
 
 * Build the application as usual.
 
@@ -54,6 +53,11 @@ Sampling experiment
 
 * `myrep.sample.rpt` contains the performance report.
 
+* To get only the power and energy results, you can generate the report as follows:
+
+.. code-block:: bash
+
+ pat_report -o power.report.sample.rpt -v -O program_energy expfile.lite-samples.*
 
 
 
