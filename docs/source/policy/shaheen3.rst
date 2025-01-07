@@ -45,7 +45,7 @@ The table below show the job limits enforced on different partitions.
      - 2048
      - 24
      - 1000
-     - 300
+     - 500
    * - shared
      - shared
      - 16
