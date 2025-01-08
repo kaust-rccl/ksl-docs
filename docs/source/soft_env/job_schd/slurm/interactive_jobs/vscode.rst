@@ -182,10 +182,10 @@ Modify the following jobscript according to your parameters:
     rm ${CODE_SERVER_CONFIG}
     fi
 
-    echo "bind-addr: ${node}:${port}" >> $CODE_SERVER_CONFIG 
-    echo "auth: password" >> config
-    echo "password: 10DowningStreet" >> $CODE_SERVER_CONFIG
-    echo "cert: false" >> config
+    echo "bind-addr: ${node}:${port}" >> ${CODE_SERVER_CONFIG} 
+    echo "auth: password" >> ${CODE_SERVER_CONFIG}
+    echo "password: 10DowningStreet" >> ${CODE_SERVER_CONFIG}
+    echo "cert: false" >> ${CODE_SERVER_CONFIG}
 
     echo "Copy the following line in a new terminal to create a secure SSH tunnel between your computer and Ibex compute node."
     echo "ssh -L localhost:${port}:${node}:${port} ${user}@${submit_host}.ibex.kaust.edu.sa"
@@ -204,6 +204,7 @@ In case you have submitted a batch job, please check the slurm output and copy t
 
 
 Once the SSH tunnel is established, you can open the URL that code-server is listening on in the browser to access VS code/code-server
+
 .. code-block:: bash
     
     http://localhost:<port>/
