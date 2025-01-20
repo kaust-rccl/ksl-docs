@@ -9,14 +9,9 @@
 Training
 ========================
 
-**Objectives:** 
-
-* Getting familiar with High Performance Computing cluster environment architectures: e.g. Shaheen , Ibex , Neser
-* Getting familiar with the HPC software ecosystems
-* Introduction on job scheduling on different HPC environments
-* Provide suggestions and advise  on how to execute your application (e.g. SLURM constrains, workflows, job-dependencies etc.)
-* How to run different types of jobs (e.g OpenMP , MPI and CUDA jobs )
-* Tips and tricks and Dos and Don'ts targeted to achieve the best performance for your workloads on the underlying architecture
+Welcome to KAUST Supercomputing Lab training page. 
+Here you will find the archive of previous training material presented at the KSL and associated resources and self-paces labs. 
+Users are encouraged to ask questions using media listed on :ref:`Contact_Us`. 
 
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -24,8 +19,11 @@ Training
    :maxdepth: 1
    :titlesonly:
    
-   ibex_user_training
-   ibex_user_resources
    shaheen_user_training
+   ibex_user_training
+   ibex_101_handson_lab
+   ibex_user_resources
+
+   
 
 
