@@ -30,3 +30,8 @@ Sessions
      - Oct 7th, 2024
      - `Slides <https://drive.google.com/file/d/12Ffi_dUpxC6henXfRu_Vz9l5dGtk1C6r/view?usp=share_link>`_
      - Recording
+
+
+Hands-on Labs
+-------------
+:ref:`ibex_101_lab`
