@@ -211,8 +211,8 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
 
     chmod +x ${workdir}/rsession.sh
 
-    export SINGULARITY_BIND="${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server,/sw:/sw,/ibex/sw:/ibex/sw:/ibex/user:/ibex/user"
-
+    export SINGULARITY_BIND="${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server,/ibex/sw:/ibex/sw,/ibex/user:/ibex/user,/sw:/sw"
+ 
     # Do not suspend idle sessions.
     # Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf
     # https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126
