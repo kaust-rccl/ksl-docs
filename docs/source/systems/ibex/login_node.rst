@@ -62,20 +62,3 @@ Ibex clusters consist of 3 different login nodes:
 Login to Ibex from workstation/laptop
 ======================================
 You need an application call `ssh client` installed on your local machine in order to follow the steps to login any KSL system. 
-
-Mac OSx
----------
-
-MacOS usually has a `terminal` application pre-installed. Please type Terminal in spotlight search tool to find it. 
-
-         .. image:: ../static/MacOS.png
-   
-Open the `terminal`, copy and paste the :ref:`command <ibex_login_ssh>` for the appropriate login node you wish to access.  
-  
-Windows
----------
-
-To get a `ssh client` application on a Windows machine, you can opt from one of the following methods:
-
-  * Download and install one of the `ssh` clients: PuTTY, MobaXTerm or GitBash
-  * As an example, here is how to use `MobaXTerm on Windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ to access KSL systems 
