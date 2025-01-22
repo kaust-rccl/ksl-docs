@@ -40,7 +40,7 @@ Installing elaborate conda environments can be time consuming. To accelerate the
 
 .. code-block:: bash
   
-  conda install -y -c conda-forge mamba
+  conda install -y -c conda-forge mamba=1.5.8
   
 
 Creating new environments
