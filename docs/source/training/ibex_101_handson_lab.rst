@@ -15,7 +15,7 @@ Prerequisite to use Ibex
 Internet connection
 ---------------------
 
-should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/docs/default-source/services/network-connectivity/kaust-vpn/setup-kuast-vpn-and-duo.pdf?sfvrsn=8c0c88c7_4>`_ when outside of KAUST network.
+To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/docs/default-source/services/network-connectivity/kaust-vpn/setup-kuast-vpn-and-duo.pdf?sfvrsn=8c0c88c7_4>`_ when outside of KAUST network.
 
 
 Mac OSx
@@ -39,6 +39,8 @@ To get a `ssh client` application on a Windows machine, you can opt from one of 
 * Download and install one of the `ssh` clients: PuTTY, MobaXTerm or GitBash
 * As an example, here is how to use `MobaXTerm on Windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ to access KSL systems.
 
+.. image:: ../systems/static/Windows_Moba.png
+
 
 Contact Us
 ===========
@@ -61,19 +63,22 @@ To submit CPU only jobs, login to ilogin
 
 .. code-block:: bash
 
-    ssh -X username@ilogin.ibex.kaust.edu.sa
+    ssh -X $USER@ilogin.ibex.kaust.edu.sa
 
 To submit jobs with GPU, login to glogin
 
 .. code-block:: bash
 
-    ssh -X username@glogin.ibex.kaust.edu.sa
+    ssh -X $USER@glogin.ibex.kaust.edu.sa
 
 If you want to access your files when editing/develop in IDE like VS Code, login to vscode
 
 .. code-block:: bash
 
-    ssh -X username@vscode.ibex.kaust.edu.sa
+    ssh -X $USER@vscode.ibex.kaust.edu.sa
+
+.. note::
+    If you're using a personal Laptop / Desktop replace $user with your KAUST username.
 
 
 Storage details
@@ -108,18 +113,33 @@ Home directories are shared across all KSL systems so all your data stored on `/
 User HPC filesystem
 --------------------
 
-`/ibex/user/$USER` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the `/home` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
+There are two file systems used as personal scratch file system for your computational requirement. Based on the file system 
+availability, any one of the file systems with 1.5TB disk space will be allocated by default without any prior approval. 
+
+1. `/ibex/user/$USER` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the `/home` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
 
 User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
 
 Users can check their quota on `/ibex/user/$USER` using the following command:
 
 .. code-block:: bash
-    :caption: Command to check the quota on `/home` filesystem
+    :caption: Command to check the quota on `/ibex/user/` filesystem
 
         $ df -h /ibex/user/$USER
         Filesystem      Size  Used Avail Use% Mounted on
         user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
+
+
+2. `/ibex/scratch/$USER` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
+
+Users can check their quota on `/ibex/scratch/$USER` using the following command:
+
+.. code-block:: bash
+    :caption: Command to check the quota on `/ibex/scratch/$USER/` filesystem
+
+        $ bquota  
+        Quota information for IBEX filesystems: 
+        Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
 
 
 Project HPC filesystem
@@ -127,7 +147,49 @@ Project HPC filesystem
 
 There are instances where your research team is collaborating on a common goal and is sharing or using the same input dataset. This is calls for a shared directory where a group of users can have access to files which can be managed by the one or more members of that group. 
 
-`/ibex/project/cxxxx` is root path to such a directory. This too is part of the same WekaIO filesystem as the User HPC filesystem above.
+We have two file systems used for regular projects and one additional file system for encrypted projects.
+
+1. `/ibex/project/cxxxx` is root path to such a directory. This too is part of the same WekaIO filesystem as the User HPC filesystem above.
+
+Users can check their quota on `/ibex/project/cxxxx` using the following command:
+
+.. code-block:: bash
+    :caption: Command to check the quota on `/ibex/project/cxxxx` filesystem
+
+        $ df -h /ibex/project/c2247 
+        Filesystem      Size  Used Avail Use% Mounted on 
+        project          13T   12T  1.2T  92% /ibex/project
+
+2. `/ibex/scratch/projects` is another parallel file system known as BeeGFS.
+
+Users can check their quota on `/ibex/scratch/projects` using the following command:
+
+.. code-block:: bash
+    :caption: Command to check the quota on `/ibex/scratch/projects` filesystem
+
+        $ bquota -g ibex-c2123 
+        Quota information for IBEX filesystems: 
+        Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
+        Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
+
+3. Encrypted file system path starts with `/encrypted`.
+
+Users can check their quota on `/encrypted` using the following command:
+
+.. code-block:: bash
+    :caption: Command to check the quota on `/encrypted` filesystem
+
+        $ df -h /encrypted/e3001 
+        Filesystem      Size  Used Avail Use% Mounted on 
+        ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
+
+If you run out of disk space on Ibex you might face the following errors: 
+1. "No space left on device".
+2. "Disk quota exceeded".
+3. Other similar errors. 
+
+The first step to check limits or resolve quota issues is to identify which disk is in question. This can be done by looking at the 
+beginning of the full path to the affected directory and check with the allocated disk space Vs used disk space.
 
 To get project allocation, users must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
 
@@ -147,19 +209,19 @@ To view the available modules on your HPC cluster, use the following command:
 
     module avail
 
-`Ex: on glogin node check what versions of cuda are available?`
+`Ex: On glogin node check what versions of cuda are available?`
 
 .. code-block:: bash
 
-    ssh -X username@glogin.ibex.kaust.edu.sa
+    ssh -X $USER@glogin.ibex.kaust.edu.sa
     module avail cuda
 
-`Ex2: Check available versions of openmpi modules`
+`Ex2: On ilogin node, check available versions of GNU compiler modules`
 
 .. code-block:: bash
 
-    ssh -X username@glogin.ibex.kaust.edu.sa
-    module avail openmpi
+    ssh -X $USER@ilogin.ibex.kaust.edu.sa
+    module avail gcc
 
 module load
 ------------
@@ -182,17 +244,17 @@ To unload a module and revert to the default environment, use the module unload 
 
     module unload package-name
 
-`Ex: On both ilogin and glogin nodes, load the gnu compiler`
+`Ex: On ilogin, load the GNU compiler. Then use glogin to load the CUDA module`
 
 .. code-block:: bash
 
-    ssh -X username@ilogin.ibex.kaust.edu.sa
+    ssh -X $USER@ilogin.ibex.kaust.edu.sa
     module load gcc
 
 .. code-block:: bash
 
-    ssh -X username@glogin.ibex.kaust.edu.sa
-    module load gcc
+    ssh -X $USER@glogin.ibex.kaust.edu.sa
+    module load cuda
 
 `Ex2: Load the Python 3.11 module:`
 
@@ -225,12 +287,12 @@ To see the modules currently loaded in your environment, use:
 
 .. code-block:: bash
 
-    ssh -X username@ilogin.ibex.kaust.edu.sa
+    ssh -X $USER@ilogin.ibex.kaust.edu.sa
     module load openmpi
     module list
 
 
-Using slurm
+Using SLURM
 =============
 
 SLURM jobscript explained
@@ -277,12 +339,12 @@ Job submission for multi-CPUs
 
     #!/bin/bash -l
 
-    #SBATCH --ntasks=32
-    #SBATCH --ntasks-per-node=32
+    #SBATCH --ntasks=4
+    #SBATCH --ntasks-per-node=4
     #SBATCH --time=00:10:00
     #SBATCH --reservation=ibex-101
 
-    srun -n 32 echo "Hello world!"
+    srun -n 4 echo "Hello world!"
 
 Using `sbatch` command submits your jobscript to SLURM.
 
@@ -296,6 +358,24 @@ Using `sbatch` command submits your jobscript to SLURM.
 
     > sbatch my-jobscript.slurm
     Submitted batch job 33204519
+
+Job monitoring
+----------------
+
+The `squeue` command shows the current jobs in the SLURM queue.
+
+You can use `--user` to only show your jobs.
+
+.. code-block:: bash
+
+    squeue --user=$USER
+
+`Ex: use sbatch command to submit a jobscript, then check its status.`
+
+`Questions:`
+- What is the state of your job?
+
+- Which node is your job assigned to (if running)?
 
 Job accounting
 ----------------
@@ -320,23 +400,6 @@ Add more detail by using:
 
 - What was the exit code of your job?
 
-Job monitoring
-----------------
-
-The `squeue` command shows the current jobs in the SLURM queue.
-
-You can use `--user` to only show your jobs.
-
-.. code-block:: bash
-
-    squeue --user=$USER
-
-`Ex: use sbatch command to submit a jobscript, then check its status.`
-
-`Questions:`
-- What is the state of your job?
-
-- Which node is your job assigned to (if running)?
 
 Job cancelling
 ----------------
@@ -348,6 +411,17 @@ The `scancel` command cancels a job in the SLURM queue.
     scancel <job_id>
 
 `Ex: submit a job, cancel it then verify it has been removed from queue:`
+
+Save this script as `my-jobscript.slurm`
+
+.. code-block:: bash
+
+    #!/bin/bash -l
+    #SBATCH --time=00:10:00
+    #SBATCH --reservation=ibex-101
+
+    sleep 300
+
 
 .. code-block:: bash
 
@@ -398,8 +472,8 @@ MPI job single node
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
-    #SBATCH --ntasks=32
-    #SBATCH --tasks-per-node=32
+    #SBATCH --ntasks=4
+    #SBATCH --tasks-per-node=4
     #SBATCH --reservation=ibex-101
 
     # Load the OpenMPI module
@@ -411,7 +485,7 @@ MPI job single node
     echo "Nodes allocated: $SLURM_JOB_NODELIST"
 
     # Run the MPI program
-    mpirun -np 32 ./mpi_hello_world
+    mpirun -np 4 ./mpi_hello_world
 
 MPI job multinode
 
@@ -419,8 +493,9 @@ MPI job multinode
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
-    #SBATCH --ntasks=32
-    #SBATCH --ntasks-per-node=16
+    #SBATCH --nodes=2
+    #SBATCH --ntasks=8
+    #SBATCH --ntasks-per-node=4
     #SBATCH --reservation=ibex-101
 
     # Load the OpenMPI module
@@ -432,7 +507,7 @@ MPI job multinode
     echo "Nodes allocated: $SLURM_JOB_NODELIST"
 
     # Run the MPI program
-    mpirun -np 32 ./mpi_hello_world
+    mpirun -np 8 ./mpi_hello_world
 
 GPU jobs
 ---------
@@ -443,15 +518,11 @@ Single gpu job
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
-    #SBATCH --cpus-per-task=2
-    #SBATCH --mem=64G
-    #SBATCH --gpus=2
-    #SBATCH --gpus-per-node=2
-    #SBATCH --constraint=gtx1080ti
+    #SBATCH --gpus=1
     #SBATCH --reservation=ibex-101
 
     module load cuda/11.8
-    srun -c 4 ./multi_gpu_program
+    nvidia-smi
 
 Multiple GPUs single node
 
@@ -460,14 +531,14 @@ Multiple GPUs single node
     #!/bin/bash -l
     #SBATCH --time=00:10:00
     #SBATCH --cpus-per-task=2
-    #SBATCH --mem=64G
+    #SBATCH --mem=32G
     #SBATCH --gpus=2
     #SBATCH --gpus-per-node=2
     #SBATCH --constraint=gtx1080ti
     #SBATCH --reservation=ibex-101
 
     module load cuda/11.8
-    srun -c 4 ./multi_gpu_program
+    srun -c 2 ./multi_gpu_program
 
 Multiple GPUs on Multiple nodes
 
@@ -475,9 +546,10 @@ Multiple GPUs on Multiple nodes
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
+    #SBATCH --nodes=2
     #SBATCH --ntasks=2
     #SBATCH --ntasks-per-node=1
-    #SBATCH --cpus-per-task=16
+    #SBATCH --cpus-per-task=6
     #SBATCH --mem=32G
     #SBATCH --gpus=4
     #SBATCH --gpus-per-node=2
@@ -487,7 +559,7 @@ Multiple GPUs on Multiple nodes
 
     module load cuda/11.8
 
-    srun -n 2 -N 2 -c 16 ./multi_gpu_program
+    srun -n 2 -N 2 -c 6 ./multi_gpu_program
 
 constraints
 ------------
@@ -773,7 +845,7 @@ Run the following command to run on one gtx1080ti GPU:
 
 .. code-block:: bash
 
-    srun --gpus=1 --mem=100G --cpus-per-task=24 -C gtx1080ti --time=00:30:00 --resv-ports=1 --reservation=ibex-101 --pty /bin/bash -l launch-jupyter-one-line.sh
+    srun --gpus=1 --mem=100G --cpus-per-task=24 --time=00:30:00 --resv-ports=1 --reservation=ibex-101 --pty /bin/bash -l launch-jupyter-one-line.sh
 
 Now on your terminal you will see the same kind of message from jupyter.
 
@@ -797,7 +869,7 @@ Using the file `launch-jupyter-server.slurm`
     #!/bin/bash -l
     #SBATCH --time=00:30:00
     #SBATCH --nodes=1
-    #SBATCH --gpus-per-node=gtx1080ti:1
+    #SBATCH --gpus-per-node=1
     #SBATCH --cpus-per-gpu=6
     #SBATCH --mem=32G
     #SBATCH --reservatin=ibex-101
@@ -853,7 +925,7 @@ Example:
 
 .. code-block:: bash
 
-    ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 username@glogin.ibex.kaust.edu.sa
+    ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 $USER@glogin.ibex.kaust.edu.sa
 
 From the `XXX-slurm.err` file copy one of the lines of that start with http://gpuXXX-XX into your browser.
 
@@ -868,15 +940,19 @@ Using the jobscript `fastqc.batch`
 
 .. code-block:: bash
 
-    #!/bin/bash
-    #SBATCH –-nodes=1
-    #SBATCH –-cpus-per-task=16
-    #SBATCH --partition=batch
-    #SBATCH –-job-name=QC
-    #SBATCH –-output=QC.%J.out
-    #SBATCH –-error=QC.%J.err
-    #SBATCH --time=01:30:00
-    #SBATCH --mem=4G
+    #!/bin/bash -l
+    #SBATCH --nodes=1                       ## No. of nodes to be used
+    #SBATCH --cpus-per-task=4               ## No. of threads to be used for this FastQC
+    #SBATCH --job-name=QC                   ## Name of your job
+    #SBATCH --output=QC.%J.out              ## Console output file
+    #SBATCH --error=QC.%J.err               ## Console error file
+    #SBATCH --time=01:30:00                 ## Expected execution time of your job
+    #SBATCH --mem=2G                        ## Estimated memory size (e.g. more than or equal to your fastq file)
+    #SBATCH --reservation=ibex-101
+
+    #fetch the dataset files
+    cp -r /ibex/scratch/projects/ibex_cs_temp/ibex_101/dataset/ ./
+    cd dataset
 
     #run the application:
     module load fastqc/0.11.8
