@@ -932,6 +932,67 @@ From the `XXX-slurm.err` file copy one of the lines of that start with http://gp
 
 Now we are ready to use our Jupyter client.
 
+`Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs`
+
+Using the script `single-node-2GPUs-job.slurm`
+
+.. code-block:: bash
+
+    #!/bin/bash -l
+    #SBATCH --job-name=pytorch_multi_gpu     # Job name
+    #SBATCH --nodes=1                        # Use a single node
+    #SBATCH --ntasks=1                       # One task
+    #SBATCH --gpus=2                         # Request 2 GPUs
+    #SBATCH --cpus-per-task=8                # Request 8 CPUs
+    #SBATCH --mem=32G                        # Request 32G memory
+    #SBATCH --time=00:10:00                  # Time limit (hh:mm:ss)
+    #SBATCH --reservatin=ibex-101            # use ibex-101 reservation
+
+    # Load necessary modules (if required)
+    module load machine_learning/2024.01
+
+    # Run the PyTorch script
+    python pytorch_demo.py
+
+
+Submit the script using `sbatch` command
+
+.. code-block:: bash
+
+    sbatch single-node-2GPUs-job.slurm
+
+The script detects the number of available GPUs and creates a random 1000x1000 tensor then performs a matrix multiplication operation on the tensor (tensor @ tensor.T) using the first GPU only.
+If multiple GPUs are available, the script demonstrates how to distribute work across GPUs using PyTorch's `torch.nn.DataParallel`
+A simple PyTorch model `torch.nn.Linear` is created and wrapped in DataParallel to utilize multiple GPUs automatically.
+A random input tensor (64x1000, batch size of 64) is processed by the model.
+The script prints the output shape after processing.
+
+Expected output:
+
+.. code-block:: bash
+
+    GNU 13.2.0 is now loaded
+    Loading module for CUDA 11.8
+    CUDA 11.8 is now loaded
+    Loading module for Machine Learning 2024.01
+    Machine Learning 2024.01 is now loaded
+
+    Loading machine_learning/2024.01
+    Loading requirement: gcc/13.2.0 cuda/11.8
+    CUDA is available. Number of GPUs: 4
+    GPU 0: NVIDIA GeForce GTX 1080 Ti
+    GPU 1: NVIDIA GeForce GTX 1080 Ti
+    GPU 2: NVIDIA GeForce GTX 1080 Ti
+    GPU 3: NVIDIA GeForce GTX 1080 Ti
+    Using GPU: NVIDIA GeForce GTX 1080 Ti
+    Tensor created on: cuda:0
+    Matrix multiplication completed.
+    Result moved to CPU. Shape: torch.Size([1000, 1000])
+
+    Multi-GPU Example:
+    Output shape after DataParallel: torch.Size([64, 1000])
+    
+
 Bioinformatics
 ---------------
 
