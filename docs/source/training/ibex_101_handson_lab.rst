@@ -431,6 +431,145 @@ Save this script as `my-jobscript.slurm`
     scancel 33204519
     squeue --user=$USER
 
+SLURM standard output / error files
+-------------------------------------
+
+When you submit a job to SLURM using a jobscript, the output and error messages are redirected to the files slurm-<jobid>.out and slurm-<jobid>.err by default.
+
+You can specify the name for these files to include the jobid in the filename, using the following SLURM options in your jobscript.
+
+.. code-block:: bash
+
+    #SBATCH --output=QC.%j.out		## Console output file
+    #SBATCH --error=QC.%j.err		## Console error file
+
+When you submit the script using sbatch, the files will be generated as following.
+
+.. code-block:: bash
+
+    $ sbatch myscript.slurm
+    Submitted batch job 37104135
+    $ ls *.out
+    QC.37104135.out
+    $ ls *.err
+    QC.37104135.err
+
+You can also include the hostname of the node being used.
+
+.. code-block:: bash
+
+    #SBATCH --output=QC.%j.%N.out		## Console output file
+    #SBATCH --error=QC.%j.%N.err		## Console error file
+
+When you submit the script using sbatch, the files will be generated as following.
+
+.. code-block:: bash
+
+    $ sbatch myscript.slurm
+    Submitted batch job 37104136
+    $ ls *.out
+    QC.37104135.out QC.37104136.gpu214-14.out
+    $ ls *.err
+    QC.37104135.err QC.37104136.gpu214-14.err
+
+Job monitoring with "Job name"
+--------------------------------
+
+You can use --job-name in your jobscript to easily find your job in squeue using the given name.
+
+.. code-block:: bash
+
+    #SBATCH --job-name=QC			## Name of your job
+
+Now when you run squeue, you will find it listed as
+
+.. code-block:: bash
+
+    $ squeue --user=$USER
+
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    37104585    gpu     QC   username  R       1:25      1 gpu214-14
+
+Email notifications
+---------------------
+
+SLURM's email notification feature allows users to receive email updates about the status of their submitted jobs. This is particularly useful for monitoring job progress and being informed when a job starts, ends, or fails.
+
+How to Enable Email Notifications in SLURM?
+
+You can use the following options in your jobscript to configure email notifications:
+
+.. code-block:: bash
+
+    --mail-type=<ALL/BEGIN/END/FAIL> #Specifies when to send email notifications.
+    --mail-user=<email>              #Specifies the email address to which notifications should be sent.
+
+
+Options for `--mail-type` include:
+
+- BEGIN: Send an email when the job begins.
+- END: Send an email when the job finishes successfully.
+- FAIL: Send an email if the job fails.
+- ALL: Send emails for all job events (begin, end, fail, etc.).
+
+`EX: Run a job with email notifications configured`
+
+Using the script `job_with_email.slurm`
+
+.. code-block:: bash
+
+    #!/bin/bash -l
+    #SBATCH --job-name=email_example        # Job name
+    #SBATCH --output=email_example.out      # Standard output log
+    #SBATCH --error=email_example.err       # Error log
+    #SBATCH --nodes=1                       # Number of nodes
+    #SBATCH --ntasks=1                      # Number of tasks
+    #SBATCH --time=00:05:00                 # Time limit (hh:mm:ss)
+    #SBATCH --mail-type=ALL                 # Send email for all job events
+    #SBATCH --mail-user=your_email@kaust.edu.sa  # Your KAUST email address
+    #SBATCH --reservatin=ibex-101            # use ibex-101 reservation
+
+    # Print some information about the job
+    echo "Job started on $(hostname) at $(date)"
+
+    # Simulate some work
+    sleep 60
+
+    # Job completion message
+    echo "Job completed at $(date)"
+
+submit the job using `sbatch`
+
+.. code-block:: bash
+
+    $ sbatch job_with_email.slurm
+    Submitted batch job 37105347
+
+
+In this exmaple you should receive emails at the specified address (your_email@kaust.edu.sa) when the job:
+Starts (BEGIN event), completes successfully (END event) or fails (if an error occurs).
+
+Example email Notifications:
+
+- BEGIN notification
+
+.. code-block:: bash
+
+    Slurm Job_id=37105347 Name=email_example Began, Queued time 00:00:01
+
+- END notification
+
+.. code-block:: bash
+
+    Slurm Job_id=37105347 Name=email_example Ended, Run time 00:01:00, COMPLETED, ExitCode 0
+
+- FAIL notification
+
+.. code-block:: bash
+
+    Slurm Job_id=37105347 Name=email_example Ended, Run time 00:00:00, COMPLETED, ExitCode 0
+
+
 SLURM job examples
 ====================
 
