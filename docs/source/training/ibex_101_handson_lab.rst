@@ -370,9 +370,10 @@ You can use `--user` to only show your jobs.
 
     squeue --user=$USER
 
-`Ex: use sbatch command to submit a jobscript, then check its status.`
+`Ex: Use sbatch command to submit a jobscript, then check its status.`
 
 `Questions:`
+
 - What is the state of your job?
 
 - Which node is your job assigned to (if running)?
@@ -410,7 +411,7 @@ The `scancel` command cancels a job in the SLURM queue.
 
     scancel <job_id>
 
-`Ex: submit a job, cancel it then verify it has been removed from queue:`
+`Ex: Submit a job, cancel it then verify it has been removed from queue:`
 
 Save this script as `my-jobscript.slurm`
 
