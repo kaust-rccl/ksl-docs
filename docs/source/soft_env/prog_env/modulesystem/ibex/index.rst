@@ -18,3 +18,4 @@ Details of Ibex, Its module system and available compiler suites, libraries and 
    libraries
    ml_module
    datascience
+   matlab/index
