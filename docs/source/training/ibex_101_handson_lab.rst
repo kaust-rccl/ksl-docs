@@ -184,9 +184,13 @@ Users can check their quota on `/encrypted` using the following command:
         ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
 
 If you run out of disk space on Ibex you might face the following errors: 
+
 1. "No space left on device".
+
 2. "Disk quota exceeded".
+
 3. Other similar errors. 
+
 
 The first step to check limits or resolve quota issues is to identify which disk is in question. This can be done by looking at the 
 beginning of the full path to the affected directory and check with the allocated disk space Vs used disk space.
