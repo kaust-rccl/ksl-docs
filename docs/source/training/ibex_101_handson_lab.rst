@@ -50,9 +50,9 @@ There are multiple venues you can contact us for support and information. Before
 The easiest and most efficient way is to contact Ibex support:
 
 * Ibex cluster helpdesk   :email:`<ibex@hpc.kaust.edu.sa>`
-* Ibex `Slack channel <kaust-ibex.slack.com>`_      
+* Ibex `Slack channel <https://kaust-ibex.slack.com/>`_      
   
-As a rule of thumb, if the issue is complex to describe, please send an email for requesting support. If the question is of general nature and can be stated in a line or two,  `Slack channel <kaust-ibex.slack.com>`_ is most appropriate. 
+As a rule of thumb, if the issue is complex to describe, please send an email for requesting support. If the question is of general nature and can be stated in a line or two,  `Slack channel <https://kaust-ibex.slack.com/>`_ is most appropriate. 
 
 How to login?
 ==============
