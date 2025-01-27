@@ -101,10 +101,15 @@ Users can check their quota on `/home` using the following command:
 
     $ quota -s
 
+
+.. code-block:: bash
+
+    Output:
+
     Disk quotas for user ###### (uid ######): 
-     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+        Filesystem   space   quota   limit   grace   files   quota   limit   grace
     fs-nfs-60.admin.vis.kaust.edu.sa:/home/home
-                   178G    180G    200G            853k   4295m   4295m  
+                    178G    180G    200G            853k   4295m   4295m  
 
 In the case above, the maximum quota for capacity on `/home` filesystem is 200GB. 
 
@@ -126,8 +131,14 @@ Users can check their quota on `/ibex/user/$USER` using the following command:
     :caption: Command to check the quota on `/ibex/user/` filesystem
 
         $ df -h /ibex/user/$USER
-        Filesystem      Size  Used Avail Use% Mounted on
-        user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
+
+
+.. code-block:: bash
+
+    Output:
+
+    Filesystem      Size  Used Avail Use% Mounted on
+    user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
 
 
 2. `/ibex/scratch/$USER` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
@@ -138,8 +149,14 @@ Users can check their quota on `/ibex/scratch/$USER` using the following command
     :caption: Command to check the quota on `/ibex/scratch/$USER/` filesystem
 
         $ bquota  
-        Quota information for IBEX filesystems: 
-        Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
+
+
+.. code-block:: bash
+
+    Output:
+    
+    Quota information for IBEX filesystems: 
+    Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
 
 
 Project HPC filesystem
@@ -157,8 +174,13 @@ Users can check their quota on `/ibex/project/cxxxx` using the following command
     :caption: Command to check the quota on `/ibex/project/cxxxx` filesystem
 
         $ df -h /ibex/project/c2247 
-        Filesystem      Size  Used Avail Use% Mounted on 
-        project          13T   12T  1.2T  92% /ibex/project
+
+.. code-block:: bash
+
+    Output:
+    
+    Filesystem      Size  Used Avail Use% Mounted on 
+    project          13T   12T  1.2T  92% /ibex/project
 
 2. `/ibex/scratch/projects` is another parallel file system known as BeeGFS.
 
@@ -168,9 +190,15 @@ Users can check their quota on `/ibex/scratch/projects` using the following comm
     :caption: Command to check the quota on `/ibex/scratch/projects` filesystem
 
         $ bquota -g ibex-c2123 
-        Quota information for IBEX filesystems: 
-        Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
-        Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
+
+
+.. code-block:: bash
+
+    Output:
+    
+    Quota information for IBEX filesystems: 
+    Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
+    Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
 
 3. Encrypted file system path starts with `/encrypted`.
 
@@ -180,8 +208,13 @@ Users can check their quota on `/encrypted` using the following command:
     :caption: Command to check the quota on `/encrypted` filesystem
 
         $ df -h /encrypted/e3001 
-        Filesystem      Size  Used Avail Use% Mounted on 
-        ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
+
+.. code-block:: bash
+
+    Output:
+    
+    Filesystem      Size  Used Avail Use% Mounted on 
+    ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
 
 If you run out of disk space on Ibex you might face the following errors: 
 
@@ -360,7 +393,12 @@ Using `sbatch` command submits your jobscript to SLURM.
 
 .. code-block:: bash
 
-    > sbatch my-jobscript.slurm
+    sbatch my-jobscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 33204519
 
 Job monitoring
@@ -431,9 +469,18 @@ Save this script as `my-jobscript.slurm`
 .. code-block:: bash
 
     sbatch my-jobscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 33204519
+
+.. code-block:: bash
+
     scancel 33204519
     squeue --user=$USER
+
 
 SLURM standard output / error files
 -------------------------------------
@@ -452,10 +499,32 @@ When you submit the script using sbatch, the files will be generated as followin
 .. code-block:: bash
 
     $ sbatch myscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37104135
+
+.. code-block:: bash
+
     $ ls *.out
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.out
+
+
+.. code-block:: bash
+
     $ ls *.err
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.err
 
 You can also include the hostname of the node being used.
@@ -470,10 +539,31 @@ When you submit the script using sbatch, the files will be generated as followin
 .. code-block:: bash
 
     $ sbatch myscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37104136
+
+.. code-block:: bash
+
     $ ls *.out
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.out QC.37104136.gpu214-14.out
+
+.. code-block:: bash
+
     $ ls *.err
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.err QC.37104136.gpu214-14.err
 
 Job monitoring with "Job name"
@@ -491,6 +581,11 @@ Now when you run squeue, you will find it listed as
 
     $ squeue --user=$USER
 
+
+.. code-block:: bash
+
+    Output:
+    
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     37104585    gpu     QC   username  R       1:25      1 gpu214-14
 
@@ -547,6 +642,11 @@ submit the job using `sbatch`
 .. code-block:: bash
 
     $ sbatch job_with_email.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37105347
 
 
@@ -1174,6 +1274,11 @@ After the job start, it will generate out and err files, watch the status of you
 .. code-block:: bash
 
     more QC.17122614.err
+
+.. code-block:: bash
+
+    Output:
+    
     Loading module for FastQC 
     FastQC 0.11.8 is now loaded
     Started analysis of SRR975578_1.fastq.gz
@@ -1187,6 +1292,11 @@ Verify the job completion status and application output files
 .. code-block:: bash
 
     cat QC.17122614.out 
+
+.. code-block:: bash
+
+    Output:
+    
     Analysis complete for SRR975578_1.fastq.gz
     Analysis complete for SRR975578_2.fastq.gz
 
