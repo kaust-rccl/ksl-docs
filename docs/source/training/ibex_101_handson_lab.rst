@@ -1062,7 +1062,7 @@ Application examples
 Data Science
 --------------
 
-- We'll use Jupyter for for the DS workload example.
+We'll use Jupyter for for the DS workload example.
 
 There are Multiple ways to launch Jupyter on Ibex:
 
