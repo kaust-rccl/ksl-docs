@@ -15,7 +15,7 @@ Prerequisite to use Ibex
 Internet connection
 ---------------------
 
-To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/docs/default-source/services/network-connectivity/kaust-vpn/setup-kuast-vpn-and-duo.pdf?sfvrsn=8c0c88c7_4>`_ when outside of KAUST network.
+To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/services/detail/network-connectivity/kaust-vpn>`_ when outside of KAUST network.
 
 
 Mac OSx
@@ -36,7 +36,7 @@ Windows
 
 To get a `ssh client` application on a Windows machine, you can opt from one of the following methods:
 
-* Download and install one of the `ssh` clients: PuTTY, MobaXTerm or GitBash
+* Download and install one of the `ssh` clients: `PuTTY <https://www.putty.org/>`_, `MobaXTerm <https://mobaxterm.mobatek.net/download.html>`_ or `GitBash <https://git-scm.com/downloads>`_
 * As an example, here is how to use `MobaXTerm on Windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ to access KSL systems.
 
 .. image:: ../systems/static/Windows_Moba.png
@@ -47,12 +47,12 @@ Contact Us
 
 There are multiple venues you can contact us for support and information. Before sending a support request, be sure to navigate and search the documentation for related information. 
 
-The easiest and most efficient way is to email helpdesk:
+The easiest and most efficient way is to contact Ibex support:
 
 * Ibex cluster helpdesk   :email:`<ibex@hpc.kaust.edu.sa>`
-* Ibex `Slack channel <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_      
+* Ibex `Slack channel <kaust-ibex.slack.com>`_      
   
-As a rule of thumb, if the issue is complex to describe, please send an email for requesting support. If the question is of general nature and can be stated in a line or two,  `Slack channel <https://app.slack.com/client/T5CEBNQBA/C5CEBNS0Y>`_ is most appropriate. 
+As a rule of thumb, if the issue is complex to describe, please send an email for requesting support. If the question is of general nature and can be stated in a line or two,  `Slack channel <kaust-ibex.slack.com>`_ is most appropriate. 
 
 How to login?
 ==============
@@ -78,7 +78,7 @@ If you want to access your files when editing/develop in IDE like VS Code, login
     ssh -X $USER@vscode.ibex.kaust.edu.sa
 
 .. note::
-    If you're using a personal Laptop / Desktop replace $user with your KAUST username.
+    If you're using a personal Laptop / Desktop replace $USER with your KAUST username.
 
 
 Storage details
@@ -101,10 +101,15 @@ Users can check their quota on `/home` using the following command:
 
     $ quota -s
 
+
+.. code-block:: bash
+
+    Output:
+
     Disk quotas for user ###### (uid ######): 
-     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+        Filesystem   space   quota   limit   grace   files   quota   limit   grace
     fs-nfs-60.admin.vis.kaust.edu.sa:/home/home
-                   178G    180G    200G            853k   4295m   4295m  
+                    178G    180G    200G            853k   4295m   4295m  
 
 In the case above, the maximum quota for capacity on `/home` filesystem is 200GB. 
 
@@ -126,8 +131,14 @@ Users can check their quota on `/ibex/user/$USER` using the following command:
     :caption: Command to check the quota on `/ibex/user/` filesystem
 
         $ df -h /ibex/user/$USER
-        Filesystem      Size  Used Avail Use% Mounted on
-        user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
+
+
+.. code-block:: bash
+
+    Output:
+
+    Filesystem      Size  Used Avail Use% Mounted on
+    user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
 
 
 2. `/ibex/scratch/$USER` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
@@ -138,8 +149,14 @@ Users can check their quota on `/ibex/scratch/$USER` using the following command
     :caption: Command to check the quota on `/ibex/scratch/$USER/` filesystem
 
         $ bquota  
-        Quota information for IBEX filesystems: 
-        Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
+
+
+.. code-block:: bash
+
+    Output:
+    
+    Quota information for IBEX filesystems: 
+    Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
 
 
 Project HPC filesystem
@@ -157,8 +174,13 @@ Users can check their quota on `/ibex/project/cxxxx` using the following command
     :caption: Command to check the quota on `/ibex/project/cxxxx` filesystem
 
         $ df -h /ibex/project/c2247 
-        Filesystem      Size  Used Avail Use% Mounted on 
-        project          13T   12T  1.2T  92% /ibex/project
+
+.. code-block:: bash
+
+    Output:
+    
+    Filesystem      Size  Used Avail Use% Mounted on 
+    project          13T   12T  1.2T  92% /ibex/project
 
 2. `/ibex/scratch/projects` is another parallel file system known as BeeGFS.
 
@@ -168,9 +190,15 @@ Users can check their quota on `/ibex/scratch/projects` using the following comm
     :caption: Command to check the quota on `/ibex/scratch/projects` filesystem
 
         $ bquota -g ibex-c2123 
-        Quota information for IBEX filesystems: 
-        Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
-        Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
+
+
+.. code-block:: bash
+
+    Output:
+    
+    Quota information for IBEX filesystems: 
+    Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
+    Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
 
 3. Encrypted file system path starts with `/encrypted`.
 
@@ -180,18 +208,27 @@ Users can check their quota on `/encrypted` using the following command:
     :caption: Command to check the quota on `/encrypted` filesystem
 
         $ df -h /encrypted/e3001 
-        Filesystem      Size  Used Avail Use% Mounted on 
-        ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
+
+.. code-block:: bash
+
+    Output:
+    
+    Filesystem      Size  Used Avail Use% Mounted on 
+    ddn606-fs1      200T  127T   74T  64% /encrypted/e3001
 
 If you run out of disk space on Ibex you might face the following errors: 
+
 1. "No space left on device".
+
 2. "Disk quota exceeded".
+
 3. Other similar errors. 
+
 
 The first step to check limits or resolve quota issues is to identify which disk is in question. This can be done by looking at the 
 beginning of the full path to the affected directory and check with the allocated disk space Vs used disk space.
 
-To get project allocation, users must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
+To get project allocation, users must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
 
 Module system
 ===============
@@ -356,7 +393,12 @@ Using `sbatch` command submits your jobscript to SLURM.
 
 .. code-block:: bash
 
-    > sbatch my-jobscript.slurm
+    sbatch my-jobscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 33204519
 
 Job monitoring
@@ -427,9 +469,18 @@ Save this script as `my-jobscript.slurm`
 .. code-block:: bash
 
     sbatch my-jobscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 33204519
+
+.. code-block:: bash
+
     scancel 33204519
     squeue --user=$USER
+
 
 SLURM standard output / error files
 -------------------------------------
@@ -448,10 +499,32 @@ When you submit the script using sbatch, the files will be generated as followin
 .. code-block:: bash
 
     $ sbatch myscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37104135
+
+.. code-block:: bash
+
     $ ls *.out
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.out
+
+
+.. code-block:: bash
+
     $ ls *.err
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.err
 
 You can also include the hostname of the node being used.
@@ -466,10 +539,31 @@ When you submit the script using sbatch, the files will be generated as followin
 .. code-block:: bash
 
     $ sbatch myscript.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37104136
+
+.. code-block:: bash
+
     $ ls *.out
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.out QC.37104136.gpu214-14.out
+
+.. code-block:: bash
+
     $ ls *.err
+
+.. code-block:: bash
+
+    Output:
+    
     QC.37104135.err QC.37104136.gpu214-14.err
 
 Job monitoring with "Job name"
@@ -487,6 +581,11 @@ Now when you run squeue, you will find it listed as
 
     $ squeue --user=$USER
 
+
+.. code-block:: bash
+
+    Output:
+    
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
     37104585    gpu     QC   username  R       1:25      1 gpu214-14
 
@@ -543,6 +642,11 @@ submit the job using `sbatch`
 .. code-block:: bash
 
     $ sbatch job_with_email.slurm
+
+.. code-block:: bash
+
+    Output:
+    
     Submitted batch job 37105347
 
 
@@ -1170,6 +1274,11 @@ After the job start, it will generate out and err files, watch the status of you
 .. code-block:: bash
 
     more QC.17122614.err
+
+.. code-block:: bash
+
+    Output:
+    
     Loading module for FastQC 
     FastQC 0.11.8 is now loaded
     Started analysis of SRR975578_1.fastq.gz
@@ -1183,6 +1292,11 @@ Verify the job completion status and application output files
 .. code-block:: bash
 
     cat QC.17122614.out 
+
+.. code-block:: bash
+
+    Output:
+    
     Analysis complete for SRR975578_1.fastq.gz
     Analysis complete for SRR975578_2.fastq.gz
 
