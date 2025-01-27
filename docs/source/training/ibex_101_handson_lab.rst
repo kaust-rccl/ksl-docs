@@ -228,7 +228,11 @@ If you run out of disk space on Ibex you might face the following errors:
 The first step to check limits or resolve quota issues is to identify which disk is in question. This can be done by looking at the 
 beginning of the full path to the affected directory and check with the allocated disk space Vs used disk space.
 
-To get project allocation, users must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
+To get project allocation, users must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>`. 
+Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. 
+Up to 80TB of space can be requested through this process. 
+For a larger request, please fill `this form <https://hpc.kaust.edu.sa/sites/default/files/2025-01/KSL_Project_Proposal_Ibex.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. 
+After an approval is granted by RCAC, the applicant must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
 
 Module system
 ===============
