@@ -15,7 +15,7 @@ Prerequisite to use Ibex
 Internet connection
 ---------------------
 
-To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/docs/default-source/services/network-connectivity/kaust-vpn/setup-kuast-vpn-and-duo.pdf?sfvrsn=8c0c88c7_4>`_ when outside of KAUST network.
+To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/services/detail/network-connectivity/kaust-vpn>`_ when outside of KAUST network.
 
 
 Mac OSx
@@ -36,7 +36,7 @@ Windows
 
 To get a `ssh client` application on a Windows machine, you can opt from one of the following methods:
 
-* Download and install one of the `ssh` clients: PuTTY, MobaXTerm or GitBash
+* Download and install one of the `ssh` clients: `PuTTY <https://www.putty.org/>`_, `MobaXTerm <https://mobaxterm.mobatek.net/download.html>`_ or `GitBash <https://git-scm.com/downloads>`_
 * As an example, here is how to use `MobaXTerm on Windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ to access KSL systems.
 
 .. image:: ../systems/static/Windows_Moba.png
@@ -47,7 +47,7 @@ Contact Us
 
 There are multiple venues you can contact us for support and information. Before sending a support request, be sure to navigate and search the documentation for related information. 
 
-The easiest and most efficient way is to email helpdesk:
+The easiest and most efficient way is to contact Ibex support:
 
 * Ibex cluster helpdesk   :email:`<ibex@hpc.kaust.edu.sa>`
 * Ibex `Slack channel <kaust-ibex.slack.com>`_      
@@ -78,7 +78,7 @@ If you want to access your files when editing/develop in IDE like VS Code, login
     ssh -X $USER@vscode.ibex.kaust.edu.sa
 
 .. note::
-    If you're using a personal Laptop / Desktop replace $user with your KAUST username.
+    If you're using a personal Laptop / Desktop replace $USER with your KAUST username.
 
 
 Storage details
@@ -195,7 +195,7 @@ If you run out of disk space on Ibex you might face the following errors:
 The first step to check limits or resolve quota issues is to identify which disk is in question. This can be done by looking at the 
 beginning of the full path to the affected directory and check with the allocated disk space Vs used disk space.
 
-To get project allocation, users must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`email helpdesk <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
+To get project allocation, users must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>`. Users are required to add their respective Principal Investigator (PI) and they need to approve such request, before an allocation can be made. Up to 80TB of space can be requested through this process. For a larger request, please fill `this form <https://www.hpc.kaust.edu.sa/sites/default/files/files/public/documents/KSL_Project_Proposal.doc>`_, which will be presented in front of the RCAC committee, the awarding body for resources on KSL systems. After an approval is granted by RCAC, the applicant must :email:`contact Ibex support <ibex@hpc.kaust.edu.sa>` to get the allocation on filesystem.
 
 Module system
 ===============
