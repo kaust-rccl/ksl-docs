@@ -21,11 +21,11 @@ To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or
 Mac OSx
 ---------
 
-MacOS usually has a `terminal` application pre-installed. Please type Terminal in spotlight search tool to find it. 
+MacOS usually has a ``terminal`` application pre-installed. Please type Terminal in spotlight search tool to find it. 
 
 .. image:: ../systems/static/MacOS.png
    
-Open the `terminal`, copy and paste the command for the appropriate login node you wish to access. 
+Open the ``terminal``, copy and paste the command for the appropriate login node you wish to access. 
 
 .. note::
     For macOS clients, it is necessary to install `XQuartz (X11) <https://www.xquartz.org/>`_ to be able to use GUI applications.
@@ -34,9 +34,9 @@ Open the `terminal`, copy and paste the command for the appropriate login node y
 Windows
 ---------
 
-To get a `ssh client` application on a Windows machine, you can opt from one of the following methods:
+To get a ``ssh client`` application on a Windows machine, you can opt from one of the following methods:
 
-* Download and install one of the `ssh` clients: `PuTTY <https://www.putty.org/>`_, `MobaXTerm <https://mobaxterm.mobatek.net/download.html>`_ or `GitBash <https://git-scm.com/downloads>`_
+* Download and install one of the ``ssh clients``: `PuTTY <https://www.putty.org/>`_, `MobaXTerm <https://mobaxterm.mobatek.net/download.html>`_ or `GitBash <https://git-scm.com/downloads>`_
 * As an example, here is how to use `MobaXTerm on Windows <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=19>`_ to access KSL systems.
 
 .. image:: ../systems/static/Windows_Moba.png
@@ -63,19 +63,23 @@ To submit CPU only jobs, login to ilogin
 
 .. code-block:: bash
 
-    ssh -X $USER@ilogin.ibex.kaust.edu.sa
+    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
+
+.. note::
+
+    $USER is your KAUST username.
 
 To submit jobs with GPU, login to glogin
 
 .. code-block:: bash
 
-    ssh -X $USER@glogin.ibex.kaust.edu.sa
+    ssh -XY $USER@glogin.ibex.kaust.edu.sa
 
 If you want to access your files when editing/develop in IDE like VS Code, login to vscode
 
 .. code-block:: bash
 
-    ssh -X $USER@vscode.ibex.kaust.edu.sa
+    ssh -XY $USER@vscode.ibex.kaust.edu.sa
 
 .. note::
     If you're using a personal Laptop / Desktop replace $USER with your KAUST username.
@@ -87,14 +91,14 @@ Storage details
 Home filesystem
 ----------------
 
-`/home` filesystem is a place where users are expected to keep their configuration and installation scripts, the `rc` files required by some software. This filesystem has per user quota on both size and number of files. It can be access with the `/home/$USER` path. `/home` filesystem has limited performance. Users are expected **not to run their jobs and applications** from `/home` directory.
+``/home`` filesystem is a place where users are expected to keep their configuration and installation scripts, the ``rc`` files required by some software. This filesystem has per user quota on both size and number of files. It can be access with the ``/home/$USER`` path. ``/home`` filesystem has limited performance. Users are expected **not to run their jobs and applications** from ``/home`` directory.
 
 .. warning:: 
-    Please refrain from installing your `conda` package manager, related cache, and environments in `/home/$USER` directory. Please use the `/ibex/user/$USER` filesystem for purpose.  
+    Please refrain from installing your ``conda`` package manager, related cache, and environments in ``/home/$USER`` directory. Please use the ``/ibex/user/$USER`` filesystem for purpose.  
 
-Upon login the current working directory of the session is the `$HOME` directory.
+Upon login the current working directory of the session is the ``$HOME`` directory.
 
-Users can check their quota on `/home` using the following command:
+Users can check their quota on ``/home`` using the following command:
 
 .. code-block:: bash
     :caption: Command to check the quota on `/home` filesystem
@@ -111,9 +115,9 @@ Users can check their quota on `/home` using the following command:
     fs-nfs-60.admin.vis.kaust.edu.sa:/home/home
                     178G    180G    200G            853k   4295m   4295m  
 
-In the case above, the maximum quota for capacity on `/home` filesystem is 200GB. 
+In the case above, the maximum quota for capacity on ``/home`` filesystem is 200GB. 
 
-Home directories are shared across all KSL systems so all your data stored on `/home` will be accessible from least the login nodes of any KSL system.
+Home directories are shared across all KSL systems so all your data stored on ``/home`` will be accessible from least the login nodes of any KSL system.
 
 User HPC filesystem
 --------------------
@@ -121,11 +125,11 @@ User HPC filesystem
 There are two file systems used as personal scratch file system for your computational requirement. Based on the file system 
 availability, any one of the file systems with 1.5TB disk space will be allocated by default without any prior approval. 
 
-1. `/ibex/user/$USER` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the `/home` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
+1. ``/ibex/user/$USER`` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the ``/home`` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
 
 User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
 
-Users can check their quota on `/ibex/user/$USER` using the following command:
+Users can check their quota on ``/ibex/user/$USER`` using the following command:
 
 .. code-block:: bash
     :caption: Command to check the quota on `/ibex/user/` filesystem
@@ -141,9 +145,9 @@ Users can check their quota on `/ibex/user/$USER` using the following command:
     user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
 
 
-2. `/ibex/scratch/$USER` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
+2. ``/ibex/scratch/$USER`` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
 
-Users can check their quota on `/ibex/scratch/$USER` using the following command:
+Users can check their quota on ``/ibex/scratch/$USER`` using the following command:
 
 .. code-block:: bash
     :caption: Command to check the quota on `/ibex/scratch/$USER/` filesystem
@@ -166,9 +170,9 @@ There are instances where your research team is collaborating on a common goal a
 
 We have two file systems used for regular projects and one additional file system for encrypted projects.
 
-1. `/ibex/project/cxxxx` is root path to such a directory. This too is part of the same WekaIO filesystem as the User HPC filesystem above.
+1. ``/ibex/project/cxxxx`` is root path to such a directory. This too is part of the same WekaIO filesystem as the User HPC filesystem above.
 
-Users can check their quota on `/ibex/project/cxxxx` using the following command:
+Users can check their quota on ``/ibex/project/cxxxx`` using the following command:
 
 .. code-block:: bash
     :caption: Command to check the quota on `/ibex/project/cxxxx` filesystem
@@ -182,12 +186,12 @@ Users can check their quota on `/ibex/project/cxxxx` using the following command
     Filesystem      Size  Used Avail Use% Mounted on 
     project          13T   12T  1.2T  92% /ibex/project
 
-2. `/ibex/scratch/projects` is another parallel file system known as BeeGFS.
+2. ``/ibex/scratch/projects`` is another parallel file system known as BeeGFS.
 
-Users can check their quota on `/ibex/scratch/projects` using the following command:
+Users can check their quota on ``/ibex/scratch/projects`` using the following command:
 
 .. code-block:: bash
-    :caption: Command to check the quota on `/ibex/scratch/projects` filesystem
+    :caption: Command to check the quota on /ibex/scratch/projects filesystem
 
         $ bquota -g ibex-c2123 
 
@@ -200,12 +204,12 @@ Users can check their quota on `/ibex/scratch/projects` using the following comm
     Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
     Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
 
-3. Encrypted file system path starts with `/encrypted`.
+3. Encrypted file system path starts with ``/encrypted``.
 
-Users can check their quota on `/encrypted` using the following command:
+Users can check their quota on ``/encrypted`` using the following command:
 
 .. code-block:: bash
-    :caption: Command to check the quota on `/encrypted` filesystem
+    :caption: Command to check the quota on /encrypted filesystem
 
         $ df -h /encrypted/e3001 
 
@@ -250,18 +254,18 @@ To view the available modules on your HPC cluster, use the following command:
 
     module avail
 
-`Ex: On glogin node check what versions of cuda are available?`
+**Ex: On glogin node check what versions of cuda are available?**
 
 .. code-block:: bash
 
-    ssh -X $USER@glogin.ibex.kaust.edu.sa
+    ssh -XY $USER@glogin.ibex.kaust.edu.sa
     module avail cuda
 
-`Ex2: On ilogin node, check available versions of GNU compiler modules`
+**Ex2: On ilogin node, check available versions of GNU compiler modules**
 
 .. code-block:: bash
 
-    ssh -X $USER@ilogin.ibex.kaust.edu.sa
+    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
     module avail gcc
 
 module load
@@ -285,25 +289,25 @@ To unload a module and revert to the default environment, use the module unload 
 
     module unload package-name
 
-`Ex: On ilogin, load the GNU compiler. Then use glogin to load the CUDA module`
+**Ex: On ilogin, load the GNU compiler. Then use glogin to load the CUDA module**
 
 .. code-block:: bash
 
-    ssh -X $USER@ilogin.ibex.kaust.edu.sa
+    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
     module load gcc
 
 .. code-block:: bash
 
-    ssh -X $USER@glogin.ibex.kaust.edu.sa
+    ssh -XY $USER@glogin.ibex.kaust.edu.sa
     module load cuda
 
-`Ex2: Load the Python 3.11 module:`
+**Ex2: Load the Python 3.11 module:**
 
 .. code-block:: bash
 
     module load python/3.11
 
-`Ex3: Unload previous Python version and use Python 3.9.16:`
+**Ex3: Unload previous Python version and use Python 3.9.16:**
 
 .. code-block:: bash
 
@@ -319,16 +323,16 @@ To see the modules currently loaded in your environment, use:
 
     module list
 
-`Ex:`
+**Ex:**
 
 - Are there any modules loaded by default?
 - If yes, which ones are loaded?
 
-`Ex2: On ilogin node after loading openmpi module, check its version, check what other modules are loaded?`
+**Ex2: On ilogin node after loading openmpi module, check its version, check what other modules are loaded?**
 
 .. code-block:: bash
 
-    ssh -X $USER@ilogin.ibex.kaust.edu.sa
+    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
     module load openmpi
     module list
 
@@ -359,6 +363,11 @@ A typical jobscript has two major sections:
 
 - The commands to run on allocated computational resource.
 
+.. note::
+
+    The reservation ``ibex-101`` is only available during the Hands-on session.
+    After the session, you need to remove that line before submitting one of the scripts from the GitHub repo.
+
 .. code-block:: bash
 
     #!/bin/bash -l
@@ -387,7 +396,7 @@ Job submission for multi-CPUs
 
     srun -n 4 echo "Hello world!"
 
-Using `sbatch` command submits your jobscript to SLURM.
+Using ``sbatch`` command submits your jobscript to SLURM.
 
 - Upon successful submission a unique job ID is assigned.
 
@@ -397,7 +406,7 @@ Using `sbatch` command submits your jobscript to SLURM.
 
 .. code-block:: bash
 
-    sbatch my-jobscript.slurm
+    sbatch my-jobscript.sh
 
 .. code-block:: bash
 
@@ -408,17 +417,17 @@ Using `sbatch` command submits your jobscript to SLURM.
 Job monitoring
 ----------------
 
-The `squeue` command shows the current jobs in the SLURM queue.
+The ``squeue`` command shows the current jobs in the SLURM queue.
 
-You can use `--user` to only show your jobs.
+You can use ``--user`` to only show your jobs.
 
 .. code-block:: bash
 
     squeue --user=$USER
 
-`Ex: Use sbatch command to submit a jobscript, then check its status.`
+**Ex: Use sbatch command to submit a jobscript, then check its status.**
 
-`Questions:`
+**Questions:**
 
 - What is the state of your job?
 
@@ -427,9 +436,9 @@ You can use `--user` to only show your jobs.
 Job accounting
 ----------------
 
-The `sacct` command shows detailed information about past jobs, including completed, failed, or canceled jobs.
+The ``sacct`` command shows detailed information about past jobs, including completed, failed, or canceled jobs.
 
-`Ex: You want to view details of your completed or canceled job.`
+**Ex: You want to view details of your completed or canceled job.**
 
 .. code-block:: bash
 
@@ -441,7 +450,7 @@ Add more detail by using:
 
     sacct --user=$USER --format=JobID,JobName,Partition,State,ExitCode
 
-`Questions:`
+**Questions:**
 
 - What is the state of your job (e.g., COMPLETED, FAILED)?
 
@@ -451,15 +460,15 @@ Add more detail by using:
 Job cancelling
 ----------------
 
-The `scancel` command cancels a job in the SLURM queue.
+The ``scancel`` command cancels a job in the SLURM queue.
 
 .. code-block:: bash
 
     scancel <job_id>
 
-`Ex: Submit a job, cancel it then verify it has been removed from queue:`
+**Ex: Submit a job, cancel it then verify it has been removed from queue:**
 
-Save this script as `my-jobscript.slurm`
+Save this script as ``my-jobscript.sh``
 
 .. code-block:: bash
 
@@ -467,12 +476,12 @@ Save this script as `my-jobscript.slurm`
     #SBATCH --time=00:10:00
     #SBATCH --reservation=ibex-101
 
-    sleep 300
+    sleep 300 #The sleep command tells the system to do nothing for the specified number of seconds.
 
 
 .. code-block:: bash
 
-    sbatch my-jobscript.slurm
+    sbatch my-jobscript.sh
 
 .. code-block:: bash
 
@@ -502,7 +511,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ sbatch myscript.slurm
+    $ sbatch myscript.sh
 
 .. code-block:: bash
 
@@ -542,7 +551,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ sbatch myscript.slurm
+    $ sbatch myscript.sh
 
 .. code-block:: bash
 
@@ -608,16 +617,16 @@ You can use the following options in your jobscript to configure email notificat
     --mail-user=<email>              #Specifies the email address to which notifications should be sent.
 
 
-Options for `--mail-type` include:
+Options for ``--mail-type`` include:
 
 - BEGIN: Send an email when the job begins.
 - END: Send an email when the job finishes successfully.
 - FAIL: Send an email if the job fails.
 - ALL: Send emails for all job events (begin, end, fail, etc.).
 
-`EX: Run a job with email notifications configured`
+**EX: Run a job with email notifications configured**
 
-Using the script `job_with_email.slurm`
+Using the script ``job_with_email.sh``
 
 .. code-block:: bash
 
@@ -630,22 +639,22 @@ Using the script `job_with_email.slurm`
     #SBATCH --time=00:05:00                 # Time limit (hh:mm:ss)
     #SBATCH --mail-type=ALL                 # Send email for all job events
     #SBATCH --mail-user=your_email@kaust.edu.sa  # Your KAUST email address
-    #SBATCH --reservatin=ibex-101            # use ibex-101 reservation
+    #SBATCH --reservation=ibex-101            # use ibex-101 reservation
 
     # Print some information about the job
     echo "Job started on $(hostname) at $(date)"
 
     # Simulate some work
-    sleep 60
+    sleep 60 #The sleep command tells the system to do nothing for the specified number of seconds.
 
     # Job completion message
     echo "Job completed at $(date)"
 
-submit the job using `sbatch`
+submit the job using ``sbatch``
 
 .. code-block:: bash
 
-    $ sbatch job_with_email.slurm
+    $ sbatch job_with_email.sh
 
 .. code-block:: bash
 
@@ -855,7 +864,7 @@ CPU constraints
      - amd, rome
      - 744GB
 
-`Ex: In your jobscript use intel node then change it to an amd node submit and confirm the CPU type each time using lscpu command`
+**Ex: In your jobscript use amd node then change it to an intel node submit and confirm the CPU type each time using lscpu command**
 
 .. code-block:: bash
 
@@ -863,7 +872,7 @@ CPU constraints
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1
-    #SBATCH --constraint=intel #amd
+    #SBATCH --constraint=amd #intel
     #SBATCH --reservation=ibex-101
 
     lscpu
@@ -904,7 +913,7 @@ Some nodes have larger memory for workloads which require loading big data in me
      - 10TB
      - intel, largemem, skylake
 
-`Ex: In your jobscript use specify a large memory node, submit and confirm the memory size using free -h command`
+**Ex: In your jobscript use specify a large memory node, submit and confirm the memory size using free -h command**
 
 .. code-block:: bash
 
@@ -912,7 +921,6 @@ Some nodes have larger memory for workloads which require loading big data in me
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=1
     #SBATCH --mem=1200G
-    #SBATCH --constraint=largemem
     #SBATCH --reservation=ibex-101
 
     free -h
@@ -1048,7 +1056,7 @@ There are GPU nodes in Ibex cluster with GPUs of different microarchitecture. No
      - 1.16
      - 1.5
 
-`Ex: In your jobscript use gtx1080ti, then change it to a v100, submit and confirm the GPU type each time using nvidia-smi command.`
+**Ex: In your jobscript use gtx1080ti, then change it to a v100, submit and confirm the GPU type each time using nvidia-smi command.**
 
 .. code-block:: bash
 
@@ -1072,7 +1080,7 @@ There are Multiple ways to launch Jupyter on Ibex:
 
 - Launch jupyter in one line
 
-Using the file `launch-jupyter-one-line.sh`
+Using the file ``launch-jupyter-one-line.sh``
 
 .. code-block:: bash
 
@@ -1105,12 +1113,12 @@ Now on your terminal you will see the same kind of message from jupyter.
     http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
     or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
 
-Copy one of the lines of that start with http://gpuXXX-XX into your browser.  You can now start using Jupyter.
+Copy one of the lines of that start with ``http://gpuXXX-XX`` into your browser.  You can now start using Jupyter.
 
 
 - Batch job for Jupyter
 
-Using the file `launch-jupyter-server.slurm`
+Using the file ``launch-jupyter-server.sh``
 
 .. code-block:: bash
 
@@ -1161,13 +1169,13 @@ Using the file `launch-jupyter-server.slurm`
     # launch jupyter server
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}.ibex.kaust.edu.sa
 
-Submit the job using the `sbatch` command:
+Submit the job using the ``sbatch`` command:
 
 .. code-block:: bash
 
-    sbatch launch-jupyter-server.slurm
+    sbatch launch-jupyter-server.sh
 
-Once the job starts open a new terminal on your local machine and copy and paste the ssh tunnel command from the `XXX-slurm.err` file.
+Once the job starts open a new terminal on your local machine and copy and paste the ssh tunnel command from the ``XXX-slurm.err`` file.
 
 Example:
 
@@ -1175,13 +1183,13 @@ Example:
 
     ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 $USER@glogin.ibex.kaust.edu.sa
 
-From the `XXX-slurm.err` file copy one of the lines of that start with http://gpuXXX-XX into your browser.
+From the ``XXX-slurm.err`` file copy one of the lines of that start with ``http://gpuXXX-XX`` into your browser.
 
 Now we are ready to use our Jupyter client.
 
-`Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs`
+**Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs**
 
-Using the script `single-node-2GPUs-job.slurm`
+Using the script ``single-node-2GPUs-job.sh``
 
 .. code-block:: bash
 
@@ -1202,15 +1210,15 @@ Using the script `single-node-2GPUs-job.slurm`
     python pytorch_demo.py
 
 
-Submit the script using `sbatch` command
+Submit the script using ``sbatch`` command
 
 .. code-block:: bash
 
-    sbatch single-node-2GPUs-job.slurm
+    sbatch single-node-2GPUs-job.sh
 
 The script detects the number of available GPUs and creates a random 1000x1000 tensor then performs a matrix multiplication operation on the tensor (tensor @ tensor.T) using the first GPU only.
-If multiple GPUs are available, the script demonstrates how to distribute work across GPUs using PyTorch's `torch.nn.DataParallel`
-A simple PyTorch model `torch.nn.Linear` is created and wrapped in DataParallel to utilize multiple GPUs automatically.
+If multiple GPUs are available, the script demonstrates how to distribute work across GPUs using PyTorch's ``torch.nn.DataParallel``
+A simple PyTorch model ``torch.nn.Linear`` is created and wrapped in DataParallel to utilize multiple GPUs automatically.
 A random input tensor (64x1000, batch size of 64) is processed by the model.
 The script prints the output shape after processing.
 
@@ -1245,7 +1253,7 @@ Bioinformatics
 
 We'll be using FastQC as an example.
 
-Using the jobscript `fastqc.batch`
+Using the jobscript ``fastqc.sh``
 
 .. code-block:: bash
 
@@ -1267,7 +1275,7 @@ Using the jobscript `fastqc.batch`
     module load fastqc/0.11.8
     fastqc --threads 4 SRR975578_1.fastq.gz SRR975578_2.fastq.gz
 
-Submit the job using the `sbatch` command.
+Submit the job using the ``sbatch`` command.
 
 .. code-block:: bash
 
@@ -1309,6 +1317,13 @@ View the output file
 .. code-block:: bash
 
     google-chrome SRR975578_1_fastqc.html
+
+.. note::
+    If you get an error related to process_singleton_posix, try using the following command then try again:
+
+    .. code-block:: bash
+
+        rm -Rf ~/.config/google-chrome/Singleton*
 
 
 .. image:: ../static/fastqc.png
