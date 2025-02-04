@@ -48,7 +48,6 @@ Below is an example jobscript to launch a jupyter server. The output of this job
 
     module load python
 
-    
     export JUPYTER_CONFIG_DIR=${SCRATCH_IOPS}/.jupyter
     export JUPYTER_DATA_DIR=${SCRATCH_IOPS}/.local/share/jupyter
     export JUPYTER_RUNTIME_DIR=${SCRATCH_IOPS}/.local/share/jupyter/runtime
@@ -57,7 +56,7 @@ Below is an example jobscript to launch a jupyter server. The output of this job
     ############################################################
     ## Load the conda base and activate the conda environment ##
     ############################################################
-    ############################################################ 
+    ############################################################
     ## activate conda base from the command line
     ############################################################
     #source $MY_SW/miniconda3/bin/activate myenv
@@ -65,29 +64,34 @@ Below is an example jobscript to launch a jupyter server. The output of this job
 
 
     # setup ssh tunneling
-    # get tunneling info 
+    # get tunneling info
     node=$(hostname -s)
     user=$(whoami)
     submit_host=${SLURM_SUBMIT_HOST}
     port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+    tb_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     echo ${node} pinned to port ${port} on ${SLURM_SUBMIT_HOST}
 
     # print tunneling instructions jupyter-log
     echo -e "
     To connect to the compute node ${node} on Shaheen III running your jupyter notebook server,
     you need to run following command in a new terminal on you workstation/laptop
- 
-    ssh -L ${port}:${node}:${port} ${user}@${submit_host}.hpc.kaust.edu.sa
 
-    Copy the URL provided below by jupyter-server (one starting with http://127.0.0.1/...) and paste it in your browser on your workstation/laptop. 
-    
+    ssh -L ${port}:${node}:${port} -L ${tb_port}:${node}:${tb_port} ${user}@${submit_host}.hpc.kaust.edu.sa
+
+    Copy the URL provided below by jupyter-server (one starting with http://127.0.0.1/...) and paste it in your browser on your workstation/laptop.
+
     Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to manually cancel this job running your jupyter server.
     "
 
     echo "Starting jupyter server in background with requested resources"
 
+    LOGS_DIR="./logs"
+    tensorboard --logdir=${LOGS_DIR} --port=${tb_port} --host=${node} &
     # Run Jupyter
+
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}
+
     
 Steps after job starts
 ***********************
@@ -96,9 +100,9 @@ Steps after job starts
 
 .. code-block:: bash
 
-    ssh -L 12345:nid00121:12345 <username>@login2.hpc.kaust.edu.sa
+    ssh -L 12345:nid00121:12345 -L -L 67890:nid00121:67890 <username>@login2.hpc.kaust.edu.sa
 
-* Paste the copied command in a new terminal 
+* Paste the copied command in a new terminal. Note that the first port being forwarded is for Jupyter and the second for Tensorboard. 
 
 * Now copy the URL from the end of the slurm output file. It starts with 
 
@@ -107,6 +111,7 @@ Steps after job starts
     http://127.0.0.1:<port-number>/<secret-token-auth>
     
 Please copy the full URL, the hash at the end is the secret token and Jupyter Lab uses it to authenticate you as the owner of the session. 
+For Tensorboard, you can write http://127.0.0.1:<second_port> from the SSH line in your SLURM output to connect to the ``tensorboard`` server running on the compute node. Please make sure that the path to the logs directory is correct.
 
 * Once you are finished with your work, please navigate to the file menu of Jupyter Lab and select "Shutdown" and this will terminate the Jupyter Lab server on the compute node and conclude the job. 
 
