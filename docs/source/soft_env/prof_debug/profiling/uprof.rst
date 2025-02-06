@@ -20,6 +20,8 @@ Roofline Performance Model
   salloc -N 1
   ssh nid0XXXX
   module load amduprof
+  /etc/genoa_tools/pep 0
+  /etc/genoa_tools/pep status
   cd /scratch/$USER/iops/sw
   AMDuProfPcm roofline  -o ./roofline.csv ./a.out
   AMDuProfModelling.py -i ./roofline.csv -o . --memspeed 4800 -a MyHelloWorld --memory-roofs all
