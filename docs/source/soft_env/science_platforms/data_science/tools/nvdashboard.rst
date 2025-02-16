@@ -26,7 +26,7 @@ You can then launch the dashboard server in your jobscript:
     #SBATCH --time=00:10:00
     # Try different port if the following is occupied by another user
 
-    HOST=${SLURM_SUBMIT_HOST}
+    HOST=$(hostname)
     nvdashboard_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     nvdashboard ${nvdashboard_port} &
     echo "Copy the following command and paste it in new terminal:
