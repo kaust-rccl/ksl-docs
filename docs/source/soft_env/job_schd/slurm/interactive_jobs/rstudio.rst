@@ -257,10 +257,46 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     printf 'rserver exited' 1>&2  
 
     
+.. note::
+    
+    In the previous jobscript, the variable ``modules`` can be used to load any of the ibex modules to work with Rstudio.
 
- 
 To submit the above jobscript to the scheduler:
 ``sbatch rstudio.sh``
+
+Using Bioconductor in Rstudio
+-------------------------------
+
+To use Bioconductor inside Rstudio, please modify the ``modules`` variable in jobscript to include Bioconductor module.
+
+.. note::
+    
+    Example using bioconductor/3.16/R-4.2.0 module.
+    Change the following line in the jobscript
+
+
+
+.. code-block:: bash
+
+    export modules="bioconductor/3.16/R-4.2.0"
+
+Using your own R Librar installation in Rstudio
+--------------------------------------------------
+
+If you combiled any R libraries and need to bring them into Rstudio, you need to load the same R module used for libraries installation.
+You also need to export the path to the libraries.
+
+.. note::
+    
+    Example using R/4.3.0/gnu-12.2.0 module.
+    Change the following lines in the jobscript
+
+
+.. code-block:: bash
+
+    export modules="R/4.3.0/gnu-12.2.0"
+    export R_LIBS_USER=<path to your libraries directory>
+    
 
 Once the job starts, the slurm error file created in the directory you submitted the job from, will have the instructions on how to reverse connect.
 
