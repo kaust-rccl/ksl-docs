@@ -19,12 +19,12 @@ After a user is done using RStudio Server, they should save their work in RStudi
 Building Rstudio image
 ------------------------
 
-You can pull a prebuilt version of the singularity image from singularity repo by using the command​s:
+You can pull a prebuilt version of the singularity image from DockerHub by using the commands:
 
 .. code-block:: bash
 
     module load singularity/3.9.7
-    singularity pull library://mgharawy97/collection/rstudio-server.sif
+    singularity pull docker://krccl/rstudio
 
 
 However, if you want to customize your own version of the image, you can modify the following singularity definition file and build your own version.
@@ -149,19 +149,13 @@ You can build an image from this definition file using the commands:
 .. code-block:: bash
 
     module load singularity/3.9.7
-        singularity build --fakeroot rstudio-server.sif_latest.sif rstudio.def
+        singularity build --fakeroot rstudio_latest.sif rstudio.def
 
 
 Starting with Rstudio
 ------------------------
 
 Submit the RStudio SLURM job script, for example, the following is a jobscript requesting CPU resources on Ibex. Say our jobscript's name is rstudio.sh:
-
-.. note::
-
-    To use the libraries you have installed in your home from one of the R modules on Ibex inside the container:
-        - uncomment the R_LIBS variable and edit the value to match the libraries install path (can be found by loading the R module and using ``echo $R_LIBS``).
-        - add the same R module used to install the librarires to the variable modules. 
 
 
 .. code-block:: bash
@@ -180,7 +174,7 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     module load singularity/3.9.7
 
     # Pull singularity image
-    singularity pull library://mgharawy97/collection/rstudio-server.sif
+    singularity pull docker://krccl/rstudio
     ###################################
 
 
@@ -211,8 +205,8 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
 
     chmod +x ${workdir}/rsession.sh
 
-    export SINGULARITY_BIND="${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server,/ibex/sw:/ibex/sw,/ibex/user:/ibex/user,/sw:/sw"
- 
+    export SINGULARITY_BIND="${workdir}/run:/run,${workdir}/tmp:/tmp,${workdir}/database.conf:/etc/rstudio/database.conf,${workdir}/rsession.sh:/etc/rstudio/rsession.sh,${workdir}/var/lib/rstudio-server:/var/lib/rstudio-server,/ibex/sw:/ibex/sw,/ibex/user:/ibex/user,/sw:/sw,/etc/profile.d/:/etc/profile.d/"
+
     # Do not suspend idle sessions.
     # Alternative to setting session-timeout-minutes=0 in /etc/rstudio/rsession.conf
     # https://github.com/rstudio/rstudio/blob/v1.4.1106/src/cpp/server/ServerSessionManager.cpp#L126
@@ -234,7 +228,7 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     1. Exit the RStudio Session ("power" button in the top right corner of the RStudio window)
     2. Issue the following command on the login node:
 
-        scancel -f ${SLURM_JOB_ID}
+    scancel -f ${SLURM_JOB_ID}
 
     END
 
@@ -243,16 +237,16 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     # Modify the value of next line to load the modules to use with Rstudio.
     export modules="bioconductor/3.16/R-4.2.0"
 
-    singularity exec rstudio-server.sif_latest.sif \
-        bash -c "module load ${modules}  && rm -rf ~/.local/share/rstudio/ && rserver --www-port=${PORT} \
-                --auth-none=1 \
-                --auth-pam-helper-path=pam-helper \
-                --auth-stay-signed-in-days=30 \
-                --auth-timeout-minutes=0 \
-                --server-user=$(whoami) \
-                --server-daemonize=0 \
-                --auth-minimum-user-id=0 \
-                --rsession-path=/etc/rstudio/rsession.sh"
+    singularity exec rstudio_latest.sif \
+    bash -c ". /usr/local/Modules/init/bash  &&  . /etc/profile.d/rocky9-apps-stack.sh  &&  module load ${modules}  && rm -rf ~/.local/share/rstudio/ && rserver --www-port=${PORT} \
+    --auth-none=1 \
+    --auth-pam-helper-path=pam-helper \
+    --auth-stay-signed-in-days=30 \
+    --auth-timeout-minutes=0 \
+    --server-user=$(whoami) \
+    --server-daemonize=0 \
+    --auth-minimum-user-id=0 \
+    --rsession-path=/etc/rstudio/rsession.sh"
 
     printf 'rserver exited' 1>&2  
 
@@ -283,8 +277,15 @@ To use Bioconductor inside Rstudio, please modify the ``modules`` variable in jo
 Using your own R Librar installation in Rstudio
 --------------------------------------------------
 
-If you combiled any R libraries and need to bring them into Rstudio, you need to load the same R module used for libraries installation.
+If you compiled any R libraries and need to bring them into Rstudio, you need to load the same R module used for libraries installation.
 You also need to export the path to the libraries.
+
+.. note::
+
+    To use the libraries you have installed in your home from one of the R modules on Ibex inside the container:
+        - uncomment the R_LIBS variable and edit the value to match the libraries install path (can be found by loading the R module and using ``echo $R_LIBS``).
+        - add the same R module used to install the librarires to the variable modules. 
+
 
 .. note::
     
@@ -295,7 +296,7 @@ You also need to export the path to the libraries.
 .. code-block:: bash
 
     export modules="R/4.3.0/gnu-12.2.0"
-    export R_LIBS_USER=<path to your libraries directory>
+    export R_LIBS=<path to your libraries directory>
     
 
 Once the job starts, the slurm error file created in the directory you submitted the job from, will have the instructions on how to reverse connect.
