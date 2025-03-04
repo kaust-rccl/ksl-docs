@@ -235,7 +235,7 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     export SINGULARITYENV_PATH=$PATH:/usr/lib/rstudio-server/bin
 
     # Modify the value of next line to load the modules to use with Rstudio.
-    export modules="bioconductor/3.16/R-4.2.0"
+    export modules="R/4.3.0/gnu-12.2.0"
 
     singularity exec rstudio_latest.sif \
     bash -c ". /usr/local/Modules/init/bash  &&  . /etc/profile.d/rocky9-apps-stack.sh  &&  module load ${modules}  && rm -rf ~/.local/share/rstudio/ && rserver --www-port=${PORT} \
