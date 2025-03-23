@@ -47,12 +47,12 @@ Examples
     :caption: **scp examples**
 
     # Single File.
-    [username@myclient ~]$scp Downloads/VirtualGL-2.5.tar.gz username@ilogin.ibex.kaust.edu.sa:/ibex/scratch/username/
+    [username@myclient ~]$scp Downloads/VirtualGL-2.5.tar.gz username@ilogin.ibex.kaust.edu.sa:/ibex/user/username/
     username@ilogin.ibex.kaust.edu.sa's password: 
     VirtualGL-2.5.tar.gz                                                                              100% 1168KB   1.1MB/s   00:00    
 
     # Directory of files.
-    [username@myclient ~]$scp -r CopyMeDir username@ilogin.ibex.kaust.edu.sa:/ibex/scratch/username/
+    [username@myclient ~]$scp -r CopyMeDir username@ilogin.ibex.kaust.edu.sa:/ibex/user/username/
     username@ilogin.ibex.kaust.edu.sa's password: 
     myfile_j.bin                                                                                      100% 8192KB   8.0MB/s   00:00    
     myfile_m.bin                                                                                      100% 8192KB   8.0MB/s   00:00    
