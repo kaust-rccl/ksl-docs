@@ -203,20 +203,6 @@ Example:
 Quotas for Personal Computational Space:
 -----------------------------------------
 
-Path starts with: ``/ibex/scratch/my_username/…``
-
-Relevant command: ``bquota``
-
-Example:
-
-.. code-block:: bash
-    :caption: Command to check scratch quota
-
-    $ bquota
-    Quota information for IBEX filesystems:
-    Scratch (/ibex/scratch):  Used: 0.00 GB  Limit: 25.00 GB
-
-
 Path starts with: ``/ibex/user/my_username/…``
 
 Relevant command: ``df -h /ibex/user/my_username``
@@ -234,24 +220,7 @@ Quotas for Project directories:
 --------------------------------
 
 .. note::
-    Two file systems are used for non-encrypted projects and one additional file system for encrypted projects (see below).
-
-Path starts with: ``/ibex/scratch/projects/…``
-
-Relevant command: ``bquota -g ibex-c1234``
-
-Example:
-
-.. code-block:: bash
-    :caption: Command to check project quota
-
-    $ bquota -g ibex-c2123
-    Quota information for IBEX filesystems:
-    Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB
-    Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
-
-.. note::
-    Make sure that all files in the project directory belong to the unix group associated with the given project. Eg. If your project is "c1234", then the group name would be "ibex-c1234". Avoid putting in the project directory files that belong to personal groups ("g-myusername"). In other cases quota error might be triggered against your Personal Computational Space.
+    One file systems is used for non-encrypted projects and one additional file system for encrypted projects (see below).
 
 Path starts with: ``/ibex/project/…``
 

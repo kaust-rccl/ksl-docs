@@ -122,10 +122,7 @@ Home directories are shared across all KSL systems so all your data stored on ``
 User HPC filesystem
 --------------------
 
-There are two file systems used as personal scratch file system for your computational requirement. Based on the file system 
-availability, any one of the file systems with 1.5TB disk space will be allocated by default without any prior approval. 
-
-1. ``/ibex/user/$USER`` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the ``/home`` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
+``/ibex/user/$USER`` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the ``/home`` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
 
 User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
 
@@ -145,30 +142,12 @@ Users can check their quota on ``/ibex/user/$USER`` using the following command:
     user            1.5T  1.3T  274G  83% /ibex/user         853k   4295m   4295m  
 
 
-2. ``/ibex/scratch/$USER`` is another parallel file system known as BeeGFS which provides storage for running your jobs and read/write data.
-
-Users can check their quota on ``/ibex/scratch/$USER`` using the following command:
-
-.. code-block:: bash
-    :caption: Command to check the quota on `/ibex/scratch/$USER/` filesystem
-
-        $ bquota  
-
-
-.. code-block:: bash
-
-    Output:
-    
-    Quota information for IBEX filesystems: 
-    Scratch (/ibex/scratch):  Used:0.00GB   Limit:25.00 GB
-
-
 Project HPC filesystem
 -----------------------
 
 There are instances where your research team is collaborating on a common goal and is sharing or using the same input dataset. This is calls for a shared directory where a group of users can have access to files which can be managed by the one or more members of that group. 
 
-We have two file systems used for regular projects and one additional file system for encrypted projects.
+There is a file system used for regular projects and an additional file system for encrypted projects.
 
 1. ``/ibex/project/cxxxx`` is root path to such a directory. This too is part of the same WekaIO filesystem as the User HPC filesystem above.
 
@@ -186,25 +165,7 @@ Users can check their quota on ``/ibex/project/cxxxx`` using the following comma
     Filesystem      Size  Used Avail Use% Mounted on 
     project          13T   12T  1.2T  92% /ibex/project
 
-2. ``/ibex/scratch/projects`` is another parallel file system known as BeeGFS.
-
-Users can check their quota on ``/ibex/scratch/projects`` using the following command:
-
-.. code-block:: bash
-    :caption: Command to check the quota on /ibex/scratch/projects filesystem
-
-        $ bquota -g ibex-c2123 
-
-
-.. code-block:: bash
-
-    Output:
-    
-    Quota information for IBEX filesystems: 
-    Fast Scratch        (/ibex/fscratch):   Used:       0.00 GB   Limit:       0.00 GB 
-    Projects    (/ibex/scratch/projects):   Used:   10740.97 GB   Limit:   20480.00 GB
-
-3. Encrypted file system path starts with ``/encrypted``.
+2. Encrypted file system path starts with ``/encrypted``.
 
 Users can check their quota on ``/encrypted`` using the following command:
 
