@@ -91,7 +91,7 @@ Build the container
 
 .. code-block:: bash
 
-    singularity build --fakeroot singularity_file.def singularity_image.sif
+    singularity build --fakeroot singularity_image.sif singularity_file.def
 
 The resulting singularity_file.sif can be run using commands like singularity run, singularity shell.
 
