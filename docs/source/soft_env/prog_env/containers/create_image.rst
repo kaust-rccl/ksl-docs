@@ -71,6 +71,7 @@ Here's a basic example of a Singularity definition file:
     From: ubuntu:latest
 
     %post
+        chmod 777 /tmp
         apt-get update
         apt-get install -y python3
 
@@ -90,7 +91,7 @@ Build the container
 -------------------
 
 .. code-block:: bash
-
+    export SINGULARITY_TMPDIR=/tmp
     singularity build --fakeroot singularity_image.sif singularity_file.def
 
 The resulting singularity_file.sif can be run using commands like singularity run, singularity shell.
