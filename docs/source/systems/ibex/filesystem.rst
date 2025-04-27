@@ -62,7 +62,7 @@ User's HPC filesystem has a capacity of 1.5TB per users and remains for the life
 Users can check their quota on `/ibex/user/$USER` using the following command:
 
 .. code-block:: bash
-    :caption: Command to check the quota on `/home` filesystem
+    :caption: Command to check the quota on personal scratch filesystem
 
         $ df -h /ibex/user/$USER
         Filesystem      Size  Used Avail Use% Mounted on
