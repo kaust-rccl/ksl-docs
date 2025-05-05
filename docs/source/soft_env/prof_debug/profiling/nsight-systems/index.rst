@@ -20,3 +20,4 @@ This blog post will show how to profile a deep learning workload. The example sc
 
    nsight-quick-start
    nsight-nvtx
+   nsight-cpp
