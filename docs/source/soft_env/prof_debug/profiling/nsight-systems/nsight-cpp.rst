@@ -88,11 +88,46 @@ This code can be saved in a file named ``matrix_add.cu``.
 
 
 
-The following steps show how to submit job on Ibex:
+The following SLURM job script compiles ``matrix_add.cu``, runs the NSight Systems profiler, and collects performance data.
+This script can be saved in a file named ``matrix_add.slurm``.
+
+.. code-block:: bash
+
+ #!/bin/bash -l
+ #SBATCH --time=00:10:00
+ #SBATCH --gres=gpu:1
+ #SBATCH --constraint=v100
+ module load nvidia-sdk
+ cmd="matrix_add"
+ nvcc -o $cmd matrix_add.cu
+ nsys profile -o profile.${SLURM_JOBID} ${cmd}
+
+The following steps show how to submit ``matrix_add.slurm`` on Ibex:
 
 .. code-block:: bash
 
    ssh glogin.ibex.kaust.edu.sa
    sbatch matrix_add.slurm
 
+The output of the profiler is recorded in a file named ``profile.<SLURM_JOBID>.nsys-rep``.
+This file can be copied to a local machine and examined.
+The following command can be used to find out the version of the NSight Systems:
+
+.. code-block:: bash
+
+ nsys --version
+
+The same version of the NSight Systems can be downloaded from `here <https://developer.nvidia.com/nsight-systems>`_ to run on the local machine.
+
+The following trace of execution shows the GPU device (V100) and a couple of CPU threads.
+The two input matrices are prepared on the CPU and then copied to the device.
+This region is shown as green.
+The CUDA kernel for matrix addition runs afterwards and this duration is displayed in blue color.
+After the kernel finishes, the resultant matrix is copied to the host.
+This region is shown as red.
+In conclusion, the device must be kept busy with computations displayed as blue.
+Having copy operations or empty areas in this trace means low utilization of the device.
+
+.. image:: nsight-cpp-trace.png
+  :width: 10000
 
