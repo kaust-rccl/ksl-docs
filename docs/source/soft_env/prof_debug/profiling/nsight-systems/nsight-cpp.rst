@@ -3,12 +3,12 @@
     :description: Nsight-CUDA
     :keywords: nsight, cuda
 
-.. _nsight_nvtx:
+.. _nsight_cpp:
 
 
-==================================================
-Profiling a basic CUDA kernel using NSight Systems
-==================================================
+===========================================================
+Profiling a CUDA kernel written in C++ using NSight Systems
+===========================================================
 
 NSight Systems can be used to profile CUDA code.
 
@@ -98,9 +98,8 @@ This script can be saved in a file named ``matrix_add.slurm``.
  #SBATCH --gres=gpu:1
  #SBATCH --constraint=v100
  module load nvidia-sdk
- cmd="matrix_add"
- nvcc -o $cmd matrix_add.cu
- nsys profile -o profile.${SLURM_JOBID} ${cmd}
+ nvcc -o matrix_add matrix_add.cu
+ nsys profile -o profile.${SLURM_JOBID} matrix_add
 
 The following steps show how to submit ``matrix_add.slurm`` on Ibex:
 
