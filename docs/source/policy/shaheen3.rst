@@ -11,6 +11,9 @@ Shaheen III
 
 Shaheen III has a total of 4608 compute nodes, 4 login nodes, 4 datamover nodes and 15 pre-post processing nodes. SLURM scheduler is used to schedule different kinds of workloads as jobs submitted by users. Additionally, Shaheen III's large storage is also shared between compute nodes and is capable of serving multiple users simultaneously. Policies help streamline the user experience by enforcing quotas and limits on a user or project level. Users must understand these policies before planning their simulation campaigns.  
 
+.. note::
+
+    Effective May 1st, 2025 the Computational Scientists team will only provide applications support on Ibex for workload that does not adequately run on Shaheen III CPU. Similarly, workloads that are native to Ibex (such as Bioinformatics) will only be supported on Ibex. Any exception requires a justification sent by ticket or in project proposal form.
 
 SLURM Policy
 ============

@@ -71,7 +71,7 @@ By default, Singularity disables any entrypoint behavior in docker images. To re
 .. code-block:: bash
 
    Bootstrap: docker
-    From: krccl/genomad:1.5.0
+   From: krccl/genomad:1.5.0
 
     %runscript 
         . /software/etc/profile.d/conda.sh
@@ -107,7 +107,7 @@ Now that we have a Singularity image for our application that was built with con
 .. code-block:: bash
 
     module load singularity
-    singularity run ./genomad.def genomad -h
+    singularity run ./genomad.sif genomad -h
 
 .. sourcecode:: 
 
