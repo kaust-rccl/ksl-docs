@@ -9,6 +9,10 @@
 Ibex
 ==============
 
+.. note::
+
+    Effective May 1st, 2025 the Computational Scientists team will only provide applications support on Ibex for workload that does not adequately run on Shaheen III CPU. Similarly, workloads that are native to Ibex (such as Bioinformatics) will only be supported on Ibex. Any exception requires a justification sent by ticket or in project proposal form.
+
 Access policies
 ================
 
