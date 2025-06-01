@@ -91,9 +91,9 @@ The same version of the NSight Systems can be downloaded from `here <https://dev
 The following trace of execution shows the GPU device (V100) and a couple of CPU threads.
 The two input matrices are allocated and prepared on the CPU.
 There is an OpenACC region containing the addition operation to be offloaded to the GPU.
-The OpenACC directive indicates that the input matrices ``A`` and ``B`` will be copied to the GPU before the operation on the GPU starts. 
+The OpenACC directive indicates that the input matrices ``A`` and ``B`` will be copied to the GPU before the operation on the GPU starts.
 These copy operations are indicated by the ``copyin`` keyword in the OpenACC directive.
-This region is shown as green on the following trace.
+This region is shown as green in the following trace.
 The matrix addition loop in the C++ code is translated to a GPU kernel by the compiler.
 This kernel for the matrix addition operation runs afterwards and this duration is displayed as blue in the trace.
 
