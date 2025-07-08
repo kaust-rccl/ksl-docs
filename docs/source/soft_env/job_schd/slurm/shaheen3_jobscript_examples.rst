@@ -15,6 +15,5 @@ This section provides a collection of jobscripts used to launch workload on Shah
     :titlesonly:
 
     shaheen_cpu_jobs
-    shaheen_gpu_jobs
     shaheen_pre_post_jobs
 

@@ -19,36 +19,9 @@ Computer Architecture
     
     comp_arch/cpu_arch
     comp_arch/memory_hierarchy_cpu
-    comp_arch/numa_intro
     comp_arch/simd_vectorization
-    comp_arch/cpu_affinity
     comp_arch/gpu_basics
-    comp_arch/lustre_intro
-    comp_arch/gds
-    comp_arch/wekaIO_FS   
-
-Programming Models
---------------------
-
-.. toctree::
-    :titlesonly:
-    :maxdepth: 2
-    
-    prog_models/mpi_intro
-    prog_models/openmp_intro
-    prog_models/openacc_intro
-
-Scientific Computing Libraries
--------------------------------
-
-.. toctree:: 
-    :titlesonly:
-    :maxdepth: 2
-
-    libraries/mpi_io
-    libraries/hdf5_intro
-    libraries/using_libsci
-    libraries/numba_intro
+    comp_arch/wekaIO_FS
 
 Useful workflows
 -------------------------------
@@ -59,11 +32,3 @@ Useful workflows
 
     workflows/dask_for_taskfarm
 
-Best Practices on KSL systems
--------------------------------
-
-.. toctree:: 
-    :titlesonly:
-    :maxdepth: 2
-
-    best_practices/shaheen3_fs_practices

@@ -7,7 +7,7 @@
 
 
 =====================
-Software ecosystem
+Software Ecosystem
 =====================
 
 An ecosystem of optimized software applications and libraries is an essential ingredient for making the most of the HPC grade hardware available on :ref:`KSL systems <available_systems>`. 
