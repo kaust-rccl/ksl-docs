@@ -12,8 +12,8 @@ Using ollama on Ibex
 Here We explain multiple approaches how to Run an example query using Ollama on GPU node on Ibex.
 
 
-Method 1 - Singularity Instance
-=================================
+Interactive method with Singularity 
+======================================
 
 Run the following steps line by line.
 
@@ -49,8 +49,8 @@ To Terminate:
 
 - Stop the server in the background using fg command then CTRL+c
 
-Jupyter Lab Terminal
-======================
+Utilizing Ollama in Jupyter Lab
+================================
 
 Follow :ref:`conda_ibex_` to start JupyterLab on a an Ibex GPU node.
 
@@ -109,6 +109,15 @@ Start the OLLAMA REST API server using the following bash script in a terminal:
     # 7. Run the OLLAMA REST API server on the background
     singularity exec instance://$SINGULARITY_INSTANCE_NAME bash -c "ollama serve"
 
+.. note::
+
+    Save the above script in a file called start_ollama_server.sh
+
+.. code-block:: bash
+
+    # Run the script to start the Ollama server.
+    bash start_ollama_server.sh
+
 The script has the following:
 
 - A user editable section, where the user defines [Ollama models scratch directory].
@@ -117,8 +126,8 @@ The script has the following:
 
 - Cleanup section in order to stop the singularity instance when the script is terminated with CTRL+C.
 
-Method 2 - REST API Requests
-------------------------------
+Using REST API Requests
+--------------------------
 
 Follow the following Python notebook below, it contains the codes for [Testing connection to the Ollama server, List local models, Pull models, Chat with the models].
 
@@ -232,7 +241,7 @@ Follow the following Python notebook below, it contains the codes for [Testing c
 
     ollama_chat(model='qwen3')
 
-Method 3 - Ollama Python Package
+Using the Ollama Python Package
 ----------------------------------
 
 Follow the following Python notebook below, it contains the codes for [Testing connection to the Ollama server, List local models, Pull models, Chat with the models].
@@ -242,7 +251,7 @@ Follow the following Python notebook below, it contains the codes for [Testing c
     ##----------------##
     # Cell #1: Ollama Configuration
     with open("ollama_port.txt") as f :
-    PORT = f.read().strip()
+        PORT = f.read().strip()
     BASE_URL=f"http://127.0.0.1:{PORT}"
     print(BASE_URL)
 
@@ -346,14 +355,14 @@ Below are attached screenshot from JupyterLab:
 
 .. figure:: ../static/ollama_test_connection.png
    :alt: connect to Server
-   :width: 80%
+   :width: 100%
    :align: center
 
    JupyterLab - Testing connection to Ollama Server
 
 .. figure:: ../static/ollama_chat.png
    :alt: Chat with model
-   :width: 80%
+   :width: 100%
    :align: center
 
    JupyterLab - Testing Chatting with Ollama model
