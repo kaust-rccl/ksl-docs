@@ -162,15 +162,7 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
     echo ${node} pinned to port ${port} on ${submit_host} 
 
     # print tunneling instructions  
-    echo -e " 
-    ${node} pinned to port ${port} on ${submit_host} 
-    To connect to the compute node ${node} on IBEX running your jupyter notebook server, you need to run following two commands in a terminal 1. 
-    Command to create ssh tunnel from you workstation/laptop to glogin: 
- 
-    ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa 
- 
-    Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop.
-    " >&2 
+    echo -e "${node} pinned to port ${port} on ${submit_host}" >&2 
 
     # launch jupyter server
     jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}.ibex.kaust.edu.sa
@@ -191,15 +183,11 @@ Check the following output in  SLURM output will look something like this:
         http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
      or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
 
-- Open a new terminal on your local machine and copy and paste the ssh tunnel command from the ``%x-%j-slurm.err``
+- Now we are ready to launch our Jupyter client. Copy the link starting with node name in the ``%x-%j-slurm.err`` file  and paste it into your browser address bar:
 
-.. code-block:: bash
-
-    ssh -L 57162:gpu214-02.ibex.kaust.edu.sa:57162 username@glogin.ibex.kaust.edu.sa
-
-- This has created an SSH tunnel between the compute node your Jupyter server is launched on Ibex and your local machine on IP address localhost and port 57162. 
-
-- Now we are ready to launch our Jupyter client. Copy one of the two last lines in the ``%x-%j-slurm.err`` file  and paste it into your browser address bar:
+.. note::
+    
+    If the link to launch jupyter doesn't work, please try using incognito mode on your browser.
 
 ``http://gpu214-02.ibex.kaust.edu.sa:57162/lab?token=ce300e312eb05df3616f8d4329677635750da4818b26da7``
 

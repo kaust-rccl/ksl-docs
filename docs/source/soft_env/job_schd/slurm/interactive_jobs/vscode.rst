@@ -187,27 +187,15 @@ Modify the following jobscript according to your parameters:
     echo "password: 10DowningStreet" >> ${CODE_SERVER_CONFIG}
     echo "cert: false" >> ${CODE_SERVER_CONFIG}
 
-    echo "Copy the following line in a new terminal to create a secure SSH tunnel between your computer and Ibex compute node."
-    echo "ssh -L localhost:${port}:${node}:${port} ${user}@${submit_host}.ibex.kaust.edu.sa"
+    echo "Copy the following line in your browser to launch code server."
+    echo "http://${node}.ibex.kaust.edu.sa:${port}/"
 
     code-server --auth=password --verbose --extensions-dir=${CODE_SERVER_EXTENSIONS}
 
-Port forwarding is required to bind to the listening port of the remote host (Ibex GPU node). For this, open a new terminal window and start an SSH tunnel to achieve the above:
 
-.. code-block:: bash
+.. note::
     
-    ssh -L localhost:<port>:dgpu501-22:<port> <username>@glogin.ibex.kaust.edu.sa
-
-In the above command line, ``dgpu501-22`` is the hostname of the machine our job is running (server is running). Use the port your code-server is listening on, and  your <username>  in the above syntax to reverse connect to the remote machine.
-
-In case you have submitted a batch job, please check the slurm output and copy the ssh command from there and paste it in a new terminal
-
-
-Once the SSH tunnel is established, you can open the URL that code-server is listening on in the browser to access VS code/code-server
-
-.. code-block:: bash
-    
-    http://localhost:<port>/
+    If the link to launch code server doesn't work, please try using incognito mode on your browser.
 
 Fill the password set in your config file and your session is ready to use. 
 When finished, please exit the job on Ibex.
