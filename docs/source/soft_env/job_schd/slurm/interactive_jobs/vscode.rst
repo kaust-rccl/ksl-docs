@@ -112,7 +112,7 @@ code-server can be installed as a conda environment.
     source /ibex/user/${USER}/miniconda3/bin/activate
     mamba create -c conda-forge -p code-server 
     conda activate code-server
-    mamba install -c conda-forge -y python=3.9
+    mamba install -c conda-forge -y python=3.9 code-server
 
 Interactive allocate a node with e.g. GPU on Ibex (assuming you are on ``vscode.ibex.kaust.edu.sa`` node):
 
