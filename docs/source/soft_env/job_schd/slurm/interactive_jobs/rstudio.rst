@@ -217,7 +217,11 @@ Submit the RStudio SLURM job script, for example, the following is a jobscript r
     # tiny race condition between the python & singularity commands
     readonly PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
     cat 1>&2 <<END
-    Point your web browser to http://${HOSTNAME}.ibex.kaust.edu.sa:${PORT}/
+    1. SSH tunnel from your workstation using the following command:
+
+    ssh  -L ${PORT}:${HOSTNAME}:${PORT} ${SINGULARITYENV_USER}@ilogin.ibex.kaust.edu.sa
+
+    and point your web browser to http://localhost:${PORT}
 
     When done using RStudio Server, terminate the job by:
 
@@ -299,14 +303,16 @@ Once the job starts, the slurm error file created in the directory you submitted
 
 The slurm error will look something like this:
 
-.. note::
-    
-    If the link to launch rstudio doesn't work, please try using incognito mode on your browser.
-
 .. code-block:: bash
     :caption: The slurm error will look something like this
 
-     Point your web browser to http://cn506-02-r.ibex.kaust.edu.sa:44672/
+     1. SSH tunnel from your workstation using the following command:
+
+     ssh  -L 44672:cn506-02-r:44672 $USER@ilogin.ibex.kaust.edu.sa
+
+     and point your web browser to http://localhost:44672
+
+     2. log in to RStudio Server using the following credentials:
 
      When done using RStudio Server, terminate the job by:
 
@@ -315,5 +321,13 @@ The slurm error will look something like this:
 
       scancel -f 17848677
 
-log in Rstudio server  via  web browser with given link in error file.
+Open a new terminal on your local machine and copy paste the ssh tunnel command
+
+``ssh  -L 44672:cn506-02-r:44672 $USER@ilogin.ibex.kaust.edu.sa``
+
+log in Rstudio server  via  web browser with given link and credentials in error file
+
+.. code-block:: bash
+
+    http://localhost:44672
 
