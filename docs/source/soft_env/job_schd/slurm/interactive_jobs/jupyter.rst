@@ -126,7 +126,7 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
 
 .. code-block:: bash 
     
-    #!/bin/bash
+    #!/bin/bash -l
     #SBATCH --time=00:30:00
     #SBATCH --nodes=1
     #SBATCH --gpus-per-node=v100:1

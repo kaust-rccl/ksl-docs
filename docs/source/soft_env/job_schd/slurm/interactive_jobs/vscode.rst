@@ -161,7 +161,7 @@ Modify the following jobscript according to your parameters:
 
 .. code-block:: bash 
 
-    #!/bin/bash
+    #!/bin/bash -l
 
     #SBATCH --time=00:10:00
     #SBATCH --gpus=1
