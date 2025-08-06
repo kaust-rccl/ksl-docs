@@ -21,5 +21,4 @@ The following tools are available for performance analysis:
    nsight-systems/index
    craypat
    uprof
-   tau
 

@@ -15,5 +15,4 @@ Big data processing on KSL platform
     :maxdepth: 1
 
     dask/index
-    nvidia_rapids
     mpi4py
