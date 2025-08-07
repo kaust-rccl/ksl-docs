@@ -18,3 +18,4 @@ NSight Systems is a suite of profiling tools. It provides a detailed performance
    nsight-cpp
    nsight-fortran
    nsight-cpp-acc
+   nsight-rapids

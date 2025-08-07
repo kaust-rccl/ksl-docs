@@ -3,21 +3,19 @@
     :description: Nsight-systems
     :keywords: nsight, nvtx , RAPIDS
 
-.. _nsight_systems:
+.. _nsight-rapids:
 
 
-=========================================
-RAPIDS and NSight Systems
-=========================================
-
-NSight Systems is a versatile tool that can help profile any workloads that uses GPU(s) and identify the hotspots of optimization. The NVTX profiling API can also be used to annotate your code with events. NSight Systems can display these annotated regions. This can help identify specific areas of your code that are causing performance problems.
+========================================================
+Profiling an NVIDIA RAPIDS workflow using NSight Systems
+========================================================
 
 This documentation explains how to profile a deep learning workload using RAPIDS cuML and Nsight Systems. Example scripts are available at `this repository <https://github.com/D-Barradas/GPU_profiling_ibex>`_. See the `src` folder for ``rapids_tsne.py`` and ``rapids_tsne.sh``.
 
 Quick Start
 ============
 
-To collect profiling information, submit a job as follows. This is similar to the job in nsight-nvtx, but uses Nsight Systems to profile a t-SNE dimensionality reduction with the RAPIDS cuML library.
+To collect profiling information, submit a job as follows. This is similar to the job in :doc:`nsight-nvtx`, but uses Nsight Systems to profile a t-SNE dimensionality reduction with the RAPIDS cuML library.
 
 .. code-block:: bash
 
@@ -62,7 +60,7 @@ The output is a stacked time series of all resources and events traced. Hover yo
   :alt: Alternative text
 
 Adding NVTX Instrumentation
-==========================
+===========================
 NVIDIA Tools Extension (NVTX) allows you to instrument your training script to annotate different operations. The code requires minimal changes:
 
   * If you are using a machine learning model, add this line to your code:
