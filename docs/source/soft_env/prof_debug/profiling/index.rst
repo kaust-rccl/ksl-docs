@@ -18,7 +18,7 @@ The following tools are available for performance analysis:
    :titlesonly:
    :maxdepth: 1
 
+   nsight-systems/index
    craypat
    uprof
-   tau
 

@@ -16,9 +16,7 @@ The HPC systems at KSL are capable resources for hosting data science workload f
     :titlesonly:
     :maxdepth: 1
 
-    quickstart
     ml_module_ibex
-    jobscript_templates/index
     dist_mldl/index
     big_data_proc/index
     tools/index

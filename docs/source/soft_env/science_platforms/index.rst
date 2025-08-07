@@ -17,7 +17,4 @@ The domain-specific user guides and best practices on a supercomputing ecosystem
 
 
     data_science/index
-    cfd_platform/index
     weather_climate/index
-    bioscience/index
-    chemistry/index
