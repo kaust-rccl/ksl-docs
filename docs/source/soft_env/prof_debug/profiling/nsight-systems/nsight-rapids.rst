@@ -48,14 +48,10 @@ The above job script launches Python training with the ``nsys`` profiler. We loa
 
 Where ``profile.40118944.nsys-rep`` is your profile output file.
 
-.. image:: Nsight_nvidia_logo.png
-  :width: 10000
-  :alt: Alternative text
-
 
 The output is a stacked time series of all resources and events traced. Hover your mouse over the event profile bar of ``CUDA HW(0000:8a:00.0-Tesla V100-SXM2-32GB)`` to see how busy your GPU has been. You can zoom in to inspect events at micro- or nanosecond scales. Expand the tab to show more events in finer granularity and see the timing and sequence of different kernels. (Right-click on ``CUDA HW(0000:b2:00.0-Tesla V100-SXM2-32GB)`` and choose ``Show in Events View`` to inspect the table of kernels profiled).
 
-.. image:: Nsight_nvidia_001.png
+.. image:: nsight-rapids-trace.png
   :width: 10000
   :alt: Alternative text
 
