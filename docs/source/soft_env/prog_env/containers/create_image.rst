@@ -91,6 +91,7 @@ Build the container
 -------------------
 
 .. code-block:: bash
+
     export SINGULARITY_TMPDIR=/tmp
     singularity build --fakeroot singularity_image.sif singularity_file.def
 
