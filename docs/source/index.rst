@@ -39,5 +39,6 @@ For users eager to get onto KSL systems and run jobs, there is a :ref:`quickstar
    policy/index
    data_management/index
    training/index
+   services/index
    tech_blogs/index
    contact_us
