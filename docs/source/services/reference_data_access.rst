@@ -5,10 +5,22 @@
     
 .. _services_data_access:
 
-===========================
-Reference data as a service
-===========================
+=====================
+Reference Data Access
+=====================
 
-Access to reference data within the IBEX system is subject to prior authorization. Users must have requested access to any reference data; otherwise, access will be denied.
+Access to reference data within the Ibex system requires prior authorization. Users must request access to the specific reference data; otherwise, access will be denied.
 
-Access requests can be submitted through `Reference data access <https://my.ibex.kaust.edu.sa/v2/references>`_.
+**To request access to any of our databases, follow these steps:**
+
+#. Log in to `my.Ibex <https://my.ibex.kaust.edu.sa/v2/references>`_.
+#. Navigate to the **Reference** tab, then **Search** for your required reference.
+   
+   For example, the *NCBI/BLAST* reference can be found `here <https://my.ibex.kaust.edu.sa/v2/reference?id=66>`_.
+#. Click **Request Access**. Your request will be automatically approved.
+
+Please allow some time for your access to be activated.
+
+.. note::
+
+   Access to reference data is valid for **6 months**. You will need to renew your access every **6 months**. This helps us track usage statistics and/or cleaning the older references.
