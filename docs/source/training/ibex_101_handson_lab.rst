@@ -308,11 +308,80 @@ Batch jobs can be submitted to SLURM scheduler so they can run when the requeste
 
 You can find all the jobscripts for the labs at this `repo <https://github.com/kaust-rccl/ibex_101_labs>`_
 
-Please clone it using the command:
+During our Ibex 101 hands-on session, the example job scripts will be cloned from a GitHub repository into your personal scratch directory at ``/ibex/user/$USER``. Follow the steps below to clone the required job scripts.
 
 .. code-block:: bash
 
-    git clone https://github.com/kaust-rccl/ibex_101_labs.git
+    cd /ibex/user/$USER
+    git clone https://github.com/kaust-rccl/ibex_101_labs.git 
+    cd ibex_101_labs
+
+
+UNIX/Linux editors
+------------------
+**Using nano to Edit Job Scripts**
+
+Nano is a simple, command-line text editor commonly used on Unix/Linux systems. It is often used to edit job scripts for submitting tasks to job schedulers like SLURM.
+
+**Opening or Creating Files:**
+
+To open an existing file or to create a new file, type nano followed by the file name:
+
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/slurm-job-examples/cpu-jobs
+    nano helloworld-singlecpu.sh
+
+.. image:: ../static/nano-1.png
+
+.. raw:: html
+
+   <br><br>
+
+**Editing Files:**
+
+Modify job runtime to be ``#SBATCH --time=00:20:00``
+
+.. image:: ../static/nano-2.png
+
+.. raw:: html
+
+   <br><br>
+
+After completing the necessary edits, press ``Ctrl + o`` to save the changes, then ``Ctrl + x`` to exit the editor.
+
+
+**Searching a Text:**
+
+To search for a particular word inside the text editor, press ``Ctrl + w``. This will open a search prompt where you can type in the text you want. 
+
+
+.. image:: ../static/nano-3.png
+    
+.. raw:: html
+
+   <br><br>
+
+After pressing **Enter** the cursor will be moved to the first match. To move to the next result, press ``Alt + w``.
+
+**Common Nano Shortcuts**
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40
+
+   * - Shortcut
+     - Action
+   * - ``Ctrl + O``
+     - Save (Write Out)
+   * - ``Ctrl + X``
+     - Exit
+   * - ``Ctrl + K``
+     - Cut current line
+   * - ``Ctrl + U``
+     - Paste line
+   * - ``Ctrl + W``
+     - Search (Where Is)
 
 
 Basic jobscript
@@ -326,14 +395,14 @@ A typical jobscript has two major sections:
 
 .. note::
 
-    The reservation ``ibex-101`` is only available during the Hands-on session.
+    The reservation ``ibex101`` is only available during the Hands-on session.
     After the session, you need to remove that line before submitting one of the scripts from the GitHub repo.
 
 .. code-block:: bash
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
 
     echo "helloworld"
@@ -341,7 +410,7 @@ A typical jobscript has two major sections:
 Since we didn't specify to slurm the amount of cpus and memory needed, it will allocate the default 2GB memory with 1 CPU.
 
 .. note::
-    The reservation ibex-101 is used for the Hands-on session period only.
+    The reservation ibex101 is used for the Hands-on session period only.
 
 Job submission for multi-CPUs
 ------------------------------
@@ -353,7 +422,7 @@ Job submission for multi-CPUs
     #SBATCH --ntasks=4
     #SBATCH --ntasks-per-node=4
     #SBATCH --time=00:10:00
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     srun -n 4 echo "Hello world!"
 
@@ -435,7 +504,7 @@ Save this script as ``my-jobscript.sh``
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     sleep 300 #The sleep command tells the system to do nothing for the specified number of seconds.
 
@@ -600,7 +669,7 @@ Using the script ``job_with_email.sh``
     #SBATCH --time=00:05:00                 # Time limit (hh:mm:ss)
     #SBATCH --mail-type=ALL                 # Send email for all job events
     #SBATCH --mail-user=your_email@kaust.edu.sa  # Your KAUST email address
-    #SBATCH --reservation=ibex-101            # use ibex-101 reservation
+    #SBATCH --reservation=ibex101            # use ibex101 reservation
 
     # Print some information about the job
     echo "Job started on $(hostname) at $(date)"
@@ -653,8 +722,11 @@ SLURM job examples
 
 CPU jobs
 ---------
+.. code-block:: bash
 
-Single cpu job
+    cd /ibex/user/$USER/ibex_101_labs/slurm-job-examples/cpu-jobs
+
+Single cpu job named as ``helloworld-singlecpu.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -662,11 +734,11 @@ Single cpu job
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     echo "Hello world!"
 
-Multithreaded job single node (openmp)
+Multithreaded job single node (openmp) named as ``openmp-singlenode.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -674,7 +746,7 @@ Multithreaded job single node (openmp)
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=4
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     module load gcc
 
@@ -684,7 +756,7 @@ Multithreaded job single node (openmp)
 
     srun -c 4 ./openmp_hello_world
 
-MPI job single node
+MPI job single node named as ``openmpi-singlenode.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -692,7 +764,7 @@ MPI job single node
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=4
     #SBATCH --tasks-per-node=4
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     # Load the OpenMPI module
     module load openmpi
@@ -705,7 +777,7 @@ MPI job single node
     # Run the MPI program
     mpirun -np 4 ./mpi_hello_world
 
-MPI job multinode
+MPI job multinode named as ``openmpi-multinode.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -714,7 +786,7 @@ MPI job multinode
     #SBATCH --nodes=2
     #SBATCH --ntasks=8
     #SBATCH --ntasks-per-node=4
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     # Load the OpenMPI module
     module load openmpi
@@ -729,20 +801,23 @@ MPI job multinode
 
 GPU jobs
 ---------
+.. code-block:: bash
 
-Single gpu job
+    cd /ibex/user/$USER/ibex_101_labs/slurm-job-examples/gpu-jobs
+
+Single gpu job named as ``singlegpu.sh`` which described as follows:
 
 .. code-block:: bash
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
     #SBATCH --gpus=1
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     module load cuda/11.8
     nvidia-smi
 
-Multiple GPUs single node
+Multiple GPUs single node named as ``multigpu-singlenode.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -753,12 +828,12 @@ Multiple GPUs single node
     #SBATCH --gpus=2
     #SBATCH --gpus-per-node=2
     #SBATCH --constraint=gtx1080ti
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     module load cuda/11.8
     srun -c 2 ./multi_gpu_program
 
-Multiple GPUs on Multiple nodes
+Multiple GPUs on Multiple nodes named as ``multigpu-multinode.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -772,7 +847,7 @@ Multiple GPUs on Multiple nodes
     #SBATCH --gpus=4
     #SBATCH --gpus-per-node=2
     #SBATCH --constraint=gtx1080ti
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
 
     module load cuda/11.8
@@ -834,7 +909,7 @@ CPU constraints
     #SBATCH --ntasks=1
     #SBATCH --cpus-per-task=1
     #SBATCH --constraint=amd #intel
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     lscpu
 
@@ -882,7 +957,7 @@ Some nodes have larger memory for workloads which require loading big data in me
     #SBATCH --time=00:10:00
     #SBATCH --ntasks=1
     #SBATCH --mem=1200G
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     free -h
 
@@ -1025,7 +1100,7 @@ There are GPU nodes in Ibex cluster with GPUs of different microarchitecture. No
     #SBATCH --time=00:10:00
     #SBATCH --gpus=1
     #SBATCH --constraint=gtx1080ti #v100
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     nvidia-smi
 
@@ -1062,7 +1137,7 @@ Run the following command to run on one gtx1080ti GPU:
 
 .. code-block:: bash
 
-    srun --gpus=1 --mem=100G --cpus-per-task=24 --time=00:30:00 --resv-ports=1 --reservation=ibex-101 --pty /bin/bash -l launch-jupyter-one-line.sh
+    srun --gpus=1 --mem=100G --cpus-per-task=24 --time=00:30:00 --resv-ports=1 --reservation=ibex101 --pty /bin/bash -l launch-jupyter-one-line.sh
 
 Now on your terminal you will see the same kind of message from jupyter.
 
@@ -1089,7 +1164,7 @@ Using the file ``launch-jupyter-server.sh``
     #SBATCH --gpus-per-node=1
     #SBATCH --cpus-per-gpu=6
     #SBATCH --mem=32G
-    #SBATCH --reservatin=ibex-101
+    #SBATCH --reservatin=ibex101
     #SBATCH --job-name=demo
     #SBATCH --output=%x-%j-slurm.out
     #SBATCH --error=%x-%j-slurm.err
@@ -1162,7 +1237,7 @@ Using the script ``single-node-2GPUs-job.sh``
     #SBATCH --cpus-per-task=8                # Request 8 CPUs
     #SBATCH --mem=32G                        # Request 32G memory
     #SBATCH --time=00:10:00                  # Time limit (hh:mm:ss)
-    #SBATCH --reservatin=ibex-101            # use ibex-101 reservation
+    #SBATCH --reservatin=ibex101            # use ibex101 reservation
 
     # Load necessary modules (if required)
     module load machine_learning/2024.01
@@ -1226,7 +1301,7 @@ Using the jobscript ``fastqc.sh``
     #SBATCH --error=QC.%J.err               ## Console error file
     #SBATCH --time=01:30:00                 ## Expected execution time of your job
     #SBATCH --mem=2G                        ## Estimated memory size (e.g. more than or equal to your fastq file)
-    #SBATCH --reservation=ibex-101
+    #SBATCH --reservation=ibex101
 
     #fetch the dataset files
     cp -r /ibex/scratch/projects/ibex_cs_temp/ibex_101/dataset/ ./
@@ -1291,6 +1366,9 @@ View the output file
 
 User survey
 ============
+Please provide your feedback about this workshop and suggestions using this survey `link <https://forms.gle/PHwmiK3WN9DNYVuBA>`_.
+
+Or scan the following QR Code:
 
 .. image:: ../static/survey.png
 
