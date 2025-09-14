@@ -64,7 +64,6 @@ Python file needed to run the demo `here <https://github.com/kaust-rccl/hpo-with
     #SBATCH --tasks-per-node=1
     #SBATCH --cpus-per-task=8
     #SBATCH --time=00:30:00
-    #SBATCH --account=ibex-cs
 
     source ~/miniconda3/bin/activate ray2_2
 

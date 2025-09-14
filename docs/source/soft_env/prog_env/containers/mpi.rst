@@ -83,7 +83,6 @@ On Ibex :code:`openmpi` is installed on host. It is generally suited to launch t
     #SBATCH --nodes=2
     #SBATCH --gres=gpu:v100:2
     #SBATCH --time=00:05:00
-    #SBATCH --account=ibex-cs
 
     module load singularity
     module load openmpi/4.0.3-cuda10.2
@@ -121,7 +120,6 @@ The following SLURM jobscript demonstrates run a container with MPI application 
     #SBATCH --ntasks-per-node=2
     #SBATCH --gres=gpu:v100:2
     #SBATCH --time=00:05:00
-    #SBATCH --account=ibex-cs
 
     module load singularity
     module load openmpi/4.0.3-cuda10.2
