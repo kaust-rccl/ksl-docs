@@ -393,10 +393,16 @@ A typical jobscript has two major sections:
 
 - The commands to run on allocated computational resource.
 
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/using-slurm
+
 .. note::
 
     The reservation ``ibex101`` is only available during the Hands-on session.
     After the session, you need to remove that line before submitting one of the scripts from the GitHub repo.
+
+Using the script ``helloworld.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -410,10 +416,12 @@ A typical jobscript has two major sections:
 Since we didn't specify to slurm the amount of cpus and memory needed, it will allocate the default 2GB memory with 1 CPU.
 
 .. note::
-    The reservation ibex101 is used for the Hands-on session period only.
+    The reservation ``ibex101`` is used for the Hands-on session period only.
 
 Job submission for multi-CPUs
 ------------------------------
+
+Using the script ``helloworld-multicpu.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -498,7 +506,7 @@ The ``scancel`` command cancels a job in the SLURM queue.
 
 **Ex: Submit a job, cancel it then verify it has been removed from queue:**
 
-Save this script as ``my-jobscript.sh``
+Using the script ``my-jobscript.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -656,7 +664,7 @@ Options for ``--mail-type`` include:
 
 **EX: Run a job with email notifications configured**
 
-Using the script ``job_with_email.sh``
+Using the script ``job_with_email.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -714,7 +722,7 @@ Example email Notifications:
 
 .. code-block:: bash
 
-    Slurm Job_id=37105347 Name=email_example Ended, Run time 00:00:00, COMPLETED, ExitCode 0
+    Slurm Job_id=37105347 Name=email_example Failed, Run time 00:00:00, FAILED, ExitCode 1
 
 
 SLURM job examples
@@ -1112,11 +1120,15 @@ Data Science
 
 We'll use Jupyter for for the DS workload example.
 
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/application-examples/DS
+
 There are Multiple ways to launch Jupyter on Ibex:
 
 - Launch jupyter in one line
 
-Using the file ``launch-jupyter-one-line.sh``
+Using the file ``launch-jupyter-one-line.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1154,7 +1166,7 @@ Copy one of the lines of that start with ``http://gpuXXX-XX`` into your browser.
 
 - Batch job for Jupyter
 
-Using the file ``launch-jupyter-server.sh``
+Using the file ``launch-jupyter-server.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1225,7 +1237,7 @@ Now we are ready to use our Jupyter client.
 
 **Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs**
 
-Using the script ``single-node-2GPUs-job.sh``
+Using the script ``single-node-2GPUs-job.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1270,11 +1282,9 @@ Expected output:
 
     Loading machine_learning/2024.01
     Loading requirement: gcc/13.2.0 cuda/11.8
-    CUDA is available. Number of GPUs: 4
+    CUDA is available. Number of GPUs: 2
     GPU 0: NVIDIA GeForce GTX 1080 Ti
     GPU 1: NVIDIA GeForce GTX 1080 Ti
-    GPU 2: NVIDIA GeForce GTX 1080 Ti
-    GPU 3: NVIDIA GeForce GTX 1080 Ti
     Using GPU: NVIDIA GeForce GTX 1080 Ti
     Tensor created on: cuda:0
     Matrix multiplication completed.
@@ -1289,7 +1299,11 @@ Bioinformatics
 
 We'll be using FastQC as an example.
 
-Using the jobscript ``fastqc.sh``
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/application-examples/Bio
+
+Using the jobscript ``fastqc.sh`` which described as follows:
 
 .. code-block:: bash
 
