@@ -47,6 +47,14 @@ This code can be saved in a file named ``numba_example.py``.
  K = mycalculation(X)
  print(K[0:4])
 
+The ``numba-cuda`` package is used in this example.
+To install this package on Ibex, the following steps can be performed:
+
+.. code-block:: bash
+
+ module load cuda/12
+ pip install numpy numba-cuda[cu12]
+
 The following SLURM job script runs the Nsight Systems profiler, and collects performance data.
 This script can be saved in a file named ``numba.slurm``.
 
