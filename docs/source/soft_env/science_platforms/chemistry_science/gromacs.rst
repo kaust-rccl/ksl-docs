@@ -7,8 +7,8 @@
 Using Gromacs on Ibex GPUs
 ====================================
 
-Building image from Dockerfile
-================================
+Getting Gromacs image from DockerHub
+=======================================
 
 The image is available on Krccl DockerHub, you can pull it on ibex with the commands:
 
@@ -17,7 +17,11 @@ The image is available on Krccl DockerHub, you can pull it on ibex with the comm
     module load singularity
     singularity pull gromacs_latest.sif docker://krccl/gromacs:latest
 
-For any modifications, you can rebuild it locally with docker using following Dockerfile and push to your DockerHub.
+
+Building image from Dockerfile
+================================
+
+If you need to customize the image, you can rebuild it locally with docker using following Dockerfile and push to your DockerHub.
 Then, pull it on Ibex using singularity.
 
 .. code-block:: bash
@@ -98,7 +102,7 @@ Then, pull it on Ibex using singularity.
     ENTRYPOINT ["/workspace/entrypoint.sh"]
 
 
-Create the following entrypoint script loacally in same directory as Dockerfile.
+You'll also need to create the following entrypoint script loacally in same directory as Dockerfile.
 
 .. code-block:: bash
 
