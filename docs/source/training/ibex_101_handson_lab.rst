@@ -59,7 +59,7 @@ How to login?
 
 Ibex clusters consist of 3 different login nodes:
 
-To submit CPU only jobs, login to ilogin
+To submit **CPU** only jobs, login to **ilogin**
 
 .. code-block:: bash
 
@@ -67,22 +67,22 @@ To submit CPU only jobs, login to ilogin
 
 .. note::
 
-    $USER is your KAUST username.
+    ``$USER`` is your KAUST username.
 
-To submit jobs with GPU, login to glogin
+To submit jobs with **GPU**, login to **glogin**
 
 .. code-block:: bash
 
     ssh -XY $USER@glogin.ibex.kaust.edu.sa
 
-If you want to access your files when editing/develop in IDE like VS Code, login to vscode
+If you want to access your files when editing/develop in IDE like **VS Code**, login to **vscode**
 
 .. code-block:: bash
 
     ssh -XY $USER@vscode.ibex.kaust.edu.sa
 
 .. note::
-    If you're using a personal Laptop / Desktop replace $USER with your KAUST username.
+    If you're using a personal Laptop / Desktop replace ``$USER`` with your KAUST username.
 
 
 Storage details
@@ -103,7 +103,7 @@ Users can check their quota on ``/home`` using the following command:
 .. code-block:: bash
     :caption: Command to check the quota on `/home` filesystem
 
-    $ quota -s
+        quota -s
 
 
 .. code-block:: bash
@@ -131,7 +131,7 @@ Users can check their quota on ``/ibex/user/$USER`` using the following command:
 .. code-block:: bash
     :caption: Command to check the quota on `/ibex/user/` filesystem
 
-        $ df -h /ibex/user/$USER
+        df -h /ibex/user/$USER
 
 
 .. code-block:: bash
@@ -156,7 +156,7 @@ Users can check their quota on ``/ibex/project/cxxxx`` using the following comma
 .. code-block:: bash
     :caption: Command to check the quota on `/ibex/project/cxxxx` filesystem
 
-        $ df -h /ibex/project/c2247 
+        df -h /ibex/project/c2247 
 
 .. code-block:: bash
 
@@ -172,7 +172,7 @@ Users can check their quota on ``/encrypted`` using the following command:
 .. code-block:: bash
     :caption: Command to check the quota on /encrypted filesystem
 
-        $ df -h /encrypted/e3001 
+        df -h /encrypted/e3001 
 
 .. code-block:: bash
 
@@ -393,10 +393,16 @@ A typical jobscript has two major sections:
 
 - The commands to run on allocated computational resource.
 
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/using-slurm
+
 .. note::
 
     The reservation ``ibex101`` is only available during the Hands-on session.
     After the session, you need to remove that line before submitting one of the scripts from the GitHub repo.
+
+Using the script ``helloworld.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -410,10 +416,12 @@ A typical jobscript has two major sections:
 Since we didn't specify to slurm the amount of cpus and memory needed, it will allocate the default 2GB memory with 1 CPU.
 
 .. note::
-    The reservation ibex101 is used for the Hands-on session period only.
+    The reservation ``ibex101`` is used for the Hands-on session period only.
 
 Job submission for multi-CPUs
 ------------------------------
+
+Using the script ``helloworld-multicpu.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -498,7 +506,7 @@ The ``scancel`` command cancels a job in the SLURM queue.
 
 **Ex: Submit a job, cancel it then verify it has been removed from queue:**
 
-Save this script as ``my-jobscript.sh``
+Using the script ``my-jobscript.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -541,7 +549,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ sbatch myscript.sh
+    sbatch myscript.sh
 
 .. code-block:: bash
 
@@ -551,7 +559,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ ls *.out
+    ls *.out
 
 .. code-block:: bash
 
@@ -562,7 +570,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ ls *.err
+    ls *.err
 
 .. code-block:: bash
 
@@ -581,7 +589,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ sbatch myscript.sh
+    sbatch myscript.sh
 
 .. code-block:: bash
 
@@ -591,7 +599,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ ls *.out
+    ls *.out
 
 .. code-block:: bash
 
@@ -601,7 +609,7 @@ When you submit the script using sbatch, the files will be generated as followin
 
 .. code-block:: bash
 
-    $ ls *.err
+    ls *.err
 
 .. code-block:: bash
 
@@ -622,7 +630,7 @@ Now when you run squeue, you will find it listed as
 
 .. code-block:: bash
 
-    $ squeue --user=$USER
+    squeue --user=$USER
 
 
 .. code-block:: bash
@@ -656,7 +664,7 @@ Options for ``--mail-type`` include:
 
 **EX: Run a job with email notifications configured**
 
-Using the script ``job_with_email.sh``
+Using the script ``job_with_email.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -684,7 +692,7 @@ submit the job using ``sbatch``
 
 .. code-block:: bash
 
-    $ sbatch job_with_email.sh
+    sbatch job_with_email.sh
 
 .. code-block:: bash
 
@@ -714,7 +722,7 @@ Example email Notifications:
 
 .. code-block:: bash
 
-    Slurm Job_id=37105347 Name=email_example Ended, Run time 00:00:00, COMPLETED, ExitCode 0
+    Slurm Job_id=37105347 Name=email_example Failed, Run time 00:00:00, FAILED, ExitCode 1
 
 
 SLURM job examples
@@ -827,7 +835,7 @@ Multiple GPUs single node named as ``multigpu-singlenode.sh`` which described as
     #SBATCH --mem=32G
     #SBATCH --gpus=2
     #SBATCH --gpus-per-node=2
-    #SBATCH --constraint=gtx1080ti
+    #SBATCH --constraint=rtx2080ti
     #SBATCH --reservation=ibex101
 
     module load cuda/11.8
@@ -846,7 +854,7 @@ Multiple GPUs on Multiple nodes named as ``multigpu-multinode.sh`` which describ
     #SBATCH --mem=32G
     #SBATCH --gpus=4
     #SBATCH --gpus-per-node=2
-    #SBATCH --constraint=gtx1080ti
+    #SBATCH --constraint=rtx2080ti
     #SBATCH --reservation=ibex101
 
 
@@ -857,7 +865,11 @@ Multiple GPUs on Multiple nodes named as ``multigpu-multinode.sh`` which describ
 constraints
 ------------
 
-CPU constraints
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/constraints
+
+**CPU constraints**
 
 .. list-table:: **CPU Compute nodes in Ibex cluster**
    :widths: 40 20 15 15 15 15 20 30 20
@@ -902,6 +914,8 @@ CPU constraints
 
 **Ex: In your jobscript use amd node then change it to an intel node submit and confirm the CPU type each time using lscpu command**
 
+Using the script ``cpu-constraints.sh`` which described as follows:
+
 .. code-block:: bash
 
     #!/bin/bash -l
@@ -913,7 +927,7 @@ CPU constraints
 
     lscpu
 
-Large memory nodes
+**Large memory nodes**
 
 Some nodes have larger memory for workloads which require loading big data in memory, e.g. some bioinformatics workloads, or data processing/wrangling creating input data for Machine Learning and Deep Learning training jobs.
 
@@ -951,6 +965,8 @@ Some nodes have larger memory for workloads which require loading big data in me
 
 **Ex: In your jobscript use specify a large memory node, submit and confirm the memory size using free -h command**
 
+Using the script ``large-memory-node.sh`` which described as follows:
+
 .. code-block:: bash
 
     #!/bin/bash -l
@@ -962,7 +978,7 @@ Some nodes have larger memory for workloads which require loading big data in me
     free -h
 
 
-GPU constraints
+**GPU constraints**
 
 There are GPU nodes in Ibex cluster with GPUs of different microarchitecture. Note that all the GPUs on a single node are always of the same microarchitecture, there is no heterogeneity there.
 
@@ -1092,14 +1108,16 @@ There are GPU nodes in Ibex cluster with GPUs of different microarchitecture. No
      - 1.16
      - 1.5
 
-**Ex: In your jobscript use gtx1080ti, then change it to a v100, submit and confirm the GPU type each time using nvidia-smi command.**
+**Ex: In your jobscript use rtx2080ti, then change it to a v100, submit and confirm the GPU type each time using nvidia-smi command.**
+
+Using the script ``gpu-constraints.sh`` which described as follows:
 
 .. code-block:: bash
 
     #!/bin/bash -l
     #SBATCH --time=00:10:00
     #SBATCH --gpus=1
-    #SBATCH --constraint=gtx1080ti #v100
+    #SBATCH --constraint=rtx2080ti #v100
     #SBATCH --reservation=ibex101
 
     nvidia-smi
@@ -1110,13 +1128,17 @@ Application examples
 Data Science
 --------------
 
-We'll use Jupyter for for the DS workload example.
+We'll use **Jupyter** for the DS workload example.
+
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/application-examples/DS
 
 There are Multiple ways to launch Jupyter on Ibex:
 
-- Launch jupyter in one line
+- Launch **Jupyter** in one line
 
-Using the file ``launch-jupyter-one-line.sh``
+Using the file ``launch-jupyter-one-line.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1133,7 +1155,7 @@ Using the file ``launch-jupyter-one-line.sh``
         jupyter lab --no-browser --ip="$(hostname)".ibex.kaust.edu.sa
     )
 
-Run the following command to run on one gtx1080ti GPU:
+Run the following command to run on one GPU:
 
 .. code-block:: bash
 
@@ -1152,9 +1174,9 @@ Now on your terminal you will see the same kind of message from jupyter.
 Copy one of the lines of that start with ``http://gpuXXX-XX`` into your browser.  You can now start using Jupyter.
 
 
-- Batch job for Jupyter
+- Batch job for **Jupyter**
 
-Using the file ``launch-jupyter-server.sh``
+Using the file ``launch-jupyter-server.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1225,7 +1247,7 @@ Now we are ready to use our Jupyter client.
 
 **Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs**
 
-Using the script ``single-node-2GPUs-job.sh``
+Using the script ``single-node-2GPUs-job.sh`` which described as follows:
 
 .. code-block:: bash
 
@@ -1270,11 +1292,9 @@ Expected output:
 
     Loading machine_learning/2024.01
     Loading requirement: gcc/13.2.0 cuda/11.8
-    CUDA is available. Number of GPUs: 4
+    CUDA is available. Number of GPUs: 2
     GPU 0: NVIDIA GeForce GTX 1080 Ti
     GPU 1: NVIDIA GeForce GTX 1080 Ti
-    GPU 2: NVIDIA GeForce GTX 1080 Ti
-    GPU 3: NVIDIA GeForce GTX 1080 Ti
     Using GPU: NVIDIA GeForce GTX 1080 Ti
     Tensor created on: cuda:0
     Matrix multiplication completed.
@@ -1287,9 +1307,13 @@ Expected output:
 Bioinformatics
 ---------------
 
-We'll be using FastQC as an example.
+We'll be using **FastQC** as an example.
 
-Using the jobscript ``fastqc.sh``
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101_labs/application-examples/Bio
+
+Using the jobscript ``fastqc.sh`` which described as follows:
 
 .. code-block:: bash
 
