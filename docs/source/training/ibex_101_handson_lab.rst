@@ -1390,11 +1390,9 @@ View the output file
 
 User survey
 ============
-Please provide your feedback about this workshop and suggestions using this survey `link <https://forms.gle/PHwmiK3WN9DNYVuBA>`_.
+We value your feedback. Please access the survey form `by clicking here <https://forms.gle/PHwmiK3WN9DNYVuBA>`_ or scan the following QR Code below:
 
-Or scan the following QR Code:
-
-.. image:: ../static/survey.png
+.. image:: ../static/survey_v2.png
 
 
         
