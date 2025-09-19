@@ -1392,36 +1392,4 @@ User survey
 ============
 We value your feedback. Please access the survey form `by clicking here <https://forms.gle/PHwmiK3WN9DNYVuBA>`_ or scan the following QR Code below:
 
-.. image:: ../static/survey_v2.png
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.. image:: ../static/survey.png
