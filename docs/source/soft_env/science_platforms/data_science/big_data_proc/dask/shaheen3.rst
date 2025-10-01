@@ -30,7 +30,7 @@ Users can either install in a conda environment or via ```pip```.
 Using ```conda``` package
 **************************
 
-If you haven't installed ```miniconda``` already, please refer to :ref:`_conda_shaheen3`.
+If you haven't installed ```miniconda``` already, please refer to :ref:`conda_shaheen3`.
 A new environment can be created as follows, with Dask installed: 
 
 .. code-block::

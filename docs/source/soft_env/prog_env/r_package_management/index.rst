@@ -189,7 +189,7 @@ For using the installed package, please set the ``R_LIBS_USER`` variable before 
 Interactive session
 ********************
 
-Please refer to section :ref:`r_interactive_shaheen`.
+Please refer to section :ref:`interactive_r_shaheen`.
 
 R batch job
 ************************

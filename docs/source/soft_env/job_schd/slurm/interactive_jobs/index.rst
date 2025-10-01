@@ -3,6 +3,8 @@
     :description: Interactive jobs with SLURM
     :keywords: jupyter,codeserver, x11, paraview, visit, rstudio
 
+.. _interactive_jobs:
+
 ============================
 Interactive jobs with SLURM
 ============================

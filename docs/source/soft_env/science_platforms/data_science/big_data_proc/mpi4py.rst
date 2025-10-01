@@ -33,7 +33,7 @@ To use the ``mpi4py`` package maintained by the KSL applications team, simply lo
     srun -n ${SLURM_NTASKS} -N ${SLURM_NNODES} --hint=nomultithread python myMPIscript.py
 
 
-For using ``mpi4py`` in a self-managed Python, in a conda environment, first the package needs to be installed correctly. Assuming you have created a conda environment using the instructions provided in :ref:`_conda_shaheen3` ``mpi4py`` can be compiled as show below. Here the example assumes the name of the conda environment ``myenv`` and the desired version of ``mpi4py`` is 3.1.4.
+For using ``mpi4py`` in a self-managed Python, in a conda environment, first the package needs to be installed correctly. Assuming you have created a conda environment using the instructions provided in :ref:`conda_shaheen3` ``mpi4py`` can be compiled as show below. Here the example assumes the name of the conda environment ``myenv`` and the desired version of ``mpi4py`` is 3.1.4.
 
 .. code-block:: bash
 
