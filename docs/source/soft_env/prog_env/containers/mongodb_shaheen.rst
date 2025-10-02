@@ -67,8 +67,8 @@ Here is how the database launch jobscript looks like:
 
 
     module load singularity
-    #Grep the IP address for Cray Aries interface
-    export IP_ADDR=$(ifconfig ipogif0 | grep inet | cut -d " " -f 10)
+    #Grep the IP address
+    export IP_ADDR=$(ip address|awk '/hsn/{found=1} found'|grep "inet "|awk -F ' |/' '{print $6}')
     echo IP_ADDRESS=$IP_ADDR
 
     cd /project/k01/shaima0d/mongo_test
