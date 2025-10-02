@@ -61,10 +61,9 @@ Here is how the database launch jobscript looks like:
 
 .. code-block:: bash
 
-    #!/bin/bash
+    #!/bin/bash -x
     #SBATCH --time=00:30:00
     #SBATCH --nodes=1
-
 
     module load singularity
     #Grep the IP address
