@@ -1,0 +1,8 @@
+/* Limit height of Jupyter cell outputs (scrollable) */
+div.cell_output {
+    max-height: 400px;    /* adjust as needed */
+    overflow-y: auto;     /* vertical scrollbar */
+    overflow-x: auto;     /* horizontal scrollbar */
+    font-size: 90%;       /* optional: makes dense output */
+    line-height: 1.2;     /* optional: reduces vertical space */
+}
