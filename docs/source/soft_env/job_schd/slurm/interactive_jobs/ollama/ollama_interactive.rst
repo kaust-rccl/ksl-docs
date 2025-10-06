@@ -6,7 +6,7 @@
 .. _using_ollama:
 
 ======================================
-Ollama - Interactive method with Singularity 
+Ollama - Interactive Method with Singularity 
 ======================================
 
 Run the following steps line by line.
