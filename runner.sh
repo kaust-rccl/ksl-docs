@@ -5,7 +5,7 @@ else
        MESSAGE=${2}
 fi
 
-
+sdfds
 while getopts "cuh" options; do 
   case ${options} in
     h )
