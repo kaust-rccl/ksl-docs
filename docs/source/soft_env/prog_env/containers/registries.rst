@@ -71,7 +71,7 @@ Paste the copied API key. For the org choices, copy the org name adjacent to you
 Pulling an Image from NGC with Singularity
 ------------------------------------------
 
-1. NGC container images are usually big in size. We prefer to pull these images either on user dieectiry which is WekaIO filesystem . First set the Singularity temporary directory.
+1. NGC container images are usually big in size. We prefer to pull these images on user directory which is WekaIO filesystem . First set the Singularity temporary and cache directories.
 
 .. code-block:: bash
     

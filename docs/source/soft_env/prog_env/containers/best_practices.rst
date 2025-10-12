@@ -60,6 +60,9 @@ Effectively managing container images on HPC clusters is crucial for maintaining
 - **cache management**: By default Docker image blobs are cached in ~/.singularity/cache
   
   It can fill pretty quickly you pull different images frequently.
+
+  Move the cache directory to your user directory.
+  export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
   
 .. note::
 
