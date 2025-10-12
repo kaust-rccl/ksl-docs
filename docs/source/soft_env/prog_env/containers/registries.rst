@@ -76,6 +76,8 @@ Pulling an Image from NGC with Singularity
 .. note::
 
       SINGULARITY_TMPDIR — specifies the temporary workspace for intermediate files during container builds or image operations.
+
+      
       SINGULARITY_CACHEDIR — defines the persistent directory used to store and reuse downloaded image layers and metadata across sessions.
 
 .. code-block:: bash
