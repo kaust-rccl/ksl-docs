@@ -23,9 +23,9 @@ Sessions
      - Slides
      - Session recording
    * - Data Science on-boarding on KSL Platforms
-     - Dec 14th, 2023 
-     - `Slides <https://drive.google.com/file/d/1pVKf_D8D-nFvTj0e7FbpisHT9ea1wnaV/view?usp=drive_link>`_
-     - `Recording <https://youtu.be/Pcdsz6uKh8g>`_
+     - Oct 5th, 2025 
+     - `Slides <https://drive.google.com/file/d/1DZoN-ovPyrYdYQbx6YsIO7wCEBYsK5LG/view?usp=drive_link>`_
+     - Recording
    * - Ibex 101
      - Oct 7th, 2024
      - `Slides <https://drive.google.com/file/d/12Ffi_dUpxC6henXfRu_Vz9l5dGtk1C6r/view?usp=share_link>`_

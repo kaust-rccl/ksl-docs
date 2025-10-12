@@ -50,28 +50,27 @@ Working with the image:
 
 Since :code:`/home` filesystem is shared between Ibex and Shaheen, you would be able to access this image file from Shaheen login node as well. 
 
-Let’s switch back to Shaheen. Copy or move your image file :code:`mongo.sif`` to somewhere in your project directory. For example, I have copied mine in :code:`/project/k01/shaima0d/mongo_test`.  Mongo DB requires a write permitted space to do some housekeeping for the database. We need to create a directory, e.g. data, and bind it when launching the database instance.
+Let’s switch back to Shaheen III. Copy or move your image file :code:`mongo.sif`` to somewhere in your scratch directory. For example, I have copied mine in :code:`/scratch/${USER}/mongo_test`.  Mongo DB requires a write permitted space to do some housekeeping for the database. We need to create a directory, e.g. data, and bind it when launching the database instance.
 
 .. code-block:: bash
 
-    cd /project/k01/shaima0d/mongo_test
-    mkdir data
+   mkdir -p /scratch/${USER}/mongo_test/data
+   cd /scratch/${USER}/mongo_test/data
 
 Here is how the database launch jobscript looks like:
 
 .. code-block:: bash
 
-    #!/bin/bash
+    #!/bin/bash -x
     #SBATCH --time=00:30:00
     #SBATCH --nodes=1
 
-
     module load singularity
-    #Grep the IP address for Cray Aries interface
-    export IP_ADDR=$(ifconfig ipogif0 | grep inet | cut -d " " -f 10)
-    echo IP_ADDRESS=$IP_ADDR
+    #Grep the IP address
+    export IP_ADDR=$(ip -4 address show dev hsn0 | grep "inet "|awk -F ' |/' '{print $6}')
+    echo "MONGODB is running on IP address ${IP_ADDR}"
 
-    cd /project/k01/shaima0d/mongo_test
+    cd /scratch/${USER}/mongo_test
     singularity run ./mongo.sif mongod --noauth --bind_ip localhost,${IP_ADDR} --dbpath=$PWD/data
 
 The above jobscript should launch a mongodb daemon in a secure manner. Now we are ready to connect with it. Let’s connect our client. Note the IP address from the :code:`slurm-xxxxxx.out` file where the database server was running, e.g. :code:`10.109.197.13`
@@ -81,7 +80,7 @@ Load the singularity module and ask for an interactive session with the :code:`s
 .. code-block:: bash
 
     module load singularity
-    srun --time=00:30:00 --nodes=1 --pty singularity exec -B $PWD/data:/data/db $PWD/container/mongo.sif mongosh --host 10.109.197.13
+    srun --time=00:30:00 --nodes=1 --pty singularity exec -B $PWD/data:/data/db $PWD/container/mongo.sif mongosh --host <ip-address-of-mongod>
 
 After the resources are allocated you will see the output like this below:
 
@@ -123,7 +122,7 @@ After the resources are allocated you will see the output like this below:
 
 .. note::
 
-    Since mongod launched in the Jobscript is listening on Cray Aries interconnect, it is necessary that the client runs on a compute node to connect to the IP address of the device where this server is running. The client won’t run on login node.
+    Since mongod launched in the Jobscript is listening on Shaheen III's interconnect, it is necessary that the client runs on a compute node to connect to the IP address of the device where this server is running. Although the client will run on login node, it is not recommended.
 
     The legacy mongo shell is no longer included in server packages as of MongoDB 6.0. mongo has been superseded by the mongosh
     https://www.mongodb.com/docs/mongodb-shell/
