@@ -54,12 +54,15 @@ Effectively managing container images on HPC clusters is crucial for maintaining
 - **Image Cleanup**: Regularly clean up unused or outdated container images to free up storage space.
 
   For large images, pull may fail due to insufficient space in /tmp
-  Run singularity pull command in $HOME which is NFS
-  export SINGULARITY_TMPDIR=$HOME/some/path
+  Run singularity pull command in user directory.
+  export SINGULARITY_TMPDIR=/ibex/user/$USER/some/path
 
 - **cache management**: By default Docker image blobs are cached in ~/.singularity/cache
   
   It can fill pretty quickly you pull different images frequently.
+
+  Move the cache directory to your user directory.
+  export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
   
 .. note::
 
