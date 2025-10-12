@@ -73,6 +73,11 @@ Pulling an Image from NGC with Singularity
 
 1. NGC container images are usually big in size. We prefer to pull these images on user directory which is WekaIO filesystem . First set the Singularity temporary and cache directories.
 
+.. note::
+
+      SINGULARITY_TMPDIR — specifies the temporary workspace for intermediate files during container builds or image operations.
+      SINGULARITY_CACHEDIR — defines the persistent directory used to store and reuse downloaded image layers and metadata across sessions.
+
 .. code-block:: bash
     
       export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
