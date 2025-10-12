@@ -71,11 +71,12 @@ Paste the copied API key. For the org choices, copy the org name adjacent to you
 Pulling an Image from NGC with Singularity
 ------------------------------------------
 
-1. NGC container images are usually big in size. We prefer to pull these images either on WekaIO filesystem or home directory. First set the Singularity temporary directory to home.
+1. NGC container images are usually big in size. We prefer to pull these images either on user dieectiry which is WekaIO filesystem . First set the Singularity temporary directory.
 
 .. code-block:: bash
     
-      export SINGULARITY_TMPDIR=$HOME/tmpdir
+      export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
+      export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
 
 2. Similar to Docker Hub, use the ``singularity pull`` command to fetch NGC images and convert them to SIF format. For example:
 
