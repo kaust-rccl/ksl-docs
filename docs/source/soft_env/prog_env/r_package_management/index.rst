@@ -124,13 +124,11 @@ Passing compiler configuration FLAGs
 
 Sometime R requires extra help to get directions where include headers and dynamic libraries are located. This is usually needed in the configure step of C , C++, or Fortran codes. For example, the following is a package that depends on NetCDF and requires headers information where they are. These flags can be listed in a file ``${SCRATCH}/.R/Makevars`` and R will honour them when compiling the package.
 
-The following steps are executed in an interactive session on a Shaheen III compute node. Note that internet access is only on nodes in SLURM partition ``ppn``. Please allocate a compute node for an interactive R session in this partition:
+The following steps are executed on a Shaheen III login node. 
 
 .. code-block:: bash
 
-    srun -n 1 -c 192 -t 0:30:0 -p ppn --pty bash
     module swap PrgEnv-cray PrgEnv-gnu
-    module swap craype-x86-genoa craype-x86-milan
     module load cray-netcdf
     module load cray-R
 
@@ -138,8 +136,8 @@ Create the ``Makevars`` if it doesn’t already exist:
 
 .. code-block:: bash
     
-    mkdir -p ${SCRATCH}/.R
-    touch ${SCRATCH}/.R/Makevars
+    mkdir -p ${HOME}/.R
+    touch ${HOME}/.R/Makevars
 
 The contents of ``Makevars`` can be:
 
@@ -148,20 +146,20 @@ The contents of ``Makevars`` can be:
     CC=cc
     CXX=CC
     FC=ftn
-    CFLAGS=-I/opt/cray/pe/netcdf/4.9.0.7/GNU/9.1/include
-    LDFLAGS=-L/opt/cray/pe/netcdf/4.9.0.7/GNU/9.1/lib
+    CFLAGS=-I/opt/cray/pe/netcdf/4.9.0.13/GNU/12.3/include
+    LDFLAGS=-L/opt/cray/pe/netcdf/4.9.0.13/GNU/12.3/lib
 
 Now we can call the package installer either in a ''R''' interactive session or with ''R CMD INSTALL'' command line interface.
 
 .. code-block:: bash 
 
     > R
-    R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
-    Copyright (C) 2022 The R Foundation for Statistical Computing
-    Platform: x86_64-suse-linux-gnu (64-bit)
+    R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+    Copyright (C) 2024 The R Foundation for Statistical Computing
+    Platform: x86_64-suse-linux-gnu
     .....
     > install.packages('ncdf4')
-    Installing package into '/lustre/scratch/project/k01/exclude/shaima0d/tickets/48534/libs'
+    Installing package into ‘/scratch/akbudak/iops/sw/rlibs’
     (as 'lib' is unspecified)
     --- Please select a CRAN mirror for use in this session ---
     Secure CRAN mirrors 
@@ -170,14 +168,14 @@ Now we can call the package installer either in a ''R''' interactive session or 
     ....
 
     **********************  Results of ncdf4 package configure *******************
-    
+
     netCDF v4 CPP flags      = -DpgiFortran
-    netCDF v4 LD flags       =    
-    netCDF v4 runtime path   =  
-    
+    netCDF v4 LD flags       =    -L/opt/cray/pe/netcdf/4.9.0.13/GNU/12.3//lib
+    netCDF v4 runtime path   =
+
     netCDF C compiler used   = cc
-    R      C compiler used   = cc -I/opt/cray/pe/netcdf/4.9.0.7/GNU/9.1/include
-    
+    R      C compiler used   = cc -I/opt/cray/pe/netcdf/4.9.0.13/GNU/12.3/include
+
     ******************************************************************************
 
     .....
