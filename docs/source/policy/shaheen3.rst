@@ -75,9 +75,9 @@ The table below show the job limits enforced on different partitions.
      - --
    * - ppn
      - exclusive
-     - 15
-     - 3840
-     - 15
+     - 14
+     - 3584
+     - 14
      - 1(default)/24(max)
      - --
      - --
