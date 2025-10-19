@@ -19,25 +19,22 @@ The jobscripts below examplify how the MPI and OpenMP processes are mapped by de
 
 
 .. important::
-    Not all filesystems are available for access on all compute nodes. Additionally, internet access is available on a subset of compute nodes. Following is the list of notable differences:
+    Not all filesystems are available for access on all compute nodes. Additionally, internet access is not available on any compute nodes. Following is the list of notable differences:
 
      * On compute nodes in ``workq``, ``shared`` and ``72hours`` partition
 
        - ``scratch`` is accessible with read/write permission
        - ``project`` is accessible with **read only** permission. Jobs running on compute nodes of ``workq`` will not be able to write on project directory.
        - ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory    
-       - No internet access is available on these compute nodes
   
      * On compute nodes in ``ppn`` partition
   
        -  Both ``scratch`` and ``project`` are accessible with read/write permission
        -  ``home`` is not mounted. Instead, the ``$HOME`` variable points to ``/scratch/$USER`` directory
-       -  Compute nodes can access internet
   
      * On compute nodes in ``dtn`` partition 
     
        - ``scratch``, ``project`` and ``home`` are all accessible with read/write permission
-       - Compute nodes can access internet
 
 .. note::
     Because compute nodes in ``workq`` partition don't have write permission on project directory and don't mount the home directory, the **users must submit their jobs from their scratch directory**.
