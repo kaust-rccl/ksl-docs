@@ -57,7 +57,7 @@ User HPC filesystem
 
 `/ibex/user/$USER` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the `/home` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
 
-User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
+User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota**. 
 
 Users can check their quota on `/ibex/user/$USER` using the following command:
 
