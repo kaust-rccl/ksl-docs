@@ -65,6 +65,6 @@ User HPC directory
 -------------------
 
 * ``/ibex/user/$USER`` is your HPC storage. Use this storage for saving the output of, and input to compute jobs. This is much faster than your home directory so your jobs will run quicker. 
-* This directory has a limit of 1.5TB. If you need more storage contact the Ibex support team. 
+* This directory has a limit of 1.5TB.
 * ``/tmp`` is for job specific temporary files specify this directory. Once your job finishes all files in this directory will be deleted. Placing job temporary data in this directory will result in higher performance than storing it in your scratch area; won't contribute towards your used quota; and will automatically be deleted when your job finishes.
 
