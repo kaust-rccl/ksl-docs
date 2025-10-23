@@ -189,8 +189,8 @@ On the glogin node you can pull the image from DockerHub:
 .. code-block:: bash 
 
     module load singularity
-    cd $HOME
-    export SINGULARITY_TMPDIR=$HOME
+    export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
+    export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
     singularity pull docker://krccl/horovod_gpu:0192
 
 Once you end up pulling the image successfully, singularity will convert it into a Singularity Image File or SIF , which is a monolithic and static binary file (you can copy it in /ibex/scratch if you wish).

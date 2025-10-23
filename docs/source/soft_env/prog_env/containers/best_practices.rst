@@ -55,7 +55,7 @@ Effectively managing container images on HPC clusters is crucial for maintaining
 
   For large images, pull may fail due to insufficient space in /tmp
   Run singularity pull command in user directory.
-  export SINGULARITY_TMPDIR=/ibex/user/$USER/some/path
+  export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
 
 - **cache management**: By default Docker image blobs are cached in ~/.singularity/cache
   
