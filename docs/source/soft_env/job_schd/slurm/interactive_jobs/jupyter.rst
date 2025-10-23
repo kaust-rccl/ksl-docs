@@ -115,8 +115,6 @@ For Tensorboard, you can write http://127.0.0.1:<second_port> from the SSH line 
 
 * Once you are finished with your work, please navigate to the file menu of Jupyter Lab and select "Shutdown" and this will terminate the Jupyter Lab server on the compute node and conclude the job. 
 
-
-
 Job on Ibex
 -------------------
 
@@ -178,7 +176,7 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
     
 
 Steps to do after Job starts
-=============================
+***********************
 
 Once the job starts, the SLURM output file created in the directory you submitted the job from will have the instructions on how to connect. 
 Check the following output in  SLURM output will look something like this:
@@ -206,6 +204,189 @@ Check the following output in  SLURM output will look something like this:
 - Be aware that the root directory in your Jupyter file browser is the directory you submitted the job from. 
 
 - We can now do some computations. Since this Jupyter job asked for, let’s test the GPU. Note that all the required modules should have been loaded in your jobscript before submitting.
+
+Ibex - Launching JupyterLab in a Container
+--------------------------------------
+
+Below is an example job script to launch a Jupyter server on Ibex from NGC container: `nvcr.io/nvidia/ai-workbench/python-basic:1.0.8 <https://catalog.ngc.nvidia.com/orgs/nvidia/teams/ai-workbench/containers/python-basic?version=1.0.8>`_ . 
+
+The output of this job will have instructions to follow steps to connect ot the running Jupyter server session.
+
+To Start, Copy the content of the below *jupyter_access.sh* script.
+
+.. code:: bash
+
+   #!/bin/bash -l
+   #SBATCH --time=00:30:00
+   #SBATCH --nodes=1
+   #SBATCH --gpus-per-node=v100:1
+   #SBATCH --cpus-per-gpu=6
+   #SBATCH --mem=32G
+   #SBATCH --partition=batch
+   #SBATCH --job-name=jupyter
+
+   set -euo pipefail
+
+   ### Load the modules you need for your job
+   module purge
+   module load singularity
+
+   ### Helper Functions Definitions
+   checking_container_image() {
+       ## 1. Define variables
+       
+       ## 2. Validate and pull the image if it is not available or is corrupted
+       # Check if image already exists
+       if [[ ! -f "${SIF_FILE_PATH}" ]]; then
+           echo "[FAIL] Image not found. Pulling from ${IMAGE_NAME} ..."
+           singularity pull "${SIF_FILE_PATH}" "docker://${IMAGE_NAME}"
+       else
+           echo "[OK] Found existing SIF file: ${SIF_FILE_PATH}"
+
+           # Try running singularity inspect (safe way to check validity)
+           if singularity inspect "${SIF_FILE_PATH}" > /dev/null 2>&1; then
+               echo "[OK] Validation successful. Image is usable."
+           else
+               echo "[FAIL] Existing file is corrupted or invalid. Re-pulling..."
+               rm -f "${SIF_FILE_PATH}"
+               singularity pull "${SIF_FILE_PATH}" "docker://$IMAGE_NAME"
+           fi
+       fi
+       echo "[OK] Using image: ${SIF_FILE_PATH}"
+   }
+
+   preparing_jupyter_environment() {
+       for var in JUPYTER_CONFIG_DIR JUPYTER_DATA_DIR JUPYTER_RUNTIME_DIR IPYTHONDIR; do
+           dir="${!var}"   # expand value of the variable
+           if [[ ! -d "$dir" ]]; then
+               echo "[FAIL] ${var} was not found. Creating $var directory at: $dir"
+               mkdir -p "$dir"
+           else
+               echo "[OK] Found existing $var directory at: $dir"
+           fi
+       done
+   }
+
+   ### Pulling the Python AI-WorkBench NGC image
+   echo "=== 1/3 Checking Container Image ==="
+   IMAGE_NAME="nvcr.io/nvidia/ai-workbench/python-basic:1.0.8"
+   SIF_FILE_NAME="python-basic_1.0.8.sif"
+   SIF_FILE_PATH="${SLURM_SUBMIT_DIR}/${SIF_FILE_NAME}"
+   checking_container_image
+
+   echo "=== 2/3 Preparing Jupyter Environment Variables ==="
+   ### Define Jupyter Variables
+   export SCRATCH_IOPS=/ibex/user/$USER/
+   export JUPYTER_CONFIG_DIR=${SCRATCH_IOPS}/.jupyter
+   export JUPYTER_DATA_DIR=${SCRATCH_IOPS}/.local/share/jupyter
+   export JUPYTER_RUNTIME_DIR=${SCRATCH_IOPS}/.local/share/jupyter/runtime
+   export IPYTHONDIR=${SCRATCH_IOPS}/.ipython
+   # Ensure Jupyter/IPython directories exist
+   preparing_jupyter_environment ${SCRATCH_IOPS}
+
+   # ------------------------------------
+   # START OF USER CONDA ENVIRONMENT SECTION
+   # ------------------------------------
+   # You can use the machine learning module
+   module load machine_learning/2024.08
+
+   # You can activate the conda environment directly by uncommenting the following lines
+   # source /ibex/user/$USER/miniforge/etc/profile.d/conda.sh
+   # conda activate <YOUR_ENV>
+
+   # Alternatively, you can provide the full path to the Conda environment if it was built in a specific location.
+   # export ENV_PREFIX=/ibex/user/$USER/conda-environments/<ENV>
+   # conda activate $ENV_PREFIX
+   # ------------------------------------
+   # END OF USER CONDA ENVIRONMENT SECTION
+   # ------------------------------------
+
+   echo "=== 3/3 Starting Jupyter ==="
+   ### Setup SSH tunneling information
+   export XDG_RUNTIME_DIR=/tmp
+   node=$(hostname -s)
+   user=$(whoami)
+   submit_host=${SLURM_SUBMIT_HOST}
+   port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+
+   instructions="
+   1. To connect to the compute node ${node} on IBEX running your jupyter notebook server, you need to run following two commands in a new terminal on your workstation/laptop.
+
+   ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa
+
+   Copy the URL provided below by jupyter-server (one starting with http://127.0.0.1/...) and paste it in your browser on your workstation/laptop.
+
+   Do not forget to close the notebooks you open in you browser and shutdown the jupyter client in your browser for gracefully exiting this job or else you will have to manually cancel this job running your jupyter server."
+
+   # -------------------------------
+   # Run Jupyter Lab inside NGC container
+   # -------------------------------
+   singularity exec --nv \
+       -B /ibex -B $CONDA_PREFIX  \
+       --env "PATH=$CONDA_PREFIX/bin:\$PATH" --env CONDA_PREFIX=$CONDA_PREFIX \
+       ${SIF_FILE_NAME} \
+       /bin/bash -lc "echo -e '${instructions}'
+       jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0 \
+       --ip=${node}.ibex.kaust.edu.sa \
+       --NotebookApp.custom_display_url='http://${node}.ibex.kaust.edu.sa:${port}/lab'"
+
+Then start running the job using:
+
+.. code-block:: bash
+
+    sbatch jupyter_access.sh
+
+Steps After The Job Starts
+***********************
+
+1. Please note that the job starting takes some few to setup.
+2. Open the slurm-#####.out file and copy the command to establish ssh
+   tunnel. For example:
+
+.. code-block:: bash
+
+   ssh -L 46929:gpu214-02.ibex.kaust.edu.sa:46929 <username>@glogin.ibex.kaust.edu.sa
+
+3. Paste the copied command in a new terminal.
+4. In the end of the SLURM output file, you find a guide message to access Jupyter server, like below:
+
+.. code-block:: bash
+
+   To access the server, open this file in a browser:
+   file:///home/username/.local/share/jupyter/runtime/jpserver-44653-open.html
+   Or copy and paste one of these URLs:
+    http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
+   or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
+
+5. Now copy the URL that starts with "*http://127.0.0.1:\<port-number>/\<secret-token-auth>*" from the end of SLURM output file.
+
+- Please copy the full URL, the hash at the end is the secret token and Jupyter Lab uses it to authenticate you as the owner of the session.
+
+6. Once you are finished with your work, please navigate to the file
+   menu of Jupyter Lab and select “Shutdown” and this will terminate the
+   Jupyter Lab server on the compute node and conclude the job.
+   
+
+User Customization Section
+***********************
+
+- This section of the script is reserved for user-specific Conda nvironment setup to activate a particular Conda environment.
+- In the script, you will find a clearly marked block:
+
+.. code-block:: bash
+
+  # ------------------------------------   
+  # START OF USER CONDA ENVIRONMENT SECTION   
+  # ------------------------------------
+
+- This section is reserved for your own customizations. Here, you can:
+
+  1. Load required Machine Learning modules on Ibex.
+  2. Activate a specific Conda environment.
+
+..
+
+   Note: Do not modify other parts of the script unless you are sure, as they are required for correct execution.
 
 Ibex - launch jupyter-one-line
 --------------------------------------
