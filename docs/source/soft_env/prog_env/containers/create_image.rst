@@ -90,9 +90,17 @@ You can define environment variables within the container to customize its behav
 Build the container
 -------------------
 
+.. note::
+
+      SINGULARITY_TMPDIR — specifies the temporary workspace for intermediate files during container builds or image operations.
+
+      
+      SINGULARITY_CACHEDIR — defines the persistent directory used to store and reuse downloaded image layers and metadata across sessions.
+
 .. code-block:: bash
 
-    export SINGULARITY_TMPDIR=/tmp
+    export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
+    export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
     singularity build --fakeroot singularity_image.sif singularity_file.def
 
 The resulting singularity_file.sif can be run using commands like singularity run, singularity shell.
