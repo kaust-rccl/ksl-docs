@@ -207,10 +207,12 @@ Run the following command to build the conda environemnt.
 Starting JupyterLab
 ---------------------
 
-Instruction to start JupyterLab please follow the instructions provided on :ref:`using_jupyter` page, using your conda envrionment.
+Follow :ref:`using_jupyter` to start JupyterLab on a an Ibex GPU node Using your conda environment instead of ``machine_learning`` module.
+By making the following changes to the Jupyter launch script.
 
 .. code-block:: bash
-    
+
+    #module load machine_learning/2024.01
     conda activate ollama_env
 
 Starting the Ollama Server

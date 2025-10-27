@@ -77,7 +77,7 @@ Running DeepSpeed on single node with multiGPUs
 -------------------------------------------------
 Below is an example of a DeepSpeed job using 4 GPUs on a single node. The type of requested GPUs is ```v100``` with 32GB of GPU memory. 
 
-The example python script ``cifar10_deepspeed.py`` can be cloned from the `GitHub repository <https://github.com/microsoft/DeepSpeedExamples.git>`
+The example python script ``cifar10_deepspeed.py`` can be cloned from the `GitHub repository <https://github.com/microsoft/DeepSpeedExamples.git>
 
 
 .. code-block:: bash

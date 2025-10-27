@@ -83,10 +83,10 @@ highlight_options = {'stripall': True}
 googleanalytics_id = 'G-3QTH4PWE3F'
 googleanalytics_enabled=True
 
-# collections = {
-#    'visualization_vignettes': {
-#       'driver': 'git',
-#       'source': 'https://gitlab.kitware.com/jameskress/KAUST_Visualization_Vignettes.git'
-#    }
-# }
+collections = {
+   'visualization_vignettes': {
+      'driver': 'git',
+      'source': 'https://gitlab.kitware.com/jameskress/KAUST_Visualization_Vignettes.git'
+   }
+}
 

@@ -20,3 +20,4 @@ For launching Jupyter notebooks, RStudio or VSCode (codeserver) session on compu
    jupyter.rst
    rstudio.rst
    vscode.rst
+   ollama.rst

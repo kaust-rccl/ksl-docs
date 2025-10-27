@@ -145,7 +145,7 @@ For checking personal filesystem quotas on both ``scratch`` and ``project``, KSL
   -------------------------------------------------------------------------------------------
 
 .. note:: 
-  For reliable metrics related the project quota and its usage, please use ``kpq`` utility described later on this page. 
+  For reliable metrics related the project quota and its usage, please use :ref:`kpq` utility. 
 
 The same can be achieved by a user with the Lustre filesystem utility ``lfs`` on ``capacity``, ``bandwidth`` and ``iops`` tiers of ``scratch`` and on ``project`` respectively .  
 
