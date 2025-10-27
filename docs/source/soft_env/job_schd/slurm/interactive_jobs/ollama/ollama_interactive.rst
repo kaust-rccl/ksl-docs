@@ -8,8 +8,11 @@
 ======================================
 Ollama - Interactive Method with Singularity 
 ======================================
+Learn how to launch and interact with Ollama models directly from the shell terminal. Ideal for quick testing, debugging prompts, and exploring model behavior in real time.
 
-Run the following steps line by line.
+To Start
+-------------------------
+Run the following steps line by line:
 
 .. code-block:: bash
 
@@ -47,14 +50,14 @@ Run the following steps line by line.
     singularity exec instance://ollama ollama run deepseek-r1:1.5b
 
 To Terminate
-*********************** 
+------------------------- 
 
 - Exit the model with /bye or CTRL+d
 
 - Stop the server in the background using fg command then CTRL+c
 
-Execution Output
-=================
+Execution Output Example
+-------------------------
 
 Running the OLLAMA REST API server output:
 
@@ -90,7 +93,7 @@ Running example query for deepseek-r1:1.5b :
 
     >>> Send a message (/? for help)
 
-Running example query for llama3
+Running example query for llama3:
 
 .. code-block:: text
 
@@ -123,4 +126,3 @@ Running example query for llama3
     When you interact with me, my responses are generated using this pre-trained knowledge, and I can 
     provide information on a wide range of topics. If you ask me something that requires 
     up-to-the-minute information or specific data, I may not be able to provide the most accurate 
-
