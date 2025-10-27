@@ -19,6 +19,18 @@ Sessions
    * - What
      - When
      - Slides
+   * - Shaheen III CPU HPC 101 Fall 2025
+     - Oct 28th, 2025
+     -
+       - `Shaheen III Hardware Overview <>`_
+       - `How to apply on Shaheen III <>`_
+       - `Getting Started on Shaheen III <>`_
+       - `Software Environment <>`_
+       - `Job Scheduling <>`_
+       - `Storage overview & Best practices <>`_
+       - `Applications software example: VASP workflow <>`_
+       - `Applications software example: CFD applications <>`_
+       - `Applications software example: Bio informatics workflow <>`_
    * - Shaheen III CPU HPC 101 Spring 2025
      - Feb 4th, 2025
      -

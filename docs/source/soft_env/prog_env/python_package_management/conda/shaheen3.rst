@@ -79,7 +79,7 @@ The Conda environment ``myenv`` can be activated as follows:
 Installing complex environments
 =================================
 
-``conda`` environments can sometimes come with a lot of dependencies. This causes them to take long time to install. It is recommended to create such environments as a SLURM batch job instead of running interactively.
+``conda`` environments can sometimes come with a lot of dependencies. This causes them to take long time to install. 
 
 One prerequisite for this is to have an ``environment.yaml`` file listing all the required software and preferred channels to search these packages. Below is an example environment file:
 
@@ -112,24 +112,12 @@ One prerequisite for this is to have an ``environment.yaml`` file listing all th
         - jupyterlab_nvdashboard
         - pytorch-lightning
 
-The example jobscript will look something as below:
+The environment can be installed as follows:
 
 .. code-block:: bash
 
-  #!/bin/bash
-  #SBATCH --time 01:0:0
-  #SBATCH --partition=ppn
-
   source $MY_SW/miniconda3-amd64/bin/activate
-
   mamba env create -f environment.yaml -p $MY_SW/envs/pytorch
-
-And can be submitted to SLURM with the following command.
-
- .. code-block:: bash
-
-  sbatch job.slurm
-
 
 Running jobs with ``conda`` environments
 =========================================
