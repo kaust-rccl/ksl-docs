@@ -15,9 +15,9 @@ Copy jobs
 ==========
 Copy jobs are best run on dedicated data transfer node or ``dtn`` nodes. 
 Jobs that require moving data e.g. 
- * between tiers of scratch  ``/scratch/$USER/`` to ``/scratch/$USER/bandwidth`` and back
- * between ShaheenIII project and scratch
- * between Ibex and ShaheenIII filesystem
+* between tiers of scratch  ``/scratch/$USER/`` to ``/scratch/$USER/bandwidth`` and back
+* between ShaheenIII project and scratch
+* between Ibex and ShaheenIII filesystem
 
 .. note:: 
 

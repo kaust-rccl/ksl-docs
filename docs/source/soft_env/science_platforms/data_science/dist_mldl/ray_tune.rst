@@ -8,6 +8,7 @@
 =====================================================
 Ray Tune for Hyperparameter Optimization experiments
 =====================================================
+
 `Ray <https://docs.ray.io/en/latest/index.html#>`_ is a powerful opensource framework to scale Python and ML/DL workloads on clusters and cloud. `Ray Tune <https://docs.ray.io/en/latest/tune/index.html>`_ is a Python library from this Ray's ecosystem that allows experiment execution of Hyperparameter tuning at any scale. It integrates with popular machine learning frameworks (PyTorch, XGBoost, TensorFlow and Keras etc) and run battle tested search algorithms for finding best combination of hyperparameters to optimize the objective value e.g. minimizing loss, maximizing accuracy. It also have accessors to various scheduling the trials of an experiments to save on the computational resources and time to best fit.  
 
 On Shaheen III and Ibex, Ray Tune is available. This documentation mainly explains how to run the Ray Tune experiments. For more details on Ray Tune's functionality please refer to its `documentation <https://docs.ray.io/en/latest/tune/index.html>`_. 
@@ -51,9 +52,9 @@ Demo1
 
 Helloworld with Ray Tune on CPUs example
 
-Python file needed to run the demo `here <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo1/hello_tune.py>`_
+Python file needed to run the demo `hello_tune.py <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo1/hello_tune.py>`_
 
-.. code-block::
+.. code-block:: bash
     :caption: jobscirpt to start server and worker
 
     #!/bin/bash
@@ -65,7 +66,7 @@ Python file needed to run the demo `here <https://github.com/kaust-rccl/hpo-with
     #SBATCH --cpus-per-task=8
     #SBATCH --time=00:30:00
 
-    source ~/miniconda3/bin/activate ray2_2
+    source /ibex/user/$USER/miniconda3/bin/activate ray2_2
 
     export XDG_RUNTIME_DIR=$PWD 
     NUM_CPUS=${SLURM_CPUS_PER_TASK}
@@ -133,7 +134,7 @@ Demo1 interactive
 
 interactive Helloworld example
 
-jupyter notebooks for this demo found `here <https://github.com/kaust-rccl/hpo-with-ray/tree/master/demo1_interactive/helloworld>`_
+jupyter notebooks for this demo can be found in the directory `helloworld <https://github.com/kaust-rccl/hpo-with-ray/tree/master/demo1_interactive/helloworld>`_
 
 
 
@@ -214,7 +215,7 @@ jupyter notebooks for this demo found `here <https://github.com/kaust-rccl/hpo-w
 Demo2
 ------
 
-Python script needed to run demo `here <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo2/ray_mnist_pytorch.py>`_
+Python script needed to run demo `ray_mnist_pytorch.py <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo2/ray_mnist_pytorch.py>`_
 
 .. code-block::
     :caption: jobscirpt to start head node
@@ -427,7 +428,7 @@ Python script needed to run demo `here <https://github.com/kaust-rccl/hpo-with-r
 Demo3
 ------
 
-Python script can be found `here <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo3/ray_mnist_pytorch_pbt.py>`_
+Python script can be found `ray_mnist_pytorch_pbt.py <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo3/ray_mnist_pytorch_pbt.py>`_
 
 .. code-block::
     :caption: start head node
@@ -563,7 +564,7 @@ Python script can be found `here <https://github.com/kaust-rccl/hpo-with-ray/blo
 Demo4
 ------
 
-Python script can be found `here <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo4/ray_mnist_pytorch_wandb.py>`_
+Python script can be found `ray_mnist_pytorch_wandb.py <https://github.com/kaust-rccl/hpo-with-ray/blob/master/demo4/ray_mnist_pytorch_wandb.py>`_
 
 .. code-block::
     :caption: Wandb environment setup
@@ -724,7 +725,7 @@ Demo1
 
 Helloworld example
 
-Python script can be found `here <https://github.com/kaust-rccl/hpo-with-ray/blob/master/shaheen3/demo1/hello_tune.py>`_
+Python script can be found `hello_tune.py <https://github.com/kaust-rccl/hpo-with-ray/blob/master/shaheen3/demo1/hello_tune.py>`_
 
 .. code-block::
     :caption: start head node and worker node

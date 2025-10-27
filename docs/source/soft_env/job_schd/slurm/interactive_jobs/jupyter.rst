@@ -176,7 +176,7 @@ Below is an example jobscript to launch a jupyter server with GPU resources.
     
 
 Steps to do after Job starts
-***********************
+*******************************
 
 Once the job starts, the SLURM output file created in the directory you submitted the job from will have the instructions on how to connect. 
 Check the following output in  SLURM output will look something like this:
@@ -206,7 +206,7 @@ Check the following output in  SLURM output will look something like this:
 - We can now do some computations. Since this Jupyter job asked for, let’s test the GPU. Note that all the required modules should have been loaded in your jobscript before submitting.
 
 Ibex - Launching JupyterLab in a Container
---------------------------------------
+-------------------------------------------
 
 Below is an example job script to launch a Jupyter server on Ibex from NGC container: `nvcr.io/nvidia/ai-workbench/python-basic:1.0.8 <https://catalog.ngc.nvidia.com/orgs/nvidia/teams/ai-workbench/containers/python-basic?version=1.0.8>`_ . 
 
@@ -337,7 +337,7 @@ Then start running the job using:
     sbatch jupyter_access.sh
 
 Steps After The Job Starts
-***********************
+***************************
 
 1. Please note that the job starting takes some few to setup.
 2. Open the slurm-#####.out file and copy the command to establish ssh
@@ -368,7 +368,7 @@ Steps After The Job Starts
    
 
 User Customization Section
-***********************
+***************************
 
 - This section of the script is reserved for user-specific Conda nvironment setup to activate a particular Conda environment.
 - In the script, you will find a clearly marked block:
