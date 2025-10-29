@@ -21,9 +21,11 @@ extensions = [
     'sphinxcontrib.email',
     'sphinx_copybutton',
     'sphinxcontrib.collections',
-    'myst_parser'
-
+    'myst_nb'
 ]
+
+# Disable Notebook Execution by Myst_nb package.
+nb_execution_mode = "off"
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
@@ -66,7 +68,8 @@ html_sidebars = {
 html_context = {
     'css_files': [
         '_static/css/ksl.css',
-        '_static/css/copybutton.css'
+        '_static/css/copybutton.css',
+        '_static/css/scroll.css'
     ],
 
 }
@@ -87,6 +90,10 @@ collections = {
    'visualization_vignettes': {
       'driver': 'git',
       'source': 'https://gitlab.kitware.com/jameskress/KAUST_Visualization_Vignettes.git'
+   },
+   'data_science_onboarding':{
+       'driver': 'git',
+       'source': 'https://github.com/kaust-rccl/Data-science-onboarding.git',
    }
 }
 
