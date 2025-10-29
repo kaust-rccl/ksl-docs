@@ -11,3 +11,4 @@ sphinx-copybutton
 # myst-parser
 myst-nb
 sphinx-collections
+setuptools
