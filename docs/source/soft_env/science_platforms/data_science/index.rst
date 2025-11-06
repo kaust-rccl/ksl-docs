@@ -94,4 +94,11 @@ Debugging and profiling
     Profiling GPU workloads with NVIDIA Nsight <../../prof_debug/profiling/nsight-systems/index>
 
 
+Miscellaneous
+=========================
 
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    ollama/index

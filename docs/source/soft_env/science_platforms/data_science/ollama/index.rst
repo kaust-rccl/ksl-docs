@@ -13,7 +13,7 @@ Approach-1: Interactive Mode (Terminal-based)
 ==========================
 Learn how to launch and interact with Ollama models directly from the shell terminal. Ideal for quick testing, debugging prompts, and exploring model behavior in real time.
 
-.. figure:: ../../static/ollama_interactive_query_example.png
+.. figure:: ../static/ollama_interactive_query_example.png
    :alt: connect to Server
    :width: 100%
    :align: center
@@ -75,9 +75,9 @@ To use your Conda environment instead of the preloaded module, update your Jupyt
 .. note::
 
     See detailed steps in the following Jupyter notebooks :
-        - :doc:`OLLAMA - REST API Approach<../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-api-ibex>`
-        - :doc:`OLLAMA - Python Package Approach<../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-py-ibex>`
-        - :doc:`OLLAMA - Batch Evaluation Guide (LLM-as-a-Judge)<../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-batch-eval-ibex>`
+        - :doc:`OLLAMA - REST API Approach<../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-api-ibex>`
+        - :doc:`OLLAMA - Python Package Approach<../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-py-ibex>`
+        - :doc:`OLLAMA - Batch Evaluation Guide (LLM-as-a-Judge)<../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-batch-eval-ibex>`
 
 
 Next Steps
@@ -88,6 +88,6 @@ Next Steps
    :maxdepth: 1
 
    ollama_interactive
-   ../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-api-ibex
-   ../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-py-ibex
-   ../../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-batch-eval-ibex
+   ../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-api-ibex
+   ../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-py-ibex
+   ../../../../_collections/data_science_onboarding/notebooks/inference/ollama-interactive-inference/ollama-sif-batch-eval-ibex
