@@ -29,7 +29,7 @@ Deep Learning Optimization
 
     deepspeed_guide
 
-Fine Tuning
+Fine-Tuning
 =========================
 .. toctree::
     :titlesonly:

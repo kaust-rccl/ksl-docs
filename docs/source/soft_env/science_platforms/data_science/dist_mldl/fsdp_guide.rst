@@ -1,4 +1,4 @@
-Fine Tuning with Fully-Sharded Data Parallel (FSDP)
+Fine-Tuning with Fully-Sharded Data Parallel (FSDP)
 ===================================================
 
 `FSDP <https://docs.pytorch.org/tutorials/intermediate/FSDP1_tutorial.html>`__
