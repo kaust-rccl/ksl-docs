@@ -16,7 +16,7 @@ Recompile your applications!
 
 The recent operating system (OS) update (December 2025) applied to Shaheen includes changes to the modules with more recent versions of compilers and libraries. 
 We recommend recompiling all your applications. 
-All default libraries and software listed by the ``module avail`` are compiled and linked with the latest CPE 25.03.
+All available libraries and software listed by the ``module avail`` are compiled and linked with the latest CPE 25.03.
 
 Please note that the older CPE 24.07 and 24.11 are still available and will be deleted in the future. A newer CPE (25.09) is also available, though it has not been set as the default. 
 
