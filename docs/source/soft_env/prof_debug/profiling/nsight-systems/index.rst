@@ -5,10 +5,10 @@
 
 
 ###############
-NSight Systems
+Nsight Systems
 ###############
 
-NSight Systems is a suite of profiling tools. It provides a detailed performance profile of a workload, and can be used to identify bottlenecks and optimize performance.
+Nsight Systems is a suite of profiling tools. It provides a detailed performance profile of a workload, and can be used to identify bottlenecks and optimize performance.
 
 .. toctree::
    :titlesonly:

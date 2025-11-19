@@ -7,10 +7,10 @@
 
 
 =========================================
-NSight Systems with NVTX instrumentation
+Nsight Systems with NVTX instrumentation
 =========================================
 
-Deep learning workloads can be profiled to see how they use the GPU(s) and identify the hotspots of optimization. One of the tools is NVIDIA NSight Systems. The NVTX profiling API can also be used to annotate your code with events. NSight Systems can display these annotated regions. This can help identify specific areas of your code that are causing performance problems.
+Deep learning workloads can be profiled to see how they use the GPU(s) and identify the hotspots of optimization. One of the tools is NVIDIA Nsight Systems. The NVTX profiling API can also be used to annotate your code with events. Nsight Systems can display these annotated regions. This can help identify specific areas of your code that are causing performance problems.
 
 The following documentation will show how to profile a deep learning workload. The example scripts can be downloaded at `here <https://github.com/D-Barradas/GPU_profiling_ibex>`_. You can check the src folder and find ``train.py`` , ``train-profiler.py`` , ``train_nvtx.py``
 
