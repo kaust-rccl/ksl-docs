@@ -24,7 +24,7 @@ while getopts "cuh" options; do
         docker rm ksl-docs
      fi 
      docker pull krccl/ksl-docs:latest
-     docker run  --rm -ti --name ksl-docs -v ${PWD}:/workdir -w /workdir/docs krccl/ksl-docs:latest
+     docker run --platform linux/amd64 --rm -ti --name ksl-docs -v ${PWD}:/workdir -w /workdir/docs krccl/ksl-docs:latest
      ;;
     u )
      echo "commiting and pushing codebase to GitHub in dev branch. Once done, please create a pull request on GitHub to upstream your changes to main branch"     
