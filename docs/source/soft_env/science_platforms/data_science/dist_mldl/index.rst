@@ -20,3 +20,4 @@ Distributed ML/DL on KSL systems
     horovod
     matlab_dl
     ray_tune
+    jax_multinode
