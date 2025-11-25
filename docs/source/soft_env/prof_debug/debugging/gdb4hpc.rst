@@ -16,8 +16,8 @@ The debugger can be run as follows:
 
 .. code-block:: bash
 
+    $ module load cpe/25.09
     $ module load gdb4hpc
-    $ export CTI_SLURM_OVERRIDE_MC=1
     $ gdb4hpc
     dbg all> launch $a{8} --launcher-args="-N2" ./my_binary --args="arg1 arg2 arg3"
     Starting application, please wait...
