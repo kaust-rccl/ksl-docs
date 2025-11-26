@@ -15,8 +15,8 @@ The tool can be run as follows:
 
 .. code-block:: bash
 
+    $ module load cpe/25.09
     $ module load valgrind4hpc
-    $ export CTI_SLURM_OVERRIDE_MC=1
     $ valgrind4hpc --valgrind-args="--vgdb=no" -n8 --launcher-args="-N2" --outputfile=vout.txt <binary>
 
 The output of valgrind4hpc will be stored in ``vout.txt``. Errors for ranks are shown for collectively or separately depending on which ranks cause those errors:

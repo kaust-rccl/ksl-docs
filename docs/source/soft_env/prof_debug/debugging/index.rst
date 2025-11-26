@@ -16,3 +16,4 @@ The following tools are available for debugging:
 
    gdb4hpc
    valgrind4hpc
+   linaro-ddt
