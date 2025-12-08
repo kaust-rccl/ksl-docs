@@ -69,7 +69,8 @@ html_context = {
     'css_files': [
         '_static/css/ksl.css',
         '_static/css/copybutton.css',
-        '_static/css/scroll.css'
+        '_static/css/scroll.css',
+        '_static/css/colors.css'
     ],
 
 }
@@ -97,4 +98,10 @@ collections = {
        'git_options': '--config http.sslVerify=false'
    }
 }
+
+rst_prolog = """
+.. include:: <s5defs.txt>
+
+"""
+
 
