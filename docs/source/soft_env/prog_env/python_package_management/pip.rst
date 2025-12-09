@@ -90,4 +90,62 @@ Same as in Shaheen III, for Ibex, you will need to update the shell environment 
     srun -n 1 -c 8 python myscript.py
 
 
+Persistent ``pip`` installs with Singularity on Ibex
+-------------------------------------------------------
+
+When you install packages **inside** a Singularity container, they disappear once the container exits unless you write them to a persistent path outside the SIF. On Ibex, the recommended persistent location is ``/ibex/user/${USER}/software``. The workflow below keeps installs permanent and discoverable by the container.
+
+.. code-block:: bash
+
+        # 1) Create a persistent directory for custom Python packages (Ibex best practice)
+        mkdir -p /ibex/user/${USER}/software
+
+        # 2) Start an interactive session (recommended while testing)
+        srun --gpus=1 --partition=debug --time=00:30:00 --resv-ports=1 --pty /bin/bash -l
+
+        # 3) Load the container modules
+        module load dl
+        module load jax/23.10-sif
+
+        # 3.1) Install a single package directly into your persistent path
+        singularity exec --nv $JAX_IMAGE pip install --prefix=/ibex/user/${USER}/software <package_name>
+        # Example: jupyterlab-nvdashboard
+        singularity exec --nv $JAX_IMAGE pip install --prefix=/ibex/user/${USER}/software jupyterlab-nvdashboard
+
+        # 3.2) Or install from a requirements file
+        singularity exec --nv $JAX_IMAGE pip install --prefix=/ibex/user/${USER}/software -r requirements.txt
+
+        # 4) Expose your custom site-packages to the container via PYTHONPATH
+        export SINGULARITYENV_PYTHONPATH="/ibex/user/${USER}/software/lib/python3.10/site-packages:$SINGULARITYENV_PYTHONPATH"
+
+        # 5) Validate the install from inside the container
+        singularity exec --nv $JAX_IMAGE python my_unit_test.py
+        singularity exec --nv $JAX_IMAGE python -c "import <package>; print('Success')"
+
+Notes and tips
+^^^^^^^^^^^^^^
+
+- Steps 3.1 or 3.2 write packages to ``/ibex/user/${USER}/software`` so they persist across container restarts.
+- Step 4 is essential: without exporting ``SINGULARITYENV_PYTHONPATH``, the container will not see your custom installs.
+- You can set ``SINGULARITYENV_PYTHONPATH`` before ``srun`` to propagate it into the job environment.
+- Replace ``<package_name>`` and ``<package>`` with what you need; keep the Python version segment (``python3.10``) in the path matched to the container's Python.
+
+Example validation output
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Below is a shortened example showing custom ``jupyterlab-nvdashboard`` coming from the persistent path while ``jax`` is provided by the SIF image:
+
+.. code-block:: text
+
+        Python version: 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0]
+
+        Testing jupyterlab-nvdashboard import...
+        ✓ Successfully imported jupyterlab_nvdashboard
+            Location: /ibex/user/${USER}/software/local/lib/python3.10/dist-packages/jupyterlab_nvdashboard/__init__.py
+
+        Testing JAX (from SIF image)...
+        ✓ Successfully imported jax
+            Location: /opt/jax-source/jax/__init__.py
+
+
  
