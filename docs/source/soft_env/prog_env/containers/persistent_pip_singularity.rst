@@ -184,153 +184,153 @@ Save the following script as ``jupyter_persistent.slurm`` in your working direct
     :caption: jupyter_persistent.slurm - Deploy Jupyter Lab with persistent pip packages
 
     #!/bin/bash
-#SBATCH --time=00:30:00
-#SBATCH --nodes=1
-#SBATCH --gpus-per-node=v100:1
-#SBATCH --cpus-per-gpu=6
-#SBATCH --mem=32G
-#SBATCH --partition=debug
-#SBATCH --job-name=jupyter
-##SBATCH --mail-type=ALL
-#SBATCH --output=%x-%j-slurm.out
-#SBATCH --error=%x-%j-slurm.err
+    #SBATCH --time=00:30:00
+    #SBATCH --nodes=1
+    #SBATCH --gpus-per-node=v100:1
+    #SBATCH --cpus-per-gpu=6
+    #SBATCH --mem=32G
+    #SBATCH --partition=debug
+    #SBATCH --job-name=jupyter
+    ##SBATCH --mail-type=ALL
+    #SBATCH --output=%x-%j-slurm.out
+    #SBATCH --error=%x-%j-slurm.err
 
 
-set -euo pipefail
+    set -euo pipefail
 
-### Load the modules you need for your job
-module purge
-module load singularity
+    ### Load the modules you need for your job
+    module purge
+    module load singularity
 
-### Helper Functions Definitions
-checking_container_image() {
-    ## 1. Define variables
+    ### Helper Functions Definitions
+    checking_container_image() {
+        ## 1. Define variables
 
-    ## 2. Validate and pull the image if it is not available or is corrupted
-    # Check if image already exists
-    if [[ ! -f "${SIF_FILE_PATH}" ]]; then
-        echo "[FAIL] Image not found. Pulling from ${IMAGE_NAME} ..."
-        singularity pull "${SIF_FILE_PATH}" "docker://${IMAGE_NAME}"
-    else
-        echo "[OK] Found existing SIF file: ${SIF_FILE_PATH}"
-
-        # Try running singularity inspect (safe way to check validity)
-        if singularity inspect "${SIF_FILE_PATH}" > /dev/null 2>&1; then
-            echo "[OK] Validation successful. Image is usable."
+        ## 2. Validate and pull the image if it is not available or is corrupted
+        # Check if image already exists
+        if [[ ! -f "${SIF_FILE_PATH}" ]]; then
+            echo "[FAIL] Image not found. Pulling from ${IMAGE_NAME} ..."
+            singularity pull "${SIF_FILE_PATH}" "docker://${IMAGE_NAME}"
         else
-            echo "[FAIL] Existing file is corrupted or invalid. Re-pulling..."
-            rm -f "${SIF_FILE_PATH}"
-            singularity pull "${SIF_FILE_PATH}" "docker://$IMAGE_NAME"
-        fi
-    fi
-    echo "[OK] Using image: ${SIF_FILE_PATH}"
-}
+            echo "[OK] Found existing SIF file: ${SIF_FILE_PATH}"
 
-preparing_jupyter_environment() {
-    for var in JUPYTER_CONFIG_DIR JUPYTER_DATA_DIR JUPYTER_RUNTIME_DIR IPYTHONDIR; do
-        dir="${!var}"   # expand value of the variable
-        if [[ ! -d "$dir" ]]; then
-            echo "[FAIL] ${var} was not found. Creating $var directory at: $dir"
-            mkdir -p "$dir"
+            # Try running singularity inspect (safe way to check validity)
+            if singularity inspect "${SIF_FILE_PATH}" > /dev/null 2>&1; then
+                echo "[OK] Validation successful. Image is usable."
+            else
+                echo "[FAIL] Existing file is corrupted or invalid. Re-pulling..."
+                rm -f "${SIF_FILE_PATH}"
+                singularity pull "${SIF_FILE_PATH}" "docker://$IMAGE_NAME"
+            fi
+        fi
+        echo "[OK] Using image: ${SIF_FILE_PATH}"
+    }
+
+    preparing_jupyter_environment() {
+        for var in JUPYTER_CONFIG_DIR JUPYTER_DATA_DIR JUPYTER_RUNTIME_DIR IPYTHONDIR; do
+            dir="${!var}"   # expand value of the variable
+            if [[ ! -d "$dir" ]]; then
+                echo "[FAIL] ${var} was not found. Creating $var directory at: $dir"
+                mkdir -p "$dir"
+            else
+                echo "[OK] Found existing $var directory at: $dir"
+            fi
+        done
+    }
+
+    preparing_persistent_packages() {
+        if [[ ! -d "${SOFTWARE_PATH}" ]]; then
+            echo "[FAIL] Software directory not found. Creating at: ${SOFTWARE_PATH}"
+            mkdir -p "${SOFTWARE_PATH}"
         else
-            echo "[OK] Found existing $var directory at: $dir"
+            echo "[OK] Found existing software directory at: ${SOFTWARE_PATH}"
         fi
-    done
-}
+    }
 
-preparing_persistent_packages() {
-    if [[ ! -d "${SOFTWARE_PATH}" ]]; then
-        echo "[FAIL] Software directory not found. Creating at: ${SOFTWARE_PATH}"
-        mkdir -p "${SOFTWARE_PATH}"
+    # Create containers directory if needed
+    mkdir -p /ibex/user/${USER}/containers
+
+
+    ### Define container and package paths
+    echo "=== Checking Container Image ==="
+    IMAGE_NAME="nvcr.io/nvidia/ai-workbench/python-basic:1.0.8"
+    SIF_FILE_NAME="python-basic_1.0.8.sif"
+    SIF_FILE_PATH="/ibex/user/${USER}/containers/${SIF_FILE_NAME}"
+    SOFTWARE_PATH="/ibex/user/${USER}/software"
+
+    checking_container_image
+
+    echo "=== Export Variables ==="
+    export SINGULARITYENV_PYTHONPATH="${SOFTWARE_PATH}/local/lib/python3.10/dist-packages:${SINGULARITYENV_PYTHONPATH:-}"
+
+
+    echo "=== Checking Persistent Package Directory ==="
+    preparing_persistent_packages
+
+
+    echo "=== Preparing Jupyter Environment Variables ==="
+    ### Define Jupyter Variables
+    export SCRATCH_IOPS=/ibex/user/$USER/
+    export JUPYTER_CONFIG_DIR=${SCRATCH_IOPS}/.jupyter
+    export JUPYTER_DATA_DIR=${SCRATCH_IOPS}/.local/share/jupyter
+    export JUPYTER_RUNTIME_DIR=${SCRATCH_IOPS}/.local/share/jupyter/runtime
+    export IPYTHONDIR=${SCRATCH_IOPS}/.ipython
+    export XDG_RUNTIME_DIR=/tmp
+
+    # Ensure Jupyter/IPython directories exist
+    preparing_jupyter_environment ${SCRATCH_IOPS}
+
+    # Install packages if not already installed
+    if ! singularity exec --nv "${SIF_FILE_PATH}" python -c "import sklearn" 2>/dev/null; then
+        echo "[INFO] Installing sklearn ..."
+        singularity exec --nv "${SIF_FILE_PATH}" pip install --prefix="${SOFTWARE_PATH}" scikit-learn pandas
+        echo "[OK] Packages installed successfully"
     else
-        echo "[OK] Found existing software directory at: ${SOFTWARE_PATH}"
+        echo "[OK] Packages already installed"
     fi
-}
 
-# Create containers directory if needed
-mkdir -p /ibex/user/${USER}/containers
+    echo "=== 4/4 Starting Jupyter ==="
+    ### Setup SSH tunneling information
+    node=$(hostname -s)
+    user=$(whoami)
+    submit_host=${SLURM_SUBMIT_HOST}
+    port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 
+    instructions="
+    ============================================================
+    Jupyter Lab is starting on compute node: ${node}
+    ============================================================
 
-### Define container and package paths
-echo "=== Checking Container Image ==="
-IMAGE_NAME="nvcr.io/nvidia/ai-workbench/python-basic:1.0.8"
-SIF_FILE_NAME="python-basic_1.0.8.sif"
-SIF_FILE_PATH="/ibex/user/${USER}/containers/${SIF_FILE_NAME}"
-SOFTWARE_PATH="/ibex/user/${USER}/software"
+    To connect from your local machine, run this in a NEW terminal:
 
-checking_container_image
+        ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa
 
-echo "=== Export Variables ==="
-export SINGULARITYENV_PYTHONPATH="${SOFTWARE_PATH}/local/lib/python3.10/dist-packages:${SINGULARITYENV_PYTHONPATH:-}"
+    Then copy the URL shown below (starting with http://127.0.0.1)
+    and paste it into your browser on your local machine.
 
+    ============================================================
+    IMPORTANT: Shutdown Jupyter gracefully
+    ============================================================
 
-echo "=== Checking Persistent Package Directory ==="
-preparing_persistent_packages
+    When finished, close your browser notebooks and click the
+    'Shutdown' button in Jupyter to exit cleanly. If you do not
+    shutdown Jupyter, the job will continue running until the
+    time limit is reached.
 
+    ============================================================
+    "
 
-echo "=== Preparing Jupyter Environment Variables ==="
-### Define Jupyter Variables
-export SCRATCH_IOPS=/ibex/user/$USER/
-export JUPYTER_CONFIG_DIR=${SCRATCH_IOPS}/.jupyter
-export JUPYTER_DATA_DIR=${SCRATCH_IOPS}/.local/share/jupyter
-export JUPYTER_RUNTIME_DIR=${SCRATCH_IOPS}/.local/share/jupyter/runtime
-export IPYTHONDIR=${SCRATCH_IOPS}/.ipython
-export XDG_RUNTIME_DIR=/tmp
-
-# Ensure Jupyter/IPython directories exist
-preparing_jupyter_environment ${SCRATCH_IOPS}
-
-# Install packages if not already installed
-if ! singularity exec --nv "${SIF_FILE_PATH}" python -c "import sklearn" 2>/dev/null; then
-    echo "[INFO] Installing sklearn ..."
-    singularity exec --nv "${SIF_FILE_PATH}" pip install --prefix="${SOFTWARE_PATH}" scikit-learn pandas
-    echo "[OK] Packages installed successfully"
-else
-    echo "[OK] Packages already installed"
-fi
-
-echo "=== 4/4 Starting Jupyter ==="
-### Setup SSH tunneling information
-node=$(hostname -s)
-user=$(whoami)
-submit_host=${SLURM_SUBMIT_HOST}
-port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
-
-instructions="
-============================================================
-Jupyter Lab is starting on compute node: ${node}
-============================================================
-
-To connect from your local machine, run this in a NEW terminal:
-
-    ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa
-
-Then copy the URL shown below (starting with http://127.0.0.1)
-and paste it into your browser on your local machine.
-
-============================================================
-IMPORTANT: Shutdown Jupyter gracefully
-============================================================
-
-When finished, close your browser notebooks and click the
-'Shutdown' button in Jupyter to exit cleanly. If you do not
-shutdown Jupyter, the job will continue running until the
-time limit is reached.
-
-============================================================
-"
-
-# Run Jupyter Lab inside the Singularity container
-# Note: All options (--nv, -B, --env) must come BEFORE the container path
-singularity exec --nv \
-    -B /ibex \
-    -B "${SOFTWARE_PATH}" \
-    --env "PYTHONPATH=${SOFTWARE_PATH}/local/lib/python3.10/dist-packages" \
-    "${SIF_FILE_PATH}" \
-    /bin/bash -lc "echo -e '${instructions}'
-    jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0 \
-    --ip=${node}.ibex.kaust.edu.sa \
-    --NotebookApp.custom_display_url='http://${node}.ibex.kaust.edu.sa:${port}/lab'"
+    # Run Jupyter Lab inside the Singularity container
+    # Note: All options (--nv, -B, --env) must come BEFORE the container path
+    singularity exec --nv \
+        -B /ibex \
+        -B "${SOFTWARE_PATH}" \
+        --env "PYTHONPATH=${SOFTWARE_PATH}/local/lib/python3.10/dist-packages" \
+        "${SIF_FILE_PATH}" \
+        /bin/bash -lc "echo -e '${instructions}'
+        jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0 \
+        --ip=${node}.ibex.kaust.edu.sa \
+        --NotebookApp.custom_display_url='http://${node}.ibex.kaust.edu.sa:${port}/lab'"
 
 Submitting the Jupyter Job
 ---------------------------
