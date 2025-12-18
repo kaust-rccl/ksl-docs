@@ -94,6 +94,7 @@ collections = {
    'data_science_onboarding':{
        'driver': 'git',
        'source': 'https://github.com/kaust-rccl/Data-science-onboarding.git',
+       'git_options': '--config http.sslVerify=false'
    }
 }
 

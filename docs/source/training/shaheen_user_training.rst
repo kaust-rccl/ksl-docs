@@ -22,15 +22,14 @@ Sessions
    * - Shaheen III CPU HPC 101 Fall 2025
      - Oct 28th, 2025
      -
-       - `Shaheen III Hardware Overview <>`_
-       - `How to apply on Shaheen III <>`_
-       - `Getting Started on Shaheen III <>`_
-       - `Software Environment <>`_
-       - `Job Scheduling <>`_
-       - `Storage overview & Best practices <>`_
-       - `Applications software example: VASP workflow <>`_
-       - `Applications software example: CFD applications <>`_
-       - `Applications software example: Bio informatics workflow <>`_
+       - `Shaheen III Hardware Overview & How to apply on Shaheen III <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-1-2-ShaheenIII_Introduction.pdf>`_
+       - `Getting Started on Shaheen III <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-3-Getting_Started_on_Shaheen_III_Zhiyong.pdf>`_
+       - `Software Environment <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-4-Software_Environment.pdf>`_
+       - `Job Scheduling <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-5-Job-Scheduling.pdf>`_
+       - `Storage overview & Best practices <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-6.ShaheenIII_Storage_Best_Practices.pdf>`_
+       - `Applications software example: VASP workflow <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-7-Chemistry_Physics_Materials_Science_Zhiyong.pdf>`_
+       - `Applications software example: CFD applications <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-8-HPC101_CFD_Module.pdf>`_
+       - `Applications software example: Bio informatics workflow <https://www.hpc.kaust.edu.sa/sites/default/files/2025-10/2025-10-28-9-Bioinformatics.pdf>`_
    * - Shaheen III CPU HPC 101 Spring 2025
      - Feb 4th, 2025
      -

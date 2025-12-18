@@ -7,7 +7,7 @@
 
 
 ========================================================
-Profiling an NVIDIA RAPIDS workflow using NSight Systems
+Profiling an NVIDIA RAPIDS workflow using Nsight Systems
 ========================================================
 
 This documentation explains how to profile a deep learning workload using RAPIDS cuML and Nsight Systems. Example scripts are available at `this repository <https://github.com/D-Barradas/GPU_profiling_ibex>`_. See the `src` folder for ``rapids_tsne.py`` and ``rapids_tsne.sh``.

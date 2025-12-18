@@ -6,7 +6,7 @@
 .. _science_platforms:
 
 =============================
-Science Platforms 
+Science Platforms
 =============================
 
 The domain-specific user guides and best practices on a supercomputing ecosystem are provided for the following science platforms.
@@ -18,4 +18,3 @@ The domain-specific user guides and best practices on a supercomputing ecosystem
 
     data_science/index
     weather_climate/index
-    chemistry_science/index

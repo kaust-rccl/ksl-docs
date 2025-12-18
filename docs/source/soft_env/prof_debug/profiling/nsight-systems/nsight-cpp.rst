@@ -7,10 +7,10 @@
 
 
 ===========================================================
-Profiling a CUDA kernel written in C++ using NSight Systems
+Profiling a CUDA kernel written in C++ using Nsight Systems
 ===========================================================
 
-NSight Systems can be used to profile CUDA code.
+Nsight Systems can be used to profile CUDA code.
 
 The following C++ code adds two matrices and writes the result into a new matrix.
 This code can be saved in a file named ``matrix_add.cu``.
@@ -88,7 +88,7 @@ This code can be saved in a file named ``matrix_add.cu``.
 
 
 
-The following SLURM job script compiles ``matrix_add.cu``, runs the NSight Systems profiler, and collects performance data.
+The following SLURM job script compiles ``matrix_add.cu``, runs the Nsight Systems profiler, and collects performance data.
 This script can be saved in a file named ``matrix_add.slurm``.
 
 .. code-block:: bash
@@ -110,13 +110,13 @@ The following steps show how to submit ``matrix_add.slurm`` on Ibex:
 
 The output of the profiler is recorded in a file named ``profile.<SLURM_JOBID>.nsys-rep``.
 This file can be copied to a local machine and examined.
-The following command can be used to find out the version of the NSight Systems:
+The following command can be used to find out the version of the Nsight Systems:
 
 .. code-block:: bash
 
  nsys --version
 
-The same version of the NSight Systems can be downloaded from `here <https://developer.nvidia.com/nsight-systems>`_ to run on the local machine.
+The same version of the Nsight Systems can be downloaded from `here <https://developer.nvidia.com/nsight-systems>`_ to run on the local machine.
 
 The following trace of execution shows the GPU device (V100) and a couple of CPU threads.
 The two input matrices are prepared on the CPU and then copied to the device.
