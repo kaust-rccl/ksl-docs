@@ -278,7 +278,7 @@ Save the following script as ``jupyter_persistent.slurm`` in your working direct
     export XDG_RUNTIME_DIR=/tmp
 
     # Ensure Jupyter/IPython directories exist
-    preparing_jupyter_environment ${SCRATCH_IOPS}
+    preparing_jupyter_environment
 
     # Install packages if not already installed
     if ! singularity exec --nv "${SIF_FILE_PATH}" python -c "import sklearn" 2>/dev/null; then
