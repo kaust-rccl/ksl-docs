@@ -367,7 +367,7 @@ Example output:
     [OK] Found existing JUPYTER_DATA_DIR directory at: /ibex/user/barradd/.local/share/jupyter
     [OK] Found existing JUPYTER_RUNTIME_DIR directory at: /ibex/user/barradd/.local/share/jupyter/runtime
     [OK] Found existing IPYTHONDIR directory at: /ibex/user/barradd/.ipython
-    [INFO] Installing pandas ...
+    [INFO] Installing sklearn ...
     Requirement already satisfied: scikit-learn in /ibex/user/barradd/software/local/lib/python3.10/dist-packages (1.7.2)
     Requirement already satisfied: pandas in /ibex/user/barradd/software/local/lib/python3.10/dist-packages (2.3.3)
     Requirement already satisfied: numpy>=1.22.0 in /ibex/user/barradd/software/local/lib/python3.10/dist-packages (from scikit-learn) (2.2.6)
