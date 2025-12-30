@@ -56,7 +56,7 @@ First, convert a Docker image to a Singularity (SIF) format. This example uses t
     mkdir -p $SINGULARITY_CACHEDIR
 
     # Ensure the path is exported
-    export $SINGULARITY_CACHEDIR
+    export SINGULARITY_CACHEDIR
 
     # Load the Singularity module
     module load singularity
