@@ -116,7 +116,7 @@ When you install packages **inside** a Singularity container, they disappear onc
         singularity exec --nv $JAX_IMAGE pip install --prefix=/ibex/user/${USER}/software -r requirements.txt
 
         # 4) Expose your custom site-packages to the container via PYTHONPATH
-        export SINGULARITYENV_PYTHONPATH="/ibex/user/${USER}/software/lib/python3.10/site-packages:$SINGULARITYENV_PYTHONPATH"
+        export SINGULARITYENV_PYTHONPATH="/ibex/user/${USER}/software/local/lib/python3.10/dist-packages:$SINGULARITYENV_PYTHONPATH"
 
         # 5) Validate the install from inside the container
         singularity exec --nv $JAX_IMAGE python my_unit_test.py
