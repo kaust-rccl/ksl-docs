@@ -282,7 +282,7 @@ Save the following script as ``jupyter_persistent.slurm`` in your working direct
 
     # Install packages if not already installed
     if ! singularity exec --nv "${SIF_FILE_PATH}" python -c "import sklearn" 2>/dev/null; then
-        echo "[INFO] Installing sklearn ..."
+        echo "[INFO] Installing scikit-learn and pandas ..."
         singularity exec --nv "${SIF_FILE_PATH}" pip install --prefix="${SOFTWARE_PATH}" scikit-learn pandas
         echo "[OK] Packages installed successfully"
     else
