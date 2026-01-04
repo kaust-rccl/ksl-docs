@@ -29,26 +29,31 @@ Computational resources on KSL systems
 
 :ref:`Shaheen III Compute nodes <shaheen3_compute_nodes>`
 
-:ref:`Ibex Login nodes <../../../systems/ibex/login_node>`
+:ref:`Ibex Login nodes <ibex_login_nodes>`
 
-:ref:`Ibex Compute nodes <../../../systems/ibex/compute_node>`
+:ref:`Ibex Compute nodes <ibex_compute_nodes>`
 
 Storage on KSL systems
 ========================
 
 
-    Shaheen III filesystems <../../../systems/shaheen3/filesystem>
-    Ibex filesystems <../../../systems/ibex/filesystem>
+:ref:`Shaheen III filesystems <shaheen3_filesystem>`
+
+:ref:`Ibex filesystems <ibex_filesystems>`
 
 Running Jobs on KSL systems
 =======================================
 
 
-    SLURM jobscript explained <../../job_schd/basic_jobscript>
-    Common SLURM commands <../../job_schd/slurm/commands>
-    Running JupyterLab and VSCode <../../job_schd/slurm/interactive_jobs/index>
-    Shaheen III example jobscripts <../../job_schd/slurm/shaheen3_jobscript_examples>
-    Ibex example jobscripts <../../job_schd/slurm/ibex_jobscript_examples>
+:ref:`SLURM job script explained <slurm_jobscript>`
+
+:ref:`Common SLURM commands <slurm_commands>`
+
+:ref:`Running JupyterLab and VSCode <interactive_jobs>`
+
+:ref:`Shaheen III example job scripts <shaheen3_example_jobscripts>`
+
+:ref:`Ibex example job scripts <ibex_jobs_examples>`
 
 
 
@@ -56,29 +61,47 @@ Software environment
 =======================
 
 
-    KSL managed software on Ibex for Data Science <ml_module_ibex>
-    Self-managed software <../../prog_env/index>
-    Portable software in containers <../../prog_env/containers/index>
+.. toctree::
+       :titlesonly:
+       :maxdepth: 1
+
+       KSL managed software on Ibex for Data Science <ml_module_ibex>
+
+:ref:`Self-managed software <prog_env>`
+
+:ref:`Portable software in containers <container_platforms_guide>`
 
 
 Accelerating workloads
 =======================
 
 
-    dist_mldl/index
-    big_data_proc/index
+.. toctree::
+       :titlesonly:
+       :maxdepth: 1
+
+       dist_mldl/index
+       big_data_proc/index
 
 Debugging and profiling
 =========================
 
 
-    In-flight job telemetry with NVDashboard <tools/nvdashboard>
-    Profiling GPU workloads with NVIDIA Nsight <../../prof_debug/profiling/nsight-systems/index>
+.. toctree::
+       :titlesonly:
+       :maxdepth: 1
+
+       In-flight job telemetry with NVDashboard <tools/nvdashboard>
+
+:ref:`Profiling GPU workloads with NVIDIA Nsight <nsight_profiling>`
 
 
 Miscellaneous
 =========================
 
+.. toctree::
+       :titlesonly:
+       :maxdepth: 1
 
-    ollama/index
+       ollama/index
 
