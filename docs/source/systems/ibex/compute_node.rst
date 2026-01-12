@@ -104,7 +104,25 @@ Some nodes have larger memory for workloads which require loading big data in me
      - 32
      - 3TB
      - 10TB
-     - intel, largemem, skylake  
+     - intel, largemem, skylake
+   * - Intel Sapphire Rapids
+     - sapphire rapids
+     - 8
+     - 128
+     - 4.2
+     - 64
+     - 8TB
+     - 0.7TB
+     - lm8TB  
+   * - Intel Sapphire Rapids
+     - sapphire rapids
+     - 1
+     - 128
+     - 4.2
+     - 64
+     - 16TB
+     - 0.7TB
+     - lm16TB 
 
 
 For submitting a job to a particular compute node, a set of constraints must be used to help SLURM pick the correct one. Users can either add them to your jobscript as a SLURM directive or pass it as command line argument to `sbatch` command.
