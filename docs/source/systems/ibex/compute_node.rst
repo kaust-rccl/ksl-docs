@@ -109,7 +109,7 @@ Some nodes have larger memory for workloads which require loading big data in me
      - sapphire rapids
      - 8
      - 128
-     - 4.2
+     - 4.1
      - 64
      - 8TB
      - 0.7TB
@@ -118,7 +118,7 @@ Some nodes have larger memory for workloads which require loading big data in me
      - sapphire rapids
      - 1
      - 128
-     - 4.2
+     - 4.1
      - 64
      - 16TB
      - 0.7TB
