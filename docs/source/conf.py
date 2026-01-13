@@ -89,7 +89,7 @@ googleanalytics_enabled=True
 collections = {
    'visualization_vignettes': {
       'driver': 'git',
-      'source': 'https://gitlab.kitware.com/jameskress/KAUST_Visualization_Vignettes.git'
+      'source': 'https://github.com/jameskress/Visualization_Vignettes.git'
    },
    'data_science_onboarding':{
        'driver': 'git',
