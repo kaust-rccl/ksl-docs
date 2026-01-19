@@ -15,7 +15,7 @@ Prerequisite to use Ibex
 Internet connection
 ---------------------
 
-To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/services/detail/network-connectivity/kaust-vpn>`_ when outside of KAUST network.
+To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/i-want-to/access-kaust-vpn>`_ when outside of KAUST network.
 
 
 Mac OSx
