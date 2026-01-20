@@ -16,6 +16,7 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
 
 .. code-block:: python
 
+    #!/usr/bin/env python
     # Functions for capturing time elapsed
     import time, gc
 
