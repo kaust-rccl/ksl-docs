@@ -517,7 +517,7 @@ We'll be using **FastQC** as an example.
 
     cd /ibex/user/$USER/ibex_101/application-examples/Bio
 
-Using the jobscript ``fastqc.sh`` which described as follows:
+Using the jobscript ``fastqc.batch`` which described as follows:
 
 .. code-block:: bash
 
@@ -580,6 +580,7 @@ View the output file
 
 .. code-block:: bash
 
+    cd /ibex/user/$USER/ibex_101/application-examples/Bio/dataset
     google-chrome SRR975578_1_fastqc.html
 
 .. note::
