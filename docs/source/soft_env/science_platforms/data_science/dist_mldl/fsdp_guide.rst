@@ -302,7 +302,7 @@ using ``torchrun`` for distributed training with FSDP.
    
    .. code:: bash  
       
-      cd blomm/multi_gpu/2_gpus
+      cd bloom/multi_gpu/2_gpus
 
 2. Configure the environment variables by editing the ``env_vars.sh``
    files to set up the environment: 
