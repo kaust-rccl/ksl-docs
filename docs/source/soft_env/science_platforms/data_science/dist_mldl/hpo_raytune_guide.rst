@@ -38,7 +38,7 @@ Before we proceed, let’s review some essential concepts
 What is Hyperparameter Optimization (HPO)?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- It’s the process of finding the **best set of hyperparameter** (like
+- It’s the process of finding the **best set of hyperparameters** (like
   learning rate, batch size, weight decay) that lead to the **best model
   performance**.
 - Proper tuning can significantly reduce training time, GPU usage, and
