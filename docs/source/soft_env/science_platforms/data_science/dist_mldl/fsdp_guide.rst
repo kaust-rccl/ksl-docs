@@ -86,7 +86,7 @@ The setup contains of two main files:
 
 .. tip::
 
-   For the full script for the , see the
+   For the full scripts for the baseline setup, see
    `fsdp/bloom/baseline.py <https://github.com/kaust-rccl/Dist-DL-training/blob/master/fsdp/bloom/baseline/baseline.py>`__,
    and
    `fsdp/bloom/baseline.slurm <https://github.com/kaust-rccl/Dist-DL-training/blob/master/fsdp/bloom/baseline/baseline.slurm>`__
