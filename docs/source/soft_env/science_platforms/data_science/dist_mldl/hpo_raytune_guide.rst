@@ -134,7 +134,7 @@ Schedulers decide how trials are run, paused, or stopped:
 | **Bayesian (Bayesian Optimization | Combines **Bayesian               |
 | with HyperBand - BOHB)**          | Optimization** (learns from past  |
 |                                   | trials to suggest better          |
-|                                   | hyperparameter) with              |
+|                                   | hyperparameters) with             |
 |                                   | **HyperBand** (efficient          |
 |                                   | early-stopping strategy).         |
 |                                   |                                   |
