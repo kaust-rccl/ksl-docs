@@ -126,7 +126,7 @@ Schedulers decide how trials are run, paused, or stopped:
 |                                   | to **change over time**.          |
 |                                   |                                   |
 |                                   | The “best                         |
-|                                   | hyperparameter” at the end are    |
+|                                   | hyperparameters” at the end are   |
 |                                   | only the final phase’s values;    |
 |                                   | the best weights depend on the    |
 |                                   | entire sequence of changes.       |
