@@ -700,7 +700,7 @@ lines annotated
    .. code:: bash 
 
       # Getting the node names
-      nodes=\ :math:`(scontrol show hostnames "`\ SLURM_JOB_NODELIST”)
+      nodes=$(scontrol show hostnames "$SLURM_JOB_NODELIST")
       nodes_array=($nodes) 
       echo “Node IDs of participating nodes ${nodes_array[\*]}”
 
