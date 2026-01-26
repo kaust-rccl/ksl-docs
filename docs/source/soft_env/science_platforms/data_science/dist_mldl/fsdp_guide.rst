@@ -24,7 +24,7 @@ illustrate how FSDP affects memory efficiency and scaling performance:
 
 1. Baseline: Train using Hugging Face’s Trainer on a single GPU without any sharding. 
 2. Single-GPU FSDP: Enable full parameter sharding to observe the immediate reduction in GPU memory usage. 
-3. Sharding Strategies & Offloading: Compare the FULL_SHARD, SHARD_GRAD_OP, and HYBRID_SHARD modes, with optional CPU offloading, to evaluate different spee:memory trade-offs. 
+3. Sharding Strategies & Offloading: Compare the FULL_SHARD, SHARD_GRAD_OP, and HYBRID_SHARD modes, with optional CPU offloading, to evaluate different speed-memory trade-offs. 
 4. Multi-GPU Scaling: Expand training to two and then eight GPUs on a single node, measuring both throughput and per-GPU memory utilization. 
 5. Multi-Node Scaling: Run FSDP across multiple V100 and A100 nodes, beginning with an NCCL bandwidth self-test to confirm interconnect performance.
 
