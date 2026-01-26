@@ -722,7 +722,7 @@ lines annotated
    <https://github.com/kaust-rccl/Dist-DL-training/tree/master/deepspeed#step-by-step-breakdown>`__ , section in the repo
 
 
-2. Multi Node Train Script Edits
+2. Multi-Node Train Script Edits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 - At the top of `train_multi_node.py <https://github.com/kaust-rccl/Dist-DL-training/blob/master/deepspeed/scripts/train_multi_nodes.py>`__ , ensure this modules are imported:
