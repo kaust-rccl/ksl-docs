@@ -14,11 +14,11 @@ Recompile your applications!
 ============================
 
 
-The recent operating system (OS) update (December 2025) applied to Shaheen includes changes to the modules with more recent versions of compilers and libraries. 
-We recommend recompiling all your applications. 
+The recent operating system (OS) update (December 2025) applied to Shaheen includes changes to the modules with more recent versions of compilers and libraries.
+**We recommend recompiling all your applications.**
 All available libraries and software listed by the ``module avail`` are compiled and linked with the latest CPE 25.03.
 
-Please note that the older CPE 24.07 and 24.11 are still available and will be deleted in the future. A newer CPE (25.09) is also available, though it has not been set as the default. 
+Please note that the older CPE 24.07 and 24.11 are still available and will be deleted in the future. A newer CPE (25.09) is also available, though it has not been set as the default.
 
 
 ..
@@ -28,7 +28,7 @@ Please note that the older CPE 24.07 and 24.11 are still available and will be d
    :widths: 10 10
    :header-rows: 1
 
-   * - CPE 24.07 old default modules 
+   * - CPE 24.07 old default modules
      - **New CPE 25.03 default modules**
    * - PrgEnv-amd/8.5.0
      - **PrgEnv-amd/8.6.0**
@@ -112,7 +112,7 @@ Please note that the older CPE 24.07 and 24.11 are still available and will be d
      - **craype-dl-plugin-py3/24.03.1**
    * - craypkg-gen/1.3.33
      - **craypkg-gen/1.3.35**
-   * - gcc/12.2.0
+   * - :red:`gcc/12.2.0`
      - **Not available any more**
    * - gcc-native/13.2
      - **gcc-native/14.2**

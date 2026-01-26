@@ -23,8 +23,10 @@ Ibex 101 Essentials: Onboarding & Real-Time Training
 
 To start using Ibex you should be connected with iCampus/Uni-Fi/KAUST network or use `VPN <https://it.kaust.edu.sa/i-want-to/access-kaust-vpn>`_ when outside of KAUST network.
 
-2.2 Termins: Examples
----------------------
+2.2 Terminals
+-------------
+
+Terminals are diverse, ranging from computer command-line interfaces such as Mac OS terminal, Windows Terminal and xterm. Below, we provide some examples of commonly used terminals for connecting to the Ibex cluster.
 
 Mac OSx
 ---------
@@ -61,11 +63,8 @@ User name is your KAUST portal name and it should be in lowercase.
 3.2 Different login nodes
 -------------------------
 
-The login nodes provide a way of interacting with computing resources and filesystems on Ibex cluster. Login nodes are a place where users can edit jobscripts, submit and monitor jobs in SLURM queues, analyze results, and move data between different directories and filesystems. 
+The login nodes serve as the primary access point to the Ibex cluster’s computing resources and filesystems. They are intended for interactive tasks such as editing job scripts, submitting and monitoring jobs in SLURM queues, performing lightweight data analysis, and managing or transferring data across directories and filesystems. **It is not appropriate to run computationally intensive jobs on the login nodes; such workloads must be submitted to the compute nodes via the scheduler**.
 
-.. note::
-
-    It is **NOT** appropriate for running computational jobs on login nodes.
 
 Ibex cluster consists of 3 different login nodes:
 
@@ -98,8 +97,9 @@ If you want to access your files when editing/develop in IDE like **VS Code**, l
 4. Nomination of your principal investigator
 --------------------------------------------
 
-A user on Ibex must be associated with a PI. An unassociated user will have severe restrictions in terms of how many compute resources they can request.
-You can nominate your PI through `PI nomination <https://my.ibex.kaust.edu.sa/>`_
+Each Ibex user must be associated with a Principal Investigator (PI). Users who are not associated with a PI are subject to strict limitations on the amount of compute resources they can request. Please refer the `Ibex policy <https://docs.hpc.kaust.edu.sa/policy/ibex.html>`_
+
+User can nominate PI through `PI nomination <https://my.ibex.kaust.edu.sa/>`_
 
 .. image:: ../static/pi_nomination.png
 
@@ -110,22 +110,18 @@ You can nominate your PI through `PI nomination <https://my.ibex.kaust.edu.sa/>`
 5.1 Home filesystem 
 --------------------
 
-``/home`` filesystem is a place where users are expected to keep their configuration and installation scripts, the ``rc`` files required by some software. This filesystem has per user quota on both size and number of files. It can be access with the ``/home/$USER`` path. ``/home`` filesystem has limited performance. Users are expected **not to run their jobs and applications** from ``/home`` directory.
+**User HOME directory**: The ``/home`` filesystem is designed for lightweight, essential user files such as shell configuration files, software rc files, and installation or setup scripts. Each user is subject to quotas on both total storage capacity and the number of files. The filesystem is accessible at ``/home/$USER``, and upon login, the session’s current working directory is set to the ``$HOME`` directory by default and **200GB** per user.
 
-.. warning:: 
-    Please refrain from installing your ``conda`` package manager, related cache, and environments in ``/home/$USER`` directory. Please use the ``/ibex/user/$USER`` filesystem for purpose.  
+**Best practices**: Due to its limited performance and shared nature, the ``/home`` filesystem should not be used to run jobs or applications, nor to store large datasets or software installations. Computational workloads and performance-sensitive tasks must be executed from appropriate high-performance filesystems.
 
-Upon login the current working directory of the session is the ``$HOME`` directory.
-
-Home directories are shared across all KSL systems so all your data stored on ``/home`` will be accessible from least the login nodes of any KSL system.
-
+**Conda users**: Installing the Conda package manager, Conda environments, and related cache files in ``/home/$USER`` is strongly discouraged, as these can quickly exceed quota limits and negatively impact filesystem performance. Instead, users should install Conda and manage environments and cache files in the ``/ibex/user/$USER`` filesystem, which is better suited for such use cases.
 
 5.2 User HPC filesystem
 ------------------------
 
 ``/ibex/user/$USER`` is a high performance parallel filesystem which provides storage for running your jobs and read/write data. In contrast the ``/home`` filesystem, this filesystem has low latency, high bandwidth and is capable of high I/O operations per second (IOPS). This parallel storage runs :ref:`WekaIO Filesystem <ibex_wekaio>`, they are providers of modern parallel filesystems tailored for high IOPS workloads such as AI and Bioinformatics. 
 
-User's HPC filesystem has a capacity of 1.5TB per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
+User's HPC filesystem has a capacity of **1.5TB** per users and remains for the lifetime of the user's account on Ibex. Users must manage their own files, which means if you run out of quota, there will be **no extensions to the quota** without exception. 
 
 
 6. Software Environment Modulefiles
@@ -144,14 +140,14 @@ To view the available modules on your HPC cluster, use the following command:
 
     module avail
 
-**Ex: On glogin node check what versions of cuda are available?**
+**Example: On glogin node check what versions of cuda are available?**
 
 .. code-block:: bash
 
     ssh -XY $USER@glogin.ibex.kaust.edu.sa
     module avail cuda
 
-**Ex2: On ilogin node, check available versions of GNU compiler modules**
+**Example: On ilogin node, check available versions of GNU compiler modules**
 
 .. code-block:: bash
 
@@ -167,11 +163,24 @@ To load a module, use the module load command:
 
     module load <package-name>
 
+**Example: On ilogin, load the GNU compiler:**
+
+.. code-block:: bash
+
+    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
+    module load gcc
+
 When loading a specific version of the package:
 
 .. code-block:: bash
 
     module load <package-name/version>
+
+**Example: Load the Python 3.11 module:**
+
+.. code-block:: bash
+
+    module load python/3.11
 
 To unload a module and revert to the default environment, use the module unload command:
 
@@ -179,30 +188,20 @@ To unload a module and revert to the default environment, use the module unload 
 
     module unload package-name
 
-**Ex: On ilogin, load the GNU compiler. Then use glogin to load the CUDA module**
+**Example: Unload previous Python version and use Python 3.9.16:**
 
 .. code-block:: bash
 
-    ssh -XY $USER@ilogin.ibex.kaust.edu.sa
-    module load gcc
+    module unload python/3.11
+    module load python/3.9.16
+
+**Example: On glogin, load the CUDA module:**
 
 .. code-block:: bash
 
     ssh -XY $USER@glogin.ibex.kaust.edu.sa
     module load cuda
 
-**Ex2: Load the Python 3.11 module:**
-
-.. code-block:: bash
-
-    module load python/3.11
-
-**Ex3: Unload previous Python version and use Python 3.9.16:**
-
-.. code-block:: bash
-
-    module unload python/3.11
-    module load python/3.9.16
 
 module list
 ------------
@@ -213,12 +212,12 @@ To see the modules currently loaded in your environment, use:
 
     module list
 
-**Ex:**
+**Example:**
 
 - Are there any modules loaded by default?
 - If yes, which ones are loaded?
 
-**Ex2: On ilogin node after loading openmpi module, check its version, check what other modules are loaded?**
+**Example: On ilogin node after loading openmpi module, check its version, check what other modules are loaded?**
 
 .. code-block:: bash
 
@@ -227,12 +226,12 @@ To see the modules currently loaded in your environment, use:
     module list
 
 
-7. SLURM basic commands
------------------------
+7. SLURM
+--------
 
-SLURM is an open-source workload manager used on Linux clusters to schedule and manage jobs. It allocates computing resources such as CPUs, memory, and nodes, and controls job execution efficiently across the cluster.
+SLURM is an open-source workload manager used on Linux clusters to schedule and manage jobs. It efficiently allocates computing resources such as CPUs, memory, and nodes, and controls job execution across the cluster.
 
-During our Ibex 101 hands-on session, the example job scripts will be cloned from a GitHub repository into your personal scratch directory at ``/ibex/user/$USER``. Follow the steps below to clone the required job scripts.
+During the **Ibex 101 hands-on** session, example job scripts are provided. You can copy these example job scripts to your personal workspace ``/ibex/user/$USER`` to follow along with the tutorial. Follow the steps below to copy the required job scripts.
 
 .. code-block:: bash
 
@@ -249,6 +248,10 @@ A typical jobscript has two major sections:
 - SLURM Directives.
 
 - The commands to run on allocated computational resource.
+
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101/using-slurm
 
 Using the script ``helloworld.sh`` which described as follows:
 
@@ -325,13 +328,17 @@ You can use ``--user`` to only show your jobs.
 
     squeue --user=$USER
 
-**Ex: Use sbatch command to submit a jobscript, then check its status.**
+**Example: Use sbatch command to submit a jobscript, then check its status.**
 
 **Questions:**
 
 - What is the state of your job?
 
 - Which node is your job assigned to (if running)?
+
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101/slurm-job-examples/gpu-jobs
 
 Single gpu job named as ``singlegpu.sh`` to demonstrate nvidia-smi output which described as follows:
 
@@ -354,7 +361,7 @@ Single gpu job named as ``singlegpu.sh`` to demonstrate nvidia-smi output which 
 
 The ``sacct`` command shows detailed information about past jobs, including completed, failed, or canceled jobs.
 
-**Ex: You want to view details of your completed or canceled job.**
+**Example: You want to view details of your completed or canceled job.**
 
 .. code-block:: bash
 
@@ -381,7 +388,11 @@ The ``scancel`` command cancels a job in the SLURM queue.
 
     scancel <job_id>
 
-**Ex: Submit a job, cancel it then verify it has been removed from queue:**
+**Example: Submit a job, cancel it then verify it has been removed from queue:**
+
+.. code-block:: bash
+
+    cd /ibex/user/$USER/ibex_101/using-slurm
 
 Using the script ``my-jobscript.sh`` which described as follows:
 
@@ -425,58 +436,18 @@ We'll use **Jupyter** for the DS workload example.
 
     cd /ibex/user/$USER/ibex_101/application-examples/DS
 
-There are Multiple ways to launch Jupyter on Ibex:
-
-- Launch **Jupyter** in one line
-
-Using the file ``launch-jupyter-one-line.sh`` which described as follows:
-
-.. code-block:: bash
-
-    #!/bin/bash -l
-    # Activate the environment and execute the commands within a subshell
-    (
-        eval "$(conda shell.bash hook)"
-        # Load and run packages
-        module load machine_learning
-        # or activate the conda environment
-        #export ENV_PREFIX=$PWD/env
-        #conda activate $ENV_PREFIX
-        # module load cudnn/8.8.1-cuda11.8.0
-        jupyter lab --no-browser --ip="$(hostname)".ibex.kaust.edu.sa
-    )
-
-Run the following command to run on one GPU:
-
-.. code-block:: bash
-
-    srun --gpus=1 --mem=100G --cpus-per-task=24 --time=00:30:00 --resv-ports=1 --reservation=ibex101 --pty /bin/bash -l launch-jupyter-one-line.sh
-
-Now on your terminal you will see the same kind of message from jupyter.
-
-.. code-block:: bash
-
-    To access the server, open this file in a browser:
-    file:///home/username/.local/share/jupyter/runtime/jpserver-44653-open.html
-    Or copy and paste one of these URLs:
-    http://gpu214-06.ibex.kaust.edu.sa:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
-    or http://127.0.0.1:55479/lab?token=8a998b0772313ce6e5cca9aca1f13f2faff18d950d78c776
-
-Copy one of the lines of that start with ``http://gpuXXX-XX`` into your browser.  You can now start using Jupyter.
-
-
-- Batch job for **Jupyter**
+- Batch job to launch **Jupyter** on Ibex
 
 Using the file ``launch-jupyter-server.sh`` which described as follows:
 
 .. code-block:: bash
 
     #!/bin/bash -l
-    #SBATCH --time=00:30:00
+    #SBATCH --time=00:10:00
     #SBATCH --nodes=1
     #SBATCH --gpus-per-node=1
-    #SBATCH --cpus-per-gpu=6
-    #SBATCH --mem=32G
+    #SBATCH --cpus-per-gpu=2
+    #SBATCH --mem=2G
     #SBATCH --reservatin=ibex101
     #SBATCH --job-name=demo
     #SBATCH --output=%x-%j-slurm.out
@@ -536,64 +507,6 @@ From the ``XXX-slurm.err`` file copy one of the lines of that start with ``http:
 
 Now we are ready to use our Jupyter client.
 
-**Ex: Run the python script pytorch_demo.py from the GitHub repo using a single node with 2 GPUs**
-
-Using the script ``single-node-2GPUs-job.sh`` which described as follows:
-
-.. code-block:: bash
-
-    #!/bin/bash -l
-    #SBATCH --job-name=pytorch_multi_gpu     # Job name
-    #SBATCH --nodes=1                        # Use a single node
-    #SBATCH --ntasks=1                       # One task
-    #SBATCH --gpus=2                         # Request 2 GPUs
-    #SBATCH --cpus-per-task=8                # Request 8 CPUs
-    #SBATCH --mem=32G                        # Request 32G memory
-    #SBATCH --time=00:10:00                  # Time limit (hh:mm:ss)
-    #SBATCH --reservatin=ibex101            # use ibex101 reservation
-
-    # Load necessary modules (if required)
-    module load machine_learning/2024.01
-
-    # Run the PyTorch script
-    python pytorch_demo.py
-
-
-Submit the script using ``sbatch`` command
-
-.. code-block:: bash
-
-    sbatch single-node-2GPUs-job.sh
-
-The script detects the number of available GPUs and creates a random 1000x1000 tensor then performs a matrix multiplication operation on the tensor (tensor @ tensor.T) using the first GPU only.
-If multiple GPUs are available, the script demonstrates how to distribute work across GPUs using PyTorch's ``torch.nn.DataParallel``
-A simple PyTorch model ``torch.nn.Linear`` is created and wrapped in DataParallel to utilize multiple GPUs automatically.
-A random input tensor (64x1000, batch size of 64) is processed by the model.
-The script prints the output shape after processing.
-
-Expected output:
-
-.. code-block:: bash
-
-    GNU 13.2.0 is now loaded
-    Loading module for CUDA 11.8
-    CUDA 11.8 is now loaded
-    Loading module for Machine Learning 2024.01
-    Machine Learning 2024.01 is now loaded
-
-    Loading machine_learning/2024.01
-    Loading requirement: gcc/13.2.0 cuda/11.8
-    CUDA is available. Number of GPUs: 2
-    GPU 0: NVIDIA GeForce GTX 1080 Ti
-    GPU 1: NVIDIA GeForce GTX 1080 Ti
-    Using GPU: NVIDIA GeForce GTX 1080 Ti
-    Tensor created on: cuda:0
-    Matrix multiplication completed.
-    Result moved to CPU. Shape: torch.Size([1000, 1000])
-
-    Multi-GPU Example:
-    Output shape after DataParallel: torch.Size([64, 1000])
-
 
 Bioinformatics
 ---------------
@@ -604,7 +517,7 @@ We'll be using **FastQC** as an example.
 
     cd /ibex/user/$USER/ibex_101/application-examples/Bio
 
-Using the jobscript ``fastqc.sh`` which described as follows:
+Using the jobscript ``fastqc.batch`` which described as follows:
 
 .. code-block:: bash
 
@@ -667,6 +580,7 @@ View the output file
 
 .. code-block:: bash
 
+    cd /ibex/user/$USER/ibex_101/application-examples/Bio/dataset
     google-chrome SRR975578_1_fastqc.html
 
 .. note::
