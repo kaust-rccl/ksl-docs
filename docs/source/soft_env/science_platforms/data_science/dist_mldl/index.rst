@@ -20,4 +20,19 @@ Distributed ML/DL on KSL systems
     horovod
     matlab_dl
     ray_tune
+
+Deep Learning Optimization
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    deepspeed_guide
+
+Fine-Tuning
+.. toctree::
+    :titlesonly:
+    :maxdepth: 1
+
+    fsdp_guide
+    hpo_raytune_guide
     jax_multinode
