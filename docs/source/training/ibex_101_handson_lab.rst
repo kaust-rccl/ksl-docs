@@ -1186,7 +1186,7 @@ Using the file ``launch-jupyter-server.sh`` which described as follows:
     #SBATCH --gpus-per-node=1
     #SBATCH --cpus-per-gpu=6
     #SBATCH --mem=32G
-    #SBATCH --reservatin=ibex101
+    #SBATCH --reservation=ibex101
     #SBATCH --job-name=demo
     #SBATCH --output=%x-%j-slurm.out
     #SBATCH --error=%x-%j-slurm.err
@@ -1259,7 +1259,7 @@ Using the script ``single-node-2GPUs-job.sh`` which described as follows:
     #SBATCH --cpus-per-task=8                # Request 8 CPUs
     #SBATCH --mem=32G                        # Request 32G memory
     #SBATCH --time=00:10:00                  # Time limit (hh:mm:ss)
-    #SBATCH --reservatin=ibex101            # use ibex101 reservation
+    #SBATCH --reservation=ibex101            # use ibex101 reservation
 
     # Load necessary modules (if required)
     module load machine_learning/2024.01

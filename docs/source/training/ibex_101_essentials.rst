@@ -448,7 +448,7 @@ Using the file ``launch-jupyter-server.sh`` which described as follows:
     #SBATCH --gpus-per-node=1
     #SBATCH --cpus-per-gpu=2
     #SBATCH --mem=2G
-    #SBATCH --reservatin=ibex101
+    #SBATCH --reservation=ibex101
     #SBATCH --job-name=demo
     #SBATCH --output=%x-%j-slurm.out
     #SBATCH --error=%x-%j-slurm.err
