@@ -20,7 +20,7 @@ This guide focuses on **Hyperparameter Optimization (HPO)** for
 fine-tuning large language models.
 
 You will experiment with both **manual and automated** approaches to
-explore how different hyperparameter affect model **performance and
+explore how different hyperparameters affect model **performance and
 training cost**. 
 
 1. `Baseline manual experiment <#baseline-manual-experiment>`__ 
