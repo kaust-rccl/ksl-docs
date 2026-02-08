@@ -508,7 +508,7 @@ Results
 
 - Filling it to a Table: 
    +------------------------+-----------+-----------+-------------------+--------------------+-----------+
-   | Best Learning Rate     | Best      | Best      | Best Eval Loses   | Total Runtime (s)  | Epochs    |
+   | Best Learning Rate     | Best      | Best      | Best Eval Loss    | Total Runtime (s)  | Epochs    |
    | (lr)                   | Batch     | Weight    |                   |                    |           |
    |                        | Size (bs) | Decay     |                   |                    |           |
    |                        |           | (wd)      |                   |                    |           |
