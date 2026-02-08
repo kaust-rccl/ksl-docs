@@ -446,7 +446,7 @@ Results
       ...
       ===== JOB 39567495 FINISH : yyyy-mm-dd hh:mm:ss +03 =====
 
-3. Scroll inside the log to locate the Ray Tune trails table (ASHA prints it automatically), it will looks similar to:
+3. Scroll inside the log to locate the Ray Tune trials table (ASHA prints it automatically), it will looks similar to:
    
    .. code:: bash
 
