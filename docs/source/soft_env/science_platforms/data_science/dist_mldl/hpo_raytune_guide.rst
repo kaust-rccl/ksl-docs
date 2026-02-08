@@ -251,7 +251,7 @@ To run the Ray Tune experiments, you’ll need a properly configured Conda envir
 Running Experiments with Ray Tune
 ---------------------------------
 
-In this project, you will go through experimenting the three schedulers [asha, bayesain, pbt]
+In this project, you will go through experimenting the three schedulers [asha, bayesian, pbt]
 
 .. note::
    
