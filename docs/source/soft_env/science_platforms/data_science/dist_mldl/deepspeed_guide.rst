@@ -117,7 +117,7 @@ environment.
    Please ensure you allocate a GPU node before starting the build.
 
 Baseline: BLOOM Fine-tuning without DeepSpeed
------------------
+---------------------------------------------
 
 Before exploring *DeepSpeed* optimizations, it’s useful to understand
 the vanilla *HuggingFace* fine-tuning process using a smaller LLM like
