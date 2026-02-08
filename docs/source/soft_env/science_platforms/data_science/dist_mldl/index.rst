@@ -22,6 +22,7 @@ Distributed ML/DL on KSL systems
     ray_tune
 
 Deep Learning Optimization
+
 .. toctree::
     :titlesonly:
     :maxdepth: 1
@@ -29,6 +30,7 @@ Deep Learning Optimization
     deepspeed_guide
 
 Fine-Tuning
+
 .. toctree::
     :titlesonly:
     :maxdepth: 1
