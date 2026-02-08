@@ -40,11 +40,6 @@ To find out the currently supported versions of ParaView and VisIt, simply use m
     To learn more about how to use ParaView or VisIt both interactively and through batch scripting, see the documentation below. 
 
 
-Remote desktops
-================
-.. note:: 
-    Coming soon
-
 
 Visualization Resources
 ========================
