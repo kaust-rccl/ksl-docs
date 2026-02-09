@@ -20,7 +20,7 @@ This guide focuses on **Hyperparameter Optimization (HPO)** for
 fine-tuning large language models.
 
 You will experiment with both **manual and automated** approaches to
-explore how different hyperparameter affect model **performance and
+explore how different hyperparameters affect model **performance and
 training cost**. 
 
 1. `Baseline manual experiment <#baseline-manual-experiment>`__ 
@@ -251,7 +251,7 @@ To run the Ray Tune experiments, you’ll need a properly configured Conda envir
 Running Experiments with Ray Tune
 ---------------------------------
 
-In this project, you will go through experimenting the three schedulers [asha, bayesain, pbt]
+In this project, you will go through experimenting the three schedulers [asha, bayesian, pbt]
 
 .. note::
    
@@ -446,7 +446,7 @@ Results
       ...
       ===== JOB 39567495 FINISH : yyyy-mm-dd hh:mm:ss +03 =====
 
-3. Scroll inside the log to locate the Ray Tune trails table (ASHA prints it automatically), it will looks similar to:
+3. Scroll inside the log to locate the Ray Tune trials table (ASHA prints it automatically), it will looks similar to:
    
    .. code:: bash
 
@@ -508,7 +508,7 @@ Results
 
 - Filling it to a Table: 
    +------------------------+-----------+-----------+-------------------+--------------------+-----------+
-   | Best Learning Rate     | Best      | Best      | Best Eval Loses   | Total Runtime (s)  | Epochs    |
+   | Best Learning Rate     | Best      | Best      | Best Eval Loss    | Total Runtime (s)  | Epochs    |
    | (lr)                   | Batch     | Weight    |                   |                    |           |
    |                        | Size (bs) | Decay     |                   |                    |           |
    |                        |           | (wd)      |                   |                    |           |

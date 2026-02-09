@@ -24,6 +24,7 @@ Users are encouraged to ask questions using media listed on :ref:`Contact_Us`.
    ibex_101_handson_lab
    ibex_101_essentials
    ibex_user_resources
+   ksl_tech_talks_ai_ml
 
    
 

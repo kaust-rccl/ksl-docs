@@ -18,7 +18,7 @@ Login
 To login you need to ``ssh`` into the login node.
 A ``ssh`` client should be installed on your workstation/laptop. 
 For users with MacOS and Linux operating system, please open the ``Terminal`` application paste command below replacing your username for Shaheen III.
-For Windows users, you will need a application with ``ssh`` client installed within it. Please follow instruction in `this video tutorial <https://www.youtube.com/watch?v=xfAydE_0iQo&list=PLaUmtPLggqqm4tFTwhCB48gUAhI5ei2cx&index=20>`_ . When logging in to Shaheen III, please replace the hostname with `shaheen.hpc.kaust.edu.sa` when following the steps prescribed in the tutorial.
+For Windows users, you will need a application with ``ssh`` client installed within it.
 
 Logging into Shaheen III
 ------------------------

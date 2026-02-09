@@ -351,6 +351,7 @@ GPU compute nodes are allocated as shared among the users' jobs. To know the cur
 For example:
 
 1. List a100 nodes with free 100 cpus.
+
 .. code-block:: bash
     :caption: querying gpu nodes with 100 free cpus 
 
