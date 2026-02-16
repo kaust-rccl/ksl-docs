@@ -30,6 +30,6 @@ Sessions
       - `Distributed DL with FSDP <https://drive.google.com/file/d/1pS9KIjijuSibLOEFHYcqQmhHPL5anwdO/view?usp=sharing>`_ , Recording
       - `Distributed DL with NeMo <https://drive.google.com/file/d/1szyPvUE1oW2mw51if35fYPINBU0G5_mr/view?usp=sharing>`_ , Recording
    * - High Throughput Hyperparameter Optimization
-     - Feb 09-10, 2026
+     - Feb 11, 2026
      - `Slides <https://drive.google.com/file/d/1KTH2xehMuMmoaHF7oUkKMFy7HJrig48O/view?usp=sharing>`_ , Recording
 
