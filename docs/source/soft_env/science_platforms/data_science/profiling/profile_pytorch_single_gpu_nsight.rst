@@ -70,7 +70,7 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
     nodes = 1
     gpus = 0
     num_workers = 8
-    batch_size = 64
+    batch_size = 4  # 64
     epochs = 1
     lr = 1e-2
     momentum = 0.9
@@ -234,21 +234,51 @@ The above SLURM script can be submitted to the IBEX cluster using the following 
 
 After the job completes, you will find a profiling report file named ``profile.<SLURM_JOBID_OF_YOUR_JOB>.nsys-rep`` in your working directory. You can open this report using NVIDIA Nsight Systems GUI on your local machine to analyze the profiling data.
 
-The following trace is obtained for ``batch_size=64``. It shows you various NVTX ranges that were added in the PyTorch script, allowing you to see the time spent in data preparation, training, validation, and model saving phases. If you uncomment the line with ``#with torch.autograd.profiler.emit_nvtx():``, you will also see detailed kernel launches in PyTorch.
-
-.. image:: profile_pytorch_single_gpu_nsight_batch_size_64.png
-   :alt: Nsight Systems Trace
-   :align: center
-   :width: 100%
-
-The following trace is obtained for ``batch_size=4``.
+The following trace is obtained for ``batch_size=4``. It shows you various NVTX ranges that were added in the PyTorch script, allowing you to see the time spent in data preparation, training, validation, and model saving phases. If you uncomment the line with ``#with torch.autograd.profiler.emit_nvtx():``, you will also see detailed kernel launches in PyTorch.
 
 .. image:: profile_pytorch_single_gpu_nsight_batch_size_4.png
    :alt: Nsight Systems Trace
    :align: center
    :width: 100%
 
+\
+
+The following trace is obtained for ``batch_size=64``. 
+
+.. image:: profile_pytorch_single_gpu_nsight_batch_size_64.png
+   :alt: Nsight Systems Trace
+   :align: center
+   :width: 100%
+
+
 On IBEX cluster, GPU performance metrics are automatically collected using NVIDIA Data Center GPU Manager (DCGM) during the execution of a SLURM job. After the job completes, you can check the collected GPU statistics saved under the ``dcgm`` directory. 
+
+The following output belongs to ``batch_size=4`` job. 
+The ``SM Utilization (%)`` shows the percentage of time during which the GPU's Streaming Multiprocessors (SMs) were active. 
+A Streaming Multiprocessor (SM) is the fundamental, hardware-level processing unit within an NVIDIA GPU that executes CUDA thread blocks in parallel.
+The ``Memory Utilization (%)`` indicates the percentage of GPU memory that was utilized during the job execution.
+
+.. code-block:: bash
+
+    $ cat dcgm/singlegpu.slurm/43674721/dcgm-gpu-stats-gpu213-14-43674721.out
+    Successfully retrieved statistics for job: 43674721.
+    +------------------------------------------------------------------------------+
+    | GPU ID: 3                                                                    |
+    +====================================+=========================================+
+    |-----  Execution Stats  ------------+-----------------------------------------|
+    | Start Time                         | Mon Jan  5 16:32:39 2026                |
+    | End Time                           | Mon Jan  5 16:54:49 2026                |
+    | Total Execution Time (sec)         | 1329.78                                 |
+    | No. of Processes                   | 1                                       |
+    +-----  Performance Stats  ----------+-----------------------------------------+
+    | Energy Consumed (Joules)           | 156500                                  |
+    | Power Usage (Watts)                | Avg: 119.23, Max: 195.217, Min: 41.848  |
+    | Max GPU Memory Used (bytes)        | 1394606080                              |
+    | SM Clock (MHz)                     | Avg: 910, Max: 1530, Min: 135           |
+    | Memory Clock (MHz)                 | Avg: 877, Max: 877, Min: 877            |
+    | SM Utilization (%)                 | Avg: 43, Max: 83, Min: 0                |
+    | Memory Utilization (%)             | Avg: 15, Max: 30, Min: 0                |
+    +------------------------------------------------------------------------------+
 
 The following output belongs to ``batch_size=64`` job:
 
@@ -274,30 +304,10 @@ The following output belongs to ``batch_size=64`` job:
     | Memory Utilization (%)             | Avg: 47, Max: 67, Min: 0                |
     +------------------------------------------------------------------------------+
 
-The following output belongs to ``batch_size=4`` job:
 
-.. code-block:: bash
-
-    $ cat dcgm/singlegpu.slurm/43674721/dcgm-gpu-stats-gpu213-14-43674721.out
-    Successfully retrieved statistics for job: 43674721.
-    +------------------------------------------------------------------------------+
-    | GPU ID: 3                                                                    |
-    +====================================+=========================================+
-    |-----  Execution Stats  ------------+-----------------------------------------|
-    | Start Time                         | Mon Jan  5 16:32:39 2026                |
-    | End Time                           | Mon Jan  5 16:54:49 2026                |
-    | Total Execution Time (sec)         | 1329.78                                 |
-    | No. of Processes                   | 1                                       |
-    +-----  Performance Stats  ----------+-----------------------------------------+
-    | Energy Consumed (Joules)           | 156500                                  |
-    | Power Usage (Watts)                | Avg: 119.23, Max: 195.217, Min: 41.848  |
-    | Max GPU Memory Used (bytes)        | 1394606080                              |
-    | SM Clock (MHz)                     | Avg: 910, Max: 1530, Min: 135           |
-    | Memory Clock (MHz)                 | Avg: 877, Max: 877, Min: 877            |
-    | SM Utilization (%)                 | Avg: 43, Max: 83, Min: 0                |
-    | Memory Utilization (%)             | Avg: 15, Max: 30, Min: 0                |
-    +------------------------------------------------------------------------------+
-
-Comparing the two runs, you can observe that decreasing the batch size leads to lower GPU utilization (``SM Utilization (%)`` in the DCGM output) and memory usage (``Memory Utilization (%)`` in the DCGM output), resulting in a less efficient training process.
+Comparing the two runs, you can observe that increasing the batch size leads to higher GPU utilization (``SM Utilization (%)`` in the DCGM output) and memory usage (``Memory Utilization (%)`` in the DCGM output), resulting in a more efficient training process.
 GPU and memory utilization throughout the execution time of the job can also be observed in the Nsight Systems trace.
 This profiling information can help you make informed decisions about optimizing your PyTorch training workloads on NVIDIA GPUs. 
+
+.. note:: 
+    NVIDIA Nsight Systems profiling results and DCGM output are available only for successfully completed jobs. If a job fails, these outputs may not be generated or may be incomplete. Always ensure that your training script runs without errors to obtain accurate profiling data.
