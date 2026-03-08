@@ -3,6 +3,7 @@
     :description: Nsight-systems
     :keywords: nsight
 
+.. _nsight_profiling:
 
 ###############
 Nsight Systems
