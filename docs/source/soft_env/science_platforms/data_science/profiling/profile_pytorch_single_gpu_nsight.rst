@@ -206,7 +206,7 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
 
 To profile the above PyTorch training script using NVIDIA Nsight Systems, you can use the following SLURM script (``singlegpu.slurm``) on IBEX:
 
-.. code-block:: slurm
+.. code-block:: bash
 
     #!/bin/bash
 
