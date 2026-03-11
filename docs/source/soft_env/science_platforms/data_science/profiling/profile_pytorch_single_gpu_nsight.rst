@@ -68,9 +68,9 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
     from torch.utils.tensorboard import SummaryWriter
 
     nodes = 1
-    gpus = 0
+    gpus = 1
     num_workers = 8
-    batch_size = 4  # 64
+    batch_size = 4
     epochs = 1
     lr = 1e-2
     momentum = 0.9
