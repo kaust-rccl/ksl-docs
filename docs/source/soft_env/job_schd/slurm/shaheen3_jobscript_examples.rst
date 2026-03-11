@@ -3,6 +3,7 @@
     :description: Example jobscripts
     :keywords: SLURM, MPI, OpenMP, GPU
 
+.. _shaheen3_example_jobscripts:
 
 ========================================================
 Shaheen III example jobscripts
@@ -10,7 +11,7 @@ Shaheen III example jobscripts
 This section provides a collection of jobscripts used to launch workload on Shaheen III. We always encourage users to contact :email:`Shaheen III support team<help@hpc.kaust.edu.sa>` for any cases not documented here.
 
 
-.. toctree:: 
+.. toctree::
     :maxdepth: 1
     :titlesonly:
 

@@ -348,3 +348,46 @@ GPU compute nodes are allocated as shared among the users' jobs. To know the cur
     v100              240      26       0       0       0     266
            Totals:    553      73       0       0       0     626
 
+For example:
+
+1. List a100 nodes with free 100 cpus.
+
+.. code-block:: bash
+    :caption: querying gpu nodes with 100 free cpus 
+
+    $ ginfo --cpu 100 a100
+    GPU Node     CPU (used/free)      Memory (used/free GB)     GPU (used/free)  Partitions                     State
+    gpu102-09    20/126 (106 free)    192/1000 (808 free)       8/8              gpu4,gpu_wide24,gpu_wide72     MIXED
+    gpu102-16    24/126 (102 free)    320/1000 (680 free)       8/8              gpu4,gpu_wide                  MIXED+PLANNED
+    gpu110-23    20/126 (106 free)    256/1000 (744 free)       8/8              gpu4,gpu_wide,gpu_wide24       MIXED+PLANNED
+
+
+2. List a100 nodes with free resources of 512 GB memory , 2 gpus and 20 cpus.
+
+.. code-block:: bash
+    :caption: querying gpu nodes with multiple resources specified 
+    
+    $ ginfo --cpu 20 --gpu 2 --mem 512 a100
+    GPU Node     CPU (used/free)      Memory (used/free GB)     GPU (used/free)  Partitions                     State
+    gpu110-16    41/126 (85 free)     288/1000 (712 free)       6/8 (2 free)     gpu4,gpu_wide,gpu_wide24       MIXED+PLANNED
+
+
+For more info, use the command ``ginfo --help``
+
+.. code-block:: bash
+    :caption: Checking full list of options for the command 
+    
+    ginfo -h
+    usage: get-gpu.py [-h] [--cpu CPU] [--mem MEM] [--gpu GPU] {a100,gtx_1080_ti,p100,p6000,rtx_2080_ti,v100}
+
+    List and filter GPU nodes by free GPU, CPU, and memory.
+
+    positional arguments:
+    {a100,gtx_1080_ti,p100,p6000,rtx_2080_ti,v100}
+                GPU type to filter by.
+
+    optional arguments:
+    -h, --help      show this help message and exit
+    --cpu CPU       Minimum free CPUs.
+    --mem MEM       Minimum free memory (e.g., 20G).
+    --gpu GPU       Minimum free GPUs.

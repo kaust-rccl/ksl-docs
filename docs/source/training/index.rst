@@ -22,7 +22,10 @@ Users are encouraged to ask questions using media listed on :ref:`Contact_Us`.
    shaheen_user_training
    ibex_user_training
    ibex_101_handson_lab
+   ibex_101_essentials
    ibex_user_resources
+   ksl_tech_talks_ai_ml
+   ai_ml_trainings
 
    
 
