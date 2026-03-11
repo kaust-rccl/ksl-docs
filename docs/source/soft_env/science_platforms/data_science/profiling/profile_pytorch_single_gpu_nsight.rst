@@ -176,7 +176,7 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
                     scaler.update()
                     train_loss += loss.item()
 
-                train_loss = train_loss / len(trainloader.dataset.targets)
+                train_loss = train_loss / len(trainloader)
                 writer.add_scalar("Loss/train", train_loss, epoch)
 
             with nvtx.range("validation"):
@@ -191,7 +191,7 @@ Here is a sample PyTorch training script (``singlegpu.py``) that trains an image
                         outputs = net(inputs)
                         loss = criterion(outputs, labels)
                     val_loss += loss.item()
-                val_loss = val_loss / len(valloader.dataset.targets)
+                val_loss = val_loss / len(valloader)
                 writer.add_scalar("Loss/val", val_loss, epoch)
                 print(f"[{epoch + 1}] :Loss (train, val):{train_loss:.3f}, {val_loss:.3f}")
                 writer.flush()
