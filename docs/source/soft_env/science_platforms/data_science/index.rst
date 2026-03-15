@@ -91,9 +91,9 @@ Debugging and profiling
        :titlesonly:
        :maxdepth: 1
 
-       In-flight job telemetry with NVDashboard <tools/nvdashboard>
-
-:ref:`Profiling GPU workloads with NVIDIA Nsight <nsight_profiling>`
+    In-flight job telemetry with NVDashboard <tools/nvdashboard>
+    Profiling GPU workloads with NVIDIA Nsight <../../prof_debug/profiling/nsight-systems/index>
+    Profiling PyTorch workloads on single GPU with NVIDIA Nsight <profiling/profile_pytorch_single_gpu_nsight>
 
 
 Miscellaneous
