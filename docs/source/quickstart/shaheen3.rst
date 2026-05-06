@@ -9,9 +9,11 @@
 Shaheen III
 ==================================
 
-:download:`Download Shaheen III CPU Flyer <ShaheenIII-CPU-flyer-2026-04-1.pdf>`
 
-If you are familiar with HPC clusters and need a quick reference on the specifics of how to interact with KSL computational resources, you will find the relevant information here in a concise form. For details, please explore the other sections of the documentation starting from :ref:`available_systems`.
+
+For a quick reference on how to use Shaheen III CPU, kindly :download:`download Shaheen III CPU Flyer <ShaheenIII-CPU-flyer-2026-04-1.pdf>`
+
+For details, please explore the other sections of the documentation starting from :ref:`available_systems`.
 
 .. _quickstart_shaheen3_login:
 
