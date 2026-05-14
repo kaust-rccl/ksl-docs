@@ -110,6 +110,12 @@ Ports are published by default, mapped on same ports as host.
 While building images with --fakeroot on Ibex, Always allocate a compute node on, (won't work on login nodes).
 export XDG_RUNTIME_DIR=$HOME/somewhere, to allow temporary space for Singularity to write intermediate blobs/images.
 
+.. note::
+   On Ibex, you can build Singularity images using ``--fakeroot`` from your **personal scratch directory**: ``/ibex/user/$USER``.
+   This directory offers ample space and is the recommended location for storing definition files, caches, and final ``.sif`` images.
+   Remember to set ``SINGULARITY_TMPDIR`` and ``SINGULARITY_CACHEDIR`` to subdirectories inside ``/ibex/user/$USER``,
+   and ensure ``XDG_RUNTIME_DIR`` points to a writable location (e.g., ``$HOME/somewhere``) before running the build command.
+
 Building Containers from Scratch or Using Existing Base Images
 --------------------------------------------------------------
 
