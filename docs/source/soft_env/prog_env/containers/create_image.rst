@@ -87,34 +87,30 @@ Defining Environment Variables and Configuring the Runtime Environment
 
 You can define environment variables within the container to customize its behavior. For example, you can set paths, specify default options, or configure application-specific settings. These environment variables are isolated within the container and do not affect the host system.
 
-Build the container
--------------------
+Build the container at Ibex
+---------------------------
 
-.. note::
+.. important::
+   Building with ``--fakeroot`` **will not work on the login nodes**.
 
-      SINGULARITY_TMPDIR — specifies the temporary workspace for intermediate files during container builds or image operations.
-
-      
-      SINGULARITY_CACHEDIR — defines the persistent directory used to store and reuse downloaded image layers and metadata across sessions.
+Before building, set the following environment variables to use your personal scratch directory (``/ibex/user/$USER``) for temporary and cached files:
 
 .. code-block:: bash
 
     export SINGULARITY_TMPDIR=/ibex/user/$USER/tmpdir
     export SINGULARITY_CACHEDIR=/ibex/user/$USER/cachedir
+    export XDG_RUNTIME_DIR=$HOME/somewhere   # writable space for intermediate blobs/images
+
+Then build the container:
+
+.. code-block:: bash
+
     singularity build --fakeroot singularity_image.sif singularity_file.def
 
-The resulting singularity_file.sif can be run using commands like singularity run, singularity shell.
-
-Ports are published by default, mapped on same ports as host.
-
-While building images with --fakeroot on Ibex, Always allocate a compute node on, (won't work on login nodes).
-export XDG_RUNTIME_DIR=$HOME/somewhere, to allow temporary space for Singularity to write intermediate blobs/images.
-
 .. note::
-   On Ibex, you can build Singularity images using ``--fakeroot`` from your **personal scratch directory**: ``/ibex/user/$USER``.
-   This directory offers ample space and is the recommended location for storing definition files, caches, and final ``.sif`` images.
-   Remember to set ``SINGULARITY_TMPDIR`` and ``SINGULARITY_CACHEDIR`` to subdirectories inside ``/ibex/user/$USER``,
-   and ensure ``XDG_RUNTIME_DIR`` points to a writable location (e.g., ``$HOME/somewhere``) before running the build command.
+   - The resulting ``.sif`` file can be run with ``singularity run``, ``singularity shell``, or ``singularity exec``.
+   - Ports are published by default and mapped to the same ports as the host.
+   - Using ``/ibex/user/$USER`` is recommended because it provides ample space for definition files, caches, and final images.
 
 Building Containers from Scratch or Using Existing Base Images
 --------------------------------------------------------------
