@@ -71,11 +71,11 @@ The table below summarizes the CPU nodes available in Ibex cluster. The values i
      - 744GB
    * - AMD Turin
      - Turin
-     - 53
+     - 50
      - 192
      - 2.60
      - 32
-     - 755GB  
+     - 708GB  
      - amd, turin
      - 1.7TB
 
