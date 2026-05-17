@@ -69,6 +69,15 @@ The table below summarizes the CPU nodes available in Ibex cluster. The values i
      - 475GB  
      - amd, rome
      - 744GB
+   * - AMD Turin
+     - Turin
+     - 50
+     - 192
+     - 2.60
+     - 32
+     - 708GB  
+     - amd, turin
+     - 1.7TB
 
 Some nodes have larger memory for workloads which require loading big data in memory, e.g. some bioinformatics workloads, or data processing/wrangling creating input data for Machine Learning and Deep Learning training jobs.   
 
