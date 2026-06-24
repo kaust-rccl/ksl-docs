@@ -19,7 +19,8 @@ For details, please explore the other sections of the documentation starting fro
    :titlesonly:
    :maxdepth: 1
 
-   shaheen3
+   shaheen3cpu
+   shaheen3gpu
    ibex
    passwordless_ssh
    jobscriptGenerator

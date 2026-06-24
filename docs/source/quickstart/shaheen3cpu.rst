@@ -6,7 +6,7 @@
 .. _quickstart_shaheen3:
 
 ==================================
-Shaheen III
+Shaheen III CPU
 ==================================
 
 
