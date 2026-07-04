@@ -32,4 +32,4 @@ This section introduces the software envrionments available on KSL systems.
    r_package_management/index
    containers/index
    ../../apps_catalogue/index
-   
+   cuda13_forward_compatibility
