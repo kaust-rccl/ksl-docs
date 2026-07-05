@@ -52,7 +52,7 @@ Installation
 
 .. code-block:: bash
 
-   conda activate /ibex/user/$USER/miniforge/envs/envcuda13
+   conda activate envcuda13
 
 5. Install the CUDA Forward Compatibility package together with Python and pip:
 
@@ -64,7 +64,7 @@ Installation
 
 .. code-block:: bash
 
-   export LD_LIBRARY_PATH=/ibex/user/$USER/miniforge/envs/envcuda13/cuda-compat/:$LD_LIBRARY_PATH
+   export LD_LIBRARY_PATH=$CONDA_PREFIX/cuda-compat/:$LD_LIBRARY_PATH
 
 7. Install PyTorch:
 
