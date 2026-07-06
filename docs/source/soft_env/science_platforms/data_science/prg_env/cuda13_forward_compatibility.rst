@@ -1,7 +1,7 @@
 .. sectionauthor:: Mohsin Ahmed Shaikh <mohsin.shaikh@kaust.edu.sa>
 .. meta::
     :description: Forward Compatibility for Newer CUDA Toolkits
-    :keywords: Software environment, Shaheen, Ibex
+    :keywords: pytorch, lightning, machine learning, deep learning, dask, rapids
 
 .. _forward_compatibility_newer_cuda_toolkits:
 
