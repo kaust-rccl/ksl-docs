@@ -5,9 +5,9 @@
 
 .. _forward_compatibility_newer_cuda_toolkits:
 
-============================================
-Forward Compatibility for Newer CUDA Toolkits
-============================================
+=============================================
+Forward compatibility for newer CUDA toolkits
+=============================================
 
 Overview
 ========
@@ -96,3 +96,4 @@ Notes
   modify the system CUDA installation.
 * The ``LD_LIBRARY_PATH`` environment variable must include the
   ``cuda-compat`` directory before launching CUDA applications.
+* For more information on CUDA Forward Compatibility, refer to the official NVIDIA documentation: https://docs.nvidia.com/deploy/cuda-compatibility/latest/forward-compatibility.html

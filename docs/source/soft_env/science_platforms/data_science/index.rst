@@ -66,11 +66,12 @@ Software environment
        :maxdepth: 1
 
        KSL managed software on Ibex for Data Science <ml_module_ibex>
-       Forward Compatibility for Newer CUDA Toolkits <prg_env/cuda13_forward_compatibility>
 
 :ref:`Self-managed software <prog_env>`
 
 :ref:`Portable software in containers <container_platforms_guide>`
+
+:ref:`Forward compatibility for newer CUDA toolkits <forward_compatibility_newer_cuda_toolkits>`
 
 
 Accelerating workloads
