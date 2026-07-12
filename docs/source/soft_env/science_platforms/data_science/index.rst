@@ -71,6 +71,8 @@ Software environment
 
 :ref:`Portable software in containers <container_platforms_guide>`
 
+:ref:`Forward compatibility for newer CUDA toolkits <forward_compatibility_newer_cuda_toolkits>`
+
 
 Accelerating workloads
 =======================
