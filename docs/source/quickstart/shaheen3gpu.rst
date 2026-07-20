@@ -37,14 +37,13 @@ For users with accounts, here are the steps for connecting to Shaheen III GPUs:
 #. Open incognito session in a browser (e.g. Chrome)
 #. Go to https://s3vdi.kaust.edu.sa
 #. Click web client option (authenticate using ``s-xxxx@kaust.edu.sa``, password and Duo)
-#. Click S3-VDI (authenticate again)
+#. Click S3-VDI
 #. Open Terminal
 #. ``ssh ulogin.hpc.kaust.edu.sa``
-#. Type your password
 #. ``ssh gh``
 #. Type your password  
 
-If you have any confusion, see `the demo video <https://kaust-my.sharepoint.com/:v:/g/personal/akbudak_kaust_edu_sa1/IQC2Xjzjz-feQ7LMFzLgd2A0ASo04pffC8tOVg3IijXFM80?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=YhXcfj>`_.
+If you have any confusion, see `the demo video <https://kaust-my.sharepoint.com/:v:/g/personal/akbudak_kaust_edu_sa1/IQAMR-N5luMGQbDxKjdUNFnBAb3BSgIrH3ZyBa5rZ2zwoUk?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=pTxfVN>`_.
 
 Now you are on the login node of Shaheen III GPU partition. You can compile and run the programs by following the guidance provided below. 
 
