@@ -805,6 +805,15 @@ rl9c            veba                      2.2.1                  rl9.1_conda3
 rl9c            verkko                    2.2.1                  rl9.1_conda3
 rl9c            verkko                    2.3                    rl9.4_conda3
 rl9c            yahs                      1.1                    rl9.1_gnu12.2.0
+rl9c            ingenannot                0.0.9                  rl9.4_conda3
+rl9c            phyluce                   1.7.3                  rl9.4_conda3
+rl9c            faqcs                     2.12                   rl9.4_conda3
+rl9c            sourmash                  4.9.4                  rl9.4_conda3
+rl9c            mlst                      2.33.0                 rl9.4_conda3
+rl9c            rgi                       6.0.8                  rl9.4_conda3
+rl9c            virulencefinder           3.2.0                  rl9.4_conda3
+rl9c            sccmecfinder              2.0.0                  rl9.4_conda3
+rl9c            malt                      0.6.3                  rl9.4_conda
 ==============  ========================  =====================  =================================
 
 Computational Fluid Dynamics
@@ -830,6 +839,7 @@ rl9c            openfoam     9.0               rl9_gnu12.2.0
 rl9c            geochemfoam  4.8               rl9_gnu12.2.0
 rl9g            paraview     5.11.0            gnu11.2.1-mesa
 rl9c            ansys        22R2-fluids       rl9_binary
+rl9c            ansys        26R1-fluids       rl9_binary
 ==============  ===========  ================  ====================
 
 Data Science
