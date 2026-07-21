@@ -174,6 +174,3 @@ Computing Resources
 **What is the maximum number of nodes and the number of GPUs allocated per user?**
   64 GPUs per user. Beyond, the user must justify his request and demonstrate the scaling of his application.
 
-**What are the storage quotas and number of files limitations?**
-  *(TBD)*
-
