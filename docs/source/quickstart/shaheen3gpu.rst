@@ -172,25 +172,7 @@ Computing Resources
   Shaheen III GPU partition provides exclusive node allocation. Hence, you will be allocating 4 GPUs for your job.
 
 **What is the maximum number of nodes and the number of GPUs allocated per user?**
-  *(TBD)*
-
-Job Scheduling and Interactive Jobs
------------------------------------
-
-**How can I run Jupyter notebooks?**
-  *(TBD)*
-
-**Am I allowed to monitor the GPU utilization?**
-  You may monitor your GPU jobs by using ``nvidia-smi``, for example.
-
-**How can I use the VS-Code server in Shaheen III GPUs?**
-  *(TBD)*
-
-Storage and Quota
------------------
-
-**Am I allowed to run more than 1M files for my job? If so, what will be the best practice?**
-  *(TBD)*
+  64 GPUs per user. Beyond, the user must justify his request and demonstrate the scaling of his application.
 
 **What are the storage quotas and number of files limitations?**
   *(TBD)*
